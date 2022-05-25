@@ -1,0 +1,109 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+.svgForm{
+	position: absolute;
+	z-index: -1;
+}
+
+.title{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.svgForm{
+	z-index: -1;
+	position: absolute;
+	left: -1px;
+	width: 101%;
+}
+
+.title .wave{
+	width: 40%;
+	margin: 20px;
+	animation: wave 5s infinite ease-in-out;
+}
+
+.title span{
+	font-weight: 900;
+	font-size: 36px;
+	color: white;
+}
+
+.title p{
+	font-size: 22px;
+	width: 60%;
+	font-weight: 500;
+	text-align: justify;
+}
+
+form{
+	display: grid;
+	grid-template-columns: 3fr 10px 4fr 10px 1.5fr 3fr;
+	width: 55%;
+	min-width: 600px;
+	border-radius: 500px;
+	background-color: white;
+	-webkit-box-shadow: 0px 0px 14px 0px #000000; 
+	box-shadow: 0px 0px 14px -3px #000000;
+}
+
+form .form-item{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+form .icon{
+	width: 20px;
+}
+
+form .form-item input{
+	border: none;
+	font-size: 16px;
+	width: 60%;
+}
+
+hr{
+	border: none;
+	background-color: grey;
+	width: 0.5px;
+}
+input[type=submit]{
+	border: none;
+	box-sizing: content-box;
+	background-color: #79ccff;
+	border-radius: 0 100px 100px 0;
+	font-size: 18px;
+	color: white;
+	font-weight: 700;
+}
+
+
+*:focus {
+    outline: none;
+}
+
+@keyframes wave{
+	from{
+		transform: translateY(-5px);
+	}
+
+	50%{
+		transform: translateY(5px);
+	}
+
+	to{
+		transform: translateY(-5px);
+	}
+}
