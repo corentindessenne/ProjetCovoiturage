@@ -1,0 +1,99 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto';
+	overflow-x: hidden;
+	background-color: var(--white);
+}
+
+nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--blue);
+	width: 100%;
+	height: 10vh;
+}
+
+nav .logo{
+	padding-left: 10px;
+}
+
+nav .logo img{
+	height: 10vh;
+}
+
+.menu{
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	width: 50%;
+}
+
+.menu-item a{
+	text-decoration: none;
+	color: black;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.connect a{
+	border-radius: 500px;
+	background-color: var(--navy);
+	color: white;
+	padding: 10px;
+}
+
+.svgForm{
+	position: absolute;
+	z-index: -1;
+}
+
+.title{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.svgForm{
+	z-index: -1;
+	position: absolute;
+	left: -1px;
+	width: 101%;
+}
+
+.title img{
+	width: 40%;
+	margin: 20px;
+	animation: wave 5s infinite ease-in-out;
+}
+
+.title span{
+	font-weight: 900;
+	font-size: 32px;
+	color: white;
+}
+
+@keyframes wave{
+	from{
+		transform: translateY(-5px);
+	}
+
+	50%{
+		transform: translateY(5px);
+	}
+
+	to{
+		transform: translateY(-5px);
+	}
+}
