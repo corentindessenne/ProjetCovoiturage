@@ -32,6 +32,8 @@ else{
 }
 if ($conn->query($request) === TRUE) {
     echo "New record created successfully";
+    header("Location: http://localhost/ProjetCovoiturage/html/home.php");
+die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
