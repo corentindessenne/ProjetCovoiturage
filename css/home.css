@@ -1,3 +1,21 @@
+html {
+  scroll-behavior: smooth;
+ }
+
+
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+body{
+	margin: 0;
+	font-family: 'Roboto';
+}
 .svgForm{
 	position: absolute;
 	z-index: -1;
@@ -96,4 +114,130 @@ input[type=submit]{
 	to{
 		transform: translateY(-5px);
 	}
+}
+
+.scrolldown{
+	margin-top: 30px;
+border-radius: 500px;
+	color: white;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.fwh-slide{
+	height: 100vh;
+	background: #4571AE;
+}
+
+.fwh-slide--bg-yellow{
+	height: 500vh;
+	background: #FFFEE6;
+
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 60px;
+}
+
+.container, .container2, .container3{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin : 30px auto;
+
+  }
+
+.container img{
+	width: 20%;
+	float: right;
+}
+
+.container .text{
+	width: 60%;
+	text-align : justify;
+	font-size: 25px;
+}
+
+.container h3{
+	font-size: 35px;
+	color: #EF8E37;
+	font-family: 'Roboto';
+}
+
+.container2 img{
+	width: 20%;	
+}
+
+.container2 .text{
+	width: 60%;
+	text-align : justify;
+	font-size: 25px;
+	font-family: 'Roboto';
+}
+
+.container2 h3{
+	font-size: 35px;
+	color: #EF8E37;
+	font-family: 'Roboto';
+}
+
+
+.container3 img{
+	width: 20%;	
+}
+
+.container3 .text{
+	width: 60%;
+	text-align : justify;
+	font-size: 25px;
+	font-family: 'Roboto';
+}
+
+.container3 h3{
+	font-size: 35px;
+	color: #EF8E37;
+	font-family: 'Roboto';
+}
+
+.list{
+	display: flex;
+  	align-items: center;
+    width: 100%;
+    margin: 80px auto;
+}
+
+.list img{
+	width: 15%;
+}
+
+.list h1{
+	font-size: 45px;
+	color: #EA001C;
+	font-weight: bold;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: space-around;
+  width: 100%;
+}
+
+.wrapper .item{
+	margin: auto;
+	width: 40%;
+	height: 30vh;
+	border-radius: 20px;
+	background: blue;
+	margin: 20px auto;
+	padding: 10px;
 }
