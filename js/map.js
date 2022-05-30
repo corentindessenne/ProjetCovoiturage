@@ -31,7 +31,7 @@ initMap().then( (response) => {
 		origin : queryCoord,
 		destination : WerwicqSud,
 		travelMode : google.maps.TravelMode.DRIVING,
-		unitSystem : google.maps.UnitSystem.IMPERIAL,
+		unitSystem : google.maps.UnitSystem.METRIC,
 	}
 
 	directionsService.route(request, (result,status) => {

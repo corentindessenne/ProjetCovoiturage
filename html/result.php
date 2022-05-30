@@ -12,18 +12,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-	<!--Leaflet Maps API-->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-   	integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-   	crossorigin=""></script>
    	<!--Google Maps API-->
    	<script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg&callback=initMap">
 	</script>
+
 </head>
+
 <body>
 
 	<script type="text/javascript">
@@ -31,6 +26,9 @@
 		console.log(query);
 
 		let queryCoord = {lat : 0, lng : 0};
+
+		document.getElementByClassName('wrapper').style.display = 'none';
+
 
 		function getDataFromURL(){
 			return new Promise((resolve) =>{
@@ -66,6 +64,11 @@
 		</ul>
 	</nav>
 
+	<div id="loader">
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
 
 	<div class="wrapper">
 		<div class="left">
@@ -101,8 +104,6 @@
 			
 			let response = await getDataFromURL();
 
-			console.log()
-
 			let mapOptions = {
 				center : WerwicqSud,
 				zoom : 8
@@ -133,7 +134,9 @@
 			directionsService.route(request, (result,status) => {
 				if (status == "OK"){
 					console.log(result.routes[0].legs[0].distance);
-					console.log(result.routes[0].legs[0].duration);
+					console.log(result.routes[0].legs[0].duration
+
+						);
 					console.log(result);
 
 					directionsDisplay.setDirections(result);
@@ -147,8 +150,13 @@
 				}
 			});
 
+			document.getElementById("loader").style.display = "none";
+			document.getElementByClassName('wrapper').style.display = "flex";
+
 		}
 		
 	</script>
+
+-->
 </body>
 </html>
