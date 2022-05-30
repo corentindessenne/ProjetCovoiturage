@@ -24,7 +24,9 @@
 			<li class="menu-item connect"><a href="">Se connecter</a></li>
 		</ul>
 	</nav>
-
+	<?php 
+	include 'Connexion.php';
+	?>
 	<img class="svgForm" src="../images/Vector 1.svg">
 
 	<div class="title">
@@ -67,6 +69,15 @@
 		</script>
 
 	</div>
-
+	<?php
+	if($_SESSION["confirme"]==1){
+		$_SESSION["confirme"]=0;
+		echo '<script type="text/javascript">window.alert("Votre modification a bien été enregistré");</script>';
+	}
+	else if($_SESSION["confirme"]==2){
+		$_SESSION["confirme"]=0;
+		echo '<script type="text/javascript">window.alert("Votre trajet a bien été enregistré");</script>';
+	}
+	?>
 </body>
 </html>

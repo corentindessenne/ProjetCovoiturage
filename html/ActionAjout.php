@@ -8,19 +8,8 @@
 
 <h1>Ton trajet a bien été mit en ligne</h1>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db="briquesrouges";
+include 'Connexion.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 if($_POST["tel"]==1){$_POST["tel"]=1;}
 else{$_POST["tel"]=0;}
@@ -32,6 +21,7 @@ else{
 }
 if ($conn->query($request) === TRUE) {
     echo "New record created successfully";
+    $_SESSION["confirme"]=2;
     header("Location: http://localhost/ProjetCovoiturage/html/home.php");
 die();
   } else {

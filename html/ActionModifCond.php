@@ -9,19 +9,7 @@
 <h1>Ca marche pas</h1>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db="briquesrouges";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password,$db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
+include 'Connexion.php';
 
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 
@@ -40,7 +28,7 @@ else{
 
 if ($conn->query($request) === TRUE) {
     echo "New record created successfully";
-
+    $_SESSION["confirme"]=1;
     header("Location: home.php");
 die();
   } else {

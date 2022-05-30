@@ -9,19 +9,7 @@
 <h1>Ca marche pas</h1>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db="briquesrouges";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password,$db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
+include 'Connexion.php';
 
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 
@@ -38,10 +26,13 @@ else{
     $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuArrivée='".$_POST["Ville"]."',LieuDépart='Wervicq-Sud', DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 
-if ($conn->query($request) === TRUE) {
-    echo "New record created successfully";
 
+
+if ($conn->query($request) === TRUE) {
+    $_SESSION["confirme"]=1;
+    echo "New record created successfully";
     header("Location: home.php");
+    
 die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
