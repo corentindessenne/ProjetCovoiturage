@@ -22,13 +22,13 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
-if($_POST["tel"]==1){$_POST["tel"]=true;}
-else{$_POST["tel"]=true;}
+if($_POST["tel"]==1){$_POST["tel"]=1;}
+else{$_POST["tel"]=0;}
 if($_POST["AllerRetour"]=="Aller"){
-    $request="INSERT INTO trajet(TypeTrajet,LieuDépart, DateDépart, HeureDépart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnnéeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDépart, DateDépart, HeureDépart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnnéeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
 }
 else{
-    $request="INSERT INTO trajet(TypeTrajet,LieuArrivée, DateDépart, HeureDépart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnnéeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivée, DateDépart, HeureDépart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnnéeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
 }
 if ($conn->query($request) === TRUE) {
     echo "New record created successfully";

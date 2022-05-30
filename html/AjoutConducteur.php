@@ -3,7 +3,6 @@
 <head>
     <title>Ajout d'un trajet conducteur</title>
     <link href="" rel="stylesheet" >
-    <script type="module" src="Ajout.js"></script>
 </head>
 
 <body>
