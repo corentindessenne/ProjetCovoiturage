@@ -11,8 +11,11 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
+	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+
 </head>
 <body>
+
 	<nav>
 		<div class="logo">
 			<img src="../images/LBR Ressources/logoLONGUEURClassic.png">
@@ -24,6 +27,7 @@
 			<li class="menu-item connect"><a href="">Se connecter</a></li>
 		</ul>
 	</nav>
+
 
 	<img class="svgForm" src="../images/Vector 1.svg">
 

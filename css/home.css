@@ -1,13 +1,3 @@
-:root{
-	--black: #161920;
-	--navy : #3671B3;
-	--blue : #BDE4FC;
-	--white : #FFFEE6;
-	--orange : #FF890A;
-	--red : #EA001C;
-	--darkred : #AF001E;
-}
-
 .svgForm{
 	position: absolute;
 	z-index: -1;
