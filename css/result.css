@@ -1,12 +1,24 @@
+.search{
+	height: 20vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.searchBar{
+	width: 60%;
+	height: 35%;
+	border-radius: 500px;
+	background-color: lightgrey;
+}
+
+
 .wrapper{
 	display: flex;
 	width: 100%;
-	height: 90vh;
-}
-
-.right{
-	background-color: red;
-	height: 90vh;
+	height: 70vh;
+	justify-content: space-around;
 }
 
 #map{
@@ -54,3 +66,34 @@
 		transform: translateY(0);
 	}
 }
+
+.right{
+	height: 90vh;
+	width: 100%;
+	align-items: center;
+	overflow-y: scroll;
+	background-color: blue;
+}
+
+.right .item{
+	width: 40%;
+	height: 15vh;
+	border-radius: 10px;
+	padding: 10px;
+	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75); 
+	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
+	margin: 5%;
+	background-color: white;
+}
+
+.right .item img{
+	width: 6%;
+	margin: 0 10px;
+}
+
+.title{
+	display: flex;
+	align-items: center;
+	height : 30px;
+}
+

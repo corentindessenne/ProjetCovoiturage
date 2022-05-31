@@ -70,6 +70,10 @@
 		<div class="dot"></div>
 	</div>
 
+	<div class="search">
+		<div class="searchBar"></div>
+	</div>
+
 	<div class="wrapper">
 		<div class="left">
 			<div class="sortBy">
@@ -82,10 +86,68 @@
 		</div>
 
 		<div class="right">
-			
+
+
+			<div class="item">
+				<div class="title">
+					<span class="place">Départ</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">Arrivée</span>
+				</div>
+
+				<div class="adresse">
+					<span class="place">X rue EAZOEAZY</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">X rue EAZOEAZY</span>
+				</div>
+
+
+			</div>
+
+			<div class="item">
+				<div class="title">
+					<span class="place">Départ</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">Arrivée</span>
+				</div>
+
+
+			</div>
+
+			<div class="item">
+				<div class="title">
+					<span class="place">Départ</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">Arrivée</span>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="title">
+					<span class="place">Départ</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">Arrivée</span>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="title">
+					<span class="place">Départ</span>
+					<img src="../images/icon/right-arrow 2.png">
+					<span class="place">Arrivée</span>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		document.getElementById("loader").style.display = "none";
+		document.getElementByClassName('wrapper').style.display = "flex";
+	</script>
+
+<!--
 	<script type="text/javascript">
 		const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
 
