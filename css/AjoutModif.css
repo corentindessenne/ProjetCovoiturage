@@ -1,0 +1,173 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+body{
+    display: flex;
+    background: var(--navy);
+    flex-direction: column;
+    font-family: -Roboto;
+    font-weight: light;
+}
+@font-face {
+    font-family: Mont;
+    src: url("../fonts/mont-heavydemo-webfont.woff2") format("woff2");
+}
+h1{
+    font-family: Mont;
+    text-align: center;
+    font-size: 500%;
+}
+
+form{
+    display: flex;
+    background: var(--white);
+    border-radius: 15px;
+    padding: 5%;
+    margin: 10%;
+    flex-direction: column;
+    
+}
+
+
+.Date-de-Depart{
+    margin-right: 80%;
+}
+
+.Heure-de-Depart{
+    margin-right: 85%;
+}
+.PrixSelect{
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+}
+.Prix{
+    text-align: right;
+    padding-right: 25px;
+}
+i{
+  margin-top: 1%;
+  margin-left: -2%;
+}
+
+input{
+    background: var(--blue);
+    border: hidden;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.NbPass{
+    margin-right: 95%;
+}
+
+textarea{
+    background: var(--blue);
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.Checkboxtel{
+    display: flex;
+    flex-direction: row;
+}
+#send{
+    padding: 1%;
+    margin-left:20% ;
+    margin-right: 20%;
+}
+.formap{
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    
+    
+    h1.Demande{
+        font-size:300% ;
+    }
+    
+    form{
+        display: flex;
+        background: var(--white);
+        border-radius: 15px;
+        padding: 5%;
+        margin: 10%;
+        flex-direction: column;
+        font-size:5vw;
+    }
+    
+    
+    .Date-de-Depart{
+        margin-right: 80%;
+    }
+    
+    .Heure-de-Depart{
+        margin-right: 85%;
+    }
+    .PrixSelect{
+        display: flex;
+        flex-direction: row;
+        text-align: right;
+    }
+    .Prix{
+        text-align: right;
+        padding-right: 7vw;
+    }
+    i{
+      margin-top: 4%;
+      margin-left: -8%;
+    }
+    
+    input{
+        background: var(--blue);
+        border: hidden;
+        border-radius: 10px;
+        padding: 1%;
+        height: 10vw;
+        width: 50vw;
+        font-size: 4vw;
+        
+    }
+    .AllerRetour{
+       
+        height: 30vw;
+        width: -1vw;
+    }
+   label.AllerRetour{
+       vertical-align: top;
+   }
+    .NbPass{
+        margin-right: 95%;
+    }
+    
+    textarea{
+        background: var(--blue);
+        border-radius: 20px;
+        padding: 1%;
+        font-size: 4vw;
+    }
+    
+    .Checkboxtel{
+        display: flex;
+        flex-direction: row;
+        font-size: 3vw;
+    }
+    #send{
+        padding: 1%;
+        margin-left:20% ;
+        margin-right: 20%;
+    }
+    
+    
+}
+
