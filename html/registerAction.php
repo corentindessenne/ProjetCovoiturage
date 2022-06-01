@@ -41,8 +41,12 @@ $request="INSERT INTO compte(/*IdCompte,*/Nom,Prénom, Email, téléphone, motDe
 
 
 if (mail($to, $subject, $message)!=FALSE || $conn->query($request) === TRUE) {
-    echo "New record created successfully";
-    header("Location: http://localhost/ProjetCovoiturage/html/home.php");
+  ?>
+  <script type="text/javascript">
+      alert("Ton Compte a bien été créé");
+      location="home.php";
+  </script>
+<?php
 die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

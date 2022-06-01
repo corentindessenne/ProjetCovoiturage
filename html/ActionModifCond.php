@@ -27,9 +27,12 @@ else{
 }
 
 if ($conn->query($request) === TRUE) {
-    echo "New record created successfully";
-    $_SESSION["confirme"]=1;
-    header("Location: home.php");
+  ?>
+  <script type="text/javascript">
+      alert("Ton trajet a bien été modifié");
+      location="home.php";
+  </script>
+<?php
 die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

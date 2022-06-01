@@ -20,9 +20,12 @@ else{
     $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivée, DateDépart, HeureDépart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnnéeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
 }
 if ($conn->query($request) === TRUE) {
-    echo "New record created successfully";
-    $_SESSION["confirme"]=2;
-    header("Location: http://localhost/ProjetCovoiturage/html/home.php");
+  ?>
+  <script type="text/javascript">
+      alert("Ton trajet a bien été enregistré");
+      location="home.php";
+  </script>
+<?php
 die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
