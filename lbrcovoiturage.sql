@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 31 mai 2022 à 07:59
+-- Généré le : mer. 01 juin 2022 à 13:46
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -29,16 +29,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `compte` (
   `IdCompte` int(10) NOT NULL,
-  `Nom` varchar(10) NOT NULL,
-  `Prénom` varchar(10) NOT NULL,
-  `Email` varchar(10) NOT NULL,
-  `téléphone` int(10) NOT NULL,
-  `motDePasse` varchar(10) NOT NULL,
+  `Nom` varchar(40) DEFAULT NULL,
+  `Prénom` varchar(40) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `téléphone` int(10) DEFAULT NULL,
+  `motDePasse` varchar(255) DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
-  `PhotoProfil` mediumblob NOT NULL,
-  `Description` text NOT NULL,
-  `DateCréation` date NOT NULL
+  `PhotoProfil` mediumblob,
+  `Description` text,
+  `DateCréation` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `compte`
+--
+
+INSERT INTO `compte` (`IdCompte`, `Nom`, `Prénom`, `Email`, `téléphone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `DateCréation`) VALUES
+(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', '2001-06-22'),
+(2, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'ss', 0, NULL, 'zzeze', '2001-06-22'),
+(3, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'qq', 0, NULL, '', '2001-06-22'),
+(4, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'sd', 0, NULL, '', '2001-06-22'),
+(5, 'dsd', 'dsd', 'dsd@d', 1111111111, 'Testv3@test', 0, NULL, 'ds', '2001-06-22'),
+(6, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, 'TestV4@test', 0, NULL, '', '2001-06-22'),
+(7, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, '$2y$10$fB1vGm5ErW/8XocIrD0Uh.IMOLlkKGX58pa4A4UZFhAxkjAQ3pYL.', 0, NULL, '', '2001-06-22'),
+(8, 'sds', 'sd', 'sd@sds', 1111111111, '$2y$10$wifG1peUi3i5SkXGIjW.zOcqSTDSKlsXFCeTkcfCnArHlLzxKWhvu', 0, NULL, '', '2001-06-22');
 
 -- --------------------------------------------------------
 
@@ -66,7 +80,7 @@ CREATE TABLE `trajet` (
   `IdTrajet` int(10) NOT NULL,
   `TypeTrajet` varchar(50) NOT NULL,
   `isDemande` tinyint(1) DEFAULT NULL,
-  `Description` varchar(255) NOT NULL,
+  `Description` varchar(255) NOT NULL DEFAULT '',
   `LieuDépart` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `LieuArrivée` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `DateDépart` date NOT NULL,
@@ -102,7 +116,8 @@ INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `Lie
 (13, 'Retour', 0, 'TestV?', 'Wervicq-Sud', 'Charleville-Mézières', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
 (14, 'Retour', 0, 'TestV??', 'Wervicq-Sud', 'Charleville-Mézières', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
 (15, 'Retour', 0, 'TestV?????', 'Wervicq-Sud', 'Charleville-Mézières', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
-(16, 'Retour', 0, '&lt;h1&gt;RATIO&lt;/h1&gt;', 'Wervicq-Sud', 'Rouen', '2022-09-29', NULL, '09:30:00.0000', NULL, '2030-05-22', 3, 0, 15, 0, 2022, 0);
+(16, 'Retour', 0, '&lt;h1&gt;RATIO&lt;/h1&gt;', 'Wervicq-Sud', 'Rouen', '2022-09-29', NULL, '09:30:00.0000', NULL, '2030-05-22', 3, 0, 15, 0, 2022, 0),
+(17, 'Aller', 1, '', 'Lille', 'Wervicq-Sud', '2022-09-22', NULL, '11:21:00.0000', NULL, '2001-06-22', 3, 0, 0, 0, 2022, 0);
 
 --
 -- Index pour les tables déchargées
@@ -128,13 +143,13 @@ ALTER TABLE `trajet`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
