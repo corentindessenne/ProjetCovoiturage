@@ -34,10 +34,18 @@
     <h1>Inscription</h1>
   </div>
 
-  <form method="post" action="register.php">
+  <form method="post" action="registerAction.php">
+    <div class="input-group">
+      <label>Nom</label>
+      <input type="text" required="required" name="nom" placeholder="Mets ton nom içi">
+    </div>
+    <div class="input-group">
+      <label>Prénom</label>
+      <input type="text" required="required" name="prenom" placeholder="Mets ton prénom içi">
+    </div>
   	<div class="input-group">
-  	  <label>Email</label>
-  	  <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
+  	  <label>Email </label>
+  	  <input type="email" required="required" name="email" placeholder="Email" value="<?php echo $email; ?>">
   	</div>
     <div class="input-group">
       <label>Numéro de téléphone</label>
@@ -51,16 +59,45 @@
           });
       </script>
     </div>
+    
+    
   	<div class="input-group">
   	  <label>Mot de passe</label>
-  	  <input type="password" placeholder="Mot de passe" name="password_1">
+      <input type="password" required="required" placeholder="Mot de passe" name="password_1" onkeyup='check();' pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial">
   	</div>
   	   <div class="input-group">
   	     <label>Confirmer votre mot de passe</label>
-  	     <input type="password" placeholder="Mot de passe" name="password_2">
+  	     <input type="password" required="required"  placeholder="Mot de passe" name="password_2" onkeyup='check();'>
+         <span id='message'></span>
   	   </div>
+
+       <script>
+      var check = function() {
+        if (document.getElementById('password_1').value ==
+          document.getElementById('password_2').value) {
+          document.getElementById('message').style.color = 'green';
+          document.getElementById('message').innerHTML = 'matching';
+          document.getElementById('submit').disabled = false;
+        } else {
+          document.getElementById('message').style.color = 'red';
+          document.getElementById('message').innerHTML = 'not matching';
+          document.getElementById('submit').disabled = true;
+        }
+      }
+
+    </script>
+       <div class="input-group">
+         <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
+       </div>
   	   <div class="input-group">
-  	   <button type="submit" class="btn" name="reg_user">S'inscrire</button>
+       <input type="checkbox" id="tel" value="tel" name="tel"> 
+        <label>Coche pour rendre ton numéro de téléphone visible sur ton annonce</label>
+        </div>
+        <div class="input-group">
+          <input type="checkbox" required="required" id="conduti" value="conduti" name="conduti">
+          <label>J'accepte les <a href="">conditions générales d'utilisation</a></label>
+        </div>
+  	   <button type="submit" class="btn" name="reg_user" id="submit">S'inscrire</button>
   	   </div>
   	 <p>
   		Déjà inscrit ? <a href="login.php">Connectez-vous</a>
