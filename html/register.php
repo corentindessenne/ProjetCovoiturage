@@ -63,11 +63,12 @@
     
   	<div class="input-group">
   	  <label>Mot de passe</label>
-      <input type="password" required="required" placeholder="Mot de passe" name="password_1" onkeyup='check();' pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial">
+      <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
   	</div>
   	   <div class="input-group">
   	     <label>Confirmer votre mot de passe</label>
-  	     <input type="password" required="required"  placeholder="Mot de passe" name="password_2" onkeyup='check();'>
+  	     <input type="password" required="required"  placeholder="Mot de passe" id="password_2" name="password_2" onkeyup='check();'>
+         <br/>
          <span id='message'></span>
   	   </div>
 
@@ -95,7 +96,7 @@
         </div>
         <div class="input-group">
           <input type="checkbox" required="required" id="conduti" value="conduti" name="conduti">
-          <label>J'accepte les <a href="">conditions générales d'utilisation</a></label>
+          <label>J'accepte les <a href="https://www.lesbriquesrouges.fr/reglement.pdf" target="_blank">conditions générales d'utilisation</a></label>
         </div>
   	   <button type="submit" class="btn" name="reg_user" id="submit">S'inscrire</button>
   	   </div>

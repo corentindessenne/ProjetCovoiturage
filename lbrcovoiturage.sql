@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 01 juin 2022 à 13:46
+-- Généré le : mer. 01 juin 2022 à 15:14
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -46,13 +46,13 @@ CREATE TABLE `compte` (
 
 INSERT INTO `compte` (`IdCompte`, `Nom`, `Prénom`, `Email`, `téléphone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `DateCréation`) VALUES
 (1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', '2001-06-22'),
-(2, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'ss', 0, NULL, 'zzeze', '2001-06-22'),
-(3, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'qq', 0, NULL, '', '2001-06-22'),
-(4, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 1111111111, 'sd', 0, NULL, '', '2001-06-22'),
-(5, 'dsd', 'dsd', 'dsd@d', 1111111111, 'Testv3@test', 0, NULL, 'ds', '2001-06-22'),
-(6, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, 'TestV4@test', 0, NULL, '', '2001-06-22'),
-(7, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, '$2y$10$fB1vGm5ErW/8XocIrD0Uh.IMOLlkKGX58pa4A4UZFhAxkjAQ3pYL.', 0, NULL, '', '2001-06-22'),
-(8, 'sds', 'sd', 'sd@sds', 1111111111, '$2y$10$wifG1peUi3i5SkXGIjW.zOcqSTDSKlsXFCeTkcfCnArHlLzxKWhvu', 0, NULL, '', '2001-06-22');
+(2, 'dsd', 'dsd', 'dsd@d', 1111111111, 'Testv3@test', 0, NULL, 'ds', '2001-06-22'),
+(3, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, 'TestV4@test', 0, NULL, '', '2001-06-22'),
+(4, 'sds', 'sd', 'sd@sds', 1111111111, '$2y$10$wifG1peUi3i5SkXGIjW.zOcqSTDSKlsXFCeTkcfCnArHlLzxKWhvu', 0, NULL, '', '2001-06-22'),
+(9, 'Test', 'Ayuu', 'azerty@qsd', 1111111111, '$2y$10$tXXrCjBNpqVHcYtkCGYhi.k/vIxePAaywMghZZCNRm4bvVXgb6C0y', 0, NULL, 'petit test', '2001-06-22'),
+(10, 'test2', 'Ayuu', 'qwerty@aze', 1111111111, '$2y$10$e767oV44p68Woi9DKerdK.VjZZkMC9vpNAvsdrSr1jRQexBrQGvq6', 0, NULL, 'petit test', '2001-06-22'),
+(11, 'QSDQS', 'QSDQSD', 'sdsqdq@dqsd', 1111111111, '$2y$10$7nu5QsXtE.L1JoR9cCWvHejy1jdOjRw5ApIx8doVibcchO6NuI8KO', 0, NULL, '', '2001-06-22'),
+(14, 'test', 'test', 'test@aled', 1111111111, '$2y$10$TcAMAlZz8GN6wR0YYauvVuCpnH2pTbC.m6IMm2kprfkN6hmPkDtHS', 0, NULL, '', '2001-06-22');
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,8 @@ INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `Lie
 -- Index pour la table `compte`
 --
 ALTER TABLE `compte`
-  ADD PRIMARY KEY (`IdCompte`);
+  ADD PRIMARY KEY (`IdCompte`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Index pour la table `trajet`
@@ -143,7 +144,7 @@ ALTER TABLE `trajet`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `trajet`

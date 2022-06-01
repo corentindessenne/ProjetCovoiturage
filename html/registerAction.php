@@ -13,18 +13,6 @@ $to= $_POST["email"];
 $subject="test";
 $message = "test";
 // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-/*$sql = "SELECT IdCompte FROM compte";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $idCompte=$row["IdCompte"];
-    echo $idCompte;
-  }
-} else {
-  $idCompte=0;
-}*/
 $password=$_POST["password_1"];
 $password=password_hash($password,PASSWORD_DEFAULT);
 $tel=$_POST['phone'];
@@ -51,6 +39,12 @@ die();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
+  ?>
+  <script type="text/javascript">
+      alert("Cette adresse mail est déjà utilisée");
+      location="register.php";
+  </script>
+<?php
 
 
 ?>
