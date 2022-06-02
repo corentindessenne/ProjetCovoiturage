@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LBR Covoiturage</title>
-	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
 	<!--Google Fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,11 +26,9 @@
 	</nav>
 
 	<?php 
-	include 'Connexion.php';
-	?>
+		include 'NavBar.php';
+		include 'Connexion.php';
 
-
-	<?php
 		if(isset($_SESSION["confirme"]) && $_SESSION["confirme"]==1){
 			$_SESSION["confirme"]=0;
 			echo '<script type="text/javascript">window.alert("Votre modification a bien été enregistré");</script>';

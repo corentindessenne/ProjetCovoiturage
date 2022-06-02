@@ -20,10 +20,10 @@ $IdTrajet=8;
 
 //echo $_POST["Date-de-Depart"]."<- ici";
 if($_POST["AllerRetour"]=="Aller"){
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuDépart='".$_POST["Ville"]."',LieuArrivée='Wervicq-Sud' ,DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuDépart='".$_POST["Ville"]."',LieuArrivée='Wervicq-Sud',AdresseDépart='".$_POST["Adresse"]."',AdresseArrivée='21 Rue de Linselles' ,DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 else{
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuArrivée='".$_POST["Ville"]."',LieuDépart='Wervicq-Sud', DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuArrivée='".$_POST["Ville"]."',LieuDépart='Wervicq-Sud',AdresseArrivée='".$_POST["Adresse"]."',AdresseDépart='21 Rue de Linselles', DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 
 

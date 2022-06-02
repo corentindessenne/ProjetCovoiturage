@@ -17,17 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
   <body>
-    <nav>
-      <div class="logo">
-        <a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
-      </div>
-
-    <ul class="menu">
-      <li class="menu-item"><a href="">Les trajets</a></li>
-      <li class="menu-item connect "><a href="register.php">S'inscrire</a></li>
-      <li class="menu-item connect"><a href="login.php">Se connecter</a></li>
-    </ul>
-  </nav>
+    <?php include 'NavBar.php';?>
 
   
 	<div class="container">
@@ -77,27 +67,28 @@
         if (document.getElementById('password_1').value ==
           document.getElementById('password_2').value) {
           document.getElementById('message').style.color = 'green';
-          document.getElementById('message').innerHTML = 'matching';
+          document.getElementById('message').innerHTML = 'Les mots de passe sont identiques';
           document.getElementById('submit').disabled = false;
         } else {
           document.getElementById('message').style.color = 'red';
-          document.getElementById('message').innerHTML = 'not matching';
+          document.getElementById('message').innerHTML = 'Le mot de passe de confirmation doit etre le même que celui au-dessus';
           document.getElementById('submit').disabled = true;
         }
       }
 
     </script>
+
        <div class="input-group">
+         <label>Description (facultatif):</label>
          <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
        </div>
-  	   <div class="input-group">
-       <input type="checkbox" id="tel" value="tel" name="tel"> 
-        <label>Coche pour rendre ton numéro de téléphone visible sur ton annonce</label>
-        </div>
-        <div class="input-group">
-          <input type="checkbox" required="required" id="conduti" value="conduti" name="conduti">
-          <label>J'accepte les <a href="https://www.lesbriquesrouges.fr/reglement.pdf" target="_blank">conditions générales d'utilisation</a></label>
-        </div>
+
+      <div class="checkboxes">
+        <input type="checkbox" required="required" id="conduti" value="conduti" name="conduti">
+        <label>J'accepte les <a href="https://www.lesbriquesrouges.fr/reglement.pdf" target="_blank">conditions générales d'utilisation</a></label>
+       
+      </div>
+  	   
   	   <button type="submit" class="btn" name="reg_user" id="submit">S'inscrire</button>
   	   </div>
   	 <p>

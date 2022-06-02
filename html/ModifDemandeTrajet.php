@@ -6,7 +6,10 @@
 </head>
 
 <body>
-
+<?php include 'NavBar.php';
+include 'Connexion.php';
+if(isset($_SESSION["mail"])){
+?>
     <h1>Modification d'une demande de trajet</h1>
     <form action="ActionDemandeModif.php" method="post">
         <div class="AllerRetour">
@@ -15,7 +18,7 @@
         </div>
         <div>
             <p>Ville de départ/arrivée:</p>   <input type="text" required="required" name="Ville" id="Ville">
-            <!--<p>Adresse de départ/arrivée:</p>   <input type="text" name="Adresse0" id="Adresse">-->
+            <p>Adresse de départ/arrivée:</p>   <input type="text" name="Adresse" id="Adresse">
         </div>
         <p>Date de départ:</p>
         <input type="date" id="Date-de-Depart" required="required" name="Date-de-Depart" class="Date-de-Depart" min="2022-09-16">
@@ -40,7 +43,18 @@
 
     </form>
 
+    <?php
+    }
 
+    else{
+        ?>
+    <script type="text/javascript">
+        alert("Tu dois etre connecté pour modifier une demande de trajet");
+        location="home.php";
+    </script>
+<?php
+    }
+?>
 
 </body>
 </html>
