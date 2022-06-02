@@ -22,10 +22,10 @@ $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 if($_POST["tel"]==1){$_POST["tel"]=1;}
 else{$_POST["tel"]=0;}
 if($_POST["AllerRetour"]=="Aller"){
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.Y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
 }
 else{
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.Y")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, Prix, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','0','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
 }
 if ($conn->query($request) === TRUE) {
   ?>

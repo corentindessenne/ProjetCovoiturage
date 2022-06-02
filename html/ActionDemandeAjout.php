@@ -14,10 +14,10 @@ $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 if($_POST["tel"]==1){$_POST["tel"]=1;}
 else{$_POST["tel"]=0;}
 if($_POST["AllerRetour"]=="Aller"){
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, Description, DisplayTel,  AnneeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.Y")."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, Description, DisplayTel,  AnneeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
 }
 else{
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, Description, DisplayTel,  AnneeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("d.m.y")."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, Description, DisplayTel,  AnneeEdition, IdCompte, IdTrajet) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','0','0')";
 }
 if ($conn->query($request) === TRUE) {
   ?>
