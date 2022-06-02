@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 02 juin 2022 à 13:40
+-- Généré le : jeu. 02 juin 2022 à 15:40
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -30,22 +30,22 @@ SET time_zone = "+00:00";
 CREATE TABLE `compte` (
   `IdCompte` int(10) NOT NULL,
   `Nom` varchar(40) DEFAULT NULL,
-  `Prénom` varchar(40) DEFAULT NULL,
+  `Prenom` varchar(40) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `téléphone` int(10) DEFAULT NULL,
+  `telephone` int(10) DEFAULT NULL,
   `motDePasse` varchar(255) DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
   `PhotoProfil` mediumblob,
   `Description` text,
   `isVerif` tinyint(1) NOT NULL DEFAULT '0',
-  `DateCréation` date DEFAULT NULL
+  `DateCreation` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `compte`
 --
 
-INSERT INTO `compte` (`IdCompte`, `Nom`, `Prénom`, `Email`, `téléphone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCréation`) VALUES
+INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`) VALUES
 (1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2001-06-22'),
 (2, 'dsd', 'dsd', 'dsd@d', 1111111111, 'Testv3@test', 0, NULL, 'ds', 0, '2001-06-22'),
 (3, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, 'TestV4@test', 0, NULL, '', 0, '2001-06-22'),
@@ -54,7 +54,9 @@ INSERT INTO `compte` (`IdCompte`, `Nom`, `Prénom`, `Email`, `téléphone`, `mot
 (10, 'test2', 'Ayuu', 'qwerty@aze', 1111111111, '$2y$10$e767oV44p68Woi9DKerdK.VjZZkMC9vpNAvsdrSr1jRQexBrQGvq6', 0, NULL, 'petit test', 0, '2001-06-22'),
 (11, 'QSDQS', 'QSDQSD', 'sdsqdq@dqsd', 1111111111, '$2y$10$7nu5QsXtE.L1JoR9cCWvHejy1jdOjRw5ApIx8doVibcchO6NuI8KO', 0, NULL, '', 0, '2001-06-22'),
 (14, 'test', 'test', 'test@aled', 1111111111, '$2y$10$TcAMAlZz8GN6wR0YYauvVuCpnH2pTbC.m6IMm2kprfkN6hmPkDtHS', 0, NULL, '', 0, '2001-06-22'),
-(15, 'test', 'test', 'test@test', 1111111111, '$2y$10$zG4D342C77FzV9L9Uv5X3uSrovQXrpGHdRZRNCS1j91ehVS/PSL/i', 0, NULL, '', 0, '2002-06-22');
+(15, 'test', 'test', 'test@test', 1111111111, '$2y$10$zG4D342C77FzV9L9Uv5X3uSrovQXrpGHdRZRNCS1j91ehVS/PSL/i', 0, NULL, '', 0, '2002-06-22'),
+(17, 'Pinateau', 'Pierre', 'Sabine@pineau.fr', 652806325, '$2y$10$rgPIrgT7idMLEj97DOZoDuILOFuscqJpc2.eoBfPBbkRaTvddGII2', 0, NULL, 'Smurfing from high rank', 0, '2002-06-22'),
+(18, 'qdsqd', 'qsd', 'qsd@dq', 312345678, '$2y$10$rXkDcSWJ.NHSrLJYwalEAeuhj3j18DYm5aGTJIp3p1g.LRPwX2pRq', 0, NULL, '', 0, '2002-06-22');
 
 -- --------------------------------------------------------
 
@@ -83,20 +85,20 @@ CREATE TABLE `trajet` (
   `TypeTrajet` varchar(50) NOT NULL,
   `isDemande` tinyint(1) DEFAULT NULL,
   `Description` varchar(255) NOT NULL DEFAULT '',
-  `LieuDépart` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
-  `AdresseDépart` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
-  `LieuArrivée` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
-  `AdresseArrivée` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
-  `DateDépart` date NOT NULL,
-  `DateArrivée` date DEFAULT NULL,
-  `HeureDépart` time(4) DEFAULT NULL,
-  `HeureArrivée` time(4) DEFAULT NULL,
+  `LieuDepart` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
+  `AdresseDepart` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
+  `LieuArrivee` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
+  `AdresseArrivee` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
+  `DateDepart` date NOT NULL,
+  `DateArrivee` date DEFAULT NULL,
+  `HeureDepart` time(4) DEFAULT NULL,
+  `HeureArrivee` time(4) DEFAULT NULL,
   `DateAjout` date NOT NULL,
   `NbPassagers` int(10) NOT NULL,
   `NbReservations` int(10) NOT NULL DEFAULT '0',
   `Prix` int(10) NOT NULL DEFAULT '0',
   `DisplayTel` tinyint(1) DEFAULT NULL,
-  `AnnéeEdition` int(10) NOT NULL,
+  `AnneeEdition` int(10) NOT NULL,
   `IdCompte` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -104,7 +106,7 @@ CREATE TABLE `trajet` (
 -- Déchargement des données de la table `trajet`
 --
 
-INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDépart`, `AdresseDépart`, `LieuArrivée`, `AdresseArrivée`, `DateDépart`, `DateArrivée`, `HeureDépart`, `HeureArrivée`, `DateAjout`, `NbPassagers`, `NbReservations`, `Prix`, `DisplayTel`, `AnnéeEdition`, `IdCompte`) VALUES
+INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LieuArrivee`, `AdresseArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `NbReservations`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
 (1, 'Aller', 0, 'fucklessymboles', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-05-25', NULL, NULL, NULL, '2025-05-22', 2, 0, 5, 0, 2022, 0),
 (2, 'Aller', 0, 'J\'aime le RGB', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-05-25', NULL, NULL, NULL, '2025-05-22', 3, 0, 5, 0, 2022, 0),
 (3, 'Retour', 0, 'pitié', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-20', NULL, '13:02:00.0000', NULL, '2025-05-22', 3, 0, 2, 0, 2022, 0),
@@ -149,7 +151,7 @@ ALTER TABLE `trajet`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `trajet`

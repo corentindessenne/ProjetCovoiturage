@@ -20,10 +20,10 @@ $IdTrajet=8;
 
 //echo $_POST["Date-de-Depart"]."<- ici";
 if($_POST["AllerRetour"]=="Aller"){
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuDépart='".$_POST["Ville"]."',LieuArrivée='Wervicq-Sud',AdresseDépart='".$_POST["Adresse"]."',AdresseArrivée='21 Rue de Linselles' ,DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuDepart='".$_POST["Ville"]."',LieuArrivee='Wervicq-Sud',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='21 Rue de Linselles' ,DateDepart= '".$_POST["Date-de-Depart"]."',HeureDepart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 else{
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuArrivée='".$_POST["Ville"]."',LieuDépart='Wervicq-Sud',AdresseArrivée='".$_POST["Adresse"]."',AdresseDépart='21 Rue de Linselles', DateDépart= '".$_POST["Date-de-Depart"]."',HeureDépart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1', LieuArrivee='".$_POST["Ville"]."',LieuDepart='Wervicq-Sud',AdresseArrivee='".$_POST["Adresse"]."',AdresseDepart='21 Rue de Linselles', DateDepart= '".$_POST["Date-de-Depart"]."',HeureDepart='".$_POST["Heure-de-Depart"]."',NbPassagers='".$_POST["NbPass"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 
 
@@ -31,7 +31,7 @@ else{
 if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
-      alert("Ta demande de trajet a bien été modifié");
+      alert("Ta demande de trajet a bien ete modifie");
       location="home.php";
   </script>
 <?php

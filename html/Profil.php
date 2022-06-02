@@ -2,40 +2,78 @@
 <html>
 <head>
     <title>Mon Profil</title>
-    <link href="" rel="stylesheet" >
+    <link href="../css/Profil.css" rel="stylesheet" >
 </head>
 
 <body>
-<?php include 'NavBar.php';?>
-    <div id="PhotoDeProfil">
-        <img class="profile-picture" src="ImagePierre.jpg" alt="Ta PP" width="200" height="290">
+<?php include 'NavBar.php';
+include 'Connexion.php';
 
+$mail=$_SESSION["mail"];
+$sql = "SELECT Nom,Prenom,telephone,PhotoProfil,Description,IdCompte FROM compte WHERE Email='".$mail."'" ;
+$result = $conn->query($sql);
+if ($result->num_rows >  0) {
+    // output data of each row
+    $row = $result->fetch_assoc();
+      $nom=$row["Nom"];
+      $prenom=$row["Prenom"];
+      $idCompte=$row["IdCompte"];
+      $phone=$row["telephone"];
+      $description=$row["Description"];
+      $pp=$row["PhotoProfil"];              //pp=Photo de Profil
+      
+      //echo $hashedpassword;
+    
+  ?>
+  <div class="Compte">
+    <div class="PhotoDeProfil">
+        <img class="profile-picture" src="ImagePierre.jpg" alt="Ta PP" width="200" height="290">
+        <input id='fileid' type='file' name='filename' hidden>
+        
         <input type="button" id="EditPP" name="EditPP" value="Changer de photo de profil">
+        <script >
+            document.getElementById('EditPP').addEventListener('click', openDialog);
+
+                function openDialog() {
+                document.getElementById('fileid').click();
+                }
+        </script>
     </div>
 
-    <div id="InfosCompte">
-        <p>Nom: </p>
-        <p>Prénom: </p>
-        <p>Email: </p>
-        <p>Téléphone: </p>
+    <div class="InfosCompte">
+        <p>Nom: <?php echo $nom;?></p>
+        <p>Prenom: <?php echo $prenom;?> </p>
+        <p>Email: <?php echo $mail;?></p>
+        <p>Telephone: <?php echo $phone;?> </p>
         <br/>
-        <p>Description: </p>
+        <p>Description: <?php echo $description;?> </p>
 
 
-        <input type="button" id="EditInfo" name="EditInfo" value="Éditez les informations de votre compte">
+        <input type="button" id="EditInfo" name="EditInfo" value="editez les informations de votre compte">
 
+    </div>
+    
+    </div>
+    <div id="Historique">
+        <h3>Ton historique: </h3>
+        <?php
+           // $sql = "SELECT Nom,Prenom,telephone,PhotoProfil,Description,IdCompte FROM trajet WHERE IdCompte='".$idCompte."'" ;
+            //$result = $conn->query($sql);
+        ?>
     </div>
 
     <div id="DeleteButton">
         <input type="button" id="Delete" name="Delete" value="SUPPRIMER VOTRE COMPTE">
     </div>
-
-    <div id="Historique">
-        <h3>Ton historique: </h3>
-
-
-    </div>
-
+<?php
+} else {
+    ?>
+    <script type="text/javascript">
+        alert("Cette adresse mail n'est liee a aucun compte");
+        location="Login.php";
+    </script>
+<?php
+  }?>
 
 </body>
 </html>
