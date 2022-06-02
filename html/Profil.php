@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<?php include 'NavBar.php';?>
     <div id="PhotoDeProfil">
         <img class="profile-picture" src="ImagePierre.jpg" alt="Ta PP" width="200" height="290">
 

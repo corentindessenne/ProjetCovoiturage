@@ -19,16 +19,9 @@ $tel=$_POST['phone'];
 if(!$tel){$tel=1111111111;}
 $request="INSERT INTO compte(/*IdCompte,*/Nom,Prénom, Email, téléphone, motDePasse, isAdmin, Description, DateCréation) VALUES (/*'".$idCompte."',*/'".$_POST["nom"]."','".$_POST["prenom"]."','".$_POST["email"]."','".$tel."','".$password."','0','".$_POST["Description"]."','".date("d.m.y")."')";
 
-
-
-
-
-
-
-
-
-
-if (mail($to, $subject, $message)!=FALSE || $conn->query($request) === TRUE) {
+if ($conn->query($request) === TRUE) {
+  mail($to, $subject, $message);
+  ftp_close($ftp);
   ?>
   <script type="text/javascript">
       alert("Ton Compte a bien été créé");
@@ -37,15 +30,17 @@ if (mail($to, $subject, $message)!=FALSE || $conn->query($request) === TRUE) {
 <?php
 die();
   } else {
+    
     echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-  ?>
-  <script type="text/javascript">
-      alert("Cette adresse mail est déjà utilisée");
-      location="register.php";
-  </script>
-<?php
+    ?>
+      <script type="text/javascript">
+          alert("Cette adresse mail est déjà utilisée");
+          location="register.php";
+      </script>
+    <?php
 
+  }
+  
 
 ?>
 

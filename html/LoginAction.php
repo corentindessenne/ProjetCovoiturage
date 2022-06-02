@@ -1,5 +1,6 @@
 <?php
 include 'Connexion.php';
+
 $mail=$_POST["email"];
 $sql = "SELECT motDePasse,Prénom FROM compte WHERE Email='".$mail."'" ;
 $result = $conn->query($sql);

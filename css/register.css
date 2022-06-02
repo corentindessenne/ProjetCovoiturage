@@ -1,25 +1,22 @@
-
+body{
+  display: flex;
+  background: var(--navy);
+  flex-direction: column;
+  font-family: -Roboto;
+  font-weight: light;
+}
 #container{
     width:400px;
     margin:0 auto;
     margin-top:10%;
 }
 /* Bordered form */
-form {
-    width:90%;
-    padding: 30px;
-    margin-right: 100px;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    border-radius: 20px;
-      font-family: 'Roboto';
-}
+
 #container h1{
     width: 60%;
     margin: 0 auto;
     padding-bottom: 10px;
-    
+    text-align: center;
 }
 
 
@@ -63,3 +60,132 @@ form {
   border: 1px solid #3c763d;
   margin-bottom: 20px;
 }
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+@font-face {
+    font-family: Mont;
+    src: url("../fonts/mont-heavydemo-webfont.woff2") format("woff2");
+}
+h1{
+    font-family: Mont;
+    text-align: center;
+    font-size: 500%;
+}
+
+form{
+    display: flex;
+    background: var(--white);
+    border-radius: 15px;
+    padding: 5%;
+    margin: 10%;
+    flex-direction: column;
+    
+}
+
+
+
+input{
+    background: var(--blue);
+    border: hidden;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+
+textarea{
+    background: var(--blue);
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.Checkboxes{
+    display: flex;
+    flex-direction: row;
+    font-size: 3vw;
+}
+
+.formap{
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    
+    
+    h1{
+        font-size:300% ;
+    }
+    
+    form{
+        display: flex;
+        background: var(--white);
+        border-radius: 15px;
+        padding: 5%;
+        margin: 10%;
+        flex-direction: column;
+        font-size:5vw;
+    }
+    
+    .input-group{
+      font-size: 4vw;
+    }
+    
+    input{
+        background: var(--blue);
+        border: hidden;
+        border-radius: 10px;
+        padding: 1%;
+        height: 10vw;
+        width: 50vw;
+        font-size: 4vw;
+        
+    }
+    .AllerRetour{
+       
+        height: 30vw;
+        width: -1vw;
+    }
+   label.AllerRetour{
+       vertical-align: top;
+   }
+    .NbPass{
+        margin-right: 95%;
+    }
+    
+    textarea{
+        background: var(--blue);
+        border-radius: 20px;
+        padding: 3%;
+        font-size: 3vw;
+        width: 65vw;
+    }
+    
+    .Checkboxes{
+        display: flex;
+        flex-direction: row;
+        font-size: 3vw;
+        padding-right: 1vw;
+    }
+    input[type="checkbox"]{
+      width: 5vw;
+      
+    }
+    
+    .btn{
+      height: 10vw;
+      font-size: 5vw;
+      
+    }
+    
+    
+}
+

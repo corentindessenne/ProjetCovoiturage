@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LBR Covoiturage</title>
-	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
 	<!--Google Fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +15,7 @@
 </head>
 <body>
 
-	<nav>
-		<div class="logo">
-			<a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
-		</div>
-
-		<ul class="menu">
-			<li class="menu-item"><a href="">Les trajets</a></li>
-			<li class="menu-item connect "><a href="register.php">S'inscrire</a></li>
-			<li class="menu-item connect"><a href="login.php">Se connecter</a></li>
-		</ul>
-	</nav>
-
-	<?php 
+<?php include 'NavBar.php';
 	include 'Connexion.php';
 	?>
 	<section class="fwh-slide">

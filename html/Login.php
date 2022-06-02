@@ -16,28 +16,14 @@
     <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css" />
     </head>
     <body>
-        <nav>
-        <div class="logo">
-            <a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
-        </div>
-
-        <ul class="menu">
-            <li class="menu-item"><a href="">Les trajets</a></li>
-            <li class="menu-item connect"><a href="register.php">S'inscrire</a></li>
-            <li class="menu-item connect"><a href="login.php">Se connecter</a></li>
-        </ul>
-    </nav>
-        <?php
-        if (isset($_GET['Message'])) {
-            print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
-        }
-        ?>
+        <?php include 'NavBar.php';?>
+        
         <div id="container">
             <!-- zone de connexion -->
             <h1>Connexion</h1>
             <form action="LoginAction.php" method="POST">
                 
-                <label><b>Nom d'utilisateur</b></label>
+                <label><b>Email</b></label>
                 <input type="text" required="required" placeholder="Email" name="email" required>
 
                 <label><b>Mot de passe</b></label>
