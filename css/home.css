@@ -1,37 +1,21 @@
-html {
-  scroll-behavior: smooth;
- }
-
-
-:root{
-	--black: #161920;
-	--navy : #3671B3;
-	--blue : #BDE4FC;
-	--white : #FFFEE6;
-	--orange : #FF890A;
-	--red : #EA001C;
-	--darkred : #AF001E;
-}
 body{
 	margin: 0;
 	font-family: 'Roboto';
+	scroll-behavior: smooth;
+	background-color: var(--white);
 }
+
 .svgForm{
 	position: absolute;
 	z-index: -1;
+	top: -10%;
+	width: 100%;
 }
 
 .title{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.svgForm{
-	z-index: -1;
-	position: absolute;
-	left: -1px;
-	width: 101%;
 }
 
 .title .wave{
@@ -208,9 +192,16 @@ h1{
 
 .list{
 	display: flex;
-  	align-items: center;
-    width: 100%;
-    margin: 80px auto;
+	flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.list .header{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px 0px;
 }
 
 .list img{
@@ -228,16 +219,95 @@ h1{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-items: space-around;
+  justify-items: space-evenly;
   width: 100%;
 }
 
-.wrapper .item{
-	margin: auto;
+.item{
 	width: 40%;
-	height: 30vh;
+	height: 200px;
 	border-radius: 20px;
-	background: blue;
-	margin: 20px auto;
+	background: white;
+	margin: 20px auto 40px auto;
 	padding: 10px;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+	transition: -webkit-box-shadow 1s;
+}
+
+.item:hover{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4); 
+	box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+}
+
+.item .arrow-icon{
+	width: 30px;
+}
+
+.data-group{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+	margin-top: 10px;
+	position: relative;
+	top: -30px;
+}
+
+.item::before{
+	content: '';
+	display: block;
+	background-color: var(--navy);
+	width: 3px;
+	height: 30px;
+	position: relative;
+	top: 26px;
+	left: 77.5px;
+}
+
+.horaire{
+	font-weight: 300;
+	margin-right: 30px;
+}
+
+.place{
+	font-weight: 600;
+	font-size: 20px;
+	width: 50vw;
+}
+
+.place::before{
+	content: '';
+	background-color: var(--navy);
+	width: 10px;
+	height: 10px;
+	position: relative;
+	display: inline-block;
+	border-radius: 50%;
+	top: -2px;
+	left: -10px;
+}
+
+.date{
+	text-align: right;
+	margin-right: 20px;
+	width: 200px;
+}
+
+.price{
+	color: var(--navy);
+	font-size: 26px;
+	font-weight: 700;
+	text-align: right;
+	width: 100%;
+	margin-right: 20px;
+}
+
+.account-info{
+	width: 100%;
+}
+
+.account-info img{
+	width: 15%;
+	border-radius: 50%;
 }
