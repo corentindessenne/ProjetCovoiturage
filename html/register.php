@@ -39,7 +39,7 @@
   	</div>
     <div class="input-group">
       <label>Numéro de téléphone</label>
-  <input id="phone" type="tel"name="phone" />
+  <input id="phone" type="tel"name="phone" required="required" />
       <script>
           const phoneInputField = document.querySelector("#phone");
           const phoneInput = window.intlTelInput(phoneInputField, {

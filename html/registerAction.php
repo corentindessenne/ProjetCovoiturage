@@ -16,12 +16,11 @@ $message = "test";
 $password=$_POST["password_1"];
 $password=password_hash($password,PASSWORD_DEFAULT);
 $tel=$_POST['phone'];
-if(!$tel){$tel=1111111111;}
 $request="INSERT INTO compte(/*IdCompte,*/Nom,Prénom, Email, téléphone, motDePasse, isAdmin, Description, DateCréation) VALUES (/*'".$idCompte."',*/'".$_POST["nom"]."','".$_POST["prenom"]."','".$_POST["email"]."','".$tel."','".$password."','0','".$_POST["Description"]."','".date("d.m.y")."')";
 
 if ($conn->query($request) === TRUE) {
   mail($to, $subject, $message);
-  ftp_close($ftp);
+  //ftp_close($ftp);
   ?>
   <script type="text/javascript">
       alert("Ton Compte a bien été créé");
