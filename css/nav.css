@@ -18,7 +18,7 @@ nav{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: var(--blue);
+	background-color: var(--navy);
 	width: 100%;
 	height: 10vh;
 }
@@ -53,9 +53,9 @@ nav .logo img{
 }
 
 
-.menu-item2{
-	background: #A02026;
+.menu-item2 a{
 	color: white;
 	padding: 10px;
 	border-radius: 500px;
+	text-decoration: none;
 }

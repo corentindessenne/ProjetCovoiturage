@@ -5,6 +5,35 @@ body{
 	background-color: var(--white);
 }
 
+.planet{
+	position: absolute;
+	top: 20vh;
+	left: -3%;
+	width: 10%;
+	filter: opacity(100%);
+}
+
+.rocket{
+	transform: rotate(-45deg);
+	position: absolute;
+	animation: travel 5s cubic-bezier(.37,1.9,.19,.74);
+	top: 0vh;
+	left: 0vw;
+	width: 10%;
+	z-index: 3;
+	transform: translate(85vw,40vh) rotate(-45deg);
+}
+
+@keyframes travel{
+	from{
+		transform: translate(5vw,10vh);
+	}
+
+	to{
+		transform: translate(85vw,40vh) rotate(-45deg) ;
+	}
+}
+
 .svgForm{
 	position: absolute;
 	z-index: -1;
@@ -102,7 +131,7 @@ input[type=submit]{
 
 .scrolldown{
 	margin-top: 30px;
-border-radius: 500px;
+	border-radius: 500px;
 	color: white;
 	padding: 10px;
 	display: flex;

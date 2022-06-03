@@ -7,7 +7,7 @@
 
     <ul class="menu">
       <li class="menu-item2"><a href="test.php">Faire une demande</a></li>
-      <li class="menu-item connect "><a href="Profil.php">Mon Profil</a></li>
+      <li class="menu-item connect"><a href="Profil.php">Mon Profil</a></li>
       <li class="menu-item connect"><a href="logout.php">Se deconnecter</a></li>
     </ul>
 </nav>

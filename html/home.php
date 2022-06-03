@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<img class="rocket" src="../images/icon/rocket.png">
 
 	<?php 	
 		include 'Connexion.php';

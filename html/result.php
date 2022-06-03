@@ -32,7 +32,6 @@
 		function getDataFromURL(){
 			return new Promise((resolve) =>{
 
-				/*
 				$.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
 
 					queryCoord.lat = data.data[0].latitude;
@@ -41,7 +40,6 @@
 					console.log(queryCoord);
 
 				});
-				*/
 
 				setTimeout(() => {
 
@@ -260,8 +258,6 @@
 
 			async function initMap(){
 
-				/*
-
 				let response = await getDataFromURL();
 
 				let mapOptions = {
@@ -309,8 +305,6 @@
 						console.log("ca marche pas ");
 					}
 				});
-
-				*/
 
 				document.getElementById("loader").style.display = "none";
 				document.getElementById('wrapper').style.display = "flex";
