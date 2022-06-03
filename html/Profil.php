@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <?php   
+<?php   
         include 'Connexion.php';
         if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] === true) {
 
@@ -33,12 +33,11 @@ if ($result->num_rows >  0) {
       $description=$row["Description"];
       $pp=$row["PhotoProfil"];              //pp=Photo de Profil
       
-      //echo $hashedpassword;
     
   ?>
   <div class="Compte">
     <div class="PhotoDeProfil">
-        <img class="profile-picture" src="ImagePierre.jpg" alt="Ta PP" width="200" height="290">
+        <img class="profile-picture" src="..\images\PhotoProfil\defaultpp.jpg" alt="Ta PP" width="290" height="290">
         <form action="PPAction.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file">
             <input type="submit" name="submit" value="Enregistrer l'image choisie">
@@ -53,8 +52,9 @@ if ($result->num_rows >  0) {
         <p>Telephone: <?php echo $phone;?> </p>
         <br/>
         <p>Description: <?php echo $description;?> </p>
-        <a href="EditProfil.php"><input type="button" id="EditInfo" name="EditInfo" value="editez les informations de votre compte"></a>
+        <a href="EditProfil.php"><input type="button" id="EditInfo" name="EditInfo" value="editer les informations de ton compte"></a>
         <a href="EditPassword.php"><input type="button" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
+
     </div>
     
     </div>
