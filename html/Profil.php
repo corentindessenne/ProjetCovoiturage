@@ -54,7 +54,7 @@ if ($result->num_rows >  0) {
         <br/>
         <p>Description: <?php echo $description;?> </p>
         <a href="EditProfil.php"><input type="button" id="EditInfo" name="EditInfo" value="editez les informations de votre compte"></a>
-
+        <a href="EditPassword.php"><input type="button" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
     </div>
     
     </div>
