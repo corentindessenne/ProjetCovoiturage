@@ -18,7 +18,7 @@ if ($result->num_rows >  0) {
       $nom=$row["Nom"];
       $prenom=$row["Prenom"];
       $idCompte=$row["IdCompte"];
-      $phone=$row["telephone"];
+      $phone="0".$row["telephone"];
       $description=$row["Description"];
       $pp=$row["PhotoProfil"];              //pp=Photo de Profil
       
@@ -28,16 +28,11 @@ if ($result->num_rows >  0) {
   <div class="Compte">
     <div class="PhotoDeProfil">
         <img class="profile-picture" src="ImagePierre.jpg" alt="Ta PP" width="200" height="290">
-        <input id='fileid' type='file' name='filename' hidden>
+        <form action="PPAction.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" name="submit" value="Enregistrer l'image choisie">
+        </form>
         
-        <input type="button" id="EditPP" name="EditPP" value="Changer de photo de profil">
-        <script >
-            document.getElementById('EditPP').addEventListener('click', openDialog);
-
-                function openDialog() {
-                document.getElementById('fileid').click();
-                }
-        </script>
     </div>
 
     <div class="InfosCompte">
@@ -47,9 +42,7 @@ if ($result->num_rows >  0) {
         <p>Telephone: <?php echo $phone;?> </p>
         <br/>
         <p>Description: <?php echo $description;?> </p>
-
-
-        <input type="button" id="EditInfo" name="EditInfo" value="editez les informations de votre compte">
+        <a href="EditProfil.php"><input type="button" id="EditInfo" name="EditInfo" value="editez les informations de votre compte"></a>
 
     </div>
     
