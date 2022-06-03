@@ -44,31 +44,17 @@
 			</div>
 			<hr>
 			<div class="form-item">
-				<input id="inputDate" type="date" placeholder="" value="" name="">
+				<input id="inputDate" type="date" min="2022-09-12" max="2022-10-03" name="date">
 			</div>
 			<hr>
 			<div class="form-item">
 				<img class="icon" src="../images/icon/1077114 1.png">
-				<input value="1" min="0" step="1" max="7" type="number" name="">
+				<input value="1" min="0" step="1" max="7" type="number" name="nbPlaces">
 			</div>
-			<input type="submit" value="Rechercher" name="">
+			<input type="submit" value="Rechercher" name="submit">
 		</form>
 
 		<script type="text/javascript">
-			let d = new Date();
-			let year = d.getFullYear();
-			let m = d.getMonth() + 1;
-			let month = m;
-
-			if(m < 10){
-				month = "0"+m;
-			}
-
-			let day = d.getDate();
-			let string = year+"-"+month+"-"+day;
-			document.getElementById('inputDate').min = string;
-			document.getElementById('inputDate').value = string;
-
 			const myFunction = () =>{
 				document.getElementById("list").scrollIntoView({behavior: "smooth", block: "start"});
 			}

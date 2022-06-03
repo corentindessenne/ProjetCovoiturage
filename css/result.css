@@ -9,21 +9,50 @@
 .searchBar{
 	width: 60%;
 	height: 35%;
+	padding: 15px;
 	border-radius: 500px;
 	background-color: lightgrey;
+	display: flex;
+	align-items: center;
 }
 
+.searchBar .location{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.searchBar img{
+	width: 30px;
+	margin: 0 10px;
+}
+
+.searchIcon{
+	height: 30px;
+	width: 56px;
+	margin-right: 10px;
+}
 
 .wrapper{
 	display: flex;
 	width: 100%;
 	height: 70vh;
 	justify-content: space-around;
+	overflow-y: hidden;
+}
+
+.left{
+	width: 35vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #map{
-	height: 600px;
-	width: 600px;
+	width: 30vw;
+	height: 30vw;
+	margin: 0 0 0 5vw;
+	border-radius: 5px;
+	border: 3px solid black;
 }
 
 #loader{
@@ -68,32 +97,158 @@
 }
 
 .right{
-	height: 90vh;
-	width: 100%;
+	width: 50vw;
+	height: 70vh;
 	align-items: center;
 	overflow-y: scroll;
-	background-color: blue;
 }
 
-.right .item{
-	width: 40%;
-	height: 15vh;
+.right::-webkit-scrollbar {
+    background-color: #EEE;
+}
+
+.right::-webkit-scrollbar-track {
+    background-color: #EEE;
+}
+
+.right::-webkit-scrollbar-thumb {
 	border-radius: 10px;
+	background-color: var(--navy);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Item CSS */
+.item{
+	width: 40vw;
+	height: 200px;
+	border-radius: 20px;
+	background: white;
+	margin: 20px auto 40px auto;
 	padding: 10px;
-	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75); 
-	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
-	margin: 5%;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+	transition: -webkit-box-shadow 1s;
+	position: relative;
+}
+
+.item:hover{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4); 
+	box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+}
+
+.item .arrow-icon{
+	width: 30px;
+}
+
+.data-group{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+	margin-top: 10px;
+	position: relative;
+	top: -30px;
+}
+
+.item::before{
+	content: '';
+	display: block;
+	background-color: var(--navy);
+	width: 3px;
+	height: 30px;
+	position: relative;
+	top: 26px;
+	left: 77.5px;
+}
+
+.horaire{
+	font-weight: 300;
+	margin-right: 30px;
+}
+
+.place{
+	font-weight: 600;
+	font-size: 20px;
+	width: 50vw;
+}
+
+.place::before{
+	content: '';
+	background-color: var(--navy);
+	width: 10px;
+	height: 10px;
+	position: relative;
+	display: inline-block;
+	border-radius: 50%;
+	top: -2px;
+	left: -10px;
+}
+
+.date{
+	text-align: right;
+	margin-right: 20px;
+	width: 200px;
+}
+
+.price{
+	color: var(--navy);
+	font-size: 26px;
+	font-weight: 700;
+	text-align: right;
+	width: 100%;
+	margin-right: 20px;
+}
+
+.account-info{
+	width: 93%;
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+	margin-right: 20px;
+	margin-top: 10px;
+	position: absolute;
+	left: -20px;
+	bottom: 20px;
+}
+
+.profile-info{
+	width: 20vw;
+	margin-left: 3%;
+}
+
+.account-info img{
+	width: 60px;
+	border-radius: 50%;
+}
+
+.account-info .name{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.available{
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.account-info .book{
+	background-color: #00e640;
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	padding: 10px;
+	border-radius: 500px;
+	font-weight: 700;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+
+.book:hover{
+	color: var(--navy);
 	background-color: white;
 }
 
-.right .item img{
-	width: 6%;
-	margin: 0 10px;
-}
-
-.title{
-	display: flex;
-	align-items: center;
-	height : 30px;
+.book-container{
+	width: 100%;
+	text-align: right;
 }
 
