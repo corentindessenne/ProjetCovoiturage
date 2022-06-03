@@ -167,10 +167,20 @@
 							</span>
 						</div>
 
-
 						<div class="account-info">
 							<img class="profile-picture" src="../images/adrien.jpg">
-							<span class="name"></span>
+							<div class="profile-info">
+								<span class="name">Adrien Mareel</span>
+								<div class="available">
+									<?php
+										$value = $row['NbPassagers'] - $row['NbReservations'];
+										if($value == 1) echo $value." place restante";
+										else echo $value." places restantes"
+									?>
+								</div>
+							</div>
+							
+							<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
 						</div>
 					</div>
 

@@ -135,7 +135,6 @@ h1{
     justify-content: space-around;
     width: 100%;
     margin : 30px auto;
-
   }
 
 .container img{
@@ -233,6 +232,7 @@ h1{
 	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
 	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
 	transition: -webkit-box-shadow 1s;
+	position: relative;
 }
 
 .item:hover{
@@ -304,10 +304,54 @@ h1{
 }
 
 .account-info{
-	width: 100%;
+	width: 93%;
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+	margin-right: 20px;
+	margin-top: 10px;
+	position: absolute;
+	left: -20px;
+	bottom: 20px;
+}
+
+.profile-info{
+	width: 20vw;
+	margin-left: 3%;
 }
 
 .account-info img{
-	width: 15%;
+	width: 60px;
 	border-radius: 50%;
+}
+
+.account-info .name{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.available{
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.account-info .book{
+	background-color: #00e640;
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	padding: 10px;
+	border-radius: 500px;
+	font-weight: 700;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+
+.book:hover{
+	color: var(--navy);
+	background-color: white;
+}
+
+.book-container{
+	width: 100%;
+	text-align: right;
 }
