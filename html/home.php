@@ -14,20 +14,21 @@
 </head>
 <body>
 
-	<?php 
-		include 'NavBar.php';
+	<?php 	
 		include 'Connexion.php';
 
-		if(isset($_SESSION["confirme"]) && $_SESSION["confirme"]==1){
-			$_SESSION["confirme"]=0;
-			echo '<script type="text/javascript">window.alert("Votre modification a bien été enregistré");</script>';
-		}
-		else if(isset($_SESSION["confirme"]) && $_SESSION["confirme"]==2){
-			$_SESSION["confirme"]=0;
-			echo '<script type="text/javascript">window.alert("Votre trajet a bien été enregistré");</script>';
-		}
-	?>
+        if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+        	echo $_SESSION["role"];
+        include 'NavBar3.php';
 
+        }
+        else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+            include 'NavBar.php';
+        }
+        else{
+            include 'NavBar2.php';
+        }
+	?>
 
 	<img class="svgForm" src="../images/Vector 1.svg">
 

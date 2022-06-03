@@ -6,8 +6,19 @@
 </head>
 
 <body>
-<?php include 'NavBar.php';
-include 'Connexion.php';
+    <?php   
+        include 'Connexion.php';
+        if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] === true) {
+
+        include 'NavBar3.php';
+
+        }
+        else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+            include 'NavBar.php';
+        }
+        else{
+            include 'NavBar2.php';
+        }
 
 $mail=$_SESSION["mail"];
 $sql = "SELECT Nom,Prenom,telephone,PhotoProfil,Description,IdCompte FROM compte WHERE Email='".$mail."'" ;

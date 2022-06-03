@@ -1,4 +1,6 @@
 <link href ="../css/nav.css" rel="stylesheet" >
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 <nav>
       <div class="logo">
@@ -6,8 +8,9 @@
       </div>
 
     <ul class="menu">
-      <li class="menu-item"><a href="">Les trajets</a></li>
+      <li class="menu-item"><a href="" name="trajet" id="trajet" >Les trajets</a></li>
       <li class="menu-item connect "><a href="register.php">S'inscrire</a></li>
-      <li class="menu-item connect"><a href="login.php">Seconnecter</a></li>
+      <li class="menu-item connect"><a href="login.php">Se connecter</a></li>
     </ul>
 </nav>
+
