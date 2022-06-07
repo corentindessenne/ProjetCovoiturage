@@ -8,7 +8,7 @@
       </div>
 
     <ul class="menu">
-      <li class="menu-item"><a href="" name="trajet" id="trajet" >Les trajets</a></li>
+      <li class="menu-item"><a href="TousLesTrajets.php" name="trajet" id="trajet" >Voir tous les trajets</a></li>
       <li class="menu-item connect "><a href="register.php">S'inscrire</a></li>
       <li class="menu-item connect"><a href="login.php">Se connecter</a></li>
     </ul>

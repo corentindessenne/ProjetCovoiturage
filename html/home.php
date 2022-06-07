@@ -12,18 +12,15 @@
 	 rel="stylesheet">
 	 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
-<<<<<<< Updated upstream
 </head>
 <body>
-	<img class="rocket" src="../images/icon/rocket.png">
-=======
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-</head>
-<body>
 <script>
-AOS.init();
+	AOS.init();
 </script>
+
+
+	<img class="rocket" src="../images/icon/rocket.png">
 
 	<img class="yt-planet" src="../images/icon/yt-planet.png">
 	<img class="ld-planet" src="../images/icon/ld-planet.png">
@@ -37,7 +34,6 @@ AOS.init();
 	</a>
 	<a href="https://www.linkedin.com/company/les-briques-rouges-festival"> <img class="ld-icon" src="../images/icon/ld-icon.png">
 	</a>
->>>>>>> Stashed changes
 
 	<?php 	
 		include 'Connexion.php';

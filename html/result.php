@@ -178,10 +178,8 @@
 			<?php
 			$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0";
 			$result = mysqli_query($conn,$requete);
-			$count = 0;
 
 			while ($row = mysqli_fetch_assoc($result)) {
-				$count++;
 
 				$hourString1 = substr($row['HeureDepart'],0,2);
 				$hourString2 = substr($row['HeureDepart'],3,2);
@@ -192,7 +190,6 @@
 				$hourString4 = substr($row['HeureArrivee'],3,2);
 				$hourStringArrival = $hourString3."h".$hourString4;
 
-				if($count < 5){
 					?>
 
 					<div class="item">
@@ -240,7 +237,7 @@
 					</div>
 
 					<?php
-				}}
+				}
 				?>
 			</div>
 		</div>

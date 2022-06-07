@@ -6,8 +6,10 @@
       </div>
 
     <ul class="menu">
-      <li class="menu-item2"><a href="test.php">Faire une demande</a></li>
-      <li class="menu-item connect"><a href="Profil.php">Mon Profil</a></li>
+      <li class="menu-item"><a href="TousLesTrajets.php" name="trajet" id="trajet" >Voir tous les trajets</a></li>
+      <li class="menu-item2"><a href="AjoutDemandetrajet.php">Faire une demande de trajet</a></li>
+      <li class="menu-item2"><a href="AjoutConducteur.php">Proposer un trajet</a></li>
+      <li class="menu-item connect "><a href="Profil.php">Mon Profil</a></li>
       <li class="menu-item connect"><a href="logout.php">Se deconnecter</a></li>
     </ul>
 </nav>

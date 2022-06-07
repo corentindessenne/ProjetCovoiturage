@@ -17,8 +17,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
   <body>
-    <?php include 'NavBar.php';
+    <?php
           include 'Connexion.php';
+          if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+            echo $_SESSION["role"];
+          include 'NavBar3.php';
+  
+          }
+          else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+              include 'NavBar.php';
+          }
+          else{
+              include 'NavBar2.php';
+          }
     ?>
 
   

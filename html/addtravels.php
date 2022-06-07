@@ -12,17 +12,20 @@
 </head>
 <body>
 
-  <nav>
-    <div class="logo">
-      <a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
-    </div>
+  <?php
+  include 'Connexion.php';
+  if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+    echo $_SESSION["role"];
+  include 'NavBar3.php';
 
-    <ul class="menu">
-      <li class="menu-item"><a href="">Les trajets</a></li>
-      <li class="menu-item connect "><a href="register.php">S'inscrire</a></li>
-      <li class="menu-item connect"><a href="login.php">Se connecter</a></li>
-    </ul>
-  </nav>
+  }
+  else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+      include 'NavBar.php';
+  }
+  else{
+      include 'NavBar2.php';
+  }
+  ?>
 
 
   
