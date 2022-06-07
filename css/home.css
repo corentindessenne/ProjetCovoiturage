@@ -137,14 +137,11 @@ body{
 
 .ld-icon{
 	position: absolute;
-	margin: 1620px;
+	top: 1000px;
 	left: -565px;
 	width: 7%;
 	animation: planet-wave 5s infinite ease-in-out;
-
 }
-
-
 
 @keyframes planet-wave{
 	from{
@@ -160,17 +157,6 @@ body{
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes
 .svgForm{
 	position: absolute;
 	z-index: -1;
