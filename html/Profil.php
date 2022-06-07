@@ -23,7 +23,7 @@
         }
 
 $mail=$_SESSION["mail"];
-$sql = "SELECT Nom,Prenom,telephone,PhotoProfil,Description,IdCompte FROM compte WHERE Email='".$mail."'" ;
+$sql = "SELECT * FROM compte WHERE Email='".$mail."'" ;
 $result = $conn->query($sql);
 if ($result->num_rows >  0) {
     // output data of each row
@@ -34,6 +34,7 @@ if ($result->num_rows >  0) {
       $phone="0".$row["telephone"];
       $description=$row["Description"];
       $pp=$row["PhotoProfil"];              //pp=Photo de Profil
+	  $hashedpassword=$row["motDePasse"];
       
     
   ?>
@@ -154,7 +155,46 @@ if ($result->num_rows >  0) {
     </div>
 
     <div id="DeleteButton">
-        <input type="button" id="Delete" name="Delete" value="SUPPRIMER VOTRE COMPTE">
+        <button onclick="document.getElementById('confirmDeletion').style.display='block'">Supprimer ton compte</button>
+    </div>
+
+    <div id="confirmDeletion" class="modal">
+       <span onclick="document.getElementById('confirmDeletion').style.display= 'none'" class="close" title="Close modal">&times;</span>
+        <form class="modal-content" action="deletionAction.php" method="post">
+            <div class="container">
+                <h3 style="text-align: left;">Es-tu absolument sûr ?</h3>
+                <div>Attention ! C'est très important !</div>
+                <div class="explications">
+                    <p>Nous allons effacer <strong>toutes tes demandes ainsi que tes propositions de trajet</strong></p>
+                </div>
+				
+					<label>Tape "<strong>OUI JE SUIS SUR</strong>": </label>
+					<input type="text" required="required" id="Verif_1" name="Verif_1" onkeyup='check();'>
+					<br/>
+					<script>
+						
+						var check = function() {
+							if (document.getElementById('Verif_1').value == "OUI JE SUIS SUR") {
+								document.getElementById('submit').disabled = false;
+							} else {
+								document.getElementById('Verif_1').style.color = 'red';
+								document.getElementById('submit').disabled = true;
+							}
+						}
+					</script>
+					
+					<label>Rentre ton mot de passe pour qu'on puisse s'assurer qu'il s'agisse bien de toi</label>
+					<input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1">
+					
+					
+					
+					<button type="submit" class="btn" name="del_user" id="submit"><strong>SUPPRIMER MON COMPTE</strong></button>
+					
+				
+				
+
+            </div>
+        </form>
     </div>
 <?php
 } else {
