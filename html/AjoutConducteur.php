@@ -3,6 +3,7 @@
 <head>
     <title>Ajout d'un trajet conducteur</title>
     <link href ="../css/AjoutModif.css" rel="stylesheet" >
+    <script src="https://code.jquery.com/jquery-1.6.4.js"></script> 
 </head>
 
 <body>
@@ -13,7 +14,7 @@ include 'Connexion.php';
 
     <h1>Ajout d'un trajet conducteur</h1>
     <div class=formap></div>
-    <form action="ActionAjout.php" method="post">
+    <form action="ActionAjout.php" method="post" id="myform">
         <div class="AllerRetour">
             <input type="radio" required="required" value="Aller" id="Aller" name="AllerRetour" ><label for="Aller" class="AllerRetour">Aller</label>
             <input type="radio" required="required" name="AllerRetour" value="Retour" id="Retour"><label for="Retour" class="AllerRetour">Retour</label>
@@ -47,11 +48,34 @@ include 'Connexion.php';
         </div>
         
         <br/>
-        <input type="submit" name="send" id="send" value="Envoyer">
+        <input type="button" name="send" id="send" value="Envoyer" onclick="getDataFromURL()">
         
 
     </form>
+        <script>
+            function getDataFromURL(){
+            
+                let query=document.getElementById("Adresse").value;
+                console.log(query);
+                $.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
 
+                    queryCoord.lat = data.data[0].latitude;
+                    queryCoord.lng = data.data[0].longitude;
+
+                    console.log(queryCoord);
+
+                });
+
+                setTimeout(() => {
+
+                    resolve("true");
+                },2000);
+                
+                alert(query);
+            
+                $('#myform').submit();
+        }
+        </script>
     <div id="map"></div>
 
 <?php

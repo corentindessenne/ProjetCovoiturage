@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 07 juin 2022 à 12:42
+-- Généré le : mar. 07 juin 2022 à 13:13
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -87,12 +87,12 @@ CREATE TABLE `trajet` (
   `Description` varchar(255) NOT NULL DEFAULT '',
   `LieuDepart` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `AdresseDepart` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
-  `LongitudeDepart` float DEFAULT NULL,
-  `LatitudeDepart` float NOT NULL,
+  `LongitudeDepart` float DEFAULT '3.1134',
+  `LatitudeDepart` float NOT NULL DEFAULT '50.7364',
   `LieuArrivee` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `AdresseArrivee` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
-  `LongitudeArrivee` float NOT NULL,
-  `LatitudeArrivee` float NOT NULL,
+  `LongitudeArrivee` float NOT NULL DEFAULT '3.1134',
+  `LatitudeArrivee` float NOT NULL DEFAULT '50.7364',
   `DateDepart` date NOT NULL,
   `DateArrivee` date DEFAULT NULL,
   `HeureDepart` time(4) DEFAULT NULL,
@@ -128,7 +128,10 @@ INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `Lie
 (18, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-17', NULL, '14:34:00.0000', NULL, '2002-06-22', 3, 0, 25, 0, 2022, 1),
 (19, 'Aller', 0, '', 'tete', 'dqsdqs', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-29', NULL, '17:49:00.0000', NULL, '2002-06-20', 3, 0, 12, 0, 2022, 17),
 (20, 'Retour', 0, '', 'Wervicq-Sud', '21 Rue de Linselles', NULL, 0, 'Lille', '41 boulevard Vauban', 0, 0, '2022-09-22', NULL, '14:25:00.0000', NULL, '2022-06-02', 1, 0, 5, 0, 2022, 17),
-(21, 'Aller', 0, 'ff', 'Charleville-Mézières', '40 avenue jean jaures', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-21', NULL, '11:29:00.0000', NULL, '2022-06-02', 4, 0, 4, 0, 2022, 17);
+(21, 'Aller', 0, 'ff', 'Charleville-Mézières', '40 avenue jean jaures', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-21', NULL, '11:29:00.0000', NULL, '2022-06-02', 4, 0, 4, 0, 2022, 17),
+(22, 'Retour', 0, 'test again', 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, 'test', 'test', 3.1134, 50.7364, '2022-09-19', NULL, '13:30:00.0000', NULL, '2022-06-07', 3, 0, 10, 0, 2022, 17),
+(23, 'Aller', 0, '', 'aeaze', 'eaeaz', 3.1134, 50.7364, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-18', NULL, '13:30:00.0000', NULL, '2022-06-07', 5, 0, 5, 0, 2022, 17),
+(24, 'Aller', 0, '', 'test', 'test', 3.1134, 50.7364, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', NULL, '15:11:00.0000', NULL, '2022-06-07', 5, 0, 5, 0, 2022, 17);
 
 --
 -- Index pour les tables déchargées
@@ -161,7 +164,7 @@ ALTER TABLE `compte`
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
