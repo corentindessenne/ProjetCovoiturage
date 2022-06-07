@@ -10,7 +10,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
-
 </head>
 <body>
 	<img class="rocket" src="../images/icon/rocket.png">
@@ -60,6 +59,30 @@
 			const myFunction = () =>{
 				document.getElementById("list").scrollIntoView({behavior: "smooth", block: "start"});
 			}
+			let scrollUnder = 0;
+			let animationTriggered = 0;
+			const nav = document.getElementsByTagName('nav')[0];
+
+			document.addEventListener("scroll", () =>{
+
+				console.log(scrollUnder);
+
+				if(window.scrollY != 0 && scrollUnder == 0) {
+					animationTriggered = 1
+					nav.classList.remove("display");
+					nav.classList.add('remove');	
+				}
+				
+				if(window.scrollY > 40) {
+					scrollUnder = 1;
+					animationTriggered = 0;
+				}
+				if(window.scrollY < 40 && nav.classList.contains('remove') && scrollUnder){
+					scrollUnder = 0;
+					nav.classList.remove('remove');
+					nav.classList.add('display');
+				}
+			});
 		</script>
 
 		<div class="scrolldown">

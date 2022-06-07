@@ -59,3 +59,31 @@ nav .logo img{
 	border-radius: 500px;
 	text-decoration: none;
 }
+
+.remove{
+	animation: hide 0.5s linear;
+	opacity: 0;
+}
+
+.display{
+	animation: display 0.5s linear;
+	opacity: 1;
+}
+
+@keyframes hide{
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+	}
+}
+
+@keyframes display{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}

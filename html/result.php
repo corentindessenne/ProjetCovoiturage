@@ -174,7 +174,7 @@
 
 		<div class="right">
 			<?php
-			$requete = "SELECT * FROM trajet ORDER BY RAND()";
+			$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0";
 			$result = mysqli_query($conn,$requete);
 			$count = 0;
 
