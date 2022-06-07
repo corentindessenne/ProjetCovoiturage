@@ -1,6 +1,4 @@
 <link href ="../css/nav.css" rel="stylesheet" >
-<script src="sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
 
 <nav>
       <div class="logo">

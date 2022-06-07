@@ -6,14 +6,6 @@ body{
 	overflow-x: hidden;
 }
 
-.planet{
-	position: absolute;
-	top: 20vh;
-	left: -3%;
-	width: 10%;
-	filter: opacity(100%);
-}
-
 .rocket{
 	transform: rotate(-45deg);
 	position: absolute;
@@ -22,126 +14,64 @@ body{
 	left: 0vw;
 	width: 10%;
 	z-index: 3;
-	transform: translate(85vw,40vh) rotate(-45deg);
+	transform: translate(85vw,30vh) rotate(-45deg);
 }
 
 @keyframes travel{
 	from{
-		transform: translate(5vw,10vh);
+		transform: translate(5vw,-10vh);
 	}
 
 	to{
-		transform: translate(85vw,40vh) rotate(-45deg) ;
+		transform: translate(85vw,30vh) rotate(-45deg) ;
+
 	}
 }
 
 .planets{
 	position: absolute;
-	margin: 680px;
-	right: 0;
+	top: 120vh;
+	right: 10vw;
 	width: 15%;
 	animation: planet-wave 5s infinite ease-in-out;
-	animation-delay: 500ms;
-
 }
-
-.saturn{
-	position: absolute;
-	margin: 0;
-	left: 0;
-	width: 10%;
-
-}
-
-.star{
-	position: absolute;
-	margin: 60px;
-	top: 50vh;
-	left: 10vh;
-	width: 5%;
-	  -webkit-transform:rotate(40deg);
-  -moz-transform: rotate(40deg);
-  -ms-transform: rotate(40deg);
-  -o-transform: rotate(40deg);
-  transform: rotate(40deg);
-
-}
-
 
 .fb-planet{
 	position: absolute;
-	margin: 980px;
-	left: -350px;
+	top: 170vh;
+	left: 50vw;
 	width: 12%;
-	animation: planet-wave 5s infinite ease-in-out;
-
-}
-
-.fb-icon{
-	position: absolute;
-	margin: 990px;
-	left: -380px;
-	width: 15%;
-	animation: planet-wave 5s infinite ease-in-out;
-
+	animation: planet-wave 3.8s infinite ease-in-out;
 }
 
 
 .ig-planet{
 	position: absolute;
-	margin: 0;
 	top: 50vh;
 	left: 6vh;
 	width: 15%;
-	animation: planet-wave 5s infinite ease-in-out;
-
-}
-
-.ig-icon{
-	position: absolute;
-	margin: 0;
-	top: 57vh;
-	left: 6vh;
-	width: 15%;
-	animation: planet-wave 5s infinite ease-in-out;
-
+	animation: planet-wave 3s infinite ease-in-out;
 }
 
 .yt-planet{
 	position: absolute;
-	margin: 100px;
-	right: -90px;
+	top: 65vh;
+	right: 4vw;
 	width: 15%;
-	animation: planet-wave 5s infinite ease-in-out;
+	animation: planet-wave 2.5s infinite ease-in-out;
 
 }
 
-.yt-icon{
-	position: absolute;
-	margin: 160px;
-	right: -95px;
-	width: 5%;
-	animation: planet-wave 5s infinite ease-in-out;
-
-}
 
 .ld-planet{
 	position: absolute;
-	margin: 1550px;
-	left: -570px;
+	top: 280vh;
+	right: 5vw;
 	width: 18%;
-	animation: planet-wave 5s infinite ease-in-out;
+	animation: planet-wave 4s infinite ease-in-out;
 
 }
 
-
-.ld-icon{
-	position: absolute;
-	top: 1000px;
-	left: -565px;
-	width: 7%;
-	animation: planet-wave 5s infinite ease-in-out;
-}
 
 @keyframes planet-wave{
 	from{
@@ -256,14 +186,33 @@ input[type=submit]{
 
 .scrolldown{
 	margin-top: 30px;
-	border-radius: 500px;
-	color: white;
+	color: black;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 }
+
+.scrolldown button{
+	border-radius: 500px;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: 700;
+	color: black;
+	background: none;
+	box-shadow: inset 0 0 1em rgba(0,170,170,0.5), 0 0 1em rgba(0,170,170,0.5);
+	border: #0dd solid 2px;
+	transition: all 0.3s ease-in-out;
+
+}
+
+
+.scrolldown button:hover {
+		background-color: #0dd;
+		box-shadow: inset 0 0 0 rgba(0,170,170,0.5), 0 0 1.5em rgba(0,170,170,0.7);
+	}
+
 
 h1{
 	display: flex;
@@ -498,3 +447,5 @@ h1{
 	width: 100%;
 	text-align: right;
 }
+
+

@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LBR Covoiturage</title>
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
 	<!--Google Fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,7 @@
 	 rel="stylesheet">
 	 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
 
@@ -19,20 +21,22 @@
 	AOS.init();
 </script>
 
-
 	<img class="rocket" src="../images/icon/rocket.png">
 
-	<img class="yt-planet" src="../images/icon/yt-planet.png">
-	<img class="ld-planet" src="../images/icon/ld-planet.png">
-	<img class="ig-planet" src="../images/icon/ig-planet.png">
-	<img class="fb-planet" src="../images/icon/fb-planet.png">
 
-	<a href="https://www.facebook.com/LBRfestival"> <img class="fb-icon" src="../images/icon/fb-icon.png">
+	<img class="planets" src="../images/icon/planets.png">
+
+	<a href="https://www.youtube.com/channel/UCf9g0UfCsETQilcTj0ljzlA/featured">
+		<img class="yt-planet" src="../images/icon/yt-planet.png">
+    </a>
+	<a href="https://www.linkedin.com/company/les-briques-rouges-festival">
+		<img class="ld-planet" src="../images/icon/ld-planet.png">
 	</a>
-	<a href="https://www.instagram.com/lbr_festival"> <img class="ig-icon" src="../images/icon/ig-icon.png"></a>
-	<a href="https://www.youtube.com/channel/UCf9g0UfCsETQilcTj0ljzlA/featured"> <img class="yt-icon" src="../images/icon/yt-icon.png">
+	<a href="https://www.instagram.com/lbr_festival">
+		<img class="ig-planet" src="../images/icon/ig-planet.png">
 	</a>
-	<a href="https://www.linkedin.com/company/les-briques-rouges-festival"> <img class="ld-icon" src="../images/icon/ld-icon.png">
+	<a href="https://www.facebook.com/LBRfestival">
+		<img class="fb-planet" src="../images/icon/fb-planet.png">
 	</a>
 
 	<?php 	
@@ -107,7 +111,7 @@
 		</script>
 
 		<div class="scrolldown">
-			<button class="scroll" onclick="myFunction()">Click Here to Smoothly Scroll Down</button>
+			<button class="scroll" onclick="myFunction()">VOIR LES DERNIERS COVOITURAGES</button>
 		</div>
 	</div>
 
