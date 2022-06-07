@@ -11,7 +11,7 @@
 <?php   
 //IMPORTANT CSS A FINIR
         include 'Connexion.php';
-        if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] === true) {
+        if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
 
         include 'NavBar3.php';
 

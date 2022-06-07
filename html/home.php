@@ -8,11 +8,36 @@
 	<!--Google Fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+	 rel="stylesheet">
+	 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+<<<<<<< Updated upstream
 </head>
 <body>
 	<img class="rocket" src="../images/icon/rocket.png">
+=======
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+</head>
+<body>
+<script>
+AOS.init();
+</script>
+
+	<img class="yt-planet" src="../images/icon/yt-planet.png">
+	<img class="ld-planet" src="../images/icon/ld-planet.png">
+	<img class="ig-planet" src="../images/icon/ig-planet.png">
+	<img class="fb-planet" src="../images/icon/fb-planet.png">
+
+	<a href="https://www.facebook.com/LBRfestival"> <img class="fb-icon" src="../images/icon/fb-icon.png">
+	</a>
+	<a href="https://www.instagram.com/lbr_festival"> <img class="ig-icon" src="../images/icon/ig-icon.png"></a>
+	<a href="https://www.youtube.com/channel/UCf9g0UfCsETQilcTj0ljzlA/featured"> <img class="yt-icon" src="../images/icon/yt-icon.png">
+	</a>
+	<a href="https://www.linkedin.com/company/les-briques-rouges-festival"> <img class="ld-icon" src="../images/icon/ld-icon.png">
+	</a>
+>>>>>>> Stashed changes
 
 	<?php 	
 		include 'Connexion.php';
@@ -86,22 +111,32 @@
 		</script>
 
 		<div class="scrolldown">
-			<button onclick="myFunction()">Click Here to Smoothly Scroll Down</button>
+			<button class="scroll" onclick="myFunction()">Click Here to Smoothly Scroll Down</button>
 		</div>
 	</div>
 
-	
-	<h1>POURQUOI PRATIQUER LE COVOITURAGE?</h1>
+	<div data-aos="zoom-in-up"  data-aos-easing="linear"
+     data-aos-duration="1000"   data-aos-delay="300">
+		<h1>POURQUOI PRATIQUER LE COVOITURAGE?</h1>
+	</div>
 
+
+<div data-aos="fade-right"  data-aos-easing="linear"
+     data-aos-duration="600"   data-aos-delay="500">
 	<div class="container">
-		<img src="../images/handshake.png"> 
+		
+			<img src="../images/handshake.png"> 
+		
 		<div class="text">
 			<h3>FAIRE DES RENCONTRES</h3>
 
 			<p>Le covoiturage te permet de rencontrer des nouvelles personnes durant ton trajet et de rendre plus convivial l’ambiance lors de ton déplacement. Tu y trouveras  peut-être tes futurs partenaires pour faire la fête ! </p>
 		</div>
 	</div>
+</div>
 
+<div data-aos="fade-left"  data-aos-easing="linear"
+     data-aos-duration="600"   data-aos-delay="500">
 	<div class="container2">
 
 		<div class="text">
@@ -112,7 +147,10 @@
 
 		<img src="../images/money.png"align="right"> 
 	</div>
+</div>
 
+<div data-aos="fade-up"  data-aos-easing="linear"
+     data-aos-duration="600"   data-aos-delay="500">
 	<div class="container3">
 		<img src="../images/earth.png"> 
 
@@ -121,7 +159,7 @@
 			<p>Faire du covoiturage, c’est aussi penser à la planète. En partageant le trajet à plusieurs, tu réduis tes émissions de CO2 et le risque d’embouteillages !</p>
 		</div>
 	</div>
-
+</div>
 
 	<div class="list" id="list">
 		<div class="header">

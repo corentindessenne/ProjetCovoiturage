@@ -21,8 +21,6 @@
 
 <body>
 
-	<?php include('Connexion.php'); ?>
-
 	<script type="text/javascript">
 		let query = "<?php echo $_POST['lieu'] ?>";
 		console.log(query);
@@ -50,17 +48,21 @@
 		}
 	</script>
 
-	<nav>
-		<div class="logo">
-			<img src="../images/LBR Ressources/logoLONGUEURClassic.png">
-		</div>
+	<?php 	
+		include 'Connexion.php';
 
-		<ul class="menu">
-			<li class="menu-item"><a href="">Les trajets</a></li>
-			<li class="menu-item "><a href="">S'inscrire</a></li>
-			<li class="menu-item connect"><a href="">Se connecter</a></li>
-		</ul>
-	</nav>
+        if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+        	echo $_SESSION["role"];
+        include 'NavBar3.php';
+
+        }
+        else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+            include 'NavBar.php';
+        }
+        else{
+            include 'NavBar2.php';
+        }
+	?>
 
 	<div id="loader">
 		<div class="dot"></div>
