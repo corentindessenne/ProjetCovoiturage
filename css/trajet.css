@@ -1,0 +1,24 @@
+.AllerRetour{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+form{
+    margin-left: 23.5%;
+}
+
+input[type="submit"]{
+    text-align: center;
+    margin-left: 4%;
+    padding: 5%;
+    
+}
+input[type="radio"]{
+    margin-top: 2.25%;
+    margin-left: 5%;
+}
+label{
+    text-align: top;
+    padding: 2%;
+}

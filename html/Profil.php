@@ -3,10 +3,13 @@
 <head>
     <title>Mon Profil</title>
     <link href="../css/Profil.css" rel="stylesheet" >
+    
+    
 </head>
 
 <body>
 <?php   
+//IMPORTANT CSS A FINIR
         include 'Connexion.php';
         if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] === true) {
 
@@ -37,7 +40,7 @@ if ($result->num_rows >  0) {
   ?>
   <div class="Compte">
     <div class="PhotoDeProfil">
-        <img class="profile-picture" src="..\images\PhotoProfil\defaultpp.jpg" alt="Ta PP" width="290" height="290">
+        <img class="profile-picture" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>" alt="Ta PP" width="290" height="290">
         <form action="PPAction.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file">
             <input type="submit" name="submit" value="Enregistrer l'image choisie">
@@ -58,12 +61,84 @@ if ($result->num_rows >  0) {
     </div>
     
     </div>
-    <div id="Historique">
+    <div id="Historique" >
         <h3>Ton historique: </h3>
-        <?php
-           // $sql = "SELECT Nom,Prenom,telephone,PhotoProfil,Description,IdCompte FROM trajet WHERE IdCompte='".$idCompte."'" ;
-            //$result = $conn->query($sql);
-        ?>
+        <div class="ListeTrajets">
+    <div id="down" class="wrapper">
+			<?php
+			
+			
+			$requete = "SELECT * FROM trajet WHERE IdCompte='".$idCompte."'";
+			$result = mysqli_query($conn,$requete);
+			$count = 0;
+
+			while ($row = mysqli_fetch_assoc($result)) {
+				$count++;
+
+				$hourString1 = substr($row['HeureDepart'],0,2);
+				$hourString2 = substr($row['HeureDepart'],3,2);
+				$hourStringDeparture = $hourString1."h".$hourString2;
+
+
+				$hourString3 = substr($row['HeureArrivee'],0,2);
+				$hourString4 = substr($row['HeureArrivee'],3,2);
+				$hourStringArrival = $hourString3."h".$hourString4;
+
+				?>
+
+					<div class="item">
+						<div class="data-group">
+							<span class="horaire">
+								<?php echo $hourStringDeparture; ?>
+							</span>
+							<span class="place">
+								<?php echo utf8_encode($row['LieuDepart']); ?>
+							</span>
+
+							<span class="date">
+								<?php echo utf8_encode($row['DateDepart']); ?>
+							</span>
+						</div>
+
+						<div class="data-group">
+							<span class="horaire">
+								<?php echo $hourStringArrival; ?>
+							</span>
+							<span class="place">
+								<?php echo utf8_encode($row['LieuArrivee']); ?>
+							</span>
+
+							<span class="price">
+								<?php echo $row['Prix']; ?>€
+							</span>
+						</div>
+
+						<div class="account-info">
+						<?php $sql = "SELECT * FROM compte WHERE IdCompte='".$row['IdCompte']."'";
+                                
+								$resultat = mysqli_query($conn,$sql); 
+								$row2 = mysqli_fetch_assoc($resultat);?>
+							<img class="profile-picture" src="../images/PhotoProfil/<?php if($row2["PhotoProfil"]!=NULL){echo $row2["PhotoProfil"];}else{echo "defaultpp.jpg";} ?>">
+							<div class="profile-info">
+                                
+								<span class="name"><?php echo $row2["Prenom"] ?></span>
+								<div class="available">
+									<?php
+										$value = $row['NbPassagers'] - $row['NbReservations'];
+										if($value == 1) echo $value." place restante";
+										else echo $value." places restantes"
+									?>
+								</div>
+							</div>
+							
+							
+					</div>
+
+					<?php
+				}
+				?>
+			</div>
+    </div>
     </div>
 
     <div id="DeleteButton">

@@ -7,9 +7,9 @@ $statusMsg = '';
 $targetDir = "../images/PhotoProfil/";
 $fileName = basename($_FILES["file"]["name"]);
 $ext = pathinfo($fileName, PATHINFO_EXTENSION);    //get the extension of the file
+$fileName=$_SESSION["id"].".".$ext;
 $targetFilePath = $targetDir.$_SESSION["id"].".".$ext;  //rename the file with the account id so it deletes itself when updated in the database
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
 if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     // Allow certain file formats
     $allowTypes = array('jpg','png','jpeg');
@@ -17,7 +17,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-            $request="UPDATE compte SET  PhotoProfil='".$fileName."' WHERE Email='".$_SESSION["mail"]."' ";
+            $request="UPDATE compte SET  PhotoProfil='".$_SESSION["id"].".".$ext."' WHERE Email='".$_SESSION["mail"]."' ";
             if ($conn->query($request) === TRUE) {
                 header("Location: Profil.php");
               die();
