@@ -14,7 +14,7 @@ body{
     font-family: -Roboto;
     font-weight: light;
     background: var(--black);
-    color: var(--white);
+    color: var(--black);
 }
 
 @font-face {
@@ -53,4 +53,269 @@ body{
 }
 input[type="button"]{
     margin-top: 5%;
+}
+h1{
+    color: var(--white);
+    text-align: center;
+}
+.list{
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.list .header{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px 0px;
+}
+
+.list img{
+	width: 15%;
+}
+
+.list h1{
+	font-size: 45px;
+	color: #EA001C;
+	font-weight: bold;
+}
+.list img{
+	width: 15%;
+}
+
+
+.horaire{
+	font-weight: 300;
+	margin-right: 30px;
+}
+
+.place{
+	font-weight: 600;
+	font-size: 20px;
+	width: 50vw;
+}
+
+.place::before{
+	content: '';
+	background-color: var(--navy);
+	width: 10px;
+	height: 10px;
+	position: relative;
+	display: inline-block;
+	border-radius: 50%;
+	top: -2px;
+	left: -10px;
+}
+
+.date{
+	text-align: right;
+	margin-right: 20px;
+	width: 200px;
+}
+
+.price{
+	color: var(--navy);
+	font-size: 26px;
+	font-weight: 700;
+	text-align: right;
+	width: 100%;
+	margin-right: 20px;
+}
+
+.account-info{
+	width: 93%;
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+	margin-right: 20px;
+	margin-top: 10px;
+	position: absolute;
+	left: -20px;
+	bottom: 20px;
+}
+
+.profile-info{
+	width: 20vw;
+	margin-left: 3%;
+}
+
+.account-info img{
+	width: 60px;
+	border-radius: 50%;
+}
+
+.account-info .name{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.available{
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.account-info .book{
+	background-color: #00e640;
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	padding: 10px;
+	border-radius: 500px;
+	font-weight: 700;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+
+.book:hover{
+	color: var(--navy);
+	background-color: white;
+}
+
+.book-container{
+	width: 100%;
+	text-align: right;
+}
+
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: space-evenly;
+    width: 100%;
+  }
+  
+  .item{
+      width: 40%;
+      height: 200px;
+      border-radius: 20px;
+      background: var(--white);
+      margin: 20px auto 40px auto;
+      padding: 10px;
+      -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+      transition: -webkit-box-shadow 1s;
+      position: relative;
+  }
+  
+  .item:hover{
+      -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4); 
+      box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+  }
+  
+  .item .arrow-icon{
+      width: 30px;
+  }
+  
+  .data-group{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      margin-top: 10px;
+      position: relative;
+      top: -30px;
+  }
+  
+  .item::before{
+      content: '';
+      display: block;
+      background-color: var(--navy);
+      width: 3px;
+      height: 30px;
+      position: relative;
+      top: 26px;
+      left: 77.5px;
+  }
+  * {box-sizing: border-box}
+
+/* Set a style for all buttons */
+button {
+  background-color: var(--darkred);
+  color: white;
+  padding: 14px 20px;
+  border: hidden;
+  border-radius:5%;
+  width: 30%;
+  position: relative;
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    left:35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.DeleteButton {
+    height: 200px;
+    position: relative;
+    border: hidden;
+  }
+  
+
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: blur(10px);
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--white);
+  border-radius: 3%;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  padding-bottom: 10%;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

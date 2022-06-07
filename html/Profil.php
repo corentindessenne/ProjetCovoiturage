@@ -2,7 +2,12 @@
 <html>
 <head>
     <title>Mon Profil</title>
-    <link href="../css/home.css" rel="stylesheet" >
+    <link href="../css/Profil.css" rel="stylesheet" >
+	<!--Google Fonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
     
     
 </head>
@@ -40,7 +45,7 @@ if ($result->num_rows >  0) {
   ?>
   <div class="Compte">
     <div class="PhotoDeProfil">
-        <img class="profile-picture" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>" alt="Ta PP" width="290" height="290">
+        <img class="profile-picture" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>" alt="Ta PP" width="250" height="290">
         <form action="PPAction.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file">
             <input type="submit" name="submit" value="Enregistrer l'image choisie">
@@ -62,7 +67,7 @@ if ($result->num_rows >  0) {
     
     </div>
     <div id="Historique" >
-        <h3>Ton historique: </h3>
+        <h1>Ton historique: </h1>
         <div class="ListeTrajets">
     <div id="down" class="wrapper">
 			<?php
@@ -154,7 +159,7 @@ if ($result->num_rows >  0) {
     </div>
     </div>
 
-    <div id="DeleteButton">
+    <div class="DeleteButton" id="DeleteButton">
         <button onclick="document.getElementById('confirmDeletion').style.display='block'">Supprimer ton compte</button>
     </div>
 
@@ -168,8 +173,10 @@ if ($result->num_rows >  0) {
                     <p>Nous allons effacer <strong>toutes tes demandes ainsi que tes propositions de trajet</strong></p>
                 </div>
 				
-					<label>Tape "<strong>OUI JE SUIS SUR</strong>": </label>
+					<p>Tape "<strong>OUI JE SUIS SUR</strong>": </p>
+					
 					<input type="text" required="required" id="Verif_1" name="Verif_1" onkeyup='check();'>
+					<br/>
 					<br/>
 					<script>
 						
@@ -183,7 +190,8 @@ if ($result->num_rows >  0) {
 						}
 					</script>
 					
-					<label>Rentre ton mot de passe pour qu'on puisse s'assurer qu'il s'agisse bien de toi</label>
+					<label>Rentre ton mot de passe pour qu'on puisse s'assurer qu'il s'agisse bien de toi:</label>
+					<br/>
 					<input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1">
 					
 					
