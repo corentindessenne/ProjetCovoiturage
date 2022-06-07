@@ -16,7 +16,7 @@ $_POST["Description"]= str_replace("'","''",$_POST["Description"]);
 if($_POST["tel"]==1){$_POST["tel"]=1;}
 else{$_POST["tel"]=0;}
 
-$IdTrajet=8;
+$IdTrajet=$_POST["IdTrajet"];
 
 //echo $_POST["Date-de-Depart"]."<- ici";
 if($_POST["AllerRetour"]=="Aller"){

@@ -1,0 +1,56 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: -Roboto;
+    font-weight: light;
+    background: var(--black);
+    color: var(--white);
+}
+
+@font-face {
+    font-family: Mont;
+    src: url("../fonts/mont-heavydemo-webfont.woff2") format("woff2");
+}
+
+.Compte{
+    display: flex;
+    flex-direction: row;
+}
+.InfosCompte{
+    margin:5%;
+    padding: 5%;
+    padding-left: -10%;
+    margin-left: 3%;
+    border-style:hidden;
+    border-radius: 20px;
+    width: 50%;
+    text-align: left;
+    height: auto;
+    background: var(--white);
+    color:var(--black) ;
+}
+.PhotoDeProfil{
+    background: var(--white);
+    padding:5%;
+    border-style:hidden;
+    border-radius: 20px;
+    margin-left: 3%;
+    padding:1%;
+    display: flex;
+    flex-direction: column;
+    height: 55%;
+    margin-top: 5%;
+}
+input[type="button"]{
+    margin-top: 5%;
+}

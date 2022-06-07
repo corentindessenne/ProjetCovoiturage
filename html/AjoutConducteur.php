@@ -7,8 +7,19 @@
 </head>
 
 <body>
-<?php include 'NavBar.php';
+<?php 
 include 'Connexion.php';
+if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+    echo $_SESSION["role"];
+include 'NavBar3.php';
+
+}
+else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+    include 'NavBar.php';
+}
+else{
+    include 'NavBar2.php';
+}
     if(isset($_SESSION["mail"])){
 ?>
 
@@ -43,7 +54,7 @@ include 'Connexion.php';
         <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
         <br/>
         <div class="Checkboxtel">
-        <input type="checkbox" id="tel" value="tel" name="tel"> 
+        <input type="checkbox" id="tel" value="1" name="tel"> 
         <label>Coche pour rendre ton numéro de téléphone visible sur ton annonce</label>
         </div>
         

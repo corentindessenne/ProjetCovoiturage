@@ -13,15 +13,25 @@
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
 </head>
   <body>
-    <?php include 'NavBar.php';
+    <?php
           include 'Connexion.php';
+		  if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+        	echo $_SESSION["role"];
+        include 'NavBar3.php';
+
+        }
+        else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+            include 'NavBar.php';
+        }
+        else{
+            include 'NavBar2.php';
+        }
     ?>
 
   
 	<div class="container">
         <h1>Liste des trajets</h1>
     </div>
-
 
     <form action="TousLesTrajets.php" method="get">
 
@@ -81,6 +91,7 @@
 			else{
 				$order="IdTrajet";
 				$sens="DESC";
+				$where="";
 			}
 			
 			$requete = "SELECT * FROM trajet".$where." ORDER BY ".$order." ".$sens."";
