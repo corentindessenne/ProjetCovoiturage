@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 02 juin 2022 à 15:40
+-- Généré le : mar. 07 juin 2022 à 08:35
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -55,7 +55,7 @@ INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDeP
 (11, 'QSDQS', 'QSDQSD', 'sdsqdq@dqsd', 1111111111, '$2y$10$7nu5QsXtE.L1JoR9cCWvHejy1jdOjRw5ApIx8doVibcchO6NuI8KO', 0, NULL, '', 0, '2001-06-22'),
 (14, 'test', 'test', 'test@aled', 1111111111, '$2y$10$TcAMAlZz8GN6wR0YYauvVuCpnH2pTbC.m6IMm2kprfkN6hmPkDtHS', 0, NULL, '', 0, '2001-06-22'),
 (15, 'test', 'test', 'test@test', 1111111111, '$2y$10$zG4D342C77FzV9L9Uv5X3uSrovQXrpGHdRZRNCS1j91ehVS/PSL/i', 0, NULL, '', 0, '2002-06-22'),
-(17, 'Pinateau', 'Pierre', 'Sabine@pineau.fr', 652806325, '$2y$10$rgPIrgT7idMLEj97DOZoDuILOFuscqJpc2.eoBfPBbkRaTvddGII2', 0, NULL, 'Smurfing from high rank', 0, '2002-06-22'),
+(17, 'Pinateau', 'Sabine', 'Sabine@pineau.fr', 652806325, '$2y$10$8MKUrpDp4l5HmJyF.FVBDuTytY9IMjp6sigGvjqapbEt7/IkNuStm', 0, 0x5961676f6f2046462050502e6a7067, ' Smurfing from high rank', 0, '2002-06-22'),
 (18, 'qdsqd', 'qsd', 'qsd@dq', 312345678, '$2y$10$rXkDcSWJ.NHSrLJYwalEAeuhj3j18DYm5aGTJIp3p1g.LRPwX2pRq', 0, NULL, '', 0, '2002-06-22');
 
 -- --------------------------------------------------------
@@ -87,8 +87,12 @@ CREATE TABLE `trajet` (
   `Description` varchar(255) NOT NULL DEFAULT '',
   `LieuDepart` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `AdresseDepart` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
+  `LongitudeDepart` float DEFAULT NULL,
+  `LatitudeDepart` float NOT NULL,
   `LieuArrivee` varchar(50) NOT NULL DEFAULT 'Wervicq-Sud',
   `AdresseArrivee` varchar(150) NOT NULL DEFAULT '21 Rue de Linselles',
+  `LongitudeArrivee` float NOT NULL,
+  `LatitudeArrivee` float NOT NULL,
   `DateDepart` date NOT NULL,
   `DateArrivee` date DEFAULT NULL,
   `HeureDepart` time(4) DEFAULT NULL,
@@ -106,25 +110,27 @@ CREATE TABLE `trajet` (
 -- Déchargement des données de la table `trajet`
 --
 
-INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LieuArrivee`, `AdresseArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `NbReservations`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
-(1, 'Aller', 0, 'fucklessymboles', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-05-25', NULL, NULL, NULL, '2025-05-22', 2, 0, 5, 0, 2022, 0),
-(2, 'Aller', 0, 'J\'aime le RGB', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-05-25', NULL, NULL, NULL, '2025-05-22', 3, 0, 5, 0, 2022, 0),
-(3, 'Retour', 0, 'pitié', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-20', NULL, '13:02:00.0000', NULL, '2025-05-22', 3, 0, 2, 0, 2022, 0),
-(4, 'Retour', 0, 'CA MARCHE BILLY', 'Wervicq-Sud', '21 Rue de Linselles,', 'Charleville-Mézières', '21 Rue de Linselles,', '2022-09-22', NULL, '17:20:00.0000', NULL, '2025-05-22', 3, 0, 30, 1, 2022, 0),
-(5, 'Aller', 0, 'test', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-24', NULL, '09:04:00.0000', NULL, '2026-05-22', 1, 0, 5, 1, 2022, 0),
-(6, 'Aller', 0, 'test', 'Charleville-Mézières', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 25, 1, 2022, 0),
-(7, 'Aller', 0, 'testv2', 'Charleville-Mézières', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 23, 0, 2022, 0),
-(8, 'Aller', 1, 'pitié', 'Charleville-Mézières', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-20', NULL, '15:24:00.0000', NULL, '2030-05-22', 3, 0, 0, 0, 2022, 0),
-(9, 'Aller', 0, '?', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-17', NULL, '16:47:00.0000', NULL, '2030-05-22', 5, 0, 11, 0, 2022, 0),
-(10, 'Aller', 0, 'zdz', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-22', NULL, '14:02:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 0),
-(11, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 0),
-(12, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 0),
-(13, 'Retour', 0, 'TestV?', 'Wervicq-Sud', '21 Rue de Linselles,', 'Charleville-Mézières', '21 Rue de Linselles,', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
-(14, 'Retour', 0, 'TestV??', 'Wervicq-Sud', '21 Rue de Linselles,', 'Charleville-Mézières', '21 Rue de Linselles,', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
-(15, 'Retour', 0, 'TestV?????', 'Wervicq-Sud', '21 Rue de Linselles,', 'Charleville-Mézières', '21 Rue de Linselles,', '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 0),
-(16, 'Retour', 0, '&lt;h1&gt;RATIO&lt;/h1&gt;', 'Wervicq-Sud', '21 Rue de Linselles,', 'Rouen', '21 Rue de Linselles,', '2022-09-29', NULL, '09:30:00.0000', NULL, '2030-05-22', 3, 0, 15, 0, 2022, 0),
-(17, 'Aller', 1, '', 'Lille', '21 Rue de Linselles,', 'Wervicq-Sud', '21 Rue de Linselles,', '2022-09-22', NULL, '11:21:00.0000', NULL, '2001-06-22', 3, 0, 0, 0, 2022, 0),
-(18, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', 'Wervicq-Sud', '21 Rue de Linselles', '2022-09-17', NULL, '14:34:00.0000', NULL, '2002-06-22', 3, 0, 25, 0, 2022, 0);
+INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `NbReservations`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
+(1, 'Aller', 0, 'fucklessymboles', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-05-25', NULL, NULL, NULL, '2025-05-22', 2, 0, 5, 0, 2022, 1),
+(2, 'Aller', 0, 'J\'aime le RGB', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-05-25', NULL, NULL, NULL, '2025-05-22', 3, 0, 5, 0, 2022, 1),
+(4, 'Retour', 0, 'CA MARCHE BILLY', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '17:20:00.0000', NULL, '2025-05-22', 3, 0, 30, 1, 2022, 1),
+(5, 'Aller', 0, 'test', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-24', NULL, '09:04:00.0000', NULL, '2026-05-22', 1, 0, 5, 1, 2022, 1),
+(6, 'Aller', 0, 'test', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 25, 1, 2022, 1),
+(7, 'Aller', 0, 'testv2', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 23, 0, 2022, 1),
+(8, 'Aller', 1, 'pitié', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-20', NULL, '15:24:00.0000', NULL, '2030-05-22', 3, 0, 0, 0, 2022, 1),
+(9, 'Aller', 0, '?', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-17', NULL, '16:47:00.0000', NULL, '2030-05-22', 5, 0, 11, 0, 2022, 1),
+(10, 'Aller', 0, 'zdz', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '14:02:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
+(11, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
+(12, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
+(13, 'Retour', 0, 'TestV?', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
+(14, 'Retour', 0, 'TestV??', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
+(15, 'Retour', 0, 'TestV?????', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
+(16, 'Retour', 0, '&lt;h1&gt;RATIO&lt;/h1&gt;', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Rouen', '21 Rue de Linselles,', 0, 0, '2022-09-29', NULL, '09:30:00.0000', NULL, '2030-05-22', 3, 0, 15, 0, 2022, 1),
+(17, 'Aller', 1, '', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '11:21:00.0000', NULL, '2001-06-22', 3, 0, 0, 0, 2022, 1),
+(18, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-17', NULL, '14:34:00.0000', NULL, '2002-06-22', 3, 0, 25, 0, 2022, 1),
+(19, 'Aller', 0, '', 'tete', 'dqsdqs', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-29', NULL, '17:49:00.0000', NULL, '2002-06-20', 3, 0, 12, 0, 2022, 17),
+(20, 'Retour', 0, '', 'Wervicq-Sud', '21 Rue de Linselles', NULL, 0, 'Lille', '41 boulevard Vauban', 0, 0, '2022-09-22', NULL, '14:25:00.0000', NULL, '2022-06-02', 1, 0, 5, 0, 2022, 17),
+(21, 'Aller', 0, 'ff', 'Charleville-Mézières', '40 avenue jean jaures', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-21', NULL, '11:29:00.0000', NULL, '2022-06-02', 4, 0, 4, 0, 2022, 17);
 
 --
 -- Index pour les tables déchargées
@@ -157,7 +163,7 @@ ALTER TABLE `compte`
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
