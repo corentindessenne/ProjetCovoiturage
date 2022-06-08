@@ -3,21 +3,31 @@
 include 'Connexion.php';
 $statusMsg = '';
 
+$mail=$_SESSION["mail"];
+$sql = "SELECT IdCompte FROM compte WHERE Email='".$mail."'" ;
+$result = $conn->query($sql);
+if ($result->num_rows >  0) {
+    // output data of each row
+    $row = $result->fetch_assoc();
+      $id=$row["IdCompte"];
+      
+}
+
 // File upload path
 $targetDir = "../images/PhotoProfil/";
 $fileName = basename($_FILES["file"]["name"]);
 $ext = pathinfo($fileName, PATHINFO_EXTENSION);    //get the extension of the file
-$fileName=$_SESSION["id"].".".$ext;
-$targetFilePath = $targetDir.$_SESSION["id"].".".$ext;  //rename the file with the account id so it deletes itself when updated in the database
+$fileName=$id.".".$ext;
+$targetFilePath = $targetDir.$id.".".$ext;  //rename the file with the account id so it deletes itself when updated in the database
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
+if(!empty($_FILES["file"]["name"])){
     // Allow certain file formats
     $allowTypes = array('jpg','png','jpeg');
     if(in_array($fileType, $allowTypes)){
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-            $request="UPDATE compte SET  PhotoProfil='".$_SESSION["id"].".".$ext."' WHERE Email='".$_SESSION["mail"]."' ";
+            $request="UPDATE compte SET  PhotoProfil='".$id.".".$ext."' WHERE Email='".$_SESSION["mail"]."' ";
             if ($conn->query($request) === TRUE) {
                 header("Location: Profil.php");
               die();

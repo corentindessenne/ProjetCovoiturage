@@ -8,6 +8,11 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+
+	<!-- Pour la PP -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" rel="stylesheet" />
     
     
 </head>
@@ -43,31 +48,61 @@ if ($result->num_rows >  0) {
       
     
   ?>
+  <h1 class="title">Ton Profil</h1>
   <div class="Compte">
-    <div class="PhotoDeProfil">
-        <img class="profile-picture" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>" alt="Ta PP" width="250" height="290">
-        <form action="PPAction.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" name="submit" value="Enregistrer l'image choisie">
-        </form>
-        
-    </div>
+  <div class="PhotoDeProfil">
+				<img class="profile-picture BigPP" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>" alt="Ta PP" width="250" height="290">
+				<form action="PPAction.php" method="post" enctype="multipart/form-data" id="ppform" class="ppform" >
+					<input type="file" name="file" class="PPbutton" id="file" style="visibility:hidden;" >
+					<label for="file" class="PPbutton"><img src="..\images\icon\camera.png" class="camera"> <br/>Change	 ta photo de profil</label>
+				
+					
+				</form>
+				<script>
+						let input = document.querySelector('input');
+
+						input.onchange = handleChange;
+						
+						function handleChange(e) {
+							
+							//alert(input.value)
+							document.forms["ppform"].submit();
+							
+						}
+				</script>
+			</div>
 
     <div class="InfosCompte">
-        <p>Nom: <?php echo $nom;?></p>
-        <p>Prenom: <?php echo $prenom;?> </p>
-        <p>Email: <?php echo $mail;?></p>
-        <p>Telephone: <?php echo $phone;?> </p>
+	
+		<div class="infop">
+			<p class="infonom infolabel">Nom</p>
+			<p class="infodonnees"> <?php echo $nom;?></p>
+		</div>
+		<div class="infop">
+        <p class="infoprenom infolabel">Prenom </p>
+		<p class="infodonnees"><?php echo $prenom;?> </p>
+		</div>
+		<div class="infop">
+        <p class="infomail infolabel">Email </p>
+		<p class="infodonnees"><?php echo $mail;?></p>
+		</div>
+		<div class="infop">
+        <p class="infotel infolabel">Telephone </p>
+		<p class="infodonnees"> <?php echo $phone;?> </p>
+		</div>
         <br/>
-        <p>Description: <?php echo $description;?> </p>
-        <a href="EditProfil.php"><input type="button" id="EditInfo" name="EditInfo" value="editer les informations de ton compte"></a>
-        <a href="EditPassword.php"><input type="button" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
+		<div class="infop">
+        <p class="infodescr infolabel">Description</p>
+		<p class="infodonnees"> <?php echo $description;?> </p>
+		</div>
+        <a href="EditProfil.php"><input type="button" class="buttoncompte" id="EditInfo" name="EditInfo" value="editer les informations de ton compte"></a>
+        <a href="EditPassword.php"><input type="button" class="buttoncompte" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
 
     </div>
     
     </div>
     <div id="Historique" >
-        <h1>Ton historique: </h1>
+        <h1 class="title">Ton historique </h1>
         <div class="ListeTrajets">
     <div id="down" class="wrapper">
 			<?php
@@ -168,16 +203,17 @@ if ($result->num_rows >  0) {
         <form class="modal-content" action="deletionAction.php" method="post">
             <div class="container">
                 <h3 style="text-align: left;">Es-tu absolument sûr ?</h3>
-                <div>Attention ! C'est très important !</div>
+                <div class="separate">Attention ! C'est très important !</div>
                 <div class="explications">
-                    <p>Nous allons effacer <strong>toutes tes demandes ainsi que tes propositions de trajet</strong></p>
+                    <p>Nous allons effacer <strong>ton compte, toutes tes demandes ainsi que tes propositions de trajet</strong></p>
+					<p class="separate">Attention cette opération est <strong>IRRÉVERSIBLE</strong></p>
                 </div>
 				
 					<p>Tape "<strong>OUI JE SUIS SUR</strong>": </p>
 					
 					<input type="text" required="required" id="Verif_1" name="Verif_1" onkeyup='check();'>
 					<br/>
-					<br/>
+					<p class="separate">                                                                             </p>
 					<script>
 						
 						var check = function() {
@@ -192,11 +228,13 @@ if ($result->num_rows >  0) {
 					
 					<label>Rentre ton mot de passe pour qu'on puisse s'assurer qu'il s'agisse bien de toi:</label>
 					<br/>
+					
+
 					<input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1">
 					
 					
 					
-					<button type="submit" class="btn" name="del_user" id="submit"><strong>SUPPRIMER MON COMPTE</strong></button>
+					<button type="submit" class="btn" name="del_user" id="submit"><strong class="strongbutton">SUPPRIMER MON COMPTE</strong></button>
 					
 				
 				

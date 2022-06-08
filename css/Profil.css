@@ -13,7 +13,8 @@ body{
     flex-direction: column;
     font-family: -Roboto;
     font-weight: light;
-    background: var(--black);
+    background-image: url("../images/bg5.png");
+    background-attachment: fixed;
     color: var(--black);
 }
 
@@ -23,33 +24,42 @@ body{
 }
 
 .Compte{
-    display: flex;
-    flex-direction: row;
+    
 }
 .InfosCompte{
+  display: flex;
+  flex-direction: column;
     margin:5%;
     padding: 5%;
     padding-left: -10%;
-    margin-left: 3%;
+    margin-left: 25%;
     border-style:hidden;
     border-radius: 20px;
+    padding-top: 0;
     width: 50%;
     text-align: left;
     height: auto;
     background: var(--white);
     color:var(--black) ;
+    position: relative;
+    bottom: 450px;
 }
 .PhotoDeProfil{
     background: var(--white);
     padding:5%;
     border-style:hidden;
     border-radius: 20px;
-    margin-left: 3%;
+    margin-left: 30%;
     padding:1%;
     display: flex;
     flex-direction: column;
-    height: 55%;
-    margin-top: 5%;
+    position: relative;
+    
+    left: 25%;
+    height: 350px;
+    width: 300px;
+    z-index: 10;
+    
 }
 input[type="button"]{
     margin-top: 5%;
@@ -236,16 +246,14 @@ button {
   background-color: var(--darkred);
   color: white;
   padding: 14px 20px;
-  border: hidden;
-  border-radius:5%;
+  border: solid --white;
+  
   width: 30%;
   position: relative;
   margin: 0;
     position: absolute;
     top: 50%;
     left:35%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 .DeleteButton {
@@ -276,7 +284,7 @@ button {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  
   backdrop-filter: blur(10px);
   padding-top: 50px;
 }
@@ -319,3 +327,134 @@ hr {
   clear: both;
   display: table;
 }
+h3{
+  text-align: center;
+  margin-left: 35%;
+}
+
+strong{
+  color: var(--red);
+}
+.strongbutton{
+  color: #fefefe  ;
+}
+.separate{
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+.title{
+  font-size: 100px;
+  margin-bottom: 20px;
+}
+
+.PhotoDeProfil{
+  position: relative;
+  
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.PhotoDeProfil:hover .ppform {
+  opacity: 1;
+}
+
+.PhotoDeProfil:hover .profile-picture {
+  opacity: .5;
+}
+
+.BigPP {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+  transform: scale(1.5);
+}
+
+.ppform {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+
+
+.fas {
+  font-size: 20px;
+}
+
+.PPbutton {
+  text-transform: uppercase;
+  font-size: 20px;
+  width: 50%;
+  margin: 0%;
+  text-align: center;
+
+  
+}
+.camera{
+  width: 50px;
+  height:45px
+
+}
+.btn{
+  margin-top:5%;
+}
+
+.infop{
+   font-size: 20px;
+   display: flex;
+   flex-direction: row;
+   
+    align-items: baseline;
+  
+}
+
+.infonom{
+  
+  margin-right: 115px;
+}
+
+.infoprenom{
+  margin-right:75px;
+}
+
+.infomail{
+  margin-right: 105px;
+}
+
+.infotel{
+  margin-right:42px;
+}
+
+.infodescr{
+  margin-right: 30px;
+}
+
+.infolabel{
+  font-size: 30px;
+ 
+}
+
+.buttoncompte{
+  position:relative;
+ 
+  background-color: var(--black);
+  border:hidden;
+  border-radius: 50px;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
