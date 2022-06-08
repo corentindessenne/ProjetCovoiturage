@@ -41,30 +41,26 @@
 				});
 
 				setTimeout(() => {
-
 					resolve("true");
-				},750);
-
+				},1500);
 			})
-
-
 		}
 	</script>
 
 	<?php 	
-		include 'Connexion.php';
+	include 'Connexion.php';
 
-        if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
-        	echo $_SESSION["role"];
-        include 'NavBar3.php';
+	if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+		echo $_SESSION["role"];
+		include 'NavBar3.php';
 
-        }
-        else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
-            include 'NavBar.php';
-        }
-        else{
-            include 'NavBar2.php';
-        }
+	}
+	else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+		include 'NavBar.php';
+	}
+	else{
+		include 'NavBar2.php';
+	}
 	?>
 
 	<div id="loader">
@@ -83,82 +79,82 @@
 					<img src="../images/icon/right-arrow 2.png">
 					<span class="location">LBR Festival</span>
 				</div>
-			
+
 				<div>
 					<span class="secondary">
 						<?php
 							//Affichage nb de passagers 
-							if($_POST['nbPlaces'] == 1){
-								echo "1 passager";
-							}
-							else echo $_POST['nbPlaces']." passagers";
-							
-							echo ", ";
+						if($_POST['nbPlaces'] == 1){
+							echo "1 passager";
+						}
+						else echo $_POST['nbPlaces']." passagers";
+
+						echo ", ";
 							//Affichage de la date au format Jour Numéro Mois 2022
-							switch (date('w', strtotime($_POST['date']))) {
-								case 0:
-									echo "Dimanche ";
-								break;
-								case 1:
-									echo "Lundi ";
-								break;
-								case 2:
-									echo "Mardi ";
-								break;
-								case 3:
-									echo "Mercredi ";
-								break;
-								case 4:
-									echo "Jeudi ";
-								break;
-								case 5:
-									echo "Vendredi ";
-								break;
-								case 6:
-									echo "Samedi ";
-								break;
-							}
-							echo date('j',strtotime($_POST['date']));
-							echo " ";
-							switch (date('F',strtotime($_POST['date']))) {
-								case "January":
-									echo "Janvier";
-								break;
-								case "February":
-									echo "Février";
-								break;
-								case "March":
-									echo "Mars";
-								break;
-								case "April":
-									echo "Avril";
-								break;
-								case "May":
-									echo "Mai";
-								break;
-								case "June":
-									echo "Juin";
-								break;
-								case "July":
-									echo "Juillet";
-								break;
-								case "August":
-									echo "Août";
-								break;
-								case "September":
-									echo "Septembre";
-								break;
-								case "October":
-									echo "Octobre";
-								break;
-								case "November":
-									echo "Novembre";
-								break;
-								case "December":
-									echo "Décembre";
-								break;
-							}
-							echo date(" Y",strtotime($_POST['date']));
+						switch (date('w', strtotime($_POST['date']))) {
+							case 0:
+							echo "Dimanche ";
+							break;
+							case 1:
+							echo "Lundi ";
+							break;
+							case 2:
+							echo "Mardi ";
+							break;
+							case 3:
+							echo "Mercredi ";
+							break;
+							case 4:
+							echo "Jeudi ";
+							break;
+							case 5:
+							echo "Vendredi ";
+							break;
+							case 6:
+							echo "Samedi ";
+							break;
+						}
+						echo date('j',strtotime($_POST['date']));
+						echo " ";
+						switch (date('F',strtotime($_POST['date']))) {
+							case "January":
+							echo "Janvier";
+							break;
+							case "February":
+							echo "Février";
+							break;
+							case "March":
+							echo "Mars";
+							break;
+							case "April":
+							echo "Avril";
+							break;
+							case "May":
+							echo "Mai";
+							break;
+							case "June":
+							echo "Juin";
+							break;
+							case "July":
+							echo "Juillet";
+							break;
+							case "August":
+							echo "Août";
+							break;
+							case "September":
+							echo "Septembre";
+							break;
+							case "October":
+							echo "Octobre";
+							break;
+							case "November":
+							echo "Novembre";
+							break;
+							case "December":
+							echo "Décembre";
+							break;
+						}
+						echo date(" Y",strtotime($_POST['date']));
 						?>
 					</span>
 				</div>
@@ -168,12 +164,10 @@
 
 	<div class="wrapper" id="wrapper">
 		<div class="left">
-			<div class="sortBy">
-				
-			</div>
-
-			<div id="map">
-				
+			<div id="map"></div>
+			<div class="info">
+				<span id="duration"></span>
+				<span id="distance"></span>
 			</div>
 		</div>
 
@@ -190,6 +184,8 @@
 				$idTrajet[$i] = $row['IdTrajet'];
 				$i++;
 
+				$idCompte = $row["IdCompte"];
+
 				$hourString1 = substr($row['HeureDepart'],0,2);
 				$hourString2 = substr($row['HeureDepart'],3,2);
 				$hourStringDeparture = $hourString1."h".$hourString2;
@@ -199,59 +195,63 @@
 				$hourString4 = substr($row['HeureArrivee'],3,2);
 				$hourStringArrival = $hourString3."h".$hourString4;
 
-					?>
+				$requete2 = "SELECT * FROM compte WHERE IdCompte=$idCompte";
+				$result2 = mysqli_query($conn,$requete);
+				$row2 = mysqli_fetch_assoc($result2);
 
-					<div class="item">
-						<div class="data-group">
-							<span class="horaire">
-								<?php echo $hourStringDeparture; ?>
-							</span>
-							<span class="place">
-								<?php echo utf8_encode($row['LieuDepart']); ?>
-							</span>
+				?>
 
-							<span class="date">
-								<?php echo utf8_encode($row['DateDepart']); ?>
-							</span>
-						</div>
+				<div class="item">
+					<div class="data-group">
+						<span class="horaire">
+							<?php echo $hourStringDeparture; ?>
+						</span>
+						<span class="place">
+							<?php echo utf8_encode($row['LieuDepart']); ?>
+						</span>
 
-						<div class="data-group">
-							<span class="horaire">
-								<?php echo $hourStringArrival; ?>
-							</span>
-							<span class="place">
-								<?php echo utf8_encode($row['LieuArrivee']); ?>
-							</span>
-
-							<span class="price">
-								<?php echo $row['Prix']; ?>€
-							</span>
-						</div>
-
-						<div class="account-info">
-							<img class="profile-picture" src="../images/adrien.jpg">
-							<div class="profile-info">
-								<span class="name">Adrien Mareel</span>
-								<div class="available">
-									<?php
-									$value = $row['NbPassagers'] - $row['NbReservations'];
-									if($value == 1) echo $value." place restante";
-									else echo $value." places restantes";
-									?>
-								</div>
-							</div>
-							
-							<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
-						</div>
+						<span class="date">
+							<?php echo utf8_encode($row['DateDepart']); ?>
+						</span>
 					</div>
 
-					<?php
-					}
-				?>
-			</div>
-		</div>
+					<div class="data-group">
+						<span class="horaire">
+							<?php echo $hourStringArrival; ?>
+						</span>
+						<span class="place">
+							<?php echo utf8_encode($row['LieuArrivee']); ?>
+						</span>
 
-		<script type="text/javascript">
+						<span class="price">
+							<?php echo $row['Prix']; ?>€
+						</span>
+					</div>
+
+					<div class="account-info">
+						<img class="profile-picture" src="../images/adrien.jpg">
+						<div class="profile-info">
+							<span class="name"><?php echo $row2['Prenom']; echo $row2['Nom']; ?>;</span>
+							<div class="available">
+								<?php
+								$value = $row['NbPassagers'] - $row['NbReservations'];
+								if($value == 1) echo $value." place restante";
+								else echo $value." places restantes";
+								?>
+							</div>
+						</div>
+
+						<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
+					</div>
+				</div>
+
+				<?php
+			}
+			?>
+		</div>
+	</div>
+
+	<script type="text/javascript">
 
 			//******distance between two coordinates******
 			function haversine_distance(mk1, mk2) {
@@ -260,23 +260,18 @@
 		      	var rlat1 = mk1.lat * (Math.PI/180); 
 		      	var rlat2 = mk2.lat * (Math.PI/180); 
 		      	var difflat = rlat2-rlat1; 
-		     	var difflon = (mk2.lng-mk1.lng) * (Math.PI/180);
+		      	var difflon = (mk2.lng-mk1.lng) * (Math.PI/180);
 
-		     	var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+		      	var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
 		      	return d;
 		    }
 
 			//******Affichage Map + trajet sur map******
 			const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
 
-			async function test(){
-				let response = await getDataFromURL();
-				return response;
-			}
-
-			test().then( (response) => {
-				
-			});
+			let trajetsHTML;
+			let distanceTrajets;
+			let coordonneesTrajets;
 
 			async function initMap(){
 
@@ -285,74 +280,74 @@
 				//******tri trajet ******
 				let trajets = document.getElementById('trajets');
 				console.log(trajets);
-				let trajetsHTML = new Array(trajets.children.length);
-				let distanceTrajets = new Array(trajets.children.length);
+				trajetsHTML = new Array(trajets.children.length);
+				distanceTrajets = new Array(trajets.children.length);
+				coordonneesTrajets = new Array(trajets.children.length);
 
 				for (let i = 0; i < trajets.children.length;i++){
 					trajetsHTML[i] = trajets.children[i];
 				}
 				let tmpObj;
+				let loopValue = <?php echo $i; ?>;
+				<?php
 
-					<?php
+				for ($a = 0; $a < $i ; $a++){
 
-						for ($a = 0; $a < $i ; $a++){
-						
-							$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
-							
+					$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
 
-							$result = mysqli_query($conn,$requete);
-							$row = mysqli_fetch_assoc($result);
-							?>
-								
-								tmpObj = {lat : <?php echo $row['LatitudeDepart'] ?>, lng: <?php echo $row['LongitudeDepart'] ?>};
-								distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
-							<?php
-						}
+
+					$result = mysqli_query($conn,$requete);
+					$row = mysqli_fetch_assoc($result);
 					?>
 
+					tmpObj = {lat : <?php echo $row['LatitudeDepart'] ?>, lng: <?php echo $row['LongitudeDepart'] ?>};
+					coordonneesTrajets[<?php echo $a; ?>] = tmpObj;
+					distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
+					<?php
+				}
+				?>
+
 				trajets.innerHTML = "";
-				console.log(distanceTrajets);
+				console.log("distance trajet",distanceTrajets);
+				console.log("coordonneesTrajets",coordonneesTrajets);
 
 				let min;
-				let indexMin = 1;
+				let indexMin;
+				let indexOrdre = new Array();
 
-				for(let i = 0 ; i < 3;i++){
+				for(let i = 0 ; i < loopValue;i++){
 					min = 1000;
 
-					for (let a = 0; a < 3;a++){
+					for (let a = 0; a < loopValue;a++){
 						if(distanceTrajets[a] < min) {
 							min = distanceTrajets[a];
 							indexMin = a;
-							console.log(distanceTrajets[a]);
-							console.log("changement de valeur");
 						}
 					}
-					console.log(trajetsHTML[indexMin])
-					distanceTrajets[indexMin] = 9000;
+					indexOrdre.push(indexMin);
+					distanceTrajets[indexMin] = 100000;
 					trajets.appendChild(trajetsHTML[indexMin]);
 				}
 
-				/*
+				console.log("index ordre",indexOrdre);
 
 				let mapOptions = {
 					center : WerwicqSud,
 					zoom : 8
 				};
 
-
 				let map = new google.maps.Map(document.getElementById("map"),mapOptions);
-
-				console.log("fin affichage map");
-
-				console.log(response);
-
-				console.log("début affichage trajet");
 
 				let directionsService = new google.maps.DirectionsService();
 
 				let directionsDisplay = new google.maps.DirectionsRenderer();
 
 				directionsDisplay.setMap(map);
+
+				queryCoord.lng = coordonneesTrajets[indexOrdre[0]].lng;
+				queryCoord.lat = coordonneesTrajets[indexOrdre[0]].lat;
+				console.log(document.getElementById('trajets'));
+				document.getElementById("trajets").children[0].classList.add("active");
 
 				var request = {
 					origin : queryCoord,
@@ -380,11 +375,51 @@
 					}
 				});
 
-				*/
-
 				document.getElementById("loader").style.display = "none";
 				document.getElementById('wrapper').style.display = "flex";
+
+			//update map on click 
+			let node = document.getElementById("trajets").children;
+			loopValue = <?php echo $i; ?>;
+			for (let i = 0; i < loopValue ; i++){
+				node[i].addEventListener('click', () => {
+					
+					//remove class
+					for (let a = 0; a < loopValue ; a++){
+						node[a].classList.remove('active');
+					}
+
+					//add class
+					node[i].classList.add("active");
+
+					console.log(coordonneesTrajets[indexOrdre[i]].lat);
+					queryCoord.lat = coordonneesTrajets[indexOrdre[i]].lat;
+					queryCoord.lng = coordonneesTrajets[indexOrdre[i]].lng;
+
+					var request = {
+						origin : queryCoord,
+						destination : WerwicqSud,
+						travelMode : google.maps.TravelMode.DRIVING,
+						unitSystem : google.maps.UnitSystem.IMPERIAL,
+					}
+
+					directionsService.route(request, (result,status) => {
+						if (status == "OK"){
+							document.getElementById("duration").innerHTML = result.routes[0].legs[0].duration.text;
+							document.getElementById("distance").innerHTML = result.routes[0].legs[0].distance.value / 1000 + " km";
+
+							directionsDisplay.setDirections(result);
+						}
+
+						else{
+							directionsDisplay.setDirections( {routes : []} );
+							console.log("Erreur dans l'affichage du trajet ");
+						}
+					});
+
+				});
 			}
+		}
 
 		</script>
 	</body>

@@ -10,8 +10,6 @@ body{
 	transform: rotate(-45deg);
 	position: absolute;
 	animation: travel 5s cubic-bezier(.37,1.9,.19,.74);
-	top: 0vh;
-	left: 0vw;
 	width: 10%;
 	z-index: 3;
 	transform: translate(85vw,30vh) rotate(-45deg);

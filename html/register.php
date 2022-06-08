@@ -35,7 +35,7 @@
     </div>
   	<div class="input-group">
   	  <label>Email </label>
-  	  <input type="email" required="required" name="email" placeholder="Email" value="<?php echo $email; ?>">
+  	  <input type="email" required="required" name="email" placeholder="Email">
   	</div>
     <div class="input-group">
       <label>Numéro de téléphone</label>
