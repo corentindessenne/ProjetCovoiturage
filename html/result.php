@@ -24,6 +24,7 @@
 	<script type="text/javascript">
 		let query = "<?php echo $_POST['lieu'] ?>";
 		console.log(query);
+		let idTrajetTab = new Array();
 
 		let queryCoord = {lat : 0, lng : 0};
 
@@ -42,9 +43,11 @@
 				setTimeout(() => {
 
 					resolve("true");
-				},2000);
+				},750);
 
 			})
+
+
 		}
 	</script>
 
@@ -174,12 +177,18 @@
 			</div>
 		</div>
 
-		<div class="right">
+		<div class="right" id="trajets">
+
 			<?php
-			$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0";
+			$i=0;
+			$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
 			$result = mysqli_query($conn,$requete);
 
-			while ($row = mysqli_fetch_assoc($result)) {
+			$num_rows = mysqli_num_rows($result);
+
+			while ($row = mysqli_fetch_assoc($result)){
+				$idTrajet[$i] = $row['IdTrajet'];
+				$i++;
 
 				$hourString1 = substr($row['HeureDepart'],0,2);
 				$hourString2 = substr($row['HeureDepart'],3,2);
@@ -237,12 +246,27 @@
 					</div>
 
 					<?php
-				}
+					}
 				?>
 			</div>
 		</div>
 
 		<script type="text/javascript">
+
+			//******distance between two coordinates******
+			function haversine_distance(mk1, mk2) {
+
+		      	var R = 6371; //meters 
+		      	var rlat1 = mk1.lat * (Math.PI/180); 
+		      	var rlat2 = mk2.lat * (Math.PI/180); 
+		      	var difflat = rlat2-rlat1; 
+		     	var difflon = (mk2.lng-mk1.lng) * (Math.PI/180);
+
+		     	var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+		      	return d;
+		    }
+
+			//******Affichage Map + trajet sur map******
 			const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
 
 			async function test(){
@@ -251,13 +275,64 @@
 			}
 
 			test().then( (response) => {
-				console.log("ça marche !");
-				console.log(response);
+				
 			});
 
 			async function initMap(){
 
 				let response = await getDataFromURL();
+
+				//******tri trajet ******
+				let trajets = document.getElementById('trajets');
+				console.log(trajets);
+				let trajetsHTML = new Array(trajets.children.length);
+				let distanceTrajets = new Array(trajets.children.length);
+
+				for (let i = 0; i < trajets.children.length;i++){
+					trajetsHTML[i] = trajets.children[i];
+				}
+				let tmpObj;
+
+					<?php
+
+						for ($a = 0; $a < $i ; $a++){
+						
+							$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
+							
+
+							$result = mysqli_query($conn,$requete);
+							$row = mysqli_fetch_assoc($result);
+							?>
+								
+								tmpObj = {lat : <?php echo $row['LatitudeDepart'] ?>, lng: <?php echo $row['LongitudeDepart'] ?>};
+								distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
+							<?php
+						}
+					?>
+
+				trajets.innerHTML = "";
+				console.log(distanceTrajets);
+
+				let min;
+				let indexMin = 1;
+
+				for(let i = 0 ; i < 3;i++){
+					min = 1000;
+
+					for (let a = 0; a < 3;a++){
+						if(distanceTrajets[a] < min) {
+							min = distanceTrajets[a];
+							indexMin = a;
+							console.log(distanceTrajets[a]);
+							console.log("changement de valeur");
+						}
+					}
+					console.log(trajetsHTML[indexMin])
+					distanceTrajets[indexMin] = 9000;
+					trajets.appendChild(trajetsHTML[indexMin]);
+				}
+
+				/*
 
 				let mapOptions = {
 					center : WerwicqSud,
@@ -305,9 +380,10 @@
 					}
 				});
 
+				*/
+
 				document.getElementById("loader").style.display = "none";
 				document.getElementById('wrapper').style.display = "flex";
-
 			}
 
 		</script>
