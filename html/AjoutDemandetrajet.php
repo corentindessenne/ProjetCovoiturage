@@ -9,17 +9,7 @@
 <body>
 <?php
 include 'Connexion.php';
-if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
-    echo $_SESSION["role"];
-include 'NavBar3.php';
-
-}
-else if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
-    include 'NavBar.php';
-}
-else{
-    include 'NavBar2.php';
-}
+include 'NavbarConn.php';
 if(isset($_SESSION["mail"])){
 ?>
 
