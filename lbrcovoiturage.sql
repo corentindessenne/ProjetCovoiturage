@@ -1,34 +1,25 @@
--- phpMyAdmin SQL Dump
--- version 5.1.2
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost:3306
--- Généré le : mar. 07 juin 2022 à 13:13
--- Version du serveur : 5.7.24
--- Version de PHP : 8.0.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `lbrcovoiturage`
---
-
+-- --------------------------------------------------------
+-- Hôte:                         127.0.0.1
+-- Version du serveur:           5.7.33 - MySQL Community Server (GPL)
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             11.2.0.6213
 -- --------------------------------------------------------
 
---
--- Structure de la table `compte`
---
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE `compte` (
-  `IdCompte` int(10) NOT NULL,
+
+-- Listage de la structure de la base pour lbrcovoiturage
+CREATE DATABASE IF NOT EXISTS `lbrcovoiturage` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `lbrcovoiturage`;
+
+-- Listage de la structure de la table lbrcovoiturage. compte
+CREATE TABLE IF NOT EXISTS `compte` (
+  `IdCompte` int(10) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(40) DEFAULT NULL,
   `Prenom` varchar(40) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
@@ -38,33 +29,20 @@ CREATE TABLE `compte` (
   `PhotoProfil` mediumblob,
   `Description` text,
   `isVerif` tinyint(1) NOT NULL DEFAULT '0',
-  `DateCreation` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `DateCreation` date DEFAULT NULL,
+  PRIMARY KEY (`IdCompte`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `compte`
---
+-- Listage des données de la table lbrcovoiturage.compte : ~2 rows (environ)
+/*!40000 ALTER TABLE `compte` DISABLE KEYS */;
+REPLACE INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`) VALUES
+	(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2001-06-22'),
+	(2, 'Mareel', 'Adrien', 'mareel.adri@yahoo.com', 632618822, '$2y$10$pieQUxNFR3bSoDW49phK8OAgxaz6.iwSxUHTyggcVWAW7mxZFVWry', 0, _binary 0x2E6A7067, '', 0, '2022-06-08');
+/*!40000 ALTER TABLE `compte` ENABLE KEYS */;
 
-INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`) VALUES
-(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2001-06-22'),
-(2, 'dsd', 'dsd', 'dsd@d', 1111111111, 'Testv3@test', 0, NULL, 'ds', 0, '2001-06-22'),
-(3, 'zdzez', 'ezezeze', 'zezez@ezez', 1111111111, 'TestV4@test', 0, NULL, '', 0, '2001-06-22'),
-(4, 'sds', 'sd', 'sd@sds', 1111111111, '$2y$10$wifG1peUi3i5SkXGIjW.zOcqSTDSKlsXFCeTkcfCnArHlLzxKWhvu', 0, NULL, '', 0, '2001-06-22'),
-(9, 'Test', 'Ayuu', 'azerty@qsd', 1111111111, '$2y$10$tXXrCjBNpqVHcYtkCGYhi.k/vIxePAaywMghZZCNRm4bvVXgb6C0y', 0, NULL, 'petit test', 0, '2001-06-22'),
-(10, 'test2', 'Ayuu', 'qwerty@aze', 1111111111, '$2y$10$e767oV44p68Woi9DKerdK.VjZZkMC9vpNAvsdrSr1jRQexBrQGvq6', 0, NULL, 'petit test', 0, '2001-06-22'),
-(11, 'QSDQS', 'QSDQSD', 'sdsqdq@dqsd', 1111111111, '$2y$10$7nu5QsXtE.L1JoR9cCWvHejy1jdOjRw5ApIx8doVibcchO6NuI8KO', 0, NULL, '', 0, '2001-06-22'),
-(14, 'test', 'test', 'test@aled', 1111111111, '$2y$10$TcAMAlZz8GN6wR0YYauvVuCpnH2pTbC.m6IMm2kprfkN6hmPkDtHS', 0, NULL, '', 0, '2001-06-22'),
-(15, 'test', 'test', 'test@test', 1111111111, '$2y$10$zG4D342C77FzV9L9Uv5X3uSrovQXrpGHdRZRNCS1j91ehVS/PSL/i', 0, NULL, '', 0, '2002-06-22'),
-(17, 'Pinateau', 'Sabine', 'Sabine@pineau.fr', 652806325, '$2y$10$8MKUrpDp4l5HmJyF.FVBDuTytY9IMjp6sigGvjqapbEt7/IkNuStm', 0, 0x31372e6a7067, ' Smurfing from high rank', 0, '2002-06-22'),
-(18, 'qdsqd', 'qsd', 'qsd@dq', 312345678, '$2y$10$rXkDcSWJ.NHSrLJYwalEAeuhj3j18DYm5aGTJIp3p1g.LRPwX2pRq', 0, NULL, '', 0, '2002-06-22');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `edition`
---
-
-CREATE TABLE `edition` (
+-- Listage de la structure de la table lbrcovoiturage. edition
+CREATE TABLE IF NOT EXISTS `edition` (
   `AnnéeEdition` int(10) NOT NULL,
   `DateDebut` date NOT NULL,
   `DateFin` date NOT NULL,
@@ -74,14 +52,13 @@ CREATE TABLE `edition` (
   `Description` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Listage des données de la table lbrcovoiturage.edition : ~0 rows (environ)
+/*!40000 ALTER TABLE `edition` DISABLE KEYS */;
+/*!40000 ALTER TABLE `edition` ENABLE KEYS */;
 
---
--- Structure de la table `trajet`
---
-
-CREATE TABLE `trajet` (
-  `IdTrajet` int(10) NOT NULL,
+-- Listage de la structure de la table lbrcovoiturage. trajet
+CREATE TABLE IF NOT EXISTS `trajet` (
+  `IdTrajet` int(10) NOT NULL AUTO_INCREMENT,
   `TypeTrajet` varchar(50) NOT NULL,
   `isDemande` tinyint(1) DEFAULT NULL,
   `Description` varchar(255) NOT NULL DEFAULT '',
@@ -99,74 +76,24 @@ CREATE TABLE `trajet` (
   `HeureArrivee` time(4) DEFAULT NULL,
   `DateAjout` date NOT NULL,
   `NbPassagers` int(10) NOT NULL,
-  `NbReservations` int(10) NOT NULL DEFAULT '0',
+  `PlacesRestantes` int(10) NOT NULL DEFAULT '0',
   `Prix` int(10) NOT NULL DEFAULT '0',
   `DisplayTel` tinyint(1) DEFAULT NULL,
   `AnneeEdition` int(10) NOT NULL,
-  `IdCompte` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `IdCompte` int(10) NOT NULL,
+  PRIMARY KEY (`IdTrajet`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `trajet`
---
+-- Listage des données de la table lbrcovoiturage.trajet : ~4 rows (environ)
+/*!40000 ALTER TABLE `trajet` DISABLE KEYS */;
+REPLACE INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `PlacesRestantes`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
+	(1, 'Aller', 0, '', 'Marcq-en-Baroeul', '15 Avenue Foch,Marcq-en-Baroeul', 3.10186, 50.6675, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '16:00:00.0000', '16:20:00.0000', '2022-06-07', 4, 4, 3, NULL, 2022, 1),
+	(2, 'Aller', 0, '', 'Lille', '21 Rue de Linselles,', 3.05726, 50.6292, 'Wervicq-Sud', '21 Rue de Linselles,', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '16:47:00.0000', '11:32:46.0000', '2030-05-22', 5, 5, 11, 0, 2022, 4),
+	(3, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', 4.7261, 49.7621, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '14:34:00.0000', '11:32:47.0000', '2002-06-22', 3, 3, 25, 0, 2022, 3),
+	(4, 'Aller', 0, '', 'Paris', 'Place de l\'étoile', 2.35222, 48.8566, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '15:11:00.0000', '14:17:14.0000', '2022-06-07', 5, 5, 5, 0, 2022, 2);
+/*!40000 ALTER TABLE `trajet` ENABLE KEYS */;
 
-INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `NbReservations`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
-(1, 'Aller', 0, '', 'Marcq-en-Baroeul', '15 Avenue Foch,Marcq-en-Baroeul', 3.10186, 50.6675, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-23', '2022-09-23', '16:00:00.0000', '16:20:00.0000', '2022-06-07', 4, 0, 3, NULL, 2022, 1),
-(5, 'Aller', 0, 'test', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-24', NULL, '09:04:00.0000', NULL, '2026-05-22', 1, 0, 5, 1, 2022, 1),
-(6, 'Aller', 0, 'test', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 25, 1, 2022, 1),
-(7, 'Aller', 0, 'testv2', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '10:15:00.0000', NULL, '2030-05-22', 4, 0, 23, 0, 2022, 1),
-(8, 'Aller', 1, 'pitié', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-20', NULL, '15:24:00.0000', NULL, '2030-05-22', 3, 0, 0, 0, 2022, 1),
-(9, 'Aller', 0, '?', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-17', NULL, '16:47:00.0000', NULL, '2030-05-22', 5, 0, 11, 0, 2022, 1),
-(10, 'Aller', 0, 'zdz', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '14:02:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
-(11, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
-(12, 'Aller', 0, 'zfdqfq', 'Charleville-Mézières', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-21', NULL, '13:03:00.0000', NULL, '2030-05-22', 2, 0, 4, 0, 2022, 1),
-(13, 'Retour', 0, 'TestV?', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
-(14, 'Retour', 0, 'TestV??', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
-(15, 'Retour', 0, 'TestV?????', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Charleville-Mézières', '21 Rue de Linselles,', 0, 0, '2022-09-27', NULL, '18:00:00.0000', NULL, '2030-05-22', 1, 0, 27, 0, 2022, 1),
-(16, 'Retour', 0, '&lt;h1&gt;RATIO&lt;/h1&gt;', 'Wervicq-Sud', '21 Rue de Linselles,', NULL, 0, 'Rouen', '21 Rue de Linselles,', 0, 0, '2022-09-29', NULL, '09:30:00.0000', NULL, '2030-05-22', 3, 0, 15, 0, 2022, 1),
-(17, 'Aller', 1, '', 'Lille', '21 Rue de Linselles,', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles,', 0, 0, '2022-09-22', NULL, '11:21:00.0000', NULL, '2001-06-22', 3, 0, 0, 0, 2022, 1),
-(18, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-17', NULL, '14:34:00.0000', NULL, '2002-06-22', 3, 0, 25, 0, 2022, 1),
-(19, 'Aller', 0, '', 'tete', 'dqsdqs', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-29', NULL, '17:49:00.0000', NULL, '2002-06-20', 3, 0, 12, 0, 2022, 17),
-(20, 'Retour', 0, '', 'Wervicq-Sud', '21 Rue de Linselles', NULL, 0, 'Lille', '41 boulevard Vauban', 0, 0, '2022-09-22', NULL, '14:25:00.0000', NULL, '2022-06-02', 1, 0, 5, 0, 2022, 17),
-(21, 'Aller', 0, 'ff', 'Charleville-Mézières', '40 avenue jean jaures', NULL, 0, 'Wervicq-Sud', '21 Rue de Linselles', 0, 0, '2022-09-21', NULL, '11:29:00.0000', NULL, '2022-06-02', 4, 0, 4, 0, 2022, 17),
-(22, 'Retour', 0, 'test again', 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, 'test', 'test', 3.1134, 50.7364, '2022-09-19', NULL, '13:30:00.0000', NULL, '2022-06-07', 3, 0, 10, 0, 2022, 17),
-(23, 'Aller', 0, '', 'aeaze', 'eaeaz', 3.1134, 50.7364, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-18', NULL, '13:30:00.0000', NULL, '2022-06-07', 5, 0, 5, 0, 2022, 17),
-(24, 'Aller', 0, '', 'test', 'test', 3.1134, 50.7364, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', NULL, '15:11:00.0000', NULL, '2022-06-07', 5, 0, 5, 0, 2022, 17);
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `compte`
---
-ALTER TABLE `compte`
-  ADD PRIMARY KEY (`IdCompte`),
-  ADD UNIQUE KEY `Email` (`Email`);
-
---
--- Index pour la table `trajet`
---
-ALTER TABLE `trajet`
-  ADD PRIMARY KEY (`IdTrajet`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `compte`
---
-ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT pour la table `trajet`
---
-ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-COMMIT;
-
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

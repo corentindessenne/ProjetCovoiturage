@@ -234,9 +234,9 @@
 							<span class="name"><?php echo $row2['Prenom']; echo $row2['Nom']; ?>;</span>
 							<div class="available">
 								<?php
-								$value = $row['NbPassagers'] - $row['NbReservations'];
-								if($value == 1) echo $value." place restante";
-								else echo $value." places restantes";
+									$value = $row['PlacesRestantes'];
+									if($value == 1) echo $value." place restante";
+									else echo $value." places restantes";
 								?>
 							</div>
 						</div>
