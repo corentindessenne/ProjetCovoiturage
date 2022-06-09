@@ -1,85 +1,119 @@
-:root {
-    --accent: #04da97;
-    --border-width: 6px;
-    --border-radius: 55px;
-    --font-size: 30px;
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    background-color: #333;
-    font-family: sans-serif;
+
+nav{
+  display: flex;
+  background-color: lightpink;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  font-family: 'Roboto',sans-serif;
 }
 
-.container {
-    perspective: 800px;
+nav .logo a{
+  display: flex;
+  align-items: center;
+  position: relative;
+  left : 10px;
 }
 
-.toggle {
-    position: relative;
-    border: solid var(--border-width) var(--accent);
-    border-radius: var(--border-radius);
-    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
-    transform-style: preserve-3d;
-    perspective: 800px;
+nav .logo img{
+  height: 10vh;
 }
 
-.toggle>input[type="radio"] {
-    display: none;
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
 }
 
-.toggle>#choice1:checked~#flap {
-    transform: rotateY(-180deg);
+.nav-links li{
+  list-style: none;
 }
 
-.toggle>#choice1:checked~#flap>.content {
-    transform: rotateY(-180deg);
+.nav-links a{
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.toggle>#choice2:checked~#flap {
-    transform: rotateY(0deg);
+
+.burger{
+  display: none;
+  cursor: pointer;
 }
 
-.toggle>label {
-    display: inline-block;
-    min-width: 170px;
-    padding: 30px;
-    font-size: var(--font-size);
-    text-align: center;
-    color: var(--accent);
-    cursor: pointer;
+.burger div{
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s ease;
 }
 
-.toggle>label,
-.toggle>#flap {
-    font-weight: bold;
-    text-transform: capitalize;
+
+
+@media screen and (max-width: 1024px){
+  .nav-links{
+  width: 60%;
+}
 }
 
-.toggle>#flap {
+@media screen and (max-width: 768px){
+  body{
+    overflow-x: hidden;
+  }    
+  .nav-links{
     position: absolute;
-    top: calc( 0px - var(--border-width));
-    left: 50%;
-    height: calc(100% + var(--border-width) * 2);
-    width: 50%;
+    right: 0px;
+    height: 90vh;
+    top: 10vh;
+    background-color: lightpink;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: var(--font-size);
-    background-color: var(--accent);
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    transform-style: preserve-3d;
-    transform-origin: left;
-    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+  .nav-links li{
+    opacity: 0;
+  }
+  .burger{
+    display: block;
+    position: absolute;
+    right: 10px;
+  }
 }
 
-.toggle>#flap>.content {
-    color: #333;
-    transition: transform 0s linear .25s;
-    transform-style: preserve-3d;
+.nav-active{
+  transform: translateX(0%);
+}
+
+
+
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+
+.toggle .line1{
+  transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+  opacity: 0;
+}
+.toggle .line3{
+  transform: rotate(45deg) translate(-5px, -6px);
 }

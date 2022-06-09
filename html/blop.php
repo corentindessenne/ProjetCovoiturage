@@ -4,70 +4,64 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/blob.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<title></title>
 </head>
 <body>
-
-
-
-<div class="container">
-
-        <form class="toggle">
-
-            <input type="radio" id="choice1" name="choice" value="creative">
-            <label for="choice1">Speed</label>
-
-            <input type="radio" id="choice2" name="choice" value="productive">
-            <label for="choice2">Quality</label>
-
-            <div id="flap"><span class="content">productive</span></div>
-
-        </form>
-
-</div>
-
-
-
-
-
-
-
-<script type="text/javascript">
-	const st = {};
-
-st.flap = document.querySelector('#flap');
-st.toggle = document.querySelector('.toggle');
-
-st.choice1 = document.querySelector('#choice1');
-st.choice2 = document.querySelector('#choice2');
-
-st.flap.addEventListener('transitionend', () => {
-
-    if (st.choice1.checked) {
-        st.toggle.style.transform = 'rotateY(-15deg)';
-        setTimeout(() => st.toggle.style.transform = '', 400);
-    } else {
-        st.toggle.style.transform = 'rotateY(15deg)';
-        setTimeout(() => st.toggle.style.transform = '', 400);
-    }
-
-})
-
-st.clickHandler = (e) => {
-
-    if (e.target.tagName === 'LABEL') {
-        setTimeout(() => {
-            st.flap.children[0].textContent = e.target.textContent;
-        }, 250);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
-});
-
-document.addEventListener('click', (e) => st.clickHandler(e));
-</script>
+    <nav>
+        <div class="logo">
+            <a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
+        </div>  
+        <ul class="nav-links">
+            <li>
+                <a href="TousLesTrajets.php">Les trajets</a>
+            </li>
+            <li>
+                <a href="register.php">S'inscrire</a>
+            </li>
+            <li>
+               <a href="login.php">Se connecter</a>
+            </li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>   
+        </div>
+    </nav>
 
 </body>
+
+<script type="text/javascript">
+
+
+const navSlide = () =>{
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const navLinks = document.querySelectorAll('.nav-links li')
+
+
+burger.addEventListener('click', () =>{
+    nav.classList.toggle('nav-active')
+
+
+    navLinks.forEach((link,index) =>{
+    if (link.style.animation) {
+        link.style.animation = '';
+    } else{
+        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
+    }
+
+});
+
+    burger.classList.toggle('toggle');
+});
+}
+
+
+
+navSlide(); 
+
+</script>
+
 </html>
