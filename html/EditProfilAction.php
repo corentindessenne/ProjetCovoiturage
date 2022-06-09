@@ -10,12 +10,13 @@
 
 <?php
 include 'Connexion.php';
-$sql = "SELECT motDePasse FROM compte WHERE Email='".$_SESSION["mail"]."'" ;
+$sql = "SELECT motDePasse, IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'" ;
     $result = $conn->query($sql);
     if ($result->num_rows >  0) {
       // output data of each row
       $row = $result->fetch_assoc();
         $hashedpassword=$row["motDePasse"];
+        $id=$row["IdCompte"];
     }
     else{?>
         <script type="text/javascript">
@@ -40,7 +41,7 @@ if(password_verify($_POST["password_1"],$hashedpassword)){
     if ($result->num_rows >  0) {
       // output data of each row
       while ($row = mysqli_fetch_assoc($result)){
-          if($row["Email"]==$mail){
+          if($row["Email"]==$mail && $mail!=$_SESSION["mail"]){
             ?>
             <script type="text/javascript">
                 alert("Cette adresse mail est déjà utilisée");
@@ -60,9 +61,12 @@ if(password_verify($_POST["password_1"],$hashedpassword)){
       die();
     }
 
-
-
-    $request="UPDATE compte SET Nom='".$nom."', Prenom='".$prenom."',Email='".$mail."',telephone= '".$phone."', Description='".$_POST["Description"]."' WHERE IdCompte=".$_SESSION["id"]."";
+if($mail==$_SESSION["mail"]){
+  $request="UPDATE compte SET Nom='".$nom."', Prenom='".$prenom."',telephone= '".$phone."', Description='".$_POST["Description"]."' WHERE IdCompte=".$id."";
+}
+else{
+  $request="UPDATE compte SET Nom='".$nom."', Prenom='".$prenom."',Email='".$mail."',telephone= '".$phone."', Description='".$_POST["Description"]."' WHERE IdCompte=".$id."";
+}
     
     if ($conn->query($request) === TRUE) {
         $_SESSION["mail"]=$mail;

@@ -1,3 +1,13 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
 .AllerRetour{
     display: flex;
     flex-direction: row;
@@ -16,9 +26,27 @@ input[type="submit"]{
 }
 input[type="radio"]{
     margin-top: 2.25%;
-    margin-left: 5%;
+    margin-left: 2%;
 }
 label{
     text-align: top;
     padding: 2%;
+}
+
+.deletebutton {
+    
+	
+    background-color: var(--darkred) !important;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 30px !important; 
+
+}
+
+.deletebutton:hover{
+    background-color: var(--red) !important;
+}
+
+.deleteform{
+    all: unset;
 }

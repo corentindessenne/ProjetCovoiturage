@@ -19,6 +19,7 @@ if ($result->num_rows >  0) {
             </script>
           <?php
           die();
+        
   }
 
 if(password_verify($_POST["password_1"],$hashedpassword)){

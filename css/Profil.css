@@ -256,18 +256,23 @@ button {
     left:35%;
 }
 
-.DeleteButton {
+.DeleteButtondiv {
     height: 200px;
     position: relative;
     border: hidden;
   }
-  
 
+
+  .ButtonDelete:hover{
+    background-color: var(--red);
+  }
+  
+  .btn:hover{
+    background-color: var(--red);
+  }
 
 /* Add a color to the delete button */
-.deletebtn {
-  background-color: #f44336;
-}
+
 
 /* Add padding and center-align text to the container */
 .container {
@@ -408,6 +413,7 @@ strong{
 }
 .btn{
   margin-top:5%;
+  background-color: var(--darkred);
 }
 
 .infop{
@@ -456,5 +462,22 @@ strong{
   text-align: center;
   width: 100%;
   font-size: 20px;
+}
+
+.buttoncompte:hover{
+  background-color: var(--navy);
+}
+.delbutton {
+    
+	
+  background-color: var(--darkred) !important;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 30px !important; 
+
+}
+
+.delbutton:hover{
+  background-color: var(--red) !important;
 }
 

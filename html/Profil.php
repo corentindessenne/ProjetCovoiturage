@@ -20,8 +20,8 @@
 <body>
 <?php   
         include 'Connexion.php';
-        if (!(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] === true) {
-
+		if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+        	//echo $_SESSION["role"];
         include 'NavBar3.php';
 
         }
@@ -164,7 +164,7 @@ if ($result->num_rows >  0) {
 								<span class="name"><?php echo $row2["Prenom"] ?></span>
 								<div class="available">
 									<?php
-										$value = $row['NbPassagers'] - $row['NbReservations'];
+										$value = $row['NbPassagers'] - $row['PlacesRestantes'];
 										if($value == 1) echo $value." place restante";
 										else echo $value." places restantes"
 									?>
@@ -184,6 +184,15 @@ if ($result->num_rows >  0) {
 							<?php  if($row["isDemande"]==0){ ?><input type="hidden" name="Prix" value="<?php echo $row["Prix"]; ?>"></input><?php } ?>
 							<input type="submit" class="book" class="button" value="Modifier"></input>
 						</form></div>
+						<div class="book-container">
+								<form class="deleteform" method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">	
+									<input type="hidden" name="IdTrajet" value="<?php echo $row["IdTrajet"];?>">
+									<input type="hidden" name="IdCompte" value="<?php echo $row["IdCompte"];?>">
+									<input type="hidden" name="Location" value="Profil.php">		
+									<input type="submit" class="delbutton" value="Supprimer le trajet">
+								</form>
+							</div>
+						
 						</div>
 					</div>
 
@@ -194,8 +203,8 @@ if ($result->num_rows >  0) {
     </div>
     </div>
 
-    <div class="DeleteButton" id="DeleteButton">
-        <button onclick="document.getElementById('confirmDeletion').style.display='block'">Supprimer ton compte</button>
+    <div class="DeleteButtondiv" id="DeleteButton">
+        <button class="ButtonDelete" onclick="document.getElementById('confirmDeletion').style.display='block'">Supprimer ton compte</button>
     </div>
 
     <div id="confirmDeletion" class="modal">

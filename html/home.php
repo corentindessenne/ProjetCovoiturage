@@ -222,7 +222,7 @@
 								<span class="name">Adrien Mareel</span>
 								<div class="available">
 									<?php
-										$value = $row['NbPassagers'] - $row['NbReservations'];
+										$value = $row['NbPassagers'] - $row['PlacesRestantes'];
 										if($value == 1) echo $value." place restante";
 										else echo $value." places restantes"
 									?>

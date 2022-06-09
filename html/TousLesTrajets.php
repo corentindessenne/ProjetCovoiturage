@@ -16,7 +16,7 @@
     <?php
           include 'Connexion.php';
 		  if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
-        	echo $_SESSION["role"];
+        	//echo $_SESSION["role"];
         include 'NavBar3.php';
 
         }
@@ -42,6 +42,8 @@
             <input type="radio" required="required" name="AllerRetour" value="Proposition" id="Proposition"><label for="Proposition" class="AllerRetour">Proposition</label>
             <input type="radio" required="required" name="AllerRetour" value="DepartImm" id="DepartImm"><label for="DepartImm" class="AllerRetour">Départ Immédiat</label>
             <input type="radio" required="required" name="AllerRetour" value="Departlate" id="Departlate"><label for="Departlate" class="AllerRetour">Départ tardif</label>
+			<input type="radio" required="required" name="AllerRetour" value="Sale" id="Sale"><label for="Sale" class="AllerRetour">Prix le moins cher</label>
+			<input type="radio" required="required" name="AllerRetour" value="Cher" id="Cher"><label for="Cher" class="AllerRetour">Prix le plus cher</label>
             <input type="submit" name="send" id="send" value="jeSaisPasQuoiMettre">
         </div>
     </form>
@@ -82,6 +84,19 @@
 						$sens="DESC";
 						$where="";
 						break;
+					
+					case "Sale":
+						$order="Prix"; //j'utilise order de manière différente pour faciliter l'écriture de la requete ici
+						$sens="ASC";
+						$where="";
+						break;
+
+					case "Cher":
+						$order="Prix"; //j'utilise order de manière différente pour faciliter l'écriture de la requete ici
+						$sens="DESC";
+						$where="";
+						break;
+
 					default:	
 						$order="IdTrajet";
 						$sens="DESC";
@@ -150,7 +165,7 @@
 								<span class="name"><?php echo $row2["Prenom"] ?></span>
 								<div class="available">
 									<?php
-										$value = $row['NbPassagers'] - $row['NbReservations'];
+										$value = $row['NbPassagers'] - $row['PlacesRestantes'];
 										if($value == 1) echo $value." place restante";
 										else echo $value." places restantes"
 									?>
@@ -158,6 +173,16 @@
 							</div>
 							
 							<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
+							<?php if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){ ?>
+							<div class="book-container">
+								<form class="deleteform" method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">	
+									<input type="hidden" name="IdTrajet" value="<?php echo $row["IdTrajet"];?>">
+									<input type="hidden" name="IdCompte" value="<?php echo $row["IdCompte"];?>">
+									<input type="hidden" name="Location" value="TousLesTrajets.php">		
+									<input type="submit" class="deletebutton" value="Supprimer le trajet">
+								</form>
+							</div>
+							<?php } ?>
 						</div>
 					</div>
 
