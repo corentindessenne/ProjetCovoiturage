@@ -1,4 +1,4 @@
-*{
+body{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 
 nav{
   display: flex;
-  background-color: lightpink;
+  background-color: #3671B3;
   justify-content: space-between;
   align-items: center;
   min-height: 10vh;
@@ -71,7 +71,7 @@ nav .logo img{
     right: 0px;
     height: 90vh;
     top: 10vh;
-    background-color: lightpink;
+    background-color: #3671B3;
     display: flex;
     flex-direction: column;
     align-items: center;

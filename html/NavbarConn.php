@@ -12,6 +12,4 @@ if ((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"]
         include 'NavBar2.php';
     }
 
-
-
 ?>

@@ -26,10 +26,10 @@ if($_POST["tel"]==1){$_POST["tel"]=1;}
 else{$_POST["tel"]=0;}
 
 if($_POST["AllerRetour"]=="Aller"){
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, PlacesRestantes, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuDepart,AdresseDepart, DateDepart, HeureDepart, DateAjout, NbPassagers, PlacesRestantes, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["aller-retour"]."','1','".$_POST["departure"]."','".$_POST["adresse"]."','".$_POST["date"]."','".$_POST["time"]."','".date("Y.m.d")."','".$_POST["nbPass"]."','".$_POST["nbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
 }
 else{
-    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, PlacesRestantes, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["AllerRetour"]."','1','".$_POST["Ville"]."','".$_POST["Adresse"]."','".$_POST["Date-de-Depart"]."','".$_POST["Heure-de-Depart"]."','".date("Y.m.d")."','".$_POST["NbPass"]."','".$_POST["NbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
+    $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee, DateDepart, HeureDepart, DateAjout, NbPassagers, PlacesRestantes, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["aller-retour"]."','1','".$_POST["departure"]."','".$_POST["adresse"]."','".$_POST["date"]."','".$_POST["time"]."','".date("Y.m.d")."','".$_POST["nbPass"]."','".$_POST["nbPass"]."','".$_POST["Description"]."','".$_POST["tel"]."' ,'2022','".$id."')";
 }
 if ($conn->query($request) === TRUE) {
   ?>
