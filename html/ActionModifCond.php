@@ -45,7 +45,7 @@ if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
       alert("Ton trajet a bien ete modifie");
-      location="home.php";
+      location="Profil.php";
   </script>
 <?php
 die();

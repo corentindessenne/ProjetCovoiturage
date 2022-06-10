@@ -1,8 +1,8 @@
 <?php
 include 'Connexion.php';
 
-$id=$_SESSION["id"];
-$sql = "SELECT motDePasse FROM compte WHERE IdCompte='".$id."'" ;
+$mail=$_SESSION["mail"];
+$sql = "SELECT motDePasse FROM compte WHERE Email='".$mail."'" ;
 $result = $conn->query($sql);
 if ($result->num_rows >  0) {
     // output data of each row
@@ -12,7 +12,7 @@ if ($result->num_rows >  0) {
   } else {
     ?>
     <script type="text/javascript">
-        alert("Une erreur s'est produite réessaye");
+        alert("Une erreur s'est produite réessaye1");
         location="EditPassword.php";
     </script>
 <?php
@@ -20,8 +20,8 @@ die();
   }
 $newpassword=$_POST["password_1"];
   if(password_verify($_POST["password"],$hashedpassword)){
-    $newpassword=password_hash($newpassword,PASSWORD_DEFAULT);
-    $request="UPDATE compte SET motDePasse='".$newpassword."' WHERE IdCompte='".$id."'";
+    $newpassword=password_hash($_POST["password_1"],PASSWORD_DEFAULT);
+    $request="UPDATE compte SET motDePasse='".$newpassword."' WHERE Email='".$mail."'";
     if($conn->query($request) === TRUE){
 
             ?>

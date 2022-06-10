@@ -10,7 +10,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
@@ -23,7 +24,6 @@
 	<?php 
 		include 'Connexion.php';
 		include 'NavbarConn.php';
-
 		
 
 		if(isset($_POST["annee"])){
@@ -36,7 +36,6 @@
 		}
 		
 		if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
-
 	?>
 	<div class="title">
 		<h1> ESPACE ADMIN </h1>

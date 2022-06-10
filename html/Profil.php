@@ -164,8 +164,8 @@ if ($result->num_rows >  0) {
 							<div class="book-container"><form action="<?php if($row["isDemande"]==1){echo "ModifDemandeTrajet.php";}else{echo "ModifConducteur.php";} ?>" method="post">
 							<input type="hidden" name="IdTrajet" value="<?php echo $row["IdTrajet"]; ?>"></input>
 							<input type="hidden" name="TypeTrajet" value="<?php echo $row["TypeTrajet"]; ?>"></input>
-							<input type="hidden" name="LieuDepart" value="<?php echo $row["LieuDepart"]; ?>"></input>
-							<input type="hidden" name="AdresseDepart" value="<?php echo $row["AdresseDepart"]; ?>"></input>
+							<input type="hidden" name="LieuDepart" value="<?php if($row["TypeTrajet"]=="Aller"){echo $row["LieuDepart"];} else{echo $row["LieuArrivee"];} ?>"></input>
+							<input type="hidden" name="AdresseDepart" value="<?php if($row["TypeTrajet"]=="Aller"){echo $row["AdresseDepart"];} else{echo $row["AdresseArrivee"];}  ?>"></input>
 							<input type="hidden" name="DateDepart" value="<?php echo $row["DateDepart"]; ?>"></input>
 							<input type="hidden" name="HeureDepart" value="<?php echo $row["HeureDepart"]; ?>"></input>
 							<input type="hidden" name="NbPassagers" value="<?php echo $row["NbPassagers"]; ?>"></input>

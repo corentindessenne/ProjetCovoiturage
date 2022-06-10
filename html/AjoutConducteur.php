@@ -72,7 +72,6 @@ include 'NavbarConn.php';
                     resolve("true");
                 },2000);
                 
-                alert(query);
             
                 $('#myform').submit();
         }

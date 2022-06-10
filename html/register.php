@@ -53,7 +53,7 @@
     
   	<div class="input-group">
   	  <label>Mot de passe</label>
-      <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
+      <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule 1 chiffre et 1 caractère spécial" onkeyup='check();'>
   	</div>
   	   <div class="input-group">
   	     <label>Confirmer votre mot de passe</label>
