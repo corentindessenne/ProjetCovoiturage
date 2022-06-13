@@ -15,6 +15,14 @@
 	<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
+
+	<!-- AOS -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+	<script src='https://code.jquery.com/jquery-3.4.1.min.js' type='text/javascript'></script>
+
 </head>
 
 <body>
@@ -40,29 +48,7 @@
 	<div class="title">
 		<h1> ESPACE ADMIN </h1>
 	</div>
-	<section>
-
-		<div class="wrapper">
-			<form action="espaceAdmin.php" method="post">
-				<!-- Left arrow button -->
-				<input type="hidden" name="annee" value="<?php echo $anneeEd-1 ?>"/>
-				<button class="button" onClick="javascript:this.form.submit();">
-					<!-- Arrow -->
-					<div class="button__arrow button__arrow--left"></div>
-				</button>
-			</form>
-				<h2> <?php echo $anneeEd; ?> </h2>
-
-				<!-- Right arrow button -->
-			<form action="espaceAdmin.php" method="post">
-				<input type="hidden" name="annee" value="<?php echo $anneeEd+1 ?>"/>
-				<button class="button" onClick="javascript:this.form.submit();">
-					
-					<div class="button__arrow button__arrow--right"></div>
-				</button>
-			</form>
-		</div>
-	</section>
+	
 
 
 
@@ -95,52 +81,99 @@
 	<div class="edition">
 		<div class="header">	
 			<h2>LBR TIMES</h2>
+			
 		</div>
-		<div id="bloc1">
-			<div class="boxy"> 
-				<div class="subtitle1">
-					<h2>A l'occasion de l'ouverture du site</h2>
-				</div>
-				<p><?php echo $nbTrajets; ?> trajets ont été crées !</p>
-			</div>
-		</div>
+		<script>
+  		AOS.init();
+	</script>
 
-		<div id="bloc2">
-			<div class="boxy"> 
-				<div class="subtitle2">
-					<h2>Depuis la création du site</h2>
+
+	<div class="wrapper">
+		<div class="left-high" data-aos="fade-down" id="test">
+			<div class="text">
+			<section>
+				<div class="EditionSel">
+					<form action="espaceAdmin.php" method="post">
+						<!-- Left arrow button -->
+						<input type="hidden" name="annee" value="<?php echo $anneeEd-1 ?>"/>
+						<button class="EdButton" onClick="javascript:this.form.submit();">
+							<!-- Arrow -->
+							<div class="button__arrow button__arrow--left"></div>
+						</button>
+					</form>
+						<h2> <?php echo $anneeEd; ?> </h2>
+
+						<!-- Right arrow button -->
+					<form action="espaceAdmin.php" method="post">
+						<input type="hidden" name="annee" value="<?php echo $anneeEd+1 ?>"/>
+						<button class="EdButton" onClick="javascript:this.form.submit();">
+							
+							<div class="button__arrow button__arrow--right"></div>
+						</button>
+					</form>
 				</div>
-				<p>Plus de <?php echo $nbDemandes; ?> demandes de covoiturages ont été faites!!</p>
-			</div>
-		</div>
-		
-		<div id="bloc3">
-			<img src="../images/road.png">
-			<div class="boxy2">
-				<div class="subtitle3">
-					<h2>A l’aide de vos compagnons mécaniques</h2>
-				</div>
+			</section>
+				<br/>
+				<h2>A l'occasion de l'ouverture du site</h2>
+				<p><?php echo $nbTrajets; ?> trajets ont été crées !</p>
+				<br/>
+				<h2>A l’aide de vos compagnons mécaniques</h2>
 				<p>Plus de <?php echo $nbVoituresRemplies; ?> voitures ont été remplies !</p>
-			</div><br>
-		</div>
-		<div id="bloc4">
-			<div class="boxy"> 
-				<div class="subtitle1">
-					<h2>Grâce à votre solidarité</h2>
-				</div>
+				<br/>
+				<h2>Grâce à votre solidarité</h2>
 				<p><?php echo $nbPassagers; ?> passagers ont pu embarqué dans vos bolides !</p>
-			</div>
-		</div>
-		
-		<div id="bloc5">
-			<div class="boxy"> 
-				<div class="subtitle2">
-					<h2>Nous avons vite grandit</h2>
-				</div>
+				<br/>
+				<h2>Nous avons vite grandit</h2>
 				<p>Plus de <?php echo $nbCompte; ?> personnes ont rejoint le covoiturage Les Briques Rouges</p>
 			</div>
+
 		</div>
+
+
+		<div class="left-bottom-1 aos" data-aos="fade-up" data-aos-delay="250">
+			<div class="text">
+				<h1>Gestion des éditions</h1>
+				<h2>Accès aux différentes éditions gestion de ces dernières</h2>
+			</div>
+
+			<button><a href="../pagePerso/historique">Accéder</a></button>
+		</div>
+
+
+		<div class="left-bottom-2 aos" data-aos="fade-up" data-aos-delay="500">
+			<div class="text">
+				<h1>Email</h1>
+				<form method="post" action="register.php">
+				<input type="hidden" name="VerifAdmin" value="1">
+				<input type="submit">
+			</form>
+			</div>
+
+			<button class="notHover">COMING SOON</button>
+		</div>
+
+		<div class="right aos" data-aos="fade-left" data-aos-delay="750">
+			<div>
+				<h1 id="">Liste des comptes</h1>
+				
+			</div>
+			<div class="PageCompte">
+				<?php include 'TousLesComptes.php'; ?>
+			</div>
+			
+		</div>
+
+
 	</div>
+	<script>
+		if(window.innerWidth < 1000) {
+			document.getElementsByClassName("aos").forEach(element => {
+				element.setAttribute('data-aos-delay', 0)
+			});
+		}
+		
+	</script>
+	
 	<?php
 
 		}

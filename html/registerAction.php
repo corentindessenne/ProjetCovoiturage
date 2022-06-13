@@ -16,7 +16,9 @@ $message = "test";
 $password=$_POST["password_1"];
 $password=password_hash($password,PASSWORD_DEFAULT);
 $tel=$_POST['phone'];
-$request="INSERT INTO compte(/*IdCompte,*/Nom,Prenom, Email, telephone, motDePasse, isAdmin, Description, DateCreation) VALUES (/*'".$idCompte."',*/'".$_POST["nom"]."','".$_POST["prenom"]."','".$_POST["email"]."','".$tel."','".$password."','0','".$_POST["Description"]."','".date("Y.m.d")."')";
+if(isset($_POST["VerifAdmin"]) && $_POST["VerifAdmin"]==1){$verifadmin=1;}
+else{$verifadmin=0;}
+$request="INSERT INTO compte(/*IdCompte,*/Nom,Prenom, Email, telephone, motDePasse, isAdmin, Description, DateCreation) VALUES (/*'".$idCompte."',*/'".$_POST["nom"]."','".$_POST["prenom"]."','".$_POST["email"]."','".$tel."','".$password."','".$verifadmin."','".$_POST["Description"]."','".date("Y.m.d")."')";
 
 if ($conn->query($request) === TRUE) {
   mail($to, $subject, $message);

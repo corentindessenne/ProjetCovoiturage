@@ -49,7 +49,11 @@
           });
       </script>
     </div>
-    
+    <?php if(isset($_POST["VerifAdmin"])){
+      ?>
+      <input type="hidden" name="VerifAdmin" value="<?php echo $_POST["VerifAdmin"]; ?>">
+      <?php
+    } ?>
     
   	<div class="input-group">
   	  <label>Mot de passe</label>
