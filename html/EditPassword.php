@@ -31,9 +31,10 @@
 
   <form method="post" action="EditPasswordAction.php">
   <div class="input-group">
-  	        <label>Rentre ton mot de passe actuel</label>
+  	      <?php if((!isset($_SESSION["role"]) || $_SESSION["role"] != 1) ){ ?> <label>Rentre ton mot de passe actuel</label>
             <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
-    </div>
+          <?php } ?>
+          </div>
   <div class="input-group">
   	  <label>Rentre ton nouveau mot de passe</label>
       <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
@@ -46,7 +47,7 @@
          <br/>
          <span id='message2'></span>
   	   </div>
-
+       
        <script>
       var check = function() {
         if (document.getElementById('password_1').value ==
@@ -59,7 +60,7 @@
           document.getElementById('message').innerHTML = 'Le mot de passe de confirmation doit etre le même que celui au-dessus';
           document.getElementById('submit').disabled = true;
         }
-
+      
         if(document.getElementById('password_1').value ==
           document.getElementById('password').value){
           document.getElementById('message2').style.color = 'red';
@@ -71,10 +72,14 @@
             document.getElementById('message2').innerHTML = '';
             document.getElementById('submit').disabled = false;
         }
+        
       }
 
     </script>
        
+       <?php if(isset($_GET["id"]) && $_SESSION["role"]==1){  ?>
+       <input type="hidden" name="IdCompte" value="<?php echo $_GET["id"]; ?>">
+        <?php } ?>
   	   
   	   <button type="submit" class="btn" name="reg_user" id="submit">Modifier mon mot de passe</button>
   	   </div>

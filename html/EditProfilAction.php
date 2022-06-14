@@ -10,13 +10,14 @@
 
 <?php
 include 'Connexion.php';
-$sql = "SELECT motDePasse, IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'" ;
+$id=$_POST["IdCompte"];
+$sql = "SELECT motDePasse, Email FROM compte WHERE IdCompte='".$id."'" ;
     $result = $conn->query($sql);
     if ($result->num_rows >  0) {
       // output data of each row
       $row = $result->fetch_assoc();
+      $prevMail=$row["Email"];
         $hashedpassword=$row["motDePasse"];
-        $id=$row["IdCompte"];
     }
     else{?>
         <script type="text/javascript">
@@ -28,7 +29,7 @@ $sql = "SELECT motDePasse, IdCompte FROM compte WHERE Email='".$_SESSION["mail"]
       
     }
     
-if(password_verify($_POST["password_1"],$hashedpassword)){
+if(password_verify($_POST["password_1"],$hashedpassword) ||(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
     $description=$_POST["Description"];
     $description= str_replace("'","''",$_POST["Description"]);
     $nom=$_POST["nom"];
@@ -41,7 +42,7 @@ if(password_verify($_POST["password_1"],$hashedpassword)){
     if ($result->num_rows >  0) {
       // output data of each row
       while ($row = mysqli_fetch_assoc($result)){
-          if($row["Email"]==$mail && $mail!=$_SESSION["mail"]){
+          if($row["Email"]==$mail && $mail!=$prevMail){
             ?>
             <script type="text/javascript">
                 alert("Cette adresse mail est déjà utilisée");

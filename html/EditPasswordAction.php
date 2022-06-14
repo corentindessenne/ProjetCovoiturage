@@ -1,15 +1,23 @@
 <?php
 include 'Connexion.php';
-
-$mail=$_SESSION["mail"];
-$sql = "SELECT motDePasse FROM compte WHERE Email='".$mail."'" ;
+if(isset($_POST["IdCompte"])&& (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
+	$idCompte=$_POST["IdCompte"];
+	$sql = "SELECT motDePasse, Email, IdCompte FROM compte WHERE IdCompte='".$idCompte."'" ;
+}
+else{
+	$mail=$_SESSION["mail"];
+	$sql = "SELECT motDePasse, Email, IdCompte FROM compte WHERE Email='".$mail."'" ;
+}
 $result = $conn->query($sql);
 if ($result->num_rows >  0) {
     // output data of each row
     $row = $result->fetch_assoc();
       $hashedpassword=$row["motDePasse"];
+      $mail=$row["Email"];
+      $idCompte=$row["IdCompte"];
     
-  } else {
+  } 
+  else {
     ?>
     <script type="text/javascript">
         alert("Une erreur s'est produite réessaye1");
@@ -19,9 +27,9 @@ if ($result->num_rows >  0) {
 die();
   }
 $newpassword=$_POST["password_1"];
-  if(password_verify($_POST["password"],$hashedpassword)){
+  if(password_verify($_POST["password"],$hashedpassword)|| $_SESSION["role"]==1){
     $newpassword=password_hash($_POST["password_1"],PASSWORD_DEFAULT);
-    $request="UPDATE compte SET motDePasse='".$newpassword."' WHERE Email='".$mail."'";
+    $request="UPDATE compte SET motDePasse='".$newpassword."' WHERE IdCompte='".$idCompte."'";
     if($conn->query($request) === TRUE){
 
             ?>

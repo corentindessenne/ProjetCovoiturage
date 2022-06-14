@@ -28,12 +28,19 @@
   </div>
 
   <?php
-  $mail=$_SESSION["mail"];
-  $sql = "SELECT Nom,Prenom,telephone,Description FROM compte WHERE Email='".$mail."'" ;
+if(isset($_GET["id"])&& (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
+	$idCompte=$_GET["id"];
+	$sql = "SELECT * FROM compte WHERE IdCompte='".$idCompte."'" ;
+}
+else{
+	$mail=$_SESSION["mail"];
+	$sql = "SELECT * FROM compte WHERE Email='".$mail."'" ;
+}
   $result = $conn->query($sql);
   if ($result->num_rows >  0) {
       // output data of each row
       $row = $result->fetch_assoc();
+        $mail=$row["Email"];
         $nom=$row["Nom"];
         $prenom=$row["Prenom"];
         $phone=$row["telephone"];
@@ -66,7 +73,7 @@
           });
       </script>
     </div>
-
+          <input type="hidden" name="IdCompte" value="<?php echo $idCompte; ?>">
 
        <div class="input-group">
          <label>Description (facultatif):</label>
@@ -74,9 +81,11 @@
        </div>
 
        <div class="input-group">
+        <?php  if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] != 1){?>
   	        <label>Rentre ton mot de passe actuel</label>
-            <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
-  	    </div>
+            <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial">
+        <?php } ?>
+            </div>
   	   
   	   <button type="submit" class="btn" name="reg_user" id="submit">Modifier mes informations</button>
   	   </div>

@@ -45,6 +45,7 @@
 		
 		if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
 	?>
+	<div class="tout">
 	<div class="title">
 		<h1> ESPACE ADMIN </h1>
 	</div>
@@ -101,7 +102,7 @@
 							<div class="button__arrow button__arrow--left"></div>
 						</button>
 					</form>
-						<h2> <?php echo $anneeEd; ?> </h2>
+						<h2 class="DisplayEd"> <?php echo $anneeEd; ?> </h2>
 
 						<!-- Right arrow button -->
 					<form action="espaceAdmin.php" method="post">
@@ -143,21 +144,18 @@
 		<div class="left-bottom-2 aos" data-aos="fade-up" data-aos-delay="500">
 			<div class="text">
 				<h1>Email</h1>
-				<form method="post" action="register.php">
-				<input type="hidden" name="VerifAdmin" value="1">
-				<input type="submit">
-			</form>
 			</div>
 
 			<button class="notHover">COMING SOON</button>
 		</div>
 
 		<div class="right aos" data-aos="fade-left" data-aos-delay="750">
-			<div>
-				<h1 id="">Liste des comptes</h1>
+			
+			<h1 id="listTitle">Liste des comptes</h1>
 				
-			</div>
+			
 			<div class="PageCompte">
+			
 				<?php include 'TousLesComptes.php'; ?>
 			</div>
 			
@@ -165,6 +163,14 @@
 
 
 	</div>
+			<div class="CreateCompte">
+				
+				<form method="post" action="register.php">
+					<input type="hidden" name="VerifAdmin" value="1">
+					<input type="submit" value="Créer un compte admin">
+				</form>
+			</div>
+	
 	<script>
 		if(window.innerWidth < 1000) {
 			document.getElementsByClassName("aos").forEach(element => {
@@ -188,6 +194,7 @@
 	
 	
 	?>
+	</div>
 </body>
 </html>
 

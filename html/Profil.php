@@ -21,14 +21,23 @@
 <?php   
         include 'Connexion.php';
 		include 'NavbarConn.php';
+if(isset($_POST["CompteId"])&& (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
+	$ismyaccount=0;
+	$idCompte=$_POST["CompteId"];
+	$sql = "SELECT * FROM compte WHERE IdCompte='".$idCompte."'" ;
+}
+else{
+	$ismyaccount=1;
+	$mail=$_SESSION["mail"];
+	$sql = "SELECT * FROM compte WHERE Email='".$mail."'" ;
+}
 
-$mail=$_SESSION["mail"];
-$sql = "SELECT * FROM compte WHERE Email='".$mail."'" ;
 $result = $conn->query($sql);
 if ($result->num_rows >  0) {
     // output data of each row
     $row = $result->fetch_assoc();
       $nom=$row["Nom"];
+	  $mail=$row["Email"];
       $prenom=$row["Prenom"];
       $idCompte=$row["IdCompte"];
       $phone="0".$row["telephone"];
@@ -85,8 +94,8 @@ if ($result->num_rows >  0) {
         <p class="infodescr infolabel">Description</p>
 		<p class="infodonnees"> <?php echo $description;?> </p>
 		</div>
-        <a href="EditProfil.php"><input type="button" class="buttoncompte" id="EditInfo" name="EditInfo" value="editer les informations de ton compte"></a>
-        <a href="EditPassword.php"><input type="button" class="buttoncompte" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
+        <a href="<?php if($ismyaccount==0){echo "EditProfil.php?id=".$idCompte;} else{echo "EditProfil.php";} ?>"><input type="button" class="buttoncompte" id="EditInfo" name="EditInfo" value="editer les informations de ton compte"></a>
+        <a href="<?php if($ismyaccount==0){echo "EditPassword.php?id=".$idCompte;} else{echo "EditPassword.php";}?>"><input type="button" class="buttoncompte" id="EditPass" name="EditPass" value="Changer ton mot de passe"></a>
 
     </div>
     
@@ -224,15 +233,15 @@ if ($result->num_rows >  0) {
 							}
 						}
 					</script>
-					
+					<?php if($ismyaccount==1) {?>
 					<label>Rentre ton mot de passe pour qu'on puisse s'assurer qu'il s'agisse bien de toi:</label>
 					<br/>
 					
 
-					<input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1">
+					<input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1"><?php } ?>
 					
 					
-					
+					<input type="hidden" name="Compteid" value="<?php echo $idCompte; ?>" >
 					<button type="submit" class="btn" name="del_user" id="submit"><strong class="strongbutton">SUPPRIMER MON COMPTE</strong></button>
 					
 				
