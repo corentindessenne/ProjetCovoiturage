@@ -30,9 +30,6 @@ if(isset($_SESSION["mail"])){
         <p>Date et heure d'arrivée:</p>
         <!--//insérer la date via JS/API google-->
         <br>
-        <p>Nombre de passager: </p>
-        <input type="number" name="NbPass" id="NbPass" required="required" class="NbPass" step="1" min="0" max="15">
-        <br/>
         <p>Description (facultatif): </p>
         <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
         <br/>
