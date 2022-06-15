@@ -1,0 +1,195 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+body {
+    margin: 0;
+    background-image: url("../images/bgemail.png");
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  left : 10px;
+}
+
+
+.logo img{
+    height: 30vh;
+    width: 100%;
+
+}
+
+
+.nav__cont {
+  position: fixed;
+  width: 60px;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  background-color: #202020;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  cursor: pointer;
+  box-shadow: 4px 7px 10px rgba(0, 0, 0, 0.4);
+}
+.nav__cont:hover {
+  width: 240px;
+}
+@media screen and (min-width: 600px) {
+  .nav__cont {
+    width: 80px;
+  }
+}
+
+.nav {
+  list-style-type: none;
+  color: white;
+}
+.nav:first-child {
+  padding-top: 1rem;
+}
+
+.nav__items {
+  padding-bottom: 2rem;
+  font-family: "roboto";
+}
+.nav__items a {
+  position: relative;
+  display: flex;
+  top: -35px;
+  padding-right: 15px;
+  margin-left: 45px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: white;
+  font-family: "roboto";
+  font-weight: 100;
+  font-size: 1em;
+  text-align: center;
+  width: 200px;
+}
+.nav__items a:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  background: radial-gradient(circle at 94.02% 88.03%, #54a4ff, transparent 100%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: -10;
+}
+.nav__items:hover a:after {
+  opacity: 1;
+}
+.nav__items img {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  left: -25px;
+  cursor: pointer;
+}
+@media screen and (min-width: 600px) {
+  .nav__items img {
+    width: 32px;
+    height: 32px;
+    left: -15px;
+  }
+}
+
+.main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    align-items: center;
+}
+
+
+textarea{
+    resize: none;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #e3ebfe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 270px;
+    height: 80px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.check-box{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    box-shadow: 0 0 12px -2px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: -40px;
+    opacity: 0;
+}
+
+.check-box svg{
+    width: 40px;
+    margin: 20px;
+}
+
+svg path{
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    stroke-linecap: round;
+}
+
+.active{
+    background: #ff2b75;
+    transition: 1s;
+}
+
+.active .check-box{
+    right: 0;
+    opacity: 1;
+    transition: 1s;
+}
+
+.active p{
+    margin-right: 125px;
+    transition: 1s;
+}
+
+.active svg path{
+    stroke-dashoffset: 0;
+    transition: 1s;
+    transition-delay: 1s;
+}
