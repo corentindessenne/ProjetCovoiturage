@@ -50,7 +50,20 @@
 
 		<img class="wave" src="../images/LBR Ressources/logo.png">
 		<span class="">PLATEFORME DE COVOITURAGE</span>
-		<p>Les Briques Rouges, c’est un évènement où de nombreux festivaliers se déplacent en voiture pour faire la fête ! Trouve toi aussi ton moyen de transport pour venir jusqu’à nous !</p>
+		<p>Les Briques Rouges, c’est un évènement où de nombreux festivaliers se déplacent en voiture pour faire la fête ! Trouve toi aussi ton moyen de transport écologique et économique pour venir jusqu’à nous !</p>
+
+		<div class="radio">
+			<span>Je cherche :</span>
+			<div>
+				<input type="radio" id="aller" name="allerRetour" value="aller" checked>
+				<label>Aller</label>
+			</div>
+
+			<div>
+				<input type="radio" id="retour" name="allerRetour" value="retour">
+				<label>Retour</label>
+			</div>
+		</div>
 
 		<form method="post" action="result.php">
 			<div class="form-item">
@@ -66,10 +79,23 @@
 				<img class="icon" src="../images/icon/1077114 1.png">
 				<input value="1" min="0" step="1" max="7" type="number" name="nbPlaces">
 			</div>
+			<input type="text" id="hidden" name="allerRetour" value="aller">
 			<input type="submit" value="Rechercher" name="submit">
 		</form>
 
 		<script type="text/javascript">
+
+			document.getElementById('aller').addEventListener('change', () =>{
+				if(document.getElementById('aller').checked) document.getElementById('hidden').value = "aller";
+				console.log(document.getElementById('hidden').value);
+			});
+
+			document.getElementById('retour').addEventListener('change', () =>{
+				if(document.getElementById('retour').checked) document.getElementById('hidden').value = "retour";
+				console.log(document.getElementById('hidden').value);
+			});
+
+			//scroll button 
 			const myFunction = () =>{
 				document.getElementById("list").scrollIntoView({behavior: "smooth", block: "start"});
 			}
