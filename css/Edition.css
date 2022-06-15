@@ -1,0 +1,153 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+body{
+    background-color: var(--black);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.EditionList{
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+    min-width: 25vw;
+}
+h3.EditionYear{
+    font-size: 3vw;
+    text-align: center;
+}
+
+.EditionDate{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.EditionHour{
+    display: flex;
+    flex-direction: row;
+}
+p{
+    padding: 0.25vw 1vw;
+}
+
+
+button {
+    background-color: var(--darkred);
+    color: white;
+    padding: 14px 20px;
+    border: solid --white;
+    
+    width: 30%;
+    position: relative;
+    margin: 0;
+      position: absolute;
+      top: 50%;
+      left:35%;
+  }
+  
+  .DeleteButtondiv {
+      height: 200px;
+      position: relative;
+      border: hidden;
+    }
+  
+  
+    .ButtonDelete:hover{
+      background-color: var(--red);
+    }
+    
+    .btn:hover{
+      background-color: var(--red);
+    }
+  
+  /* Add a color to the delete button */
+  
+  
+  /* Add padding and center-align text to the container */
+  .container {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    color: var(--black);
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    
+    backdrop-filter: blur(10px);
+    padding-top: 50px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: var(--white);
+    border-radius: 3%;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    padding-bottom: 10%;
+    width: 40%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* Style the horizontal ruler */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* The Modal Close Button (x) */
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  h3{
+    text-align: center;
+    margin-left: 35%;
+  }
+  
+  .strongbutton{
+    color: #fefefe  ;
+  }
+  .separate{
+    border-bottom: solid;
+    border-width: 1px;
+  }
+  
+  .title{
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
