@@ -25,6 +25,9 @@
 		<span>Créer un compte</span>
 	</div>
 
+    <button type="button" class="google-btn">S'inscrire avec Google</button>
+    <h4 class="separator"><span>OU</span></h4>
+
 	<div class="container">
 		<!-- Form -->
 		<form method="post" action="registerAction.php">
