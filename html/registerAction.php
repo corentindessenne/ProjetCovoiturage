@@ -1,47 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Action Ajout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Merci d'avoir rejoint la plateforme - LBR Covoiturage</title>
 </head>
-
 <body>
-<h1>Test mail</h1>
+
 <?php
+if(isset($_POST["reg_user"]) && $_POST["email"]){
+    include 'Connexion.php';
+    $request = mysqli_query($conn, "SELECT * FROM compte WHERE Email = '".$_POST["email"]."'");
+    $row = mysqli_num_rows($request);
 
-include 'Connexion.php';
-$to= $_POST["email"];
-$subject="test";
-$message = "test";
-// Pour envoyer un mail HTML, l'en-tête Content-type doit être defini
-$password=$_POST["password_1"];
-$password=password_hash($password,PASSWORD_DEFAULT);
-$tel=$_POST['phone'];
-if(isset($_POST["VerifAdmin"]) && $_POST["VerifAdmin"]==1){$verifadmin=1;}
-else{$verifadmin=0;}
-$request="INSERT INTO compte(/*IdCompte,*/Nom,Prenom, Email, telephone, motDePasse, isAdmin, Description, DateCreation) VALUES (/*'".$idCompte."',*/'".$_POST["nom"]."','".$_POST["prenom"]."','".$_POST["email"]."','".$tel."','".$password."','".$verifadmin."','".$_POST["Description"]."','".date("Y.m.d")."')";
+    if($row < 1){
+        $token = md5($_POST["email"]);
+        $password = $_POST["password_1"];
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $tel = $_POST['phone'];
+        if (isset($_POST["VerifAdmin"]) && $_POST["VerifAdmin"] == 1) {
+            $verifadmin = 1;
+        } else {
+            $verifadmin = 0;
+        }
+        $request = mysqli_query($conn, "INSERT INTO compte(Nom,Prenom, Email, telephone, motDePasse, isAdmin,DateCreation, lien_verif_mail) VALUES ('" . $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["email"] . "','" . $tel . "','" . $password . "','" . $verifadmin . "','" . date("Y.m.d") . "', '" . $token . "')");
+        $link = "<a href='localhost/Plateforme covoiturage/html/verify_email.php?key=".$_POST['email']."&token=".$token."'>Clique ici pour vérifier ton compte</a>";
 
-if ($conn->query($request) === TRUE) {
-  mail($to, $subject, $message);
-  //ftp_close($ftp);
-  ?>
-  <script type="text/javascript">
-      alert("Ton Compte a bien ete cree");
-      location="home.php";
-  </script>
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        $dest = $_POST['email'];
+        $sujet = "Confirme ton compte";
+        $corp = "Clique sur ce lien pour confirmer ton adresse mail : \n".$link;
+        $headers .= "From:Les Briques Rouges<cocodsn2@gmail.com>";
+
+        if(mail($dest, $sujet, $corp, $headers)){
+            echo "<script type='text/javascript'>alert('Vérifie ta boîte mail et clique sur le lien de confirmation.');</script>";
+            ?>
+            <script>//document.location.href='../html/home.php';</script>
 <?php
-die();
-  } else {
-    
-    echo "Error: " . $sql . "<br>" . $conn->error;
-    ?>
-      <script type="text/javascript">
-          alert("Cette adresse mail est dejà utilisee");
-          location="register.php";
-      </script>
-    <?php
-
-  }
-  
+        }
+        else{
+            echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";
+            ?>
+            <script>document.location.href='../html/home.php';</script>
+<?php
+        }
+    }
+    else{
+        echo "<script type='text/javascript'>alert('Oups, il semble que tu aies déjà créé un compte. Vérifie ta boîte mail et confirme ton compte.');</script>";
+        ?>
+        <script>document.location.href='../html/home.php';</script>
+<?php
+    }
+}
 
 ?>
 

@@ -90,7 +90,7 @@
 
 			<button type="submit" class="btn" name="reg_user" id="submit">S'inscrire</button>
 
-			<p>Déjà inscrit ? <a href="login.php">Connectez-vous</a></p>
+			<p>Déjà inscrit ? <a href="Login.php">Connectez-vous</a></p>
 		</form>
 
 		<!-- Illustration -->
