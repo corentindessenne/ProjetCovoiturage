@@ -37,7 +37,7 @@ if(isset($_POST["reg_user"]) && $_POST["email"]){
         if(mail($dest, $sujet, $corp, $headers)){
             echo "<script type='text/javascript'>alert('Vérifie ta boîte mail et clique sur le lien de confirmation.');</script>";
             ?>
-            <script>//document.location.href='../html/home.php';</script>
+            <script>document.location.href='../html/home.php';</script>
 <?php
         }
         else{
