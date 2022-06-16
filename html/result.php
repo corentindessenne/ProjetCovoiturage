@@ -14,7 +14,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<!--Google Maps API-->
 	<script async
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg">
 </script>
 
 </head>
@@ -22,6 +22,7 @@
 <body>
 
 	<script type="text/javascript">
+		let allerRetour = "<?php echo $_POST['allerRetour'] ?>";
 		let query = "<?php echo $_POST['lieu'] ?>";
 		console.log(query);
 		let idTrajetTab = new Array();
@@ -152,6 +153,12 @@
 		</div>
 	</div>
 
+
+	<div id="no-result">
+		<p>Aucun résultat trouvé pour cette date</p>
+		<p>Vous pouvez toutefois créer une demande de trajet <a href="addtravels.php">ici</a></p>
+	</div>
+
 	<div class="wrapper" id="wrapper">
 		<div class="left">
 			<div id="map"></div>
@@ -165,7 +172,12 @@
 
 			<?php
 			$i=0;
-			$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
+
+			$nbPlaces = $_POST['nbPlaces'];
+			$typeTrajet1 = "Aller";
+			if ($_POST['allerRetour'] == "retour") $typeTrajet1 = "Retour";
+
+			$requete = "SELECT * FROM trajet WHERE TypeTrajet='$typeTrajet1' AND PlacesRestantes>='$nbPlaces' AND PlacesRestantes!=0 AND isDemande=0 AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
 			$result = mysqli_query($conn,$requete);
 
 			$num_rows = mysqli_num_rows($result);
@@ -221,7 +233,7 @@
 					<div class="account-info">
 						<img class="profile-picture" src="../images/adrien.jpg">
 						<div class="profile-info">
-							<span class="name"><?php echo $row2['Prenom']; echo $row2['Nom']; ?>;</span>
+							<span class="name"></span>
 							<div class="available">
 								<?php
 									$value = $row['PlacesRestantes'];
@@ -263,6 +275,15 @@
 			let distanceTrajets;
 			let coordonneesTrajets;
 
+			if(document.getElementById('trajets').children.length != 0){
+				initMap();
+				document.getElementById('no-result').style.display = "none";
+			}
+			else{
+				document.getElementById('wrapper').style.display = "none";
+			}
+			
+
 			async function initMap(){
 
 				let response = await getDataFromURL();
@@ -279,20 +300,33 @@
 				}
 				let tmpObj;
 				let loopValue = <?php echo $i; ?>;
-				<?php
+
+				<?php				
 
 				for ($a = 0; $a < $i ; $a++){
 
-					$requete = "SELECT * FROM trajet WHERE TypeTrajet='Aller' AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
+					$requete = "SELECT * FROM trajet WHERE TypeTrajet='$typeTrajet1' AND PlacesRestantes>='$nbPlaces' AND PlacesRestantes!=0 AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
 
 
 					$result = mysqli_query($conn,$requete);
 					$row = mysqli_fetch_assoc($result);
 					?>
 
-					tmpObj = {lat : <?php echo $row['LatitudeDepart'] ?>, lng: <?php echo $row['LongitudeDepart'] ?>};
-					coordonneesTrajets[<?php echo $a; ?>] = tmpObj;
-					distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
+					//TRAJET ALLER
+					//calcul de la distance entre le lieu entré et le départ du trajet choisi
+					if(allerRetour == "aller"){
+						tmpObj = {lat : <?php echo $row['LatitudeDepart'] ?>, lng: <?php echo $row['LongitudeDepart'] ?>};
+						coordonneesTrajets[<?php echo $a; ?>] = tmpObj;
+						distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
+					}
+
+					//TRAJET RETOUR
+					//calcul de distance entre le lieu entré et l'arrivée du trajet choisi
+					if(allerRetour == "retour"){
+						tmpObj = {lat : <?php echo $row['LatitudeArrivee'] ?>, lng: <?php echo $row['LongitudeArrivee'] ?>};
+						coordonneesTrajets[<?php echo $a; ?>] = tmpObj;
+						distanceTrajets[<?php echo $a; ?>] = haversine_distance(tmpObj,queryCoord);
+					}
 					<?php
 				}
 				?>
@@ -305,6 +339,7 @@
 				let indexMin;
 				let indexOrdre = new Array();
 
+				//affichage des trajets dans l'ordre du plus proche du départ/arrivée, au moins proche
 				for(let i = 0 ; i < loopValue;i++){
 					min = 1000;
 
@@ -321,6 +356,8 @@
 
 				console.log("index ordre",indexOrdre);
 
+
+				//création de la map
 				let mapOptions = {
 					center : WerwicqSud,
 					zoom : 8
@@ -334,14 +371,27 @@
 
 				directionsDisplay.setMap(map);
 
+				//affichage initial du trajet le plus proche
 				queryCoord.lng = coordonneesTrajets[indexOrdre[0]].lng;
 				queryCoord.lat = coordonneesTrajets[indexOrdre[0]].lat;
 				console.log(document.getElementById('trajets'));
 				document.getElementById("trajets").children[0].classList.add("active");
 
+				//affichage trajet aller ou retour 
+				let departure;
+				let arrival;
+				if (allerRetour == 'aller'){
+					departure = queryCoord;
+					arrival = WerwicqSud;
+				}
+				if(allerRetour == 'retour'){
+					departure = WerwicqSud;
+					arrival = queryCoord;
+				}
+
 				var request = {
-					origin : queryCoord,
-					destination : WerwicqSud,
+					origin : departure,
+					destination : arrival,
 					travelMode : google.maps.TravelMode.DRIVING,
 					unitSystem : google.maps.UnitSystem.IMPERIAL,
 				}
@@ -386,9 +436,20 @@
 					queryCoord.lat = coordonneesTrajets[indexOrdre[i]].lat;
 					queryCoord.lng = coordonneesTrajets[indexOrdre[i]].lng;
 
+					let departure;
+					let arrival;
+					if (allerRetour == 'aller'){
+						departure = queryCoord;
+						arrival = WerwicqSud;
+					}
+					if(allerRetour == 'retour'){
+						departure = WerwicqSud;
+						arrival = queryCoord;
+					}
+
 					var request = {
-						origin : queryCoord,
-						destination : WerwicqSud,
+						origin : departure,
+						destination : arrival,
 						travelMode : google.maps.TravelMode.DRIVING,
 						unitSystem : google.maps.UnitSystem.IMPERIAL,
 					}
