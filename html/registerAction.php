@@ -30,16 +30,8 @@ if ($conn->query($request) === TRUE) {
   </script>
 <?php
 die();
-  } else {
-    
+  } else {    
     echo "Error: " . $sql . "<br>" . $conn->error;
-    ?>
-      <script type="text/javascript">
-          alert("Cette adresse mail est dejà utilisee");
-          location="register.php";
-      </script>
-    <?php
-
   }
   
 
