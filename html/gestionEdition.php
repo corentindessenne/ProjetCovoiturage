@@ -81,16 +81,16 @@
                         <button class="ModifButton" onclick="document.getElementById('ModifEd').style.display='block'">Modifier</button>
                     </div>
 
-                    <div class="book-container">
+                    <!--<div class="book-container">
 						<form class="Acrhiveform" method="post" action="ArchiveEditionAction.php" onsubmit="return confirm('Veux-tu vraiment archiver cette édition ?');">	
-							<input type="hidden" name="IdEdition" value="<?php echo $row["IdEdition"];?>">
+							<input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"];?>">
 							<input type="submit" class="delbutton" value="Archiver l'édition">
 						</form>
-					</div>
+					</div>-->
                     <br/>
                     <div class="book-container">
 						<form class="deleteform" method="post" action="DeleteEditionAction.php" onsubmit="return confirm('Veux-tu vraiment supprimer cette édition ?');">	
-							<input type="hidden" name="IdEdition" value="<?php echo $row["IdEdition"];?>">
+							<input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"];?>">
 							<input type="submit" class="delbutton" value="Supprimer l'édition">
 						</form>
 					</div>
@@ -123,7 +123,7 @@
                                 <br/>
                                 <label for="Description">Description de l'édition</label>
                                 <textarea name="Description"require="required"  id="Description" placeholder="Écris la description de l'édition içi" rows="8" cols="65"> <?php echo $row["Description"]; ?></textarea>
-                                <input type="hidden" name="IdEdition" value="<?php echo $row["IdEdition"]; ?>">
+                                <input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"]; ?>">
 
                                 <button type="submit" class="btn" name="create_ed" id="submit"><strong class="strongbutton">Modifier cette édition</strong></button>
                             </div>

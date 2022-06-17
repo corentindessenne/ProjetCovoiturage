@@ -1,7 +1,7 @@
 <?php
     include 'Connexion.php';
     
-    $request="UPDATE edition SET AnnéeEdition='".$_POST["Annee"]."',DateDebut='".$_POST["DateDebut"]."',HeureDebut='".$_POST["HeureDebut"]."',DateFin='".$_POST["DateFin"]."',HeureFin='".$_POST["HeureFin"]."',Lieu='".$_POST["Lieu"]."',Description='".$_POST["Description"]."' WHERE IdEdition='".$_POST["IdEdition"]."'";
+    $request="UPDATE edition SET AnnéeEdition='".$_POST["Annee"]."',DateDebut='".$_POST["DateDebut"]."',HeureDebut='".$_POST["HeureDebut"]."',DateFin='".$_POST["DateFin"]."',HeureFin='".$_POST["HeureFin"]."',Lieu='".$_POST["Lieu"]."',Description='".$_POST["Description"]."' WHERE AnnéeEdition='".$_POST["IdEdition"]."'";
 
     
     if ($conn->query($request) === TRUE){
