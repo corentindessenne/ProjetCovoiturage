@@ -27,7 +27,7 @@
                 <input type="hidden" name="email" value="<?php echo $email ?>">
                 <input type="hidden" name="token" value="<?php echo $token ?>">
                 <label for="newPassword">
-                    <input type="password" name="newPassword" class="form-control" placeholder="Nouveau mot de passe" required>
+                    <input type="password" name="newPassword" class="form-control" placeholder="Nouveau mot de passe" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 caractères, dont 1 minuscule, 1 majuscule et 1 caractère spécial" required>
                 </label>
                 <label for="confirmPassword">
                     <input type="password" name="confirmPassword" class="form-control" placeholder="Confirmer le mot de passe" onkeyup="check() required">

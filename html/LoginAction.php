@@ -1,39 +1,40 @@
 <?php
-include 'Connexion.php';
+include('Connexion.php');
 
-$mail=$_POST["email"];
-$sql = "SELECT motDePasse,Prenom,isAdmin FROM compte WHERE Email='".$mail."'" ;
-$result = $conn->query($sql);
-if ($result->num_rows >  0) {
+$mail = $_POST["email"];
+
+$sql = "SELECT motDePasse, Prenom, isAdmin, isVerif FROM compte WHERE Email = '$mail'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    $row = $result->fetch_assoc();
-      $hashedpassword=$row["motDePasse"];
-      $prenom=$row["Prenom"];
-      $role = $row["isAdmin"];
-      //echo $hashedpassword;
-    ?>
-    <script type="text/javascript">
-        alert("Cette adresse mail n'est liee a aucun compte");
-        location="Login.php";
-    </script>
-<?php
-  }
+    $row = mysqli_fetch_array($result);
 
-  if(password_verify($_POST["password"],$hashedpassword)){
-    $_SESSION["mail"]= $mail;
-    $_SESSION["Pseudo"]=$prenom;
+    $hashedpassword = $row["motDePasse"];
+    $prenom = $row["Prenom"];
+    $role = $row["isAdmin"];
+}
+
+if (password_verify($_POST["password"], $hashedpassword) && $row['isVerif'] == 1) {
+    $_SESSION["mail"] = $mail;
+    $_SESSION["Pseudo"] = $prenom;
     $_SESSION["role"] = $role;
     $_SESSION["login"] = "1";
-    header ("Location: home.php");
-     ?>
-<?php
-  }
-  else{
+    header("Location: home.php");
+
+} else if (password_verify($_POST["password"], $hashedpassword) && !$row['isVerif']) {
     ?>
     <script type="text/javascript">
-        alert("Mot de passe incorrect");
-        location="Login.php";
+        alert("Il semble que tu n'as pas encore confirmé ton adresse mail. Vérifie ta boîte mail, tu as du recevoir un lien de confirmation.");
+        document.location.href = "../html/Login.php";
     </script>
-<?php
-  }
+    <?php
+} else {
+    ?>
+    <script type="text/javascript">
+        alert("Email ou mot de passe incorrect");
+        document.location.href = "../html/Login.php";
+    </script>
+    <?php
+}
 ?>
