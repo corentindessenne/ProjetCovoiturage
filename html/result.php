@@ -24,6 +24,7 @@
 	<script type="text/javascript">
 		let allerRetour = "<?php echo $_POST['allerRetour'] ?>";
 		let query = "<?php echo $_POST['lieu'] ?>";
+		let doNotShowMap= false;
 		console.log(query);
 		let idTrajetTab = new Array();
 
@@ -243,7 +244,11 @@
 							</div>
 						</div>
 
-						<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
+
+							<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
+							<div class="book-container"><a class="book" href="#" class="button">Réserver</a>
+						
+						</div>
 					</div>
 				</div>
 
@@ -252,6 +257,43 @@
 			?>
 		</div>
 	</div>
+							
+	<div  name="modal" id="modal" class="modal">
+		<div id="modal-content" class="modal-content">
+			<span name="close-button" id="close-button"class="close-button">&times;</span>
+			<h1>Hello, I am a modal!</h1>
+		</div>
+	</div>		
+
+
+<script type="text/javascript">
+
+	let right = document.getElementById('trajets').children;
+
+
+	const modal = document.getElementsByClassName("modal");
+	const trigger = document.getElementsByClassName("trigger");
+	const trigger1 = document.getElementsByClassName('trigger');
+	const closeButton = document.getElementsByClassName("close-button");
+
+
+	console.log('salut', trigger);
+
+	for(let y = 0 ; y < trigger.length; y++){
+		console.log('salut' ,trigger[y]);
+		trigger[y].addEventListener("click", () =>{
+			console.log(modal);
+			modal[0].classList.add("show-modal");
+	    	doNotShowMap = true;
+		});
+
+
+	}
+		closeButton[0].addEventListener("click", () =>{
+			modal[0].classList.remove("show-modal");
+		});
+
+	</script>
 
 	<script type="text/javascript">
 
@@ -307,7 +349,6 @@
 				for ($a = 0; $a < $i ; $a++){
 
 					$requete = "SELECT * FROM trajet WHERE TypeTrajet='$typeTrajet1' AND PlacesRestantes>='$nbPlaces' AND PlacesRestantes!=0 AND isDemande=0 AND IdTrajet = $idTrajet[$a] AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
-
 
 					$result = mysqli_query($conn,$requete);
 					$row = mysqli_fetch_assoc($result);
@@ -418,13 +459,17 @@
 
 				document.getElementById("loader").style.display = "none";
 				document.getElementById('wrapper').style.display = "flex";
+				
+
+
 
 			//update map on click 
 			let node = document.getElementById("trajets").children;
+
 			loopValue = <?php echo $i; ?>;
 			for (let i = 0; i < loopValue ; i++){
 				node[i].addEventListener('click', () => {
-					
+				if (doNotShowMap = false) {
 					//remove class
 					for (let a = 0; a < loopValue ; a++){
 						node[a].classList.remove('active');
@@ -468,7 +513,7 @@
 							console.log("Erreur dans l'affichage du trajet ");
 						}
 					});
-
+					}
 				});
 			}
 		}

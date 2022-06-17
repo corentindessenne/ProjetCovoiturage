@@ -20,6 +20,10 @@
     <?php
           include 'Connexion.php';
           include 'NavbarConn.php';
+          if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
+            header("Location:home.php");
+            
+          }
     ?>
 
   

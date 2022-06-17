@@ -114,34 +114,43 @@
 					</form>
 				</div>
 			</section>
-				<br/>
-				<h2>A l'occasion de l'ouverture du site</h2>
-				<p><?php echo $nbTrajets; ?> trajets ont été crées !</p>
-				<br/>
-				<h2>A l’aide de vos compagnons mécaniques</h2>
-				<p>Plus de <?php echo $nbVoituresRemplies; ?> voitures ont été remplies !</p>
-				<br/>
-				<h2>Grâce à votre solidarité</h2>
-				<p><?php echo $nbPassagers; ?> passagers ont pu embarqué dans vos bolides !</p>
-				<br/>
-				<h2>Nous avons vite grandit</h2>
-				<p>Plus de <?php echo $nbCompte; ?> personnes ont rejoint le covoiturage Les Briques Rouges</p>
+				<div class="stats">
+					<br/>
+					<h2>A l'occasion de l'ouverture du site</h2>
+					<p><?php echo $nbTrajets; ?> trajets ont été crées !</p>
+					<br/>
+					<h2>A l’aide de vos compagnons mécaniques</h2>
+					<p>Plus de <?php echo $nbVoituresRemplies; ?> voitures ont été remplies !</p>
+					<br/>
+					<h2>Grâce à votre solidarité</h2>
+					<p><?php echo $nbPassagers; ?> passagers ont pu embarqué dans vos bolides !</p>
+					<br/>
+					<h2>Nous avons vite grandit</h2>
+					<p>Plus de <?php echo $nbCompte; ?> personnes ont rejoint le covoiturage Les Briques Rouges</p>
+				</div>
 			</div>
-
 		</div>
-
-
-		
-
-	</div>
-			<div class="CreateCompte">
-				
-				<form method="post" action="register.php">
-					<input type="hidden" name="VerifAdmin" value="1">
-					<input type="submit" value="Créer un compte admin">
-				</form>
+		<div class="low-button">
+			<div class="left-bottom-1 aos" data-aos="fade-up" data-aos-delay="250">
+			<div class="text">
+				<h1>Gestion des éditions</h1>
+				<h2>Accès aux différentes éditions gestion de ces dernières</h2>
 			</div>
-	
+
+			<a href="gestionEdition.php"><button><img class="papier" src="../images/icon/papier.png"></button></a>
+			</div>
+
+
+			<div class="left-bottom-2 aos" data-aos="fade-up" data-aos-delay="500">
+				<div class="text">
+					<h1>Email</h1>
+				</div>
+<a href="email.php"><button class="notHover"><img class="email" src="../images/icon/email2.png"></button></a>
+				
+			</div>
+		</div>
+	</div>
+		
 	<script>
 		if(window.innerWidth < 1000) {
 			document.getElementsByClassName("aos").forEach(element => {
@@ -155,13 +164,19 @@
 
 		}
 		else{
-			header("Location: home.php");
+			?>
+			<script type="text/javascript">
+				alert("Tu n'es pas connecté/ Tu n'es pas un administrateur");
+				location="home.php";
+			</script>
+			<?php
 		}
 	
 	
 	?>
-	</div>
-		<div class="right aos" data-aos="fade-left" data-aos-delay="750">
+	
+		</div>
+	<div class="right aos" data-aos="fade-left" data-aos-delay="750">
 			
 			<h1 id="listTitle">Liste des comptes</h1>
 				
@@ -172,27 +187,21 @@
 			</div>
 			
 		</div>
-</div>
+	</div>
+		
 </body>
 </html>
 
 
 
 
-<div class="left-bottom-1 aos" data-aos="fade-up" data-aos-delay="250">
-			<div class="text">
-				<h1>Gestion des éditions</h1>
-				<h2>Accès aux différentes éditions gestion de ces dernières</h2>
+
+
+		<div class="CreateCompte">
+				
+				<form method="post" action="register.php">
+					<input type="hidden" name="VerifAdmin" value="1">
+					<input type="submit" value="Créer un compte admin">
+				</form>
 			</div>
 
-			<a href="gestionEdition.php"><button>Gérer mes éditions</button></a>
-		</div>
-
-
-		<div class="left-bottom-2 aos" data-aos="fade-up" data-aos-delay="500">
-			<div class="text">
-				<h1>Email</h1>
-			</div>
-
-			<button class="notHover">COMING SOON</button>
-		</div>

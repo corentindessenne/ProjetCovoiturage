@@ -12,6 +12,7 @@
     <?php
         include 'Connexion.php';
         include 'NavbarConn.php';
+      
         if((isset($_SESSION["role"]) && $_SESSION["role"] == 1)){
     ?>
     <h1>Gestion des éditions LBR Covoiturages</h1>
@@ -137,12 +138,7 @@
             } 
         }
         else{
-            ?>
-			<script type="text/javascript">
-				alert("Tu n'es pas connecté/ Tu n'es pas un administrateur");
-				location="home.php";
-			</script>
-			<?php
+            header("Location: home.php");
         }
     ?>
 </body>
