@@ -246,8 +246,9 @@
 
 
 							<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
-							<div class="book-container"><a class="book" href="#" class="button">Réserver</a>
-						
+							<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
+							<div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a></div>
+							
 						</div>
 					</div>
 				</div>
