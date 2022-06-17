@@ -8,14 +8,34 @@
 	--darkred : #AF001E;
 }
 
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_lt.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_lt.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_md.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_md.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_xbd.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_xbd.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body{
     display: flex;
     flex-direction: column;
-    font-family: -Roboto;
-    font-weight: light;
-    background-image: url("../images/bg5.png");
-    background-attachment: fixed;
-    color: var(--black);
+    font-family: Cereal;
 }
 
 @font-face {
@@ -27,47 +47,20 @@ body{
     
 }
 .InfosCompte{
-  display: flex;
-  flex-direction: column;
-    margin:5%;
-    padding: 5%;
-    padding-left: -10%;
-    margin-left: 25%;
-    border-style:hidden;
-    border-radius: 20px;
-    padding-top: 0;
-    width: 50%;
-    text-align: left;
-    height: auto;
-    background: var(--white);
-    color:var(--black) ;
-    position: relative;
-    bottom: 450px;
+  
 }
 .PhotoDeProfil{
     background: var(--white);
-    padding:5%;
-    border-style:hidden;
-    border-radius: 20px;
-    margin-left: 30%;
-    padding:1%;
     display: flex;
     flex-direction: column;
     position: relative;
-    
-    left: 25%;
-    height: 350px;
+    height: 300px;
     width: 300px;
-    z-index: 10;
-    
 }
 input[type="button"]{
     margin-top: 5%;
 }
-h1{
-    color: var(--white);
-    text-align: center;
-}
+
 .list{
 	display: flex;
 	flex-direction: column;
@@ -239,7 +232,7 @@ h1{
       top: 26px;
       left: 77.5px;
   }
-  * {box-sizing: border-box}
+
 
 /* Set a style for all buttons */
 button {
@@ -346,11 +339,6 @@ strong{
 .separate{
   border-bottom: solid;
   border-width: 1px;
-}
-
-.title{
-  font-size: 100px;
-  margin-bottom: 20px;
 }
 
 .PhotoDeProfil{
