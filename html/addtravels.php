@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 </head>
 <body>
@@ -17,6 +18,32 @@
   <?php
   include 'Connexion.php';
   include 'NavbarConn.php';
+
+  $requete="SELECT IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'";
+  $result = $conn->query($requete);
+  $verifAller=false;        //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour aller vers le lieu du festival
+  $verifRetour=false;       //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour partir depuis le lieu du festival
+  if($result->num_rows >  0){
+    $row = $result->fetch_assoc();
+    $idCompte=$row["IdCompte"];   //get Idcompte depuis la base de donnée pour vérifier les trajets de l'utilisateur
+    $requete="SELECT TypeTrajet FROM trajet WHERE IdCompte='".$idCompte."'  AND AnneeEdition='2022'";  //2022 a changer en fonction de l'édition quna don aura fait ça
+    $result = $conn->query($requete);
+    while ($row = mysqli_fetch_assoc($result)){
+      
+      if($row["TypeTrajet"]=="Aller"){
+        $verifAller=true;                                 //vérification des trajets de l'utilisateur
+      }
+      else if($row["TypeTrajet"]=="Retour"){
+        $verifRetour=true;
+      }
+    }
+    /*if(isset($_SESSION["role"])&& $_SESSION["role"] == 1){
+      $verifAller=false;
+      $verifRetour=false;
+    }*/
+  }
+
+
   ?>
 
 
@@ -43,28 +70,31 @@
 
   <div class="big-form">
    <form action="ActionDemandeAjout.php" method="post" id="traveler" class="form-example">
-    <div class="form-traveler"> <input type="hidden" name="isDemande"  id="isDemande" value="1">
+    <div class="form-traveler">
+
+      <input type="hidden" name="isDemande"  id="isDemande" value="1">
       <input type="hidden" name="NbPassagers"  id="nbPass" value="1">
       <input type="hidden" name="Prix"  id="Prix" value="0">
+
       <div class="radio-but">
        <label class="form-control" class="active">
-        <input type="radio"  name="aller-retour" id="aller" value="a_to_r" checked='checked' required="required" />
-        <span> ALLER</span>
+        <input type="radio" required="required" name="aller-retour" id="aller" value="Aller" <?php if($verifAller==false){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
+        <span id="spanAller"> ALLER</span>
       </label>
 
       <label class="form-control">
-        <input type="radio" name="aller-retour" id="retour" value="r_to_a" required="required"/>
-        <span> RETOUR </span>
+        <input type="radio" required="required" name="aller-retour" id="retour" value="Retour" <?php if($verifAller==true && $verifRetour==false){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
+        <span id="spanRetour"> RETOUR </span>
       </label>
     </div>
     <label for="departure">
-      <span> Lieu de départ :</span><input type="text" name="departure" required="required" id="departure" />
+      <span> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure" />
     </label>
     <label for="adresse">
-      <span> Adresse :</span><input type="text" name="adresse" required="required" id="adresse"  />
+      <span> Adresse :</span><input type="text" name="adresse" required="true" id="adresse" />
     </label>
     <label for="arrival">
-      <span> Vers :</span><input type="text" name="arrival" required="required" id="arrival"/>
+      <span> Vers :</span><input type="text" name="arrival" required="true" id="arrival"/>
     </label>
     <label for="date">
       Date de départ:
@@ -75,13 +105,15 @@
     </label>
     <label>
       <select name="time"><option value="00:00">00:00</option><option value="00:10">00:10</option><option value="00:20">00:20</option><option value="00:30">00:30</option><option value="00:40">00:40</option><option value="00:50">00:50</option><option value="01:00">01:00</option><option value="01:10">01:10</option><option value="01:20">01:20</option><option value="01:30">01:30</option><option value="01:40">01:40</option><option value="01:50">01:50</option><option value="02:00">02:00</option><option value="02:10">02:10</option><option value="02:20">02:20</option><option value="02:30">02:30</option><option value="02:40">02:40</option><option value="02:50">02:50</option><option value="03:00">03:00</option><option value="03:10">03:10</option><option value="03:20">03:20</option><option value="03:30">03:30</option><option value="03:40">03:40</option><option value="03:50">03:50</option><option value="04:00">04:00</option><option value="04:10">04:10</option><option value="04:20">04:20</option><option value="04:30">04:30</option><option value="04:40">04:40</option><option value="04:50">04:50</option><option value="05:00">05:00</option><option value="05:10">05:10</option><option value="05:20">05:20</option><option value="05:30">05:30</option><option value="05:40">05:40</option><option value="05:50">05:50</option><option value="06:00">06:00</option><option value="06:10">06:10</option><option value="06:20">06:20</option><option value="06:30">06:30</option><option value="06:40">06:40</option><option value="06:50">06:50</option><option value="07:00">07:00</option><option value="07:10">07:10</option><option value="07:20">07:20</option><option value="07:30">07:30</option><option value="07:40">07:40</option><option value="07:50">07:50</option><option value="08:00">08:00</option><option value="08:10">08:10</option><option value="08:20">08:20</option><option value="08:30">08:30</option><option value="08:40">08:40</option><option value="08:50">08:50</option><option value="09:00">09:00</option><option value="09:10">09:10</option><option value="09:20">09:20</option><option value="09:30">09:30</option><option value="09:40">09:40</option><option value="09:50">09:50</option><option value="10:00">10:00</option><option value="10:10">10:10</option><option value="10:20">10:20</option><option value="10:30">10:30</option><option value="10:40">10:40</option><option value="10:50">10:50</option><option value="11:00">11:00</option><option value="11:10">11:10</option><option value="11:20">11:20</option><option value="11:30">11:30</option><option value="11:40">11:40</option><option value="11:50">11:50</option><option value="12:00">12:00</option><option value="12:10">12:10</option><option value="12:20">12:20</option><option value="12:30">12:30</option><option value="12:40">12:40</option><option value="12:50">12:50</option><option value="13:00">13:00</option><option value="13:10">13:10</option><option value="13:20">13:20</option><option value="13:30">13:30</option><option value="13:40">13:40</option><option value="13:50">13:50</option><option value="14:00">14:00</option><option value="14:10">14:10</option><option value="14:20">14:20</option><option value="14:30">14:30</option><option value="14:40">14:40</option><option value="14:50">14:50</option><option value="15:00">15:00</option><option value="15:10">15:10</option><option value="15:20">15:20</option><option value="15:30">15:30</option><option value="15:40">15:40</option><option value="15:50">15:50</option><option value="16:00">16:00</option><option value="16:10">16:10</option><option value="16:20">16:20</option><option value="16:30">16:30</option><option value="16:40">16:40</option><option value="16:50">16:50</option><option value="17:00">17:00</option><option value="17:10">17:10</option><option value="17:20">17:20</option><option value="17:30">17:30</option><option value="17:40">17:40</option><option value="17:50">17:50</option><option value="18:00">18:00</option><option value="18:10">18:10</option><option value="18:20">18:20</option><option value="18:30">18:30</option><option value="18:40">18:40</option><option value="18:50">18:50</option><option value="19:00">19:00</option><option value="19:10">19:10</option><option value="19:20">19:20</option><option value="19:30">19:30</option><option value="19:40">19:40</option><option value="19:50">19:50</option><option value="20:00">20:00</option><option value="20:10">20:10</option><option value="20:20">20:20</option><option value="20:30">20:30</option><option value="20:40">20:40</option><option value="20:50">20:50</option><option value="21:00">21:00</option><option value="21:10">21:10</option><option value="21:20">21:20</option><option value="21:30">21:30</option><option value="21:40">21:40</option><option value="21:50">21:50</option><option value="22:00">22:00</option><option value="22:10">22:10</option><option value="22:20">22:20</option><option value="22:30">22:30</option><option value="22:40">22:40</option><option value="22:50">22:50</option><option value="23:00">23:00</option><option value="23:10">23:10</option><option value="23:20">23:20</option><option value="23:30">23:30</option><option value="23:40">23:40</option><option value="23:50">23:50</option></select>
-    </label>    
-    <input class="inp-cbx" id="cbx" type="checkbox" name="tel" style="display: none;" value="1"  />
+    </label>
+    <input class="inp-cbx" id="cbx" type="checkbox" name="tel" style="display: none;" value="1"/>
     <label class="cbx" for="cbx"><span>
       <svg width="12px" height="9px" viewbox="0 0 12 9">
         <polyline points="1 5 4 8 11 1"></polyline>
       </svg></span><span>Renseignez son numéro de téléphone </span>
     </label>
+    <label>
+
       <label>        
         <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
       </label>
@@ -95,26 +127,29 @@
 
 
   <form action="ActionDemandeAjout.php" method="post" class="form-example" id="driver">
-    <div class="form-traveler"><input type="hidden" name="isDemande"  id="isDemande" value="0">
+    <div class="form-traveler">
+
+     <input type="hidden" name="isDemande"  id="isDemande" value="0">
+
       <div class="radio-but">
        <label class="form-control">
-        <input type="radio" name="aller-retour" id="aller2" value="a_to_r" checked />
-        <span>ALLER</span>
+        <input type="radio" name="aller-retour" id="aller2" value="Aller" <?php if($verifAller==false){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
+        <span id="spanAller2">ALLER</span>
       </label>
 
       <label class="form-control">
-        <input type="radio" name="aller-retour" id="retour2" value="r_to_a"/>
-        <span> RETOUR </span>
+        <input type="radio" name="aller-retour" id="retour2" value="Retour" <?php if($verifAller==true && $verifRetour==false){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
+        <span id="spanRetour2"> RETOUR </span>
       </label>
     </div>
     <label for="departure">
-      <span> Lieu de départ :</span><input type="text" name="departure" required="required" id="departure2" />
+      <span> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure2" />
     </label>
     <label for="adresse">
       <span> Adresse :</span><input type="text" name="adresse" required="required" id="adresse"  />
     </label>
     <label for="arrival">
-      <span> Pour aller à :</span><input type="text" name="arrival" required="required" id="arrival2"/>
+      <span> Pour aller à :</span><input type="text" name="arrival" required="true" id="arrival2"/>
     </label>
     <label for="date">
       Date de départ:
@@ -141,12 +176,12 @@
       <i>€</i>
     </div>
   </label>
-  <input class="inp-cbx2" id="cbx2" type="checkbox" name="tel" style="display: none;" value="1"  />
-    <label class="cbx2" for="cbx2"><span>
-      <svg width="12px" height="9px" viewbox="0 0 12 9">
-        <polyline points="1 5 4 8 11 1"></polyline>
-      </svg></span><span>Renseignez son numéro de téléphone </span>
-    </label>
+  <input class="inp-cbx2" id="cbx2" type="checkbox" name="tel" style="display: none;" value="1" />
+  <label class="cbx2" for="cbx2"><span>
+    <svg width="12px" height="9px" viewbox="0 0 12 9">
+      <polyline points="1 5 4 8 11 1"></polyline>
+    </svg></span><span>Renseignez son numéro de téléphone </span>
+  </label>
   <label>        
     <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="8" cols="65"></textarea>
   </label>
@@ -158,9 +193,105 @@
 </div>
 </form>
 </div>
+        
+<?php
+
+    if($verifAller==true && $verifRetour==true){
+      ?>
+        <div class="modal_info">
+            <h2>Important</h2>
+            <p>Tu ne peux créer qu'un seul aller et un seul retour si tu veux en créer un nouveau supprime ton trajet précédent</p>   <!-- Si l'utilisateur a déjà un trajet allé et un trajet retour modal redirigeant vers la page d'accueil car il ne doit pas pouvoir faire de nouveau trajet pour cette édition -->
+            <br/>
+            <a href="Profil.php">Aller sur mon profil</a>
+        </div>
+        <div class="modal_overlay">
+        </div>
+                              <!-- Code js du modal -->
+<script>
+      (function(){
+        var $content = $('.modal_info').detach();
+
+        $(document).ready(function(e){
+          modal.open({
+            content: $content,
+            width: 540,
+            height: 270,
+          });
+          $content.addClass('modal_content');
+          $('.modal, .modal_overlay').addClass('display');
+        });
+      }());
+
+      var modal = (function(){
+
+        var $content = $('<div class="modal_content"/>');
+        var $modal = $('<div class="modal"/>');
+        var $window = $(window);
+
+        $modal.append($content);
 
 
-<script type="text/javascript">
+        return {
+          center: function(){
+            var top = Math.max($window.height() - $modal.outerHeight(), 0) / 2;
+            var left = Math.max($window.width() - $modal.outerWidth(), 0) / 2;
+            $modal.css({
+              top: top + $window.scrollTop(),
+              left: left + $window.scrollLeft(),
+            });
+          },
+          open: function(settings){
+            $content.empty().append(settings.content);
+
+            $modal.css({
+              width: settings.width || 'auto',
+              height: settings.height || 'auto'
+            }).appendTo('body');
+
+            modal.center();
+            $(window).on('resize', modal.center);
+          },
+          close: function(){
+            $content.empty();
+            $modal.detach();
+            $(window).off('resize', modal.center);
+          }
+        };
+      }());
+    </script>
+
+
+      <?php                       
+    }
+    else if($verifAller==true){                          //suppression d'un radio si nécessaire en fonction des vérifications faires plus haut
+      ?>  
+        <script type="text/javascript">
+          document.getElementById("aller").remove();
+          document.getElementById("spanAller").remove();
+          document.getElementById("spanAller2").remove();
+          document.getElementById("aller2").remove();
+
+        </script>
+      <?php
+    }
+    else if($verifRetour==true){
+      ?>
+        <script type="text/javascript">
+          document.getElementById("retour").remove();
+          document.getElementById("spanRetour").remove();
+          document.getElementById("spanRetour2").remove();
+          document.getElementById("retour2").remove();
+
+        </script>
+      <?php
+    }
+    
+
+?>
+
+
+
+<script type="text/javascript">                                                 //animation
  let rectAnimation = document.getElementById('travdriv');
  let buttonAnimation = document.getElementById('tab_traveler');
 
@@ -168,9 +299,7 @@
 
  let ovniAnimation = document.getElementById('ovni');
 
-
-let demande = document.getElementById('isDemande');
-
+ let demande = document.getElementById('isDemande');
 
  buttonAnimation.addEventListener('click',() =>{
   buttonAnimation.classList.add("btn-1-click");
@@ -178,7 +307,7 @@ let demande = document.getElementById('isDemande');
   buttonAnimation2.classList.remove("btn-1-click");
   ovniAnimation.classList.remove("ovni-walk");
   ovniAnimation.classList.add("ovni-return");
-  demande.setAttribute('value', "1")
+  demande.setAttribute('value', "1");
 
 } )
 
@@ -189,14 +318,14 @@ let demande = document.getElementById('isDemande');
   buttonAnimation.classList.remove("btn-1-click");
   ovniAnimation.classList.remove("ovni-return");
   ovniAnimation.classList.add("ovni-walk");
-  demande.setAttribute('value', "0")
+  demande.setAttribute('value', "1");
 } )
 
 </script>
 
 
 <script type="text/javascript">
- let driverForm = document.getElementById('driver');
+ let driverForm = document.getElementById('driver');            //animation selection de form
  driverForm.style.display = "none";
  let travelerForm = document.getElementById('traveler');
 
@@ -220,26 +349,37 @@ showDrive.onclick = function(){
 
 <script type="text/javascript">
 
-
+    //préremplissage des formulaires en fonction des radio
 
   let allerRadio = document.getElementById('aller');
   let retourRadio = document.getElementById('retour');
 
+  if(allerRadio !== null){    //vérification que le radio n'as pas été supprimé
+    if (allerRadio.checked === true ){
+      document.getElementById('departure').disabled = false;
+      document.getElementById('arrival').disabled = true;               
+      document.getElementById('arrival').value = "LBR Festival"; 
+      document.getElementById('departure').value ="";
+    }
 
-  if (allerRadio.checked === true){
-    document.getElementById('departure').disabled = false;
-    document.getElementById('arrival').disabled = true;
-    document.getElementById('arrival').value = "LBR Festival"; 
-    document.getElementById('departure').value ="";
+    document.getElementById('aller').onclick = function() {
+      document.getElementById('departure').disabled = false;
+      document.getElementById('arrival').disabled = true;               
+      document.getElementById('arrival').value = "LBR Festival"; 
+      document.getElementById('departure').value ="";
+    };
+
   }
 
-  document.getElementById('aller').onclick = function() {
+  if(retourRadio !== null){
+    if (retourRadio.checked === true){
+      document.getElementById('departure').disabled = true;
+      document.getElementById('arrival').disabled = false;
+      document.getElementById('departure').value = "LBR Festival"; 
+      document.getElementById('arrival').value = "";
+    }
 
-    document.getElementById('departure').disabled = false;
-    document.getElementById('arrival').disabled = true;
-    document.getElementById('arrival').value = "LBR Festival"; 
-    document.getElementById('departure').value ="";
-  };
+  
 
 
   document.getElementById('retour').onclick = function() {
@@ -250,41 +390,54 @@ showDrive.onclick = function(){
     document.getElementById('arrival').value = "";
 
   };
-
+  }
 
 
   let allerRadio2 = document.getElementById('aller2');
   let retourRadio2 = document.getElementById('retour2');
 
+  if(allerRadio2!==null){
+    if (allerRadio2.checked === true){
+      document.getElementById('departure2').disabled = false;
+      document.getElementById('arrival2').disabled = true;
+      document.getElementById('arrival2').value = "LBR Festival"; 
+      document.getElementById('departure2').value ="";
+    }
 
-  if (allerRadio2.checked === true){
-    document.getElementById('departure2').disabled = false;
-    document.getElementById('arrival2').disabled = true;
-    document.getElementById('arrival2').value = "LBR Festival"; 
-    document.getElementById('departure2').value ="";
+    document.getElementById('aller2').onclick = function() {
+      document.getElementById('departure2').disabled = false;
+      document.getElementById('arrival2').disabled = true;
+      document.getElementById('arrival2').value = "LBR Festival"; 
+      document.getElementById('departure2').value ="";
+    };
   }
 
-  document.getElementById('aller2').onclick = function() {
 
-    document.getElementById('departure2').disabled = false;
-    document.getElementById('arrival2').disabled = true;
-    document.getElementById('arrival2').value = "LBR Festival"; 
-    document.getElementById('departure2').value ="";
-  };
+  if(retourRadio2 !==null){
+    if (retourRadio2.checked === true){
+      document.getElementById('departure2').disabled = true;
+      document.getElementById('arrival2').disabled = false;
+      document.getElementById('departure2').value = "LBR Festival"; 
+      document.getElementById('arrival2').value = "";
+    }
+
+ 
 
 
-  document.getElementById('retour2').onclick = function() {
+    document.getElementById('retour2').onclick = function() {
 
-    document.getElementById('departure2').disabled = true;
-    document.getElementById('arrival2').disabled = false;
-    document.getElementById('departure2').value = "LBR Festival"; 
-    document.getElementById('arrival2').value = "";
+      document.getElementById('departure2').disabled = true;
+      document.getElementById('arrival2').disabled = false;
+      document.getElementById('departure2').value = "LBR Festival"; 
+      document.getElementById('arrival2').value = "";
 
-  };
+    };
+  }
+  
+  
 
 </script>
 
-
-
+  
 </body>
 </html>

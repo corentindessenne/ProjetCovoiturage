@@ -268,6 +268,7 @@
 		      	return d;
 		    }
 
+		    
 			//******Affichage Map + trajet sur map******
 			const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
 

@@ -1,7 +1,7 @@
 <?php
     include 'Connexion.php';
 
-    $sql = "DELETE FROM edition WHERE IdEdition='".$_POST["IdEdition"]."'" ;
+    $sql = "DELETE FROM edition WHERE AnnéeEdition='".$_POST["IdEdition"]."'" ;
     if ($conn->query($sql) === TRUE){
         ?>
         <script type="text/javascript">
