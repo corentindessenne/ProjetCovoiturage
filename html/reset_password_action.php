@@ -15,8 +15,7 @@ if (isset($_POST['newPassword']) && $_POST['token'] && $_POST['email']) {
             ?>
             <script>document.location.href = '../html/home.php';</script>
             <?php
-        }
-        else{
+        } else {
             echo "<script type='text/javascript'>alert('Oups. La requête ne s\'est pas exécutée. Réessaye plus tard');</script>";
         }
     } else {
