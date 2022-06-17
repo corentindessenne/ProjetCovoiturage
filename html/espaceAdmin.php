@@ -184,12 +184,7 @@
 
 		}
 		else{
-			?>
-			<script type="text/javascript">
-				alert("Tu n'es pas connecté/ Tu n'es pas un administrateur");
-				location="home.php";
-			</script>
-			<?php
+			header("Location: home.php");
 		}
 	
 	

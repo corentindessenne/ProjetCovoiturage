@@ -10,6 +10,10 @@
 include 'Connexion.php';
 
 include 'NavbarConn.php';
+if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
+    header("Location:home.php");
+    
+  }
 if(isset($_SESSION["mail"])){
 ?>
     <h1>Modification d'une demande de trajet</h1>

@@ -18,6 +18,10 @@
   <?php
   include 'Connexion.php';
   include 'NavbarConn.php';
+  if(!isset($_SESSION['login'])){
+    header("Location:home.php");
+    
+  }
 
   $requete="SELECT IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'";
   $result = $conn->query($requete);
