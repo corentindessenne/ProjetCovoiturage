@@ -19,7 +19,7 @@
     <form action="LoginAction.php" method="POST">
 
         <div class="logo">
-            <a href=""><img src="../images/LBR Ressources/logoLONGUEURClassic.png"></a>
+            <a href="home.php"><img src="../images/LBR Ressources/logoLONGUEURClassic.png" alt="Logo des briques rouges "></a>
         </div>
         <h1>Connexion</h1>
         <label><b>Email</b>
@@ -29,6 +29,7 @@
         <label><b>Mot de passe</b>
             <input type="password" placeholder="Mot de passe" name="password" required>
         </label>
+        <small><a href="forget_password.php" style="text-decoration: none;">Tu as oublié ton mot de passe ?</a></small>
 
         <input style="border-radius: 100px;" type="submit" id='submit' value='Se connecter'>
         <?php
@@ -41,7 +42,7 @@
         <h4 class="separator"><span>OU</span></h4>
         <button type="button" class="google-btn">Se connecter avec Google</button>
         <div>
-            <p style="text-align: center;">Tu n'as pas encore de compte ? <a href="register.php">Inscris-toi !</a></p>
+            <p style="text-align: center;">Tu n'as pas encore de compte ? <a href="register.php" style="text-decoration: none;">Inscris-toi !</a></p>
         </div>
     </form>
 </div>
