@@ -45,6 +45,7 @@ else{
         $prenom=$row["Prenom"];
         $phone=$row["telephone"];
         $description=$row["Description"];
+        $idCompte=$row["IdCompte"];
   }
      ?>
 
