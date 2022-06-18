@@ -26,6 +26,7 @@ if(isset($_POST["reg_user"]) && $_POST["email"]){
         $request = mysqli_query($conn, "INSERT INTO compte(Nom,Prenom, Email, telephone, motDePasse, isAdmin,DateCreation, lien_verif_mail) VALUES ('" . $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["email"] . "','" . $tel . "','" . $password . "','" . $verifadmin . "','" . date("Y.m.d") . "', '" . $token . "')");
         $link = "<a href='localhost/Plateforme covoiturage/html/verify_email.php?key=".$_POST['email']."&token=".$token."'>Clique ici pour vérifier ton compte</a>";
 
+
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
