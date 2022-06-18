@@ -25,8 +25,8 @@
 
   $requete="SELECT IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'";
   $result = $conn->query($requete);
-  $verifAller=false;        //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour aller vers le lieu du festival
-  $verifRetour=false;       //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour partir depuis le lieu du festival
+  $verifAller=0;        //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour aller vers le lieu du festival
+  $verifRetour=0;       //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour partir depuis le lieu du festival
   if($result->num_rows >  0){
     $row = $result->fetch_assoc();
     $idCompte=$row["IdCompte"];   //get Idcompte depuis la base de donnée pour vérifier les trajets de l'utilisateur
@@ -35,15 +35,15 @@
     while ($row = mysqli_fetch_assoc($result)){
       
       if($row["TypeTrajet"]=="Aller"){
-        $verifAller=true;                                 //vérification des trajets de l'utilisateur
+        $verifAller=1;                                 //vérification des trajets de l'utilisateur
       }
       else if($row["TypeTrajet"]=="Retour"){
-        $verifRetour=true;
+        $verifRetour=1;
       }
     }
     /*if(isset($_SESSION["role"])&& $_SESSION["role"] == 1){
-      $verifAller=false;
-      $verifRetour=false;
+      $verifAller=0;
+      $verifRetour=0;
     }*/
   }
 
@@ -82,12 +82,12 @@
 
       <div class="radio-but">
        <label class="form-control" class="active">
-        <input type="radio" required="required" name="aller-retour" id="aller" value="Aller" <?php if($verifAller==false){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
+        <input type="radio" required="required" name="aller-retour" id="aller" value="Aller" <?php if($verifAller==0){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
         <span id="spanAller"> ALLER</span>
       </label>
 
       <label class="form-control">
-        <input type="radio" required="required" name="aller-retour" id="retour" value="Retour" <?php if($verifAller==true && $verifRetour==false){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
+        <input type="radio" required="required" name="aller-retour" id="retour" value="Retour" <?php if($verifAller==1 && $verifRetour==0){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
         <span id="spanRetour"> RETOUR </span>
       </label>
     </div>
@@ -137,12 +137,12 @@
 
       <div class="radio-but">
        <label class="form-control">
-        <input type="radio" name="aller-retour" id="aller2" value="Aller" <?php if($verifAller==false){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
+        <input type="radio" name="aller-retour" id="aller2" value="Aller" <?php if($verifAller==0){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
         <span id="spanAller2">ALLER</span>
       </label>
 
       <label class="form-control">
-        <input type="radio" name="aller-retour" id="retour2" value="Retour" <?php if($verifAller==true && $verifRetour==false){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
+        <input type="radio" name="aller-retour" id="retour2" value="Retour" <?php if($verifAller==1 && $verifRetour==0){ ?>checked='checked' <?php } ?>/> <!-- On check la box si l'utilisateur a déjà un trajet de type aller enregistré mais pas de trrajet de type retour -->
         <span id="spanRetour2"> RETOUR </span>
       </label>
     </div>
@@ -200,7 +200,7 @@
         
 <?php
 
-    if($verifAller==true && $verifRetour==true){
+    if($verifAller==1 && $verifRetour==1){
       ?>
         <div class="modal_info">
             <h2>Important</h2>
@@ -267,25 +267,65 @@
 
       <?php                       
     }
-    else if($verifAller==true){                          //suppression d'un radio si nécessaire en fonction des vérifications faires plus haut
+    else if($verifAller==1){                          //suppression d'un radio si nécessaire en fonction des vérifications faires plus haut
       ?>  
         <script type="text/javascript">
-          document.getElementById("aller").remove();
-          document.getElementById("spanAller").remove();
-          document.getElementById("spanAller2").remove();
-          document.getElementById("aller2").remove();
 
+          document.getElementById("aller").style.borderColor = "#424242";
+          document.getElementById("spanAller").style.color = "#424242";
+          document.getElementById("aller2").style.borderColor = "#424242";
+          document.getElementById("spanAller2").style.color = "#424242";
+
+
+          document.getElementById("aller").onchange = function(){
+            document.getElementById("aller").checked=false;
+            document.getElementById("retour").checked=true;
+            alert("Tu as déjà créer ou réserver un trajet pour ton aller vers notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+          }
+
+          document.getElementById("aller2").onchange = function(){
+            document.getElementById("aller2").checked=false;
+            document.getElementById("retour2").checked=true;
+            alert("Tu as déjà créer ou réserver un trajet pour ton aller vers notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+          }
+
+
+          document.getElementById("retour").style.borderColor = "#FFFEE6";
+          document.getElementById("spanRetour").style.color = "#FFFEE6";
+          document.getElementById("retour2").style.borderColor = "#FFFEE6";
+          document.getElementById("spanRetour2").style.color = "#FFFEE6";
         </script>
       <?php
     }
-    else if($verifRetour==true){
+    else if($verifRetour==1){
       ?>
         <script type="text/javascript">
-          document.getElementById("retour").remove();
-          document.getElementById("spanRetour").remove();
-          document.getElementById("spanRetour2").remove();
-          document.getElementById("retour2").remove();
 
+          document.getElementById("retour").style.borderColor = "#424242";
+          document.getElementById("spanRetour").style.color = "#424242";
+          document.getElementById("retour2").style.borderColor = "#424242";
+          document.getElementById("spanRetour2").style.color = "#424242";
+
+
+          document.getElementById("retour").onchange = function(){
+            document.getElementById("retour").checked=false;
+            document.getElementById("aller").checked=true;
+            alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+          }   
+
+          document.getElementById("retour2").onchange = function(){
+            document.getElementById("retour2").checked=false;
+            document.getElementById("aller2").checked=true;
+            alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+          }   
+
+
+          document.getElementById("aller").style.borderColor = "#FFFEE6";
+          document.getElementById("spanAller").style.color = "#FFFEE6";
+          document.getElementById("aller2").style.borderColor = "#FFFEE6";
+          document.getElementById("spanAller2").style.color = "#FFFEE6";
+
+        
         </script>
       <?php
     }
@@ -357,8 +397,10 @@ showDrive.onclick = function(){
 
   let allerRadio = document.getElementById('aller');
   let retourRadio = document.getElementById('retour');
+  let allerRadio2 = document.getElementById('aller2');
+  let retourRadio2 = document.getElementById('retour2');
 
-  if(allerRadio !== null){    //vérification que le radio n'as pas été supprimé
+  if(<?php echo $verifAller; ?>=="0"){    //vérification que le radio n'as pas été supprimé
     if (allerRadio.checked === true ){
       document.getElementById('departure').disabled = false;
       document.getElementById('arrival').disabled = true;               
@@ -373,34 +415,7 @@ showDrive.onclick = function(){
       document.getElementById('departure').value ="";
     };
 
-  }
 
-  if(retourRadio !== null){
-    if (retourRadio.checked === true){
-      document.getElementById('departure').disabled = true;
-      document.getElementById('arrival').disabled = false;
-      document.getElementById('departure').value = "LBR Festival"; 
-      document.getElementById('arrival').value = "";
-    }
-
-  
-
-
-  document.getElementById('retour').onclick = function() {
-
-    document.getElementById('departure').disabled = true;
-    document.getElementById('arrival').disabled = false;
-    document.getElementById('departure').value = "LBR Festival"; 
-    document.getElementById('arrival').value = "";
-
-  };
-  }
-
-
-  let allerRadio2 = document.getElementById('aller2');
-  let retourRadio2 = document.getElementById('retour2');
-
-  if(allerRadio2!==null){
     if (allerRadio2.checked === true){
       document.getElementById('departure2').disabled = false;
       document.getElementById('arrival2').disabled = true;
@@ -414,19 +429,37 @@ showDrive.onclick = function(){
       document.getElementById('arrival2').value = "LBR Festival"; 
       document.getElementById('departure2').value ="";
     };
+
   }
 
 
-  if(retourRadio2 !==null){
-    if (retourRadio2.checked === true){
+
+  if(<?php echo $verifRetour; ?>=="0"){
+    if (retourRadio.checked === true){
+      document.getElementById('departure').disabled = true;
+      document.getElementById('arrival').disabled = false;
+      document.getElementById('departure').value = "LBR Festival"; 
+      document.getElementById('arrival').value = "";
+    }
+
+  document.getElementById('retour').onclick = function() {
+
+    document.getElementById('departure').disabled = true;
+    document.getElementById('arrival').disabled = false;
+    document.getElementById('departure').value = "LBR Festival"; 
+    document.getElementById('arrival').value = "";
+
+  };
+
+
+
+
+  if (retourRadio2.checked === true){
       document.getElementById('departure2').disabled = true;
       document.getElementById('arrival2').disabled = false;
       document.getElementById('departure2').value = "LBR Festival"; 
       document.getElementById('arrival2').value = "";
     }
-
- 
-
 
     document.getElementById('retour2').onclick = function() {
 
@@ -437,7 +470,7 @@ showDrive.onclick = function(){
 
     };
   }
-  
+
   
 
 </script>
