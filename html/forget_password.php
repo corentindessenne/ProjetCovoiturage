@@ -12,12 +12,15 @@ include("Connexion.php");
     <title>Mot de passe oublié - LBR Covoiturage</title>
 </head>
 <body>
+<?php include('NavbarConn.php') ?>
 
-<h2>Réinitialise ton mot de passe</h2>
+<h2 style="text-align: center;">Tu as oublié ton mot de passe ?</h2>
 <form method="post" action="forget_password_action.php">
     <div class="container">
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Entre ton adresse mail" name="email" required>
+        <p>Pour réinitialiser ton mot de passe, entre ton adresse mail et nous t'enverrons un lien par mail pour le changer</p>
+        <label for="email"><b>Email</b>
+            <input type="email" placeholder="Entre ton adresse mail" name="email" required>
+        </label>
         <button type="submit" name="password-reset">Réinitialiser</button>
     </div>
 </form>

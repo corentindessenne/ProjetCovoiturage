@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 <div class="dwich">
 
 <div class="main">
-	<div class="logo"><img src="../images/LBR Ressources/logo.png"></div>
+	<div class="logo"><a href="home.php"><img src="../images/LBR Ressources/logo.png" alt="Logo Les Briques Rouges"></a></div>
 	<div class="title">
 		<span>Créer un compte</span>
 	</div>
@@ -56,7 +56,7 @@
 
 			<div class="input-group">
 				<div class="item phone">
-					<input id="phone" type="tel"name="phone" required="required" placeholder="" />
+					<input id="phone" type="tel" name="phone" required placeholder="" />
 				</div>
 			</div>
 
@@ -64,12 +64,12 @@
 			<div class="input-group">
 				<div class="item">
 					<label>Mot de passe</label>
-					<input type="password" required="required" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
+					<input type="password" required="required" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule et 1 caractère spécial" onkeyup='check();'>
 				</div>
 
 				<div class="item">
 					<label>Confirmation</label>
-					<input type="password" required="required"  placeholder="" id="password_2" name="password_2" onkeyup='check();'>
+					<input type="password" required placeholder="" id="password_2" name="password_2" onkeyup='check();'>
 					<br/>
 					<span id='message'></span>
 				</div>	
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 
-			<div class="checkboxes">
+			<div class="checkboxes" style="margin-bottom: 0.7rem;">
 				<input type="checkbox" required="required" id="conduti" value="conduti" name="conduti">
 				<label>J'accepte les <a href="https://www.lesbriquesrouges.fr/reglement.pdf" target="_blank">conditions générales d'utilisation</a></label>
 			</div>
@@ -95,7 +95,7 @@
 
 		<!-- Illustration -->
 		<div class="img-container">
-			<img src="../images/illustration-covoiturage.jpg">
+			<img src="../images/illustration-covoiturage.jpg" alt="Illustration voiture">
 			<p class="title-text">Déjà 400 inscrits</p>
 			<p class="subtitle">Rejoins Nous !</p>
 		</div>
@@ -104,43 +104,42 @@
 </div>
 
 <script type="text/javascript">
-	
+
 	let item = document.getElementsByClassName('item');
 
 	for(let i = 0 ; i < item.length	; i++){
 		item[i].addEventListener('focusin', () => {
-			if(i != 3 && i != 6){
+			if(i !== 3 && i !== 6){
 				item[i].children[0].classList.add("upper");
 				item[i].children[1].classList.add("upperInput");
 			}
 		});
 
 		item[i].addEventListener('focusout', () =>{
-			if(i != 3 && i != 6){
-				if(item[i].children[1].value == ""){
+			if(i !== 3 && i !== 6){
+				if(item[i].children[1].value === ""){
 					item[i].children[0].classList.remove("upper");
 					item[i].children[1].classList.remove("upperInput");
 				}
 			}
 		});
 	}
-	
+
 </script>
 
 <script>
-	var check = function() {
-		if (document.getElementById('password_1').value ==
-			document.getElementById('password_2').value) {
-			document.getElementById('message').style.color = 'green';
-		document.getElementById('message').innerHTML = 'Les mots de passe sont identiques';
-		document.getElementById('submit').disabled = false;
-	} 
-	else {
-		document.getElementById('message').style.color = 'red';
-		document.getElementById('message').innerHTML = 'Le mot de passe de confirmation doit etre le même que celui au-dessus';
-		document.getElementById('submit').disabled = true;
-	}
-}
+    let check = function () {
+        if (document.getElementById('password_1').value ===
+            document.getElementById('password_2').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'Les mots de passe sont identiques';
+            document.getElementById('submit').disabled = false;
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'Le mot de passe de confirmation doit etre le même que celui au-dessus';
+            document.getElementById('submit').disabled = true;
+        }
+    };
 
 </script>
 

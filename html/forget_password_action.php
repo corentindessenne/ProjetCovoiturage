@@ -31,7 +31,7 @@ if(isset($_POST["password-reset"]) && $_POST["email"]){
         else{
             echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";
             ?>
-            <script>document.location.href='../html/home.php';</script>
+            <script>document.location.href='../html/forget_password.php';</script>
             <?php
         }
     }
