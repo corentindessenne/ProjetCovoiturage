@@ -247,8 +247,8 @@
 
 							<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
 							<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
-							<div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a></div>
-							
+                        <div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
+						
 						</div>
 					</div>
 				</div>
@@ -269,7 +269,6 @@
 
 <script type="text/javascript">
 
-	let right = document.getElementById('trajets').children;
 
 
 	const modal = document.getElementsByClassName("modal");
@@ -311,7 +310,6 @@
 		      	return d;
 		    }
 
-		    
 			//******Affichage Map + trajet sur map******
 			const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
 
@@ -327,7 +325,6 @@
 				document.getElementById('wrapper').style.display = "none";
 			}
 			
-
 			async function initMap(){
 
 				let response = await getDataFromURL();
