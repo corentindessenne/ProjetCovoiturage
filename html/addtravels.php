@@ -9,11 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Library-->
   <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!--Google Maps API-->
+  <script async
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg">
+  </script>
+
 
 </head>
 <body>
+
 
   <?php
   include 'Connexion.php';
@@ -80,6 +87,9 @@
       <input type="hidden" name="NbPassagers"  id="nbPass" value="1">
       <input type="hidden" name="Prix"  id="Prix" value="0">
 
+      <input type="hidden" name="lat" id="lat" value="">
+      <input type="hidden" name="long" id="long" value="">
+
       <div class="radio-but">
        <label class="form-control" class="active">
         <input type="radio" required="required" name="aller-retour" id="aller" value="Aller" <?php if($verifAller==0){ ?>checked='checked' <?php } ?>/> <!-- On ne check pas la box si l'utilisateur a déjà un trajet de type aller enregistré -->
@@ -134,6 +144,8 @@
     <div class="form-traveler">
 
      <input type="hidden" name="isDemande"  id="isDemande" value="0">
+     <input type="hidden" name="lat" id="lat2" value="">
+      <input type="hidden" name="long" id="long2" value="">
 
       <div class="radio-but">
        <label class="form-control">
@@ -474,6 +486,119 @@ showDrive.onclick = function(){
   
 
 </script>
+
+
+
+  <script>
+    let queryCoord = {lat : 0, lng : 0};
+    
+    
+    
+   if(driverForm.style.display == "none"){
+    document.getElementById("arrival").onchange = function(){
+      let sens=document.getElementById("retour").value;
+      let query=document.getElementById("adresse").value;
+    if(sens=="Aller"){
+      query += " "+document.getElementById("departure").value;
+    }
+    else{
+      query = document.getElementById("arrival").value;
+    }
+    
+    getDataFromURL(query);
+    }
+
+    document.getElementById("departure").onchange = function(){
+      let sens=document.getElementById("retour").value;
+      let query=document.getElementById("adresse").value;
+    if(sens=="Aller"){
+      query += " "+document.getElementById("departure").value;
+    }
+    else{
+      query = document.getElementById("arrival").value;
+    }
+    
+    getDataFromURL(query);
+    }
+
+    document.getElementById("adresse").onchange = function(){
+      let sens=document.getElementById("retour").value;
+      let query=document.getElementById("adresse").value;
+    if(sens=="Aller"){
+      query += " "+document.getElementById("departure").value;
+    }
+    else{
+      query = document.getElementById("arrival").value;
+    }
+    
+    getDataFromURL(query);
+    }
+  }
+   else{
+      document.getElementById("arrival2").onchange = function(){
+        let sens=document.getElementById("retour").value;
+        let query=document.getElementById("adresse").value;
+        if(sens=="Aller"){
+          query += " "+document.getElementById("departure2").value;
+        }
+        else{
+          query = document.getElementById("arrival2").value;
+        }
+        
+        getDataFromURL(query);
+      }
+
+      document.getElementById("departure2").onchange = function(){
+        let sens=document.getElementById("retour").value;
+        let query=document.getElementById("adresse").value;
+        if(sens=="Aller"){
+          query += " "+document.getElementById("departure2").value;
+        }
+        else{
+          query = document.getElementById("arrival2").value;
+        }
+        
+        getDataFromURL(query);
+      }
+
+      document.getElementById("adresse").onchange = function(){
+        let sens=document.getElementById("retour").value;
+        let query=document.getElementById("adresse").value;
+        if(sens=="Aller"){
+          query += " "+document.getElementById("departure2").value;
+        }
+        else{
+          query = document.getElementById("arrival2").value;
+        }
+        
+        getDataFromURL(query);
+      }
+   }
+   
+  
+            function getDataFromURL(query){
+            
+
+                console.log(query);
+                $.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
+
+                    queryCoord.lat = data.data[0].latitude;
+                    queryCoord.lng = data.data[0].longitude;
+                    document.getElementById("lat").value=data.data[0].latitude;
+                    document.getElementById("long").value=data.data[0].longitude;
+                    document.getElementById("lat2").value=data.data[0].latitude;
+                    document.getElementById("long2").value=data.data[0].longitude;
+                    console.log(queryCoord);
+
+                });
+
+               
+              
+        }
+        </script>
+    <div id="map"></div>
+
+
 
   
 </body>
