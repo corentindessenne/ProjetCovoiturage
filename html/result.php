@@ -25,7 +25,6 @@
 		let allerRetour = "<?php echo $_POST['allerRetour'] ?>";
 		let query = "<?php echo $_POST['lieu'] ?>";
 		let doNotShowMap= false;
-		console.log(query);
 		let idTrajetTab = new Array();
 
 		let queryCoord = {lat : 0, lng : 0};

@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Réservation</title>
 	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<link rel="stylesheet" type="text/css" href="../css/reservation.css">
 </head>
 <body>
 
@@ -16,6 +17,11 @@
 		$requete = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajet' ";
 		$result = mysqli_query($conn,$requete);
 		$row = mysqli_fetch_assoc($result);
+
+		if($result->num_rows == 0){
+			echo "Ce trajet n'existe pas";
+			return;
+		}
 		$typeTrajet = $row['TypeTrajet'];
 
 		//checks if still enough place
@@ -63,20 +69,28 @@
 
 	?>
 
-	<form>
-		
+	<form action="reservationAction.php" method="post">
+		<input class="hidden" type="text" name="idTrajet" value="<?php echo $idTrajet;?>">
+		<input class="hidden" type="text" name="nbPassagers" value="<?php echo $_GET['nbPassagers'];?>">
+		<input class="hidden" type="text" name="typeTrajet" value="<?php echo $typeTrajet;?>">
+		<div class="logo"><img src="../images/LBR Ressources/logo.png"></div>
+		<div class="title">
+			<span>Veuillez rentrer les prénoms des passagers</span>
+		</div>
 		<?php 
 		//affichage HTML demande noms des passagers 
 		for ($i=0; $i < $_GET['nbPassagers']; $i++) { 
 			?>
 				<div class="bloc">
-					<label>Prénom passager <?php echo $i?></label>
-					<input type="text" name="passager-<?php echo $i?>">
+					<label>Prénom passager <?php echo $i+1?></label>
+					<input type="text" name="passager-<?php echo $i+1?>" required>
 				</div>
 			<?php
 			}
 		?>
-
+		<div class="bloc">
+			<input class="button" type="submit" name="submit" value="Valider">
+		</div>
 	</form>
 
 
@@ -85,17 +99,19 @@
 			let item = document.getElementsByClassName('bloc');
 
 			for(let i = 0 ; i < item.length	; i++){
-				item[i].addEventListener('focusin', () => {
-					item[i].children[0].classList.add("upper");
-					item[i].children[1].classList.add("upperInput");
-				});
+				if(i != item.length-1){
+					item[i].addEventListener('focusin', () => {
+						item[i].children[0].classList.add("upper");
+						item[i].children[1].classList.add("upperInput");
+					});
 
-				item[i].addEventListener('focusout', () =>{
-					if(item[i].children[1].value == ""){
-						item[i].children[0].classList.remove("upper");
-						item[i].children[1].classList.remove("upperInput");
-					}
-				});
+					item[i].addEventListener('focusout', () =>{
+						if(item[i].children[1].value == ""){
+							item[i].children[0].classList.remove("upper");
+							item[i].children[1].classList.remove("upperInput");
+						}
+					});
+				}
 			}
 			
 		</script>
