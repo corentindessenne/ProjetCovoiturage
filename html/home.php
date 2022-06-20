@@ -185,7 +185,7 @@
 
 		<div id="down" class="wrapper">
 			<?php
-			$requete = "SELECT * FROM trajet ORDER BY RAND()";
+			$requete = "SELECT * FROM trajet ORDER BY DateAjout DESC";
 			$result = mysqli_query($conn,$requete);
 			$count = 0;
 
