@@ -94,35 +94,6 @@
 				if(document.getElementById('retour').checked) document.getElementById('hidden').value = "retour";
 				console.log(document.getElementById('hidden').value);
 			});
-
-			//scroll button 
-			const myFunction = () =>{
-				document.getElementById("list").scrollIntoView({behavior: "smooth", block: "start"});
-			}
-			let scrollUnder = 0;
-			let animationTriggered = 0;
-			const nav = document.getElementsByTagName('nav')[0];
-
-			document.addEventListener("scroll", () =>{
-
-				console.log(scrollUnder);
-
-				if(window.scrollY != 0 && scrollUnder == 0) {
-					animationTriggered = 1
-					nav.classList.remove("display");
-					nav.classList.add('remove');	
-				}
-				
-				if(window.scrollY > 40) {
-					scrollUnder = 1;
-					animationTriggered = 0;
-				}
-				if(window.scrollY < 40 && nav.classList.contains('remove') && scrollUnder){
-					scrollUnder = 0;
-					nav.classList.remove('remove');
-					nav.classList.add('display');
-				}
-			});
 		</script>
 
 		<div class="scrolldown">

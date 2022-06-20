@@ -160,7 +160,7 @@ body{
 	height: 30px;
 	position: relative;
 	top: 26px;
-	left: 77.5px;
+	left: 77.75px;
 }
 
 .horaire{
@@ -193,7 +193,7 @@ body{
 }
 
 .price{
-	color: #3671B3;
+	color: black;
 	font-size: 26px;
 	font-weight: 700;
 	text-align: right;
