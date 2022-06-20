@@ -21,7 +21,6 @@
 		include 'NavbarConn.php';
 		if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
 			header("Location:home.php");
-			
 		  }
 
 		if(isset($_POST["CompteId"])&& (isset($_SESSION['login']) &&$_SESSION['login'] != '') && $_SESSION["role"] == 1){
@@ -201,7 +200,7 @@
 				}
 				?>
 			</div>
-    </div>
+    	</div>
     </div>
 
     <div class="DeleteButtondiv" id="DeleteButton">

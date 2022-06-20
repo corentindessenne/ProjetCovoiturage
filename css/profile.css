@@ -31,7 +31,7 @@ body{
 .menu{
 	padding: 0 20px;
 	display: flex;
-	width: 60%;
+	width: 900px;
 	justify-content: space-between;
 	align-items: center;
 	margin: auto;
@@ -65,15 +65,25 @@ body{
 }
 
 .infos{
-	width: 60%;
+	width: 900px;
 	margin: auto;
 	padding: 0 20px;
 	background-color: lightgrey;
+  display: flex;
+}
+
+.infos-main{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  align-items: center;
 }
 
 .PhotoDeProfil{
-	width: 100px;
-	border-radius: 50%;
+	width: 200px;
+  height: 200px;
+  position: relative;
+  margin-top: 20px;
 }
 
 /* Profile Picture CSS */
@@ -89,10 +99,11 @@ body{
   object-fit: cover;
   opacity: 1;
   transition: opacity .2s ease-in-out;
+  border-radius: 50%;
 }
 
 .ppform {
-  position: relative;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

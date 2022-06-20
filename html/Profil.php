@@ -57,20 +57,32 @@ if ($result->num_rows > 0) {
 
 <div class="infos" id="infos">
     <div class="infos-main">
+        <!-- Profile picture + nom et prénom -->
         <div class="PhotoDeProfil">
-            <img class="profile-picture BigPP" src="..\images\PhotoProfil\<?php if ($pp != NULL) {
-                echo $pp;
-            } else {
-                echo "defaultpp.jpg";
-            } ?>" alt="Ta PP" width="200px" height="200px">
+                <img class="profile-picture BigPP" src="..\images\PhotoProfil\<?php if ($pp != NULL) {
+                    echo $pp;
+                } else {
+                    echo "defaultpp.jpg";
+                } ?>" alt="Ta PP" width="200px" height="200px">
             <form action="PPAction.php" method="post" enctype="multipart/form-data" id="ppform" class="ppform">
                 <input type="file" name="file" class="PPbutton" id="file" style="visibility:hidden;">
                 <label for="file" class="PPbutton"><img src="..\images\icon\camera.png" class="camera"> <br/>Change ta
                     photo de profil</label>
             </form>
         </div>
+        <span><?php echo $prenom." ".$nom; ?></span>
+
     </div>
+
+
+
+
+
+
+
+
     <div class="infos-secondary">
+
     </div>
 </div>
 
