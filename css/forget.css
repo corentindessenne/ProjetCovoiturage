@@ -125,6 +125,11 @@ label{
     color: #1A73E8;
 }
 
+.input-group{
+    margin-top: 20px;
+    transform: scale(1.5);
+}
+
 .inputUpper{
     border-color: #1A73E8;
 }

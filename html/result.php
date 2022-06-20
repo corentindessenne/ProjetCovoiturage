@@ -25,6 +25,7 @@
 		let allerRetour = "<?php echo $_POST['allerRetour'] ?>";
 		let query = "<?php echo $_POST['lieu'] ?>";
 		let doNotShowMap= false;
+		console.log(query);
 		let idTrajetTab = new Array();
 
 		let queryCoord = {lat : 0, lng : 0};
@@ -172,9 +173,13 @@
 
 			<?php
 			$i=0;
-
+			$count = 0;
 			$nbPlaces = $_POST['nbPlaces'];
 			$typeTrajet1 = "Aller";
+			$lieuDepart = array();
+			$lieuArrivee = array();
+			$dateDepart = array();
+			$prixTab = array();
 			if ($_POST['allerRetour'] == "retour") $typeTrajet1 = "Retour";
 
 			$requete = "SELECT * FROM trajet WHERE TypeTrajet='$typeTrajet1' AND PlacesRestantes>='$nbPlaces' AND PlacesRestantes!=0 AND isDemande=0 AND DateDepart = '".mysqli_real_escape_string($conn,$_POST['date'])."'";
@@ -184,7 +189,13 @@
 
 			while ($row = mysqli_fetch_assoc($result)){
 				$idTrajet[$i] = $row['IdTrajet'];
+				$lieuDepart[$i] = $row['LieuDepart'];
+				$dateDepart[$i] = $row['DateDepart'];
+				$lieuArrivee[$i] = $row['LieuArrivee'];
+				$prixTab[$i] = $row['Prix'];
+
 				$i++;
+				$count++;
 
 				$idCompte = $row["IdCompte"];
 
@@ -196,6 +207,10 @@
 				$hourString3 = substr($row['HeureArrivee'],0,2);
 				$hourString4 = substr($row['HeureArrivee'],3,2);
 				$hourStringArrival = $hourString3."h".$hourString4;
+				
+
+
+				
 
 				$requete2 = "SELECT * FROM compte WHERE IdCompte=$idCompte";
 				$result2 = mysqli_query($conn,$requete);
@@ -236,18 +251,18 @@
 							<span class="name"></span>
 							<div class="available">
 								<?php
-									$value = $row['PlacesRestantes'];
-									if($value == 1) echo $value." place restante";
-									else echo $value." places restantes";
+								$value = $row['PlacesRestantes'];
+								if($value == 1) echo $value." place restante";
+								else echo $value." places restantes";
 								?>
 							</div>
 						</div>
 
 
-							<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
-							<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
-                        <div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
-						
+						<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
+						<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
+						<div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
+
 						</div>
 					</div>
 				</div>
@@ -257,42 +272,50 @@
 			?>
 		</div>
 	</div>
-							
-	<div  name="modal" id="modal" class="modal">
-		<div id="modal-content" class="modal-content">
-			<span name="close-button" id="close-button"class="close-button">&times;</span>
-			<h1>Hello, I am a modal!</h1>
-		</div>
-	</div>		
-
-
-<script type="text/javascript">
 
 
 
-	const modal = document.getElementsByClassName("modal");
-	const trigger = document.getElementsByClassName("trigger");
-	const trigger1 = document.getElementsByClassName('trigger');
-	const closeButton = document.getElementsByClassName("close-button");
+	<?php
+	/* exemple 1 */
 
+	for ($y = 0; $y <$count ; $y++) {
 
-	console.log('salut', trigger);
+		?>
 
-	for(let y = 0 ; y < trigger.length; y++){
-		console.log('salut' ,trigger[y]);
-		trigger[y].addEventListener("click", () =>{
-			console.log(modal);
-			modal[0].classList.add("show-modal");
-	    	doNotShowMap = true;
-		});
+		<div  name="modal" id="modal" class="modal">
+			<div id="<?php echo $idTrajet[$y];?>" class="modal-content" >
+				<span name="close-button" id="close-button"class="close-button">&times;</span>
+				<div class="data-group">
+					<span class="horaire">
+						<?php echo $hourStringDeparture; ?>
+					</span>
+					<span class="place">
+						<?php echo $lieuDepart[$y]; ?>
+					</span>
 
+					<span class="date">
+					
+					</span>
+				</div>
 
+				<div class="data-group">
+					<span class="horaire">
+						<?php echo $hourStringArrival; ?>
+					</span>
+					<span class="place">
+						<?php echo $lieuArrivee[$y]; ?>
+					</span>
+
+					<span class="price">
+						<?php echo $prixTab[$y]; ?>€
+					</span>
+				</div>
+			</div>
+		</div>	
+		<?php
 	}
-		closeButton[0].addEventListener("click", () =>{
-			modal[0].classList.remove("show-modal");
-		});
-
-	</script>
+	?>
+	
 
 	<script type="text/javascript">
 
@@ -307,7 +330,7 @@
 
 		      	var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
 		      	return d;
-		    }
+		      }
 
 			//******Affichage Map + trajet sur map******
 			const WerwicqSud = { lat: 50.765011, lng: 3.046145 };
@@ -458,6 +481,29 @@
 				document.getElementById('wrapper').style.display = "flex";
 				
 
+				const modal = document.getElementsByClassName("modal");
+				const trigger = document.getElementsByClassName("trigger");
+				const closeButton = document.getElementsByClassName("close-button");
+
+
+
+
+				for(let y = 0 ; y < trigger.length; y++){
+					console.log("trigger", trigger[indexOrdre[y]]);
+					trigger[indexOrdre[y]].addEventListener("click", () =>{
+
+					
+						document.getElementById(y+1).parentNode.classList.add("show-modal");
+						doNotShowMap = true;
+					});
+					closeButton[indexOrdre[y]].addEventListener("click", () =>{
+						console.log("y",document.getElementById(y+1).parentNode);
+						document.getElementById(y+1).parentNode.classList.remove("show-modal");
+					});
+				}
+
+
+
 
 
 			//update map on click 
@@ -466,7 +512,7 @@
 			loopValue = <?php echo $i; ?>;
 			for (let i = 0; i < loopValue ; i++){
 				node[i].addEventListener('click', () => {
-				if (doNotShowMap = false) {
+					if (doNotShowMap == false) {
 					//remove class
 					for (let a = 0; a < loopValue ; a++){
 						node[a].classList.remove('active');
@@ -510,11 +556,20 @@
 							console.log("Erreur dans l'affichage du trajet ");
 						}
 					});
-					}
-				});
+				}
+			});
 			}
 		}
 
-		</script>
-	</body>
-	</html>
+	</script>
+
+
+	<script type="text/javascript">
+
+
+
+
+	</script>
+
+</body>
+</html>
