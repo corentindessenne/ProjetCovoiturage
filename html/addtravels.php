@@ -89,7 +89,7 @@
 
       <input type="hidden" name="lat" id="lat" value="">
       <input type="hidden" name="long" id="long" value="">
-      <input type="hidden" name="heureArrivee" id="long2" value="">
+      
 
       <div class="radio-but">
        <label class="form-control" class="active">
@@ -103,13 +103,13 @@
       </label>
     </div>
     <label for="departure">
-      <span> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure" />
+      <span id="departureSpan"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure" />
     </label>
     <label for="adresse">
-      <span> Adresse :</span><input type="text" name="adresse" required="true" id="adresse" />
+      <span id="adresseSpan"> Adresse :</span><input type="text" name="adresse" required="true" id="adresse" />
     </label>
     <label for="arrival">
-      <span> Vers :</span><input type="text" name="arrival" required="true" id="arrival"/>
+      <span id="arrivalSpan"> Vers :</span><input type="text" name="arrival" required="true" id="arrival"/>
     </label>
     <label for="date">
       Date de départ:
@@ -166,13 +166,13 @@
       </label>
     </div>
     <label for="departure">
-      <span> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure2" />
+      <span id="departureSpan2"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure2" />
     </label>
     <label for="adresse">
-      <span> Adresse :</span><input type="text" name="adresse" required="required" id="adresse"  />
+      <span id="adresseSpan2"> Adresse :</span><input type="text" name="adresse" required="required" id="adresse2"  />
     </label>
     <label for="arrival2">
-      <span> Pour aller à :</span><input type="text" name="arrival" required="true" id="arrival2"/>
+      <span id="arrivalSpan2"> Pour aller à :</span><input type="text" name="arrival" required="true" id="arrival2"/>
     </label>
     <label for="date">
       Date de départ:
@@ -422,6 +422,29 @@ showDrive.onclick = function(){
   let allerRadio2 = document.getElementById('aller2');
   let retourRadio2 = document.getElementById('retour2');
 
+  if(retourRadio.checked==true){
+    document.getElementById("departureSpan").innerHTML="Lieu de départ :";
+    document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";
+    document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
+  }
+  if(retourRadio2.checked==true){
+    document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
+    document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
+    document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
+  }
+  if(allerRadio2.checked==true){
+    document.getElementById("departureSpan2").innerHTML="Ville de départ :";
+    document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
+    document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
+  }
+  if(allerRadio.checked==true){
+    document.getElementById("departureSpan").innerHTML="Ville de départ :";
+    document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
+    document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
+  }
+
+
+
   if(<?php echo $verifAller; ?>=="0"){    //vérification que le radio n'as pas été supprimé
     if (allerRadio.checked === true ){
       document.getElementById('departure').disabled = false;
@@ -504,20 +527,26 @@ showDrive.onclick = function(){
     let Duree=0;
     
   
-    if(driverForm.style.display == "none"){
+   
       document.getElementById("arrival").onchange = function(){ changeLieu(1);}
-      document.getElementById("departure").onchange = function(){ changeLieu(1);}
-      document.getElementById("adresse").onchange = function(){ changeLieu(1);}
-      }
-    else{
-        document.getElementById("arrival2").onchange = function(){ changeLieu(0);}
-        document.getElementById("departure2").onchange = function(){ changeLieu(0);}
-        document.getElementById("adresse").onchange = function(){ changeLieu(0);}
-    }
+      document.getElementById("departure").onchange = function(){ changeLieu(1);}  
+      document.getElementById("arrival2").onchange = function(){ changeLieu(0);}
+      document.getElementById("departure2").onchange = function(){ changeLieu(0);}
+      
+      document.getElementById("adresse").onchange = function(){ changeLieu(1);}  
+      document.getElementById("adresse2").onchange = function(){ changeLieu(0);}
+    
 
     function changeLieu(demande){
       let sens=document.getElementById("retour").checked;
-      let query=document.getElementById("adresse").value;
+      let quer="";
+      if(demande==0){
+        query=document.getElementById("adresse2").value;
+      }
+      else{
+        query=document.getElementById("adresse").value;
+      }
+      
       if(demande==0){
         if(sens==true){
           query += " "+document.getElementById("arrival2").value;
@@ -556,10 +585,10 @@ showDrive.onclick = function(){
 
             queryCoord.lat = data.data[0].latitude;
             queryCoord.lng = data.data[0].longitude;
-            document.getElementById("lat").value=data.data[0].latitude;
-            document.getElementById("long").value=data.data[0].longitude;
-            document.getElementById("lat2").value=data.data[0].latitude;
-            document.getElementById("long2").value=data.data[0].longitude;
+            document.getElementById("lat").value=queryCoord.lat;
+            document.getElementById("long").value=queryCoord.lng;
+            document.getElementById("lat2").value=queryCoord.lat;
+            document.getElementById("long2").value=queryCoord.lng;
             if(document.getElementById("retour").checked==true){
               depart="21 Rue de Linselles, Wervicq-Sud";
               arrivee=queryCoord;
@@ -587,7 +616,7 @@ showDrive.onclick = function(){
                 let Direction=directionsRenderer.getDirections();
                 let Route=Direction.routes[0];
                 Duree=Math.round(Route.legs[0].duration.value/60);
-                console.log(Duree);
+                console.log(queryCoord.lng);
                 
               }
             });
