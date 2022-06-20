@@ -89,6 +89,7 @@
 
       <input type="hidden" name="lat" id="lat" value="">
       <input type="hidden" name="long" id="long" value="">
+      <input type="hidden" name="heureArrivee" id="long2" value="">
 
       <div class="radio-but">
        <label class="form-control" class="active">
@@ -112,14 +113,20 @@
     </label>
     <label for="date">
       Date de départ:
-      <input type="date" name="date" required="required">
+      <input type="date" id="date" name="date" required="required">
     </label>
     <label for="time">
       <span> Choisir une heure de départ :</span>
     </label>
+
     <label>
-      <select name="time"><option value="00:00">00:00</option><option value="00:10">00:10</option><option value="00:20">00:20</option><option value="00:30">00:30</option><option value="00:40">00:40</option><option value="00:50">00:50</option><option value="01:00">01:00</option><option value="01:10">01:10</option><option value="01:20">01:20</option><option value="01:30">01:30</option><option value="01:40">01:40</option><option value="01:50">01:50</option><option value="02:00">02:00</option><option value="02:10">02:10</option><option value="02:20">02:20</option><option value="02:30">02:30</option><option value="02:40">02:40</option><option value="02:50">02:50</option><option value="03:00">03:00</option><option value="03:10">03:10</option><option value="03:20">03:20</option><option value="03:30">03:30</option><option value="03:40">03:40</option><option value="03:50">03:50</option><option value="04:00">04:00</option><option value="04:10">04:10</option><option value="04:20">04:20</option><option value="04:30">04:30</option><option value="04:40">04:40</option><option value="04:50">04:50</option><option value="05:00">05:00</option><option value="05:10">05:10</option><option value="05:20">05:20</option><option value="05:30">05:30</option><option value="05:40">05:40</option><option value="05:50">05:50</option><option value="06:00">06:00</option><option value="06:10">06:10</option><option value="06:20">06:20</option><option value="06:30">06:30</option><option value="06:40">06:40</option><option value="06:50">06:50</option><option value="07:00">07:00</option><option value="07:10">07:10</option><option value="07:20">07:20</option><option value="07:30">07:30</option><option value="07:40">07:40</option><option value="07:50">07:50</option><option value="08:00">08:00</option><option value="08:10">08:10</option><option value="08:20">08:20</option><option value="08:30">08:30</option><option value="08:40">08:40</option><option value="08:50">08:50</option><option value="09:00">09:00</option><option value="09:10">09:10</option><option value="09:20">09:20</option><option value="09:30">09:30</option><option value="09:40">09:40</option><option value="09:50">09:50</option><option value="10:00">10:00</option><option value="10:10">10:10</option><option value="10:20">10:20</option><option value="10:30">10:30</option><option value="10:40">10:40</option><option value="10:50">10:50</option><option value="11:00">11:00</option><option value="11:10">11:10</option><option value="11:20">11:20</option><option value="11:30">11:30</option><option value="11:40">11:40</option><option value="11:50">11:50</option><option value="12:00">12:00</option><option value="12:10">12:10</option><option value="12:20">12:20</option><option value="12:30">12:30</option><option value="12:40">12:40</option><option value="12:50">12:50</option><option value="13:00">13:00</option><option value="13:10">13:10</option><option value="13:20">13:20</option><option value="13:30">13:30</option><option value="13:40">13:40</option><option value="13:50">13:50</option><option value="14:00">14:00</option><option value="14:10">14:10</option><option value="14:20">14:20</option><option value="14:30">14:30</option><option value="14:40">14:40</option><option value="14:50">14:50</option><option value="15:00">15:00</option><option value="15:10">15:10</option><option value="15:20">15:20</option><option value="15:30">15:30</option><option value="15:40">15:40</option><option value="15:50">15:50</option><option value="16:00">16:00</option><option value="16:10">16:10</option><option value="16:20">16:20</option><option value="16:30">16:30</option><option value="16:40">16:40</option><option value="16:50">16:50</option><option value="17:00">17:00</option><option value="17:10">17:10</option><option value="17:20">17:20</option><option value="17:30">17:30</option><option value="17:40">17:40</option><option value="17:50">17:50</option><option value="18:00">18:00</option><option value="18:10">18:10</option><option value="18:20">18:20</option><option value="18:30">18:30</option><option value="18:40">18:40</option><option value="18:50">18:50</option><option value="19:00">19:00</option><option value="19:10">19:10</option><option value="19:20">19:20</option><option value="19:30">19:30</option><option value="19:40">19:40</option><option value="19:50">19:50</option><option value="20:00">20:00</option><option value="20:10">20:10</option><option value="20:20">20:20</option><option value="20:30">20:30</option><option value="20:40">20:40</option><option value="20:50">20:50</option><option value="21:00">21:00</option><option value="21:10">21:10</option><option value="21:20">21:20</option><option value="21:30">21:30</option><option value="21:40">21:40</option><option value="21:50">21:50</option><option value="22:00">22:00</option><option value="22:10">22:10</option><option value="22:20">22:20</option><option value="22:30">22:30</option><option value="22:40">22:40</option><option value="22:50">22:50</option><option value="23:00">23:00</option><option value="23:10">23:10</option><option value="23:20">23:20</option><option value="23:30">23:30</option><option value="23:40">23:40</option><option value="23:50">23:50</option></select>
+      <select name="time" id="heureDepart"><option value="00:00">00:00</option><option value="00:10">00:10</option><option value="00:20">00:20</option><option value="00:30">00:30</option><option value="00:40">00:40</option><option value="00:50">00:50</option><option value="01:00">01:00</option><option value="01:10">01:10</option><option value="01:20">01:20</option><option value="01:30">01:30</option><option value="01:40">01:40</option><option value="01:50">01:50</option><option value="02:00">02:00</option><option value="02:10">02:10</option><option value="02:20">02:20</option><option value="02:30">02:30</option><option value="02:40">02:40</option><option value="02:50">02:50</option><option value="03:00">03:00</option><option value="03:10">03:10</option><option value="03:20">03:20</option><option value="03:30">03:30</option><option value="03:40">03:40</option><option value="03:50">03:50</option><option value="04:00">04:00</option><option value="04:10">04:10</option><option value="04:20">04:20</option><option value="04:30">04:30</option><option value="04:40">04:40</option><option value="04:50">04:50</option><option value="05:00">05:00</option><option value="05:10">05:10</option><option value="05:20">05:20</option><option value="05:30">05:30</option><option value="05:40">05:40</option><option value="05:50">05:50</option><option value="06:00">06:00</option><option value="06:10">06:10</option><option value="06:20">06:20</option><option value="06:30">06:30</option><option value="06:40">06:40</option><option value="06:50">06:50</option><option value="07:00">07:00</option><option value="07:10">07:10</option><option value="07:20">07:20</option><option value="07:30">07:30</option><option value="07:40">07:40</option><option value="07:50">07:50</option><option value="08:00">08:00</option><option value="08:10">08:10</option><option value="08:20">08:20</option><option value="08:30">08:30</option><option value="08:40">08:40</option><option value="08:50">08:50</option><option value="09:00">09:00</option><option value="09:10">09:10</option><option value="09:20">09:20</option><option value="09:30">09:30</option><option value="09:40">09:40</option><option value="09:50">09:50</option><option value="10:00">10:00</option><option value="10:10">10:10</option><option value="10:20">10:20</option><option value="10:30">10:30</option><option value="10:40">10:40</option><option value="10:50">10:50</option><option value="11:00">11:00</option><option value="11:10">11:10</option><option value="11:20">11:20</option><option value="11:30">11:30</option><option value="11:40">11:40</option><option value="11:50">11:50</option><option value="12:00">12:00</option><option value="12:10">12:10</option><option value="12:20">12:20</option><option value="12:30">12:30</option><option value="12:40">12:40</option><option value="12:50">12:50</option><option value="13:00">13:00</option><option value="13:10">13:10</option><option value="13:20">13:20</option><option value="13:30">13:30</option><option value="13:40">13:40</option><option value="13:50">13:50</option><option value="14:00">14:00</option><option value="14:10">14:10</option><option value="14:20">14:20</option><option value="14:30">14:30</option><option value="14:40">14:40</option><option value="14:50">14:50</option><option value="15:00">15:00</option><option value="15:10">15:10</option><option value="15:20">15:20</option><option value="15:30">15:30</option><option value="15:40">15:40</option><option value="15:50">15:50</option><option value="16:00">16:00</option><option value="16:10">16:10</option><option value="16:20">16:20</option><option value="16:30">16:30</option><option value="16:40">16:40</option><option value="16:50">16:50</option><option value="17:00">17:00</option><option value="17:10">17:10</option><option value="17:20">17:20</option><option value="17:30">17:30</option><option value="17:40">17:40</option><option value="17:50">17:50</option><option value="18:00">18:00</option><option value="18:10">18:10</option><option value="18:20">18:20</option><option value="18:30">18:30</option><option value="18:40">18:40</option><option value="18:50">18:50</option><option value="19:00">19:00</option><option value="19:10">19:10</option><option value="19:20">19:20</option><option value="19:30">19:30</option><option value="19:40">19:40</option><option value="19:50">19:50</option><option value="20:00">20:00</option><option value="20:10">20:10</option><option value="20:20">20:20</option><option value="20:30">20:30</option><option value="20:40">20:40</option><option value="20:50">20:50</option><option value="21:00">21:00</option><option value="21:10">21:10</option><option value="21:20">21:20</option><option value="21:30">21:30</option><option value="21:40">21:40</option><option value="21:50">21:50</option><option value="22:00">22:00</option><option value="22:10">22:10</option><option value="22:20">22:20</option><option value="22:30">22:30</option><option value="22:40">22:40</option><option value="22:50">22:50</option><option value="23:00">23:00</option><option value="23:10">23:10</option><option value="23:20">23:20</option><option value="23:30">23:30</option><option value="23:40">23:40</option><option value="23:50">23:50</option></select>
     </label>
+
+    <label id="arrivalHour" style="color:white"></label>;
+    <input type="hidden" name="heureArrivee" id="heureArrivee" value="">
+    <input type="hidden" name="dateArr" id="dateArr" value="">
+
     <input class="inp-cbx" id="cbx" type="checkbox" name="tel" style="display: none;" value="1"/>
     <label class="cbx" for="cbx"><span>
       <svg width="12px" height="9px" viewbox="0 0 12 9">
@@ -164,21 +171,24 @@
     <label for="adresse">
       <span> Adresse :</span><input type="text" name="adresse" required="required" id="adresse"  />
     </label>
-    <label for="arrival">
+    <label for="arrival2">
       <span> Pour aller à :</span><input type="text" name="arrival" required="true" id="arrival2"/>
     </label>
     <label for="date">
       Date de départ:
-      <input type="date" name="date">
+      <input type="date" name="date" id="date2">
     </label>
     <label for="time">
       <span> Choisir une heure de départ :</span>
     </label>
     <label>
-      <select name="time"><option value="00:00">00:00</option><option value="00:10">00:10</option><option value="00:20">00:20</option><option value="00:30">00:30</option><option value="00:40">00:40</option><option value="00:50">00:50</option><option value="01:00">01:00</option><option value="01:10">01:10</option><option value="01:20">01:20</option><option value="01:30">01:30</option><option value="01:40">01:40</option><option value="01:50">01:50</option><option value="02:00">02:00</option><option value="02:10">02:10</option><option value="02:20">02:20</option><option value="02:30">02:30</option><option value="02:40">02:40</option><option value="02:50">02:50</option><option value="03:00">03:00</option><option value="03:10">03:10</option><option value="03:20">03:20</option><option value="03:30">03:30</option><option value="03:40">03:40</option><option value="03:50">03:50</option><option value="04:00">04:00</option><option value="04:10">04:10</option><option value="04:20">04:20</option><option value="04:30">04:30</option><option value="04:40">04:40</option><option value="04:50">04:50</option><option value="05:00">05:00</option><option value="05:10">05:10</option><option value="05:20">05:20</option><option value="05:30">05:30</option><option value="05:40">05:40</option><option value="05:50">05:50</option><option value="06:00">06:00</option><option value="06:10">06:10</option><option value="06:20">06:20</option><option value="06:30">06:30</option><option value="06:40">06:40</option><option value="06:50">06:50</option><option value="07:00">07:00</option><option value="07:10">07:10</option><option value="07:20">07:20</option><option value="07:30">07:30</option><option value="07:40">07:40</option><option value="07:50">07:50</option><option value="08:00">08:00</option><option value="08:10">08:10</option><option value="08:20">08:20</option><option value="08:30">08:30</option><option value="08:40">08:40</option><option value="08:50">08:50</option><option value="09:00">09:00</option><option value="09:10">09:10</option><option value="09:20">09:20</option><option value="09:30">09:30</option><option value="09:40">09:40</option><option value="09:50">09:50</option><option value="10:00">10:00</option><option value="10:10">10:10</option><option value="10:20">10:20</option><option value="10:30">10:30</option><option value="10:40">10:40</option><option value="10:50">10:50</option><option value="11:00">11:00</option><option value="11:10">11:10</option><option value="11:20">11:20</option><option value="11:30">11:30</option><option value="11:40">11:40</option><option value="11:50">11:50</option><option value="12:00">12:00</option><option value="12:10">12:10</option><option value="12:20">12:20</option><option value="12:30">12:30</option><option value="12:40">12:40</option><option value="12:50">12:50</option><option value="13:00">13:00</option><option value="13:10">13:10</option><option value="13:20">13:20</option><option value="13:30">13:30</option><option value="13:40">13:40</option><option value="13:50">13:50</option><option value="14:00">14:00</option><option value="14:10">14:10</option><option value="14:20">14:20</option><option value="14:30">14:30</option><option value="14:40">14:40</option><option value="14:50">14:50</option><option value="15:00">15:00</option><option value="15:10">15:10</option><option value="15:20">15:20</option><option value="15:30">15:30</option><option value="15:40">15:40</option><option value="15:50">15:50</option><option value="16:00">16:00</option><option value="16:10">16:10</option><option value="16:20">16:20</option><option value="16:30">16:30</option><option value="16:40">16:40</option><option value="16:50">16:50</option><option value="17:00">17:00</option><option value="17:10">17:10</option><option value="17:20">17:20</option><option value="17:30">17:30</option><option value="17:40">17:40</option><option value="17:50">17:50</option><option value="18:00">18:00</option><option value="18:10">18:10</option><option value="18:20">18:20</option><option value="18:30">18:30</option><option value="18:40">18:40</option><option value="18:50">18:50</option><option value="19:00">19:00</option><option value="19:10">19:10</option><option value="19:20">19:20</option><option value="19:30">19:30</option><option value="19:40">19:40</option><option value="19:50">19:50</option><option value="20:00">20:00</option><option value="20:10">20:10</option><option value="20:20">20:20</option><option value="20:30">20:30</option><option value="20:40">20:40</option><option value="20:50">20:50</option><option value="21:00">21:00</option><option value="21:10">21:10</option><option value="21:20">21:20</option><option value="21:30">21:30</option><option value="21:40">21:40</option><option value="21:50">21:50</option><option value="22:00">22:00</option><option value="22:10">22:10</option><option value="22:20">22:20</option><option value="22:30">22:30</option><option value="22:40">22:40</option><option value="22:50">22:50</option><option value="23:00">23:00</option><option value="23:10">23:10</option><option value="23:20">23:20</option><option value="23:30">23:30</option><option value="23:40">23:40</option><option value="23:50">23:50</option>
+      <select name="time" id="heureDepart2"><option value="00:00">00:00</option><option value="00:10">00:10</option><option value="00:20">00:20</option><option value="00:30">00:30</option><option value="00:40">00:40</option><option value="00:50">00:50</option><option value="01:00">01:00</option><option value="01:10">01:10</option><option value="01:20">01:20</option><option value="01:30">01:30</option><option value="01:40">01:40</option><option value="01:50">01:50</option><option value="02:00">02:00</option><option value="02:10">02:10</option><option value="02:20">02:20</option><option value="02:30">02:30</option><option value="02:40">02:40</option><option value="02:50">02:50</option><option value="03:00">03:00</option><option value="03:10">03:10</option><option value="03:20">03:20</option><option value="03:30">03:30</option><option value="03:40">03:40</option><option value="03:50">03:50</option><option value="04:00">04:00</option><option value="04:10">04:10</option><option value="04:20">04:20</option><option value="04:30">04:30</option><option value="04:40">04:40</option><option value="04:50">04:50</option><option value="05:00">05:00</option><option value="05:10">05:10</option><option value="05:20">05:20</option><option value="05:30">05:30</option><option value="05:40">05:40</option><option value="05:50">05:50</option><option value="06:00">06:00</option><option value="06:10">06:10</option><option value="06:20">06:20</option><option value="06:30">06:30</option><option value="06:40">06:40</option><option value="06:50">06:50</option><option value="07:00">07:00</option><option value="07:10">07:10</option><option value="07:20">07:20</option><option value="07:30">07:30</option><option value="07:40">07:40</option><option value="07:50">07:50</option><option value="08:00">08:00</option><option value="08:10">08:10</option><option value="08:20">08:20</option><option value="08:30">08:30</option><option value="08:40">08:40</option><option value="08:50">08:50</option><option value="09:00">09:00</option><option value="09:10">09:10</option><option value="09:20">09:20</option><option value="09:30">09:30</option><option value="09:40">09:40</option><option value="09:50">09:50</option><option value="10:00">10:00</option><option value="10:10">10:10</option><option value="10:20">10:20</option><option value="10:30">10:30</option><option value="10:40">10:40</option><option value="10:50">10:50</option><option value="11:00">11:00</option><option value="11:10">11:10</option><option value="11:20">11:20</option><option value="11:30">11:30</option><option value="11:40">11:40</option><option value="11:50">11:50</option><option value="12:00">12:00</option><option value="12:10">12:10</option><option value="12:20">12:20</option><option value="12:30">12:30</option><option value="12:40">12:40</option><option value="12:50">12:50</option><option value="13:00">13:00</option><option value="13:10">13:10</option><option value="13:20">13:20</option><option value="13:30">13:30</option><option value="13:40">13:40</option><option value="13:50">13:50</option><option value="14:00">14:00</option><option value="14:10">14:10</option><option value="14:20">14:20</option><option value="14:30">14:30</option><option value="14:40">14:40</option><option value="14:50">14:50</option><option value="15:00">15:00</option><option value="15:10">15:10</option><option value="15:20">15:20</option><option value="15:30">15:30</option><option value="15:40">15:40</option><option value="15:50">15:50</option><option value="16:00">16:00</option><option value="16:10">16:10</option><option value="16:20">16:20</option><option value="16:30">16:30</option><option value="16:40">16:40</option><option value="16:50">16:50</option><option value="17:00">17:00</option><option value="17:10">17:10</option><option value="17:20">17:20</option><option value="17:30">17:30</option><option value="17:40">17:40</option><option value="17:50">17:50</option><option value="18:00">18:00</option><option value="18:10">18:10</option><option value="18:20">18:20</option><option value="18:30">18:30</option><option value="18:40">18:40</option><option value="18:50">18:50</option><option value="19:00">19:00</option><option value="19:10">19:10</option><option value="19:20">19:20</option><option value="19:30">19:30</option><option value="19:40">19:40</option><option value="19:50">19:50</option><option value="20:00">20:00</option><option value="20:10">20:10</option><option value="20:20">20:20</option><option value="20:30">20:30</option><option value="20:40">20:40</option><option value="20:50">20:50</option><option value="21:00">21:00</option><option value="21:10">21:10</option><option value="21:20">21:20</option><option value="21:30">21:30</option><option value="21:40">21:40</option><option value="21:50">21:50</option><option value="22:00">22:00</option><option value="22:10">22:10</option><option value="22:20">22:20</option><option value="22:30">22:30</option><option value="22:40">22:40</option><option value="22:50">22:50</option><option value="23:00">23:00</option><option value="23:10">23:10</option><option value="23:20">23:20</option><option value="23:30">23:30</option><option value="23:40">23:40</option><option value="23:50">23:50</option>
       </select>
-
+  
     </label>
+    <label id="arrivalHour2" style="color:white"></label>;
+    <input type="hidden" name="heureArrivee" id="heureArrivee2" value="">
+    <input type="hidden" name="dateArr" id="dateArr2" value="">
     <label>
      <div class="form-item">
       <span> Nombre de passagers possible : </span>
@@ -491,112 +501,177 @@ showDrive.onclick = function(){
 
   <script>
     let queryCoord = {lat : 0, lng : 0};
+    let Duree=0;
     
-    
-    
-   if(driverForm.style.display == "none"){
-    document.getElementById("arrival").onchange = function(){
-      let sens=document.getElementById("retour").value;
-      let query=document.getElementById("adresse").value;
-    if(sens=="Aller"){
-      query += " "+document.getElementById("departure").value;
-    }
-    else{
-      query = document.getElementById("arrival").value;
-    }
-    
-    getDataFromURL(query);
-    }
-
-    document.getElementById("departure").onchange = function(){
-      let sens=document.getElementById("retour").value;
-      let query=document.getElementById("adresse").value;
-    if(sens=="Aller"){
-      query += " "+document.getElementById("departure").value;
-    }
-    else{
-      query = document.getElementById("arrival").value;
-    }
-    
-    getDataFromURL(query);
-    }
-
-    document.getElementById("adresse").onchange = function(){
-      let sens=document.getElementById("retour").value;
-      let query=document.getElementById("adresse").value;
-    if(sens=="Aller"){
-      query += " "+document.getElementById("departure").value;
-    }
-    else{
-      query = document.getElementById("arrival").value;
-    }
-    
-    getDataFromURL(query);
-    }
-  }
-   else{
-      document.getElementById("arrival2").onchange = function(){
-        let sens=document.getElementById("retour").value;
-        let query=document.getElementById("adresse").value;
-        if(sens=="Aller"){
-          query += " "+document.getElementById("departure2").value;
-        }
-        else{
-          query = document.getElementById("arrival2").value;
-        }
-        
-        getDataFromURL(query);
-      }
-
-      document.getElementById("departure2").onchange = function(){
-        let sens=document.getElementById("retour").value;
-        let query=document.getElementById("adresse").value;
-        if(sens=="Aller"){
-          query += " "+document.getElementById("departure2").value;
-        }
-        else{
-          query = document.getElementById("arrival2").value;
-        }
-        
-        getDataFromURL(query);
-      }
-
-      document.getElementById("adresse").onchange = function(){
-        let sens=document.getElementById("retour").value;
-        let query=document.getElementById("adresse").value;
-        if(sens=="Aller"){
-          query += " "+document.getElementById("departure2").value;
-        }
-        else{
-          query = document.getElementById("arrival2").value;
-        }
-        
-        getDataFromURL(query);
-      }
-   }
-   
   
-            function getDataFromURL(query){
-            
+    if(driverForm.style.display == "none"){
+      document.getElementById("arrival").onchange = function(){ changeLieu(1);}
+      document.getElementById("departure").onchange = function(){ changeLieu(1);}
+      document.getElementById("adresse").onchange = function(){ changeLieu(1);}
+      }
+    else{
+        document.getElementById("arrival2").onchange = function(){ changeLieu(0);}
+        document.getElementById("departure2").onchange = function(){ changeLieu(0);}
+        document.getElementById("adresse").onchange = function(){ changeLieu(0);}
+    }
 
-                console.log(query);
-                $.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
-
-                    queryCoord.lat = data.data[0].latitude;
-                    queryCoord.lng = data.data[0].longitude;
-                    document.getElementById("lat").value=data.data[0].latitude;
-                    document.getElementById("long").value=data.data[0].longitude;
-                    document.getElementById("lat2").value=data.data[0].latitude;
-                    document.getElementById("long2").value=data.data[0].longitude;
-                    console.log(queryCoord);
-
-                });
-
-               
-              
+    function changeLieu(demande){
+      let sens=document.getElementById("retour").checked;
+      let query=document.getElementById("adresse").value;
+      if(demande==0){
+        if(sens==true){
+          query += " "+document.getElementById("arrival2").value;
         }
-        </script>
-    <div id="map"></div>
+        else{
+          query += " "+document.getElementById("departure2").value;
+        }        
+      }
+      else{
+
+        if(sens==true){
+          query += " "+document.getElementById("arrival").value;
+        }
+        else{
+          query += " "+document.getElementById("departure").value;
+        }
+      }
+      getDataFromForm(query);
+    }
+
+
+
+
+
+
+  
+    function getDataFromForm(query){
+    
+        
+        console.log(query);
+        $.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
+            let arrivee="";
+            let depart="";
+            var directionsService = new google.maps.DirectionsService();
+            var directionsRenderer = new google.maps.DirectionsRenderer();
+
+            queryCoord.lat = data.data[0].latitude;
+            queryCoord.lng = data.data[0].longitude;
+            document.getElementById("lat").value=data.data[0].latitude;
+            document.getElementById("long").value=data.data[0].longitude;
+            document.getElementById("lat2").value=data.data[0].latitude;
+            document.getElementById("long2").value=data.data[0].longitude;
+            if(document.getElementById("retour").checked==true){
+              depart="21 Rue de Linselles, Wervicq-Sud";
+              arrivee=queryCoord;
+              
+            }
+            else{
+              arrivee="21 Rue de Linselles, Wervicq-Sud";
+              depart=queryCoord;
+            }
+            
+            
+            let request = {
+                origin: depart,
+                destination: arrivee,
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false,
+            };
+            
+              
+            directionsService.route(request, function(result, status) {
+              if (status == 'OK') {
+                directionsRenderer.setDirections(result);
+                let Direction=directionsRenderer.getDirections();
+                let Route=Direction.routes[0];
+                Duree=Math.round(Route.legs[0].duration.value/60);
+                console.log(Duree);
+                
+              }
+            });
+
+
+        });
+      }
+
+    document.getElementById("heureDepart").onchange= function(){EditArrival(1);}
+    document.getElementById("heureDepart2").onchange= function(){EditArrival(0);}
+    document.getElementById("date").onchange= function(){EditArrival(1);}
+    document.getElementById("date2").onchange= function(){EditArrival(0);}
+
+
+    function EditArrival(isDemande){
+      let DureeHeure=0;
+      let temp=Duree;
+      while (Duree>60){
+              DureeHeure++;
+              Duree-=60;
+            }
+            let FinalDuree=DureeHeure+":"+Duree;
+            let HeureDepart="";
+            
+            if(isDemande==1){
+              heureDep=document.getElementById("heureDepart").value;
+            }
+            else{
+              heureDep=document.getElementById("heureDepart2").value;
+            }
+            
+            let DureeTab = FinalDuree.split(":");
+            var DepTab = heureDep.split(":");
+            let FinalMin=0;
+            let FinalHour=0;
+            if(parseInt(DureeTab[1])+parseInt(DepTab[1])>60){
+              FinalHour++;
+              FinalMin=-60;
+            }
+            FinalHour+=parseInt(DureeTab[0])+parseInt(DepTab[0]);
+            FinalMin+=parseInt(DureeTab[1])+parseInt(DepTab[1]);
+            let dateDep="";
+            if(isDemande==1){
+              dateDep=new Date(document.getElementById("date").value);
+            }
+            else{
+              dateDep=new Date(document.getElementById("date2").value);
+            }
+            
+            
+            if(FinalMin<10){
+              FinalMin="0"+FinalMin;
+            }
+            if(FinalHour<10){
+              FinalHour="0"+FinalHour;
+            }
+            else if(FinalHour>23){
+              while(FinalHour>23){
+                FinalHour-=24;
+                dateDep.setUTCDate(dateDep.getUTCDate() + 1);
+              }
+            }
+            
+            if(isDemande==1){
+              document.getElementById("arrivalHour").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;
+              document.getElementById("dateArr").value=dateDep;
+              document.getElementById("heureArrivee").value=FinalHour+":"+FinalMin;
+            }
+            else{
+              document.getElementById("arrivalHour2").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;
+              document.getElementById("dateArr2").value=dateDep;
+              document.getElementById("heureArrivee2").value=FinalHour+":"+FinalMin;
+            }
+            
+            
+            
+            
+            Duree=temp;
+            
+            //document.getElementById("heureArrivee").value
+            console.log(document.getElementById("dateArr").value);
+      }
+  </script>
+ 
 
 
 
