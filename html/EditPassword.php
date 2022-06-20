@@ -35,17 +35,17 @@
 
   <form method="post" action="EditPasswordAction.php">
   <div class="input-group">
-  	      <?php if((!isset($_SESSION["role"]) || $_SESSION["role"] != 1) ){ ?> <label>Rentre ton mot de passe actuel</label>
-            <input type="password" required="required" placeholder="Mot de passe" name="password" id="password" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
+  	      <?php if((!isset($_SESSION["role"]) || $_SESSION["role"] != 1) ){ ?> <label>Mot de passe actuel</label>
+            <input type="password" required="required" placeholder="" name="password" id="password" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
           <?php } ?>
           </div>
   <div class="input-group">
-  	  <label>Rentre ton nouveau mot de passe</label>
-      <input type="password" required="required" placeholder="Mot de passe" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
+  	  <label>Nouveau mot de passe</label>
+      <input type="password" required="required" placeholder="" name="password_1" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial" onkeyup='check();'>
   	</div>
   	   <div class="input-group">
-  	     <label>Confirmes ton nouveau mot de passe</label>
-  	     <input type="password" required="required"  placeholder="Mot de passe" id="password_2" name="password_2" onkeyup='check();'>
+  	     <label>Confirmation</label>
+  	     <input type="password" required="required"  placeholder="" id="password_2" name="password_2" onkeyup='check();'>
          <br/>
          <span id='message'></span>
          <br/>

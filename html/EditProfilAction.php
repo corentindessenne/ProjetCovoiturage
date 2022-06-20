@@ -3,21 +3,18 @@
 <head>
     <title>Action Ajout</title>
 </head>
-
 <body>
-
-<h1>Ca marche pas</h1>
 
 <?php
 include 'Connexion.php';
 $id=$_POST["IdCompte"];
-$sql = "SELECT motDePasse, Email FROM compte WHERE IdCompte='".$id."'" ;
-    $result = $conn->query($sql);
+$sql = "SELECT motDePasse, Email FROM compte WHERE IdCompte=$id.";
+$result = $conn->query($sql);
     if ($result->num_rows >  0) {
       // output data of each row
       $row = $result->fetch_assoc();
       $prevMail=$row["Email"];
-        $hashedpassword=$row["motDePasse"];
+      $hashedpassword=$row["motDePasse"];
     }
     else{?>
         <script type="text/javascript">

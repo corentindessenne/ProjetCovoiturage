@@ -155,7 +155,7 @@ body{
 .item::before{
 	content: '';
 	display: block;
-	background-color: var(--navy);
+	background-color: #3671B3;
 	width: 3px;
 	height: 30px;
 	position: relative;
@@ -176,7 +176,7 @@ body{
 
 .place::before{
 	content: '';
-	background-color: var(--navy);
+	background-color: #3671B3;
 	width: 10px;
 	height: 10px;
 	position: relative;
@@ -193,7 +193,7 @@ body{
 }
 
 .price{
-	color: var(--navy);
+	color: #3671B3;
 	font-size: 26px;
 	font-weight: 700;
 	text-align: right;

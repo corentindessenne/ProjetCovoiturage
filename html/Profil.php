@@ -3,6 +3,7 @@
 <head>
     <title>Espace festivalier - LBR Covoiturage</title>
     <link rel="stylesheet" type="text/css" href="../css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link href="../css/profile.css" rel="stylesheet">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +52,6 @@ if ($result->num_rows > 0) {
 <ul class="menu" id="menu">
     <li class="menu-link active"><img class="icon" src="../images/icon/25694.png">Mes informations</li>
     <li class="menu-link"><img class="icon" src="../images/icon/car-front.png">Mes trajets</li>
-    <li class="menu-link"><img class="icon" src="../images/icon/1077114 1.png">Gérer mes informations</li>
 </ul>
 
 
@@ -74,27 +74,53 @@ if ($result->num_rows > 0) {
 
     </div>
 
+    <form action="editProfilAction.php" method="post" class="infos-secondary">
+        <input class="hidden" type="text" name="IdCompte" value="<?php echo $idCompte;?>">
+        <div class="input-group">
+            <div class="item">
+                <label class="upper">Nom</label>
+                <input class="inputUpper" type="text" value="<?php echo $nom;?>" readonly>
+            </div>
 
+            <div class="item">
+                <label class="upper">Prénom</label>
+                <input class="inputUpper" type="text" value="<?php echo $prenom;?>" readonly>
+            </div>
+        </div>
 
+        <div class="input-group">
+            <div class="item">
+                <label class="upper">E-mail</label>
+                <input class="inputUpper" type="text" value="<?php echo $mail;?>" readonly>
+            </div>
 
+            <div class="item">
+                <label class="upper">Téléphone</label>
+                <input class="inputUpper" type="text" value="<?php echo $phone;?>" readonly>
+            </div>
+        </div>
 
+        <div class="input-group">
+            <div class="item">
+                <label class="upper">Description</label>
+                <textarea cols="30" rows="3"></textarea>
+            </div>
+        </div>
 
+        <a class="mdpChange" href="EditPassword.php">Changer mon mot de passe</a>
 
-
-    <div class="infos-secondary">
-
-    </div>
+        <div class="submitForm">
+            <input type="submit" value="Modifier" style="width: 20%; padding: 0px; float: right;">
+        </div> 
+    </form>
 </div>
 
 <div class="trajets" id="trajets">TRAJETS</div>
-
-<div class="modif" id="modif">MODIF</div>
 
 <script type="text/javascript">
     //on-click
     let menu = document.getElementById('menu');
     document.getElementById('trajets').style.display = "none";
-    document.getElementById('modif').style.display = "none";
 
     for (let i = 0; i < menu.children.length; i++) {
         menu.children[i].addEventListener('click', () => {
@@ -104,15 +130,11 @@ if ($result->num_rows > 0) {
             menu.children[i].classList.add('active');
             document.getElementById('infos').style.display = "none";
             document.getElementById('trajets').style.display = "none";
-            document.getElementById('modif').style.display = "none";
             if (i === 0) {
                 document.getElementById('infos').style.display = "flex";
             }
             if (i === 1) {
                 document.getElementById('trajets').style.display = "flex";
-            }
-            if (i === 2) {
-                document.getElementById('modif').style.display = 'flex';
             }
         });
     }

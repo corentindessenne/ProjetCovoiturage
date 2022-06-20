@@ -23,16 +23,19 @@
 }
 
 body{
-    font-family: Cereal;
-    background-color: #eaeff2;
+  font-family: Cereal;
+  background-color: #eaeff2;
 }
 
+.hidden{
+  display: none;
+}
 
 .menu{
 	padding: 0 20px;
 	display: flex;
 	width: 900px;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	margin: auto;
 	margin-top: 50px;
@@ -67,9 +70,9 @@ body{
 .infos{
 	width: 900px;
 	margin: auto;
-	padding: 0 20px;
-	background-color: lightgrey;
+	padding: 20px 20px;
   display: flex;
+  background: white;
 }
 
 .infos-main{
@@ -77,13 +80,57 @@ body{
   flex-direction: column;
   width: 250px;
   align-items: center;
+  padding-right: 10px;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 10px 10px 0 0;
+}
+
+.infos-secondary{
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group{
+  margin: auto;
+}
+
+.upper{
+  background: white;
 }
 
 .PhotoDeProfil{
 	width: 200px;
   height: 200px;
   position: relative;
-  margin-top: 20px;
+}
+
+.infos-main span{
+  margin: 10px 0 0 0;
+}
+
+textarea{
+  font-family: cereal;
+  padding: 10px;
+  resize: none;
+  outline: none;
+}
+
+.mdpChange{
+  margin-left: 150px;
+  font-size: 12px;
+  color: #3671B3;
+  width: 165px;
+}
+
+input[type=submit]{
+  border : none;
+  background: #3f82e4;
+  color: white;
+  border-radius: 250px;
+  padding: 10px 0;
 }
 
 /* Profile Picture CSS */
@@ -139,5 +186,6 @@ body{
   background-color: var(--darkred);
 }
 
-
-
+.inputUpper{
+  border : black 1px solid;
+}
