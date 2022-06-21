@@ -270,10 +270,10 @@
 							</div>
 						</div>
 
-
-						<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
 						<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
-						<div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
+						<div class="book-container">
+							<button name="trigger" id="trigger" class="trigger book2"> Détails</button>	
+							<a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
 						</div>
 					</div>
 				</div>
@@ -300,23 +300,31 @@
 					<span class="horaire">
 						<?php echo $hourStringDeparture; ?>
 					</span>
-					<span class="place2">
-						<?php echo $lieuDepart[$y]; ?>
-					</span>
-					<span class="adresse">
-						<?php echo $adresseDep[$y];?>
-					</span>
+					<div class="profile-info">
+							<span class="place2">
+								<?php echo $lieuDepart[$y]; ?>
+							</span>
+						<div class="available">
+							<span class="adresse">
+								<?php echo $adresseDep[$y];?>
+							</span>
+						</div>
+					</div>
 				</div>
 				<div class="data-all">
 					<span class="horaire">
 						<?php echo $hourStringArrival; ?>
 					</span>
-					<span class="place2">
-						<?php echo $lieuArrivee[$y]; ?>
-					</span>
-					<span class="adresse">
-						<?php echo $adresseArr[$y];?>
-					</span>
+					<div class="profile-info">
+						<span class="place2">
+								<?php echo $lieuArrivee[$y]; ?>
+							</span>
+						<div class="available">
+							<span class="adresse">
+								<?php echo $adresseArr[$y];?>
+							</span>
+						</div>
+					</div>
 				</div>
 				<div class="textbox">
 					<img class="textimg" src="../images/icon/text.png">
