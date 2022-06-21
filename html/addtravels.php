@@ -523,7 +523,23 @@ showDrive.onclick = function(){
 
 </script>
 
+<?php
+   $requete="SELECT DEFAULT( LieuDepart ), DEFAULT (AdresseDepart) 
+   FROM (SELECT 1) AS dummy
+     LEFT JOIN trajet 
+       ON True
+   LIMIT 1 ;";
+   $result = $conn->query($requete);
+   $Lieu="";
+   $Adresse="";
+   if($result->num_rows >  0){
+    $row = $result->fetch_assoc();
+    $Lieu=$row["DEFAULT( LieuDepart )"];
+    $Adresse=$row["DEFAULT (AdresseDepart)"];
 
+  }
+     
+?>
 
   <script>
     let queryCoord = {lat : 0, lng : 0};
@@ -593,12 +609,12 @@ showDrive.onclick = function(){
             document.getElementById("lat2").value=queryCoord.lat;
             document.getElementById("long2").value=queryCoord.lng;
             if(document.getElementById("retour").checked==true){
-              depart="21 Rue de Linselles, Wervicq-Sud";
+              depart=  "<?php echo $Adresse.", ".$Lieu; ?>";
               arrivee=queryCoord;
               
             }
             else{
-              arrivee="21 Rue de Linselles, Wervicq-Sud";
+              arrivee= "<?php echo $Adresse.", ".$Lieu; ?>";;
               depart=queryCoord;
             }
             
