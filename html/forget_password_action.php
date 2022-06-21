@@ -20,7 +20,7 @@ if(isset($_POST["password-reset"]) && $_POST["email"]){
 
         $dest = $email;
         $sujet = "Demande de réinitialisation de ton mot de passe";
-        $corp = file_get_contents("../mails/reset_mot_de_passe.php");
+        $corp = file_get_contents("../mails/template_mail_reset_mot_de_passe.php");
         $corp = str_replace("{{Bouton}}",$link, $corp);
 
         if(mail($dest, $sujet, $corp, $headers)){

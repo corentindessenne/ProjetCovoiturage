@@ -35,7 +35,7 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
 
         $dest = $_POST['email'];
         $sujet = "Merci d'avoir rejoint la plateforme !";
-        $corp = file_get_contents("../mails/confirmation_mail.php");
+        $corp = file_get_contents("../mails/template_mail_confirmation_mail.php");
 
         $variables = array(
             "{{Prenom}}" => $_POST['prenom'],
