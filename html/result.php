@@ -195,7 +195,11 @@
 				$lieuDepart[$i] = $row['LieuDepart'];
 				$dateDepart[$i] = $row['DateDepart'];
 				$lieuArrivee[$i] = $row['LieuArrivee'];
+				$adresseDep[$i] = $row['AdresseDepart'];
+				$adresseArr[$i] = $row['AdresseArrivee'];
 				$prixTab[$i] = $row['Prix'];
+				$placesTab[$i] = $row['PlacesRestantes'];
+				$descriptionBox[$i] = $row['Description'];
 
 				$i++;
 				$count++;
@@ -265,7 +269,6 @@
 						<button name="trigger" id="trigger" class="trigger">Click here to trigger the modal!</button>	
 						<?php $linkReservation = "reservation.php?idTrajet=".$row['IdTrajet']."&nbPassagers=".$nbPlaces;?>
 						<div class="book-container"><a class="book" href="<?php echo $linkReservation ?>" class="button">Réserver</a>
-
 						</div>
 					</div>
 				</div>
@@ -288,30 +291,52 @@
 		<div  name="modal" id="modal" class="modal">
 			<div id="<?php echo $idTrajet[$y];?>" class="modal-content" >
 				<span name="close-button" id="close-button"class="close-button">&times;</span>
-				<div class="data-group">
+				<div class="data-all">
 					<span class="horaire">
 						<?php echo $hourStringDeparture; ?>
 					</span>
-					<span class="place">
+					<span class="place2">
 						<?php echo $lieuDepart[$y]; ?>
 					</span>
-
-					<span class="date">
-					
+					<span class="adresse">
+						<?php echo $adresseDep[$y];?>
 					</span>
 				</div>
-
-				<div class="data-group">
+				<div class="data-all">
 					<span class="horaire">
 						<?php echo $hourStringArrival; ?>
 					</span>
-					<span class="place">
+					<span class="place2">
 						<?php echo $lieuArrivee[$y]; ?>
 					</span>
-
-					<span class="price">
-						<?php echo $prixTab[$y]; ?>€
+					<span class="adresse">
+						<?php echo $adresseArr[$y];?>
 					</span>
+				</div>
+				<div class="textbox">
+					<img class="textimg" src="../images/icon/text.png">
+					<span class="description">
+						<?php echo $descriptionBox[$y]; ?>
+					</span>
+				</div>
+				<div class="comp-intel">	
+					<div class="priceBox">
+						<span class="pricetext"> 
+							Prix total pour 1 festivalier 
+						</span>
+						<span class="price">
+							<?php echo $prixTab[$y]; ?>€
+						</span>
+					</div>		
+					<div class="reservationBox">
+						<img class="userimg" src="../images/icon/user.png">
+						<span class="reservation">
+							Il reste <?php echo $placesTab[$y]; ?> places !
+						</span>
+						<span class="date2">
+							Le voyage est prevu pour le <?php echo $dateDepart[$y]; ?>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>	
@@ -495,11 +520,11 @@
 					console.log("trigger", trigger[indexOrdre[y]]);
 					trigger[indexOrdre[y]].addEventListener("click", () =>{
 
-					
+
 						document.getElementById(y+1).parentNode.classList.add("show-modal");
 						doNotShowMap = true;
 					});
-					closeButton[indexOrdre[y]].addEventListener("click", () =>{
+					closeButton[y].addEventListener("click", () =>{
 						console.log("y",document.getElementById(y+1).parentNode);
 						document.getElementById(y+1).parentNode.classList.remove("show-modal");
 					});
