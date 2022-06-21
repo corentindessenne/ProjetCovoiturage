@@ -9,30 +9,23 @@
 <h1>Ca marche pas</h1>
 
 <?php
-include 'Connexion.php';
+include 'Connexion.php';            //connexion a la base de donnée
 
-$_POST["Description"]= str_replace("'","''",$_POST["Description"]);
+$_POST["Description"]= str_replace("'","''",$_POST["Description"]);       //on remplace les ' par des '' dans la description pour éviter de créer des erreurs sql
 
-if($_POST["tel"]==1){$_POST["tel"]=1;}
-else{$_POST["tel"]=0;}
-
-$IdTrajet=$_POST["IdTrajet"];
-
-/*$sql = "SELECT PlacesRestantes, NbPassagers FROM trajet WHERE IdTrajet='".$IdTrajet."'" ;
-$result = $conn->query($sql);
-if ($result->num_rows >  0) {
-    // output data of each row
-    $row = $result->fetch_assoc();
-      $nbPlaces=$row["PlacesRestantes"];
-      $nbPassagers=$row["NbPassagers"];
-      
+if (!isset($_POST["tel"])) {
+  $tel=0;
+}
+else{                                           //On ajuste la valeur du tel en fonction de si la checkbox a été cochée ou non
+  $tel = 1;
 }
 
-$newPlacesRestantes="PlacesRestantes='".$nbPlaces+($_POST["NbPass"]-$nbPassagers)."',";*/
-//echo $_POST["Date-de-Depart"]."<- ici";
+$IdTrajet=$_POST["IdTrajet"];                   //On met l'id du trajet dans une variable
+
+
 if($_POST["AllerRetour"]=="Aller"){
     $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1',"./*$newPlacesRestantes.*/" LieuDepart='".$_POST["Ville"]."',LieuArrivee='Wervicq-Sud',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='21 Rue de Linselles' ,DateDepart= '".$_POST["Date-de-Depart"]."',HeureDepart='".$_POST["Heure-de-Depart"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
-}
+}         //requete sql différente en fonction de s'il s'agit d'un aller ou une retour
 else{
     $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '1',"./*$newPlacesRestantes.*/" LieuArrivee='".$_POST["Ville"]."',LieuDepart='Wervicq-Sud',AdresseArrivee='".$_POST["Adresse"]."',AdresseDepart='21 Rue de Linselles', DateDepart= '".$_POST["Date-de-Depart"]."',HeureDepart='".$_POST["Heure-de-Depart"]."', Description='".$_POST["Description"]."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
@@ -42,13 +35,13 @@ else{
 if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
-      alert("Ta demande de trajet a bien ete modifie");
+      alert("Ta demande de trajet a bien ete modifie");         //Si la requete a fonctionné on redirige vers la page de profil
       location="Profil.php";
   </script>
 <?php
 die();
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;              //Sinon on affiche l'erreur
   }
 ?>
 </body>
