@@ -51,6 +51,16 @@ if(isset($_SESSION["mail"])){
 
     </form>
 
+    <script>
+  var $limitNum = 150;
+$('textarea[name="Description"]').keydown(function() {
+    var $this = $(this);
+
+    if ($this.val().length > $limitNum) {
+        $this.val($this.val().substring(0, $limitNum));
+    }
+});
+</script>
     <?php
     }
 

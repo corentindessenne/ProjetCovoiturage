@@ -10,6 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/Edition.css">
     <!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
+    <!--Library-->
+    <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--Google Maps API-->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg">
+    </script>
 </head>
 <body>
     <?php
@@ -144,5 +151,65 @@
             header("Location: home.php");
         }
     ?>
+
+<form method="post" action="EditLocationAction.php">
+    <label for="Ville">Ville:</label>
+    <input type="text" name="Ville" id="Ville">
+    <label for="Adresse">Adresse:</label>
+    <input type="text" name="Adresse" id="Adresse">
+    <input type="hidden" name="long" id="long">
+    <input type="hidden" name="lat" id="lat">
+
+    <input type="submit">
+</form>
+
+
+
+
+<script>
+    let queryCoord = {lat : 0, lng : 0};
+    document.getElementById("Adresse").onchange = function(){ changeLieu();}  
+    document.getElementById("Ville").onchange = function(){ changeLieu();}
+    
+
+    function changeLieu(){
+        let quer="";
+        query=document.getElementById("Adresse").value;
+        query += " "+document.getElementById("Ville").value;
+        getDataFromForm(query);
+    }
+
+    function getDataFromForm(query){
+    
+        
+    console.log(query);
+    $.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
+        let arrivee="";
+        let depart="";
+        var directionsService = new google.maps.DirectionsService();
+        var directionsRenderer = new google.maps.DirectionsRenderer();
+
+        queryCoord.lat = data.data[0].latitude;
+        queryCoord.lng = data.data[0].longitude;
+        document.getElementById("lat").value=queryCoord.lat;
+        document.getElementById("long").value=queryCoord.lng;
+
+    });
+  }
+</script>
+
+
+
+
+<script>
+  var $limitNum = 150;
+$('textarea[name="Description"]').keydown(function() {
+    var $this = $(this);
+
+    if ($this.val().length > $limitNum) {
+        $this.val($this.val().substring(0, $limitNum));
+    }
+});
+</script>
 </body>
 </html>

@@ -13,6 +13,9 @@
    <!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+     <!--Library-->
+  <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!--Google Fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,5 +100,15 @@ else{
   	   <button type="submit" class="btn" name="reg_user" id="submit">Modifier mes informations</button>
   	   </div>
     </form>
+    <script>
+  var $limitNum = 255;
+$('textarea[name="Description"]').keydown(function() {
+    var $this = $(this);
+
+    if ($this.val().length > $limitNum) {
+        $this.val($this.val().substring(0, $limitNum));
+    }
+});
+</script>
   </body>
 </html>

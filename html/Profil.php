@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
         <div class="input-group">
             <div class="item">
                 <label class="upper">Description</label>
-                <textarea cols="30" rows="3"></textarea>
+                <textarea name="Description" cols="30" rows="3"></textarea>
             </div>
         </div>
 
@@ -149,6 +149,18 @@ if ($result->num_rows > 0) {
     function handleChange(e) {
         document.forms["ppform"].submit();
     }
+</script>
+
+
+<script>
+  var $limitNum = 255;
+$('textarea[name="Description"]').keydown(function() {
+    var $this = $(this);
+
+    if ($this.val().length > $limitNum) {
+        $this.val($this.val().substring(0, $limitNum));
+    }
+});
 </script>
 </body>
 </html>
