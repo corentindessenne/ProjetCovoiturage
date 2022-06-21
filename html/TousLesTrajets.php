@@ -22,9 +22,7 @@
     ?>
 
   
-	<div class="container">
-        <h1>Liste des trajets</h1>
-    </div>
+		<h1>Liste de tous les trajets</h1>
 
 	
 
@@ -37,8 +35,8 @@
             <input type="radio" required="required" name="AllerRetour" value="Proposition" id="Proposition" onclick="SortDiv('Proposition');"><label for="Proposition" class="AllerRetour">Proposition</label>
             <!--<input type="radio" required="required" name="Tri" value="DepartImm" id="DepartImm" onclick="SortDiv('DepartImm');"><label for="DepartImm" class="Tri">Départ Immédiat</label>
             <input type="radio" required="required" name="Tri" value="Departlate" id="Departlate" onclick="SortDiv('DepartLate');"><label for="Departlate" class="Tri">Départ tardif</label>-->
-			<input type="radio" required="required" name="Tri" value="Sale" id="Sale" onclick="SortDiv('Sale');"><label for="Sale" class="Tri">Prix le moins cher</label>
-			<input type="radio" required="required" name="Tri" value="Cher" id="Cher" onclick="SortDiv('Cher');"><label for="Cher" class="Tri">Prix le plus cher</label>
+			<input type="radio" required="required" name="Tri" value="Sale" id="Sale" onclick="SortDiv('Sale');"><label for="Sale" class="Tri">le moins cher</label>
+			<input type="radio" required="required" name="Tri" value="Cher" id="Cher" onclick="SortDiv('Cher');"><label for="Cher" class="Tri">le plus cher</label>
         </div>
     </form>
     <div class="ListeTrajets" >

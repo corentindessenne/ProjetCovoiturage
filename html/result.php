@@ -220,8 +220,13 @@
 				
 
 				$requete2 = "SELECT * FROM compte WHERE IdCompte=$idCompte";
-				$result2 = mysqli_query($conn,$requete);
+				$result2 = mysqli_query($conn,$requete2);
 				$row2 = mysqli_fetch_assoc($result2);
+
+				$pp = $row2['PhotoProfil'];
+				if($pp == ""){
+					$pp = "defaultpp.jpg";
+				}
 
 				?>
 
@@ -253,9 +258,9 @@
 					</div>
 
 					<div class="account-info">
-						<img class="profile-picture" src="../images/adrien.jpg">
+						<img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
 						<div class="profile-info">
-							<span class="name"></span>
+							<span class="name"><?php echo $row2['Prenom'];echo $row2['Nom']?></span>
 							<div class="available">
 								<?php
 								$value = $row['PlacesRestantes'];
@@ -373,6 +378,8 @@
 			}
 			else{
 				document.getElementById('wrapper').style.display = "none";
+				document.getElementById('loader').style.display = 'none';
+				document.getElementById('no-result').style.display = 'block';
 			}
 			
 			async function initMap(){

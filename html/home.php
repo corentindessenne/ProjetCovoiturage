@@ -97,6 +97,10 @@
 				if(document.getElementById('retour').checked) document.getElementById('hidden').value = "retour";
 				console.log(document.getElementById('hidden').value);
 			});
+
+			const myFunction = () =>{
+				document.getElementById("list").scrollIntoView({behavior: "smooth", block: "start"});
+			}
 		</script>
 
 		<div class="scrolldown">
@@ -159,6 +163,7 @@
 
 		<div id="down" class="wrapper">
 			<?php
+
 			$requete = "SELECT * FROM trajet ORDER BY DateAjout DESC";
 			$result = mysqli_query($conn,$requete);
 			$count = 0;
@@ -174,6 +179,19 @@
 				$hourString3 = substr($row['HeureArrivee'],0,2);
 				$hourString4 = substr($row['HeureArrivee'],3,2);
 				$hourStringArrival = $hourString3."h".$hourString4;
+
+				$idCompte = $row['IdCompte'];
+				
+
+				$requete2 = "SELECT * FROM compte WHERE IdCompte=$idCompte";
+				$result2 = mysqli_query($conn,$requete2);
+				$row2 = mysqli_fetch_assoc($result2);
+				
+
+				$pp = $row2['PhotoProfil'];
+				if($pp == ""){
+					$pp = "defaultpp.jpg";
+				}
 
 				if($count < 5){
 					?>
@@ -206,13 +224,13 @@
 						</div>
 
 						<div class="account-info">
-							<img class="profile-picture" src="../images/adrien.jpg">
+							<img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp; ?>">
 							<div class="profile-info">
-								<span class="name">Adrien Mareel</span>
+								<span class="name"><?php echo $row2['Prenom']." ";echo $row2['Nom']; ?></span>
 								<div class="available">
 									<?php
-										$value = $row['NbPassagers'] - $row['PlacesRestantes'];
-										if($value == 1) echo $value." place restante";
+										$value = $row['PlacesRestantes'];
+										if($value == 1 || $value == 0) echo $value." place restante";
 										else echo $value." places restantes"
 									?>
 								</div>

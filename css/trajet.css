@@ -10,23 +10,26 @@
 
 .AllerRetour{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;   
 }
 
 form{
-    margin-left: 23.5%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 30px;
 }
 
-input[type="submit"]{
-    text-align: center;
-    margin-left: 4%;
-    padding: 5%;
-    
+form label{
+    width: 150px;
 }
+
 input[type="radio"]{
     margin-top: 2.25%;
-    margin-left: 2%;
 }
 label{
     text-align: top;

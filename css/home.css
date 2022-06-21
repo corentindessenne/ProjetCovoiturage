@@ -6,16 +6,6 @@ body{
 	overflow-x: hidden;
 }
 
-:root{
-	--black: #161920;
-	--navy : #3671B3;
-	--blue : #BDE4FC;
-	--white : #FFFEE6;
-	--orange : #FF890A;
-	--red : #EA001C;
-	--darkred : #AF001E;
-} 
-
 
 .rocket{
 	transform: rotate(-45deg);
@@ -443,7 +433,7 @@ h1{
 }
 
 .profile-info{
-	width: 20vw;
+	white-space: nowrap;
 	margin-left: 3%;
 }
 
