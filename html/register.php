@@ -4,8 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LBR Covoiturage</title>
+	<!--CSS files-->
 	<link rel="stylesheet" type="text/css" href="../css/register.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
 	<!--Tel Display-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

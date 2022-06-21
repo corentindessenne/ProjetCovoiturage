@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Mon Profil</title>
+	<!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <link href="../css/Profil.css" rel="stylesheet" >
 	<!--Google Fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">

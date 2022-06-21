@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google" content="notranslate">
     <title>LBR Covoiturage</title>
+    <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <!-- CSS only -->
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"

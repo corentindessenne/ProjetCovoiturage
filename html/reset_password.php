@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <title>Réinitialise ton mot de passe - LBR Covoiturage</title>
 </head>
 <body>

@@ -3,6 +3,8 @@
 <head>
     <title>Modification d'une demande de trajet</title>
     <link href ="../css/AjoutModif.css" rel="stylesheet" >
+    <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
 </head>
 
 <body>

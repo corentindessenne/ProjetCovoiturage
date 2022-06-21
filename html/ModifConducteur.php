@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Modification d'un trajet conducteur</title>
+    <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <link href ="../css/AjoutModif.css" rel="stylesheet" >
 </head>
 

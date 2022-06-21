@@ -4,8 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Réservation</title>
+	<!--CSS files-->
 	<link rel="stylesheet" type="text/css" href="../css/register.css">
 	<link rel="stylesheet" type="text/css" href="../css/reservation.css">
+	<!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
 </head>
 <body>
 

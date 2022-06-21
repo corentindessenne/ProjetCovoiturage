@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>LBR Covoiturage</title>
+  <!--CSS files-->
   <link rel="stylesheet" type="text/css" href="../css/addtravels.css">
   <link rel="stylesheet" type="text/css" href="../css/nav.css">
+  <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
   <!--Google Fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

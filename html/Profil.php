@@ -2,9 +2,12 @@
 <html lang="fr">
 <head>
     <title>Espace festivalier - LBR Covoiturage</title>
+    <!--CSS files-->
     <link rel="stylesheet" type="text/css" href="../css/nav.css">
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link href="../css/profile.css" rel="stylesheet">
+    <!--Favicon-->
+	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
