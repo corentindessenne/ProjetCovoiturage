@@ -51,12 +51,11 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-
 <ul class="menu" id="menu">
     <li class="menu-link active"><img class="icon" src="../images/icon/25694.png">Mes informations</li>
     <li class="menu-link"><img class="icon" src="../images/icon/car-front.png">Mes trajets</li>
+    <li class="menu-link"><img class="icon" src="../images/icon/1077114 1.png">Mes propositions</li>
 </ul>
-
 
 <div class="infos" id="infos">
     <div class="infos-main">
@@ -67,9 +66,9 @@ if ($result->num_rows > 0) {
                 } else {
                     echo "defaultpp.jpg";
                 } ?>" alt="Ta PP" width="200px" height="200px">
-            <form action="PPAction.php" method="post" enctype="multipart/form-data" id="ppform" class="ppform">
-                <input type="file" name="file" class="PPbutton" id="file" style="visibility:hidden;">
-                <label for="file" class="PPbutton"><img src="..\images\icon\camera.png" class="camera"> <br/>Change ta
+                <form action="PPAction.php" method="post" enctype="multipart/form-data" id="ppform" class="ppform">
+                <input type="file" name="file" class="PPbutton" id="file" style="opacity: 0;width: 200px;height: 200px;border-radius: 500px;">
+                <label for="file" class="PPbutton"><img src="..\images\icon\camera.png" class="camera">Change ta
                     photo de profil</label>
             </form>
         </div>
@@ -77,29 +76,29 @@ if ($result->num_rows > 0) {
 
     </div>
 
-    <form action="editProfilAction.php" method="post" class="infos-secondary">
+    <form action="editProfilAction.php" method="post" class="infos-secondary" autocomplete="off">
         <input class="hidden" type="text" name="IdCompte" value="<?php echo $idCompte;?>">
         <div class="input-group">
             <div class="item">
                 <label class="upper">Nom</label>
-                <input class="inputUpper" type="text" value="<?php echo $nom;?>" readonly>
+                <input class="inputUpper" type="text" value="<?php echo $nom;?>" >
             </div>
 
             <div class="item">
                 <label class="upper">Prénom</label>
-                <input class="inputUpper" type="text" value="<?php echo $prenom;?>" readonly>
+                <input class="inputUpper" type="text" value="<?php echo $prenom;?>" >
             </div>
         </div>
 
         <div class="input-group">
             <div class="item">
                 <label class="upper">E-mail</label>
-                <input class="inputUpper" type="text" value="<?php echo $mail;?>" readonly>
+                <input class="inputUpper" type="text" value="<?php echo $mail;?>" >
             </div>
 
             <div class="item">
                 <label class="upper">Téléphone</label>
-                <input class="inputUpper" type="text" value="<?php echo $phone;?>" readonly>
+                <input class="inputUpper" type="text" value="<?php echo $phone;?>" >
             </div>
         </div>
 
@@ -120,10 +119,13 @@ if ($result->num_rows > 0) {
 
 <div class="trajets" id="trajets">TRAJETS</div>
 
+<div class="propositions" id="propositions">PROPOSITIONS</div>
+
 <script type="text/javascript">
     //on-click
     let menu = document.getElementById('menu');
     document.getElementById('trajets').style.display = "none";
+    document.getElementById('propositions').style.display = "none";
 
     for (let i = 0; i < menu.children.length; i++) {
         menu.children[i].addEventListener('click', () => {
@@ -133,17 +135,21 @@ if ($result->num_rows > 0) {
             menu.children[i].classList.add('active');
             document.getElementById('infos').style.display = "none";
             document.getElementById('trajets').style.display = "none";
+            document.getElementById('propositions').style.display = "none";
             if (i === 0) {
                 document.getElementById('infos').style.display = "flex";
             }
             if (i === 1) {
                 document.getElementById('trajets').style.display = "flex";
             }
+            if (i == 2) {
+                document.getElementById('propositions').style.display = "flex";
+            }
         });
     }
 
     //form profile picture
-    let input = document.querySelector('input');
+    let input = document.querySelector('.ppform');
     input.onchange = handleChange;
 
     function handleChange(e) {
