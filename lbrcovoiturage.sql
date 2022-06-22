@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 22 juin 2022 à 10:38
+-- Généré le : mer. 22 juin 2022 à 14:10
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -50,9 +50,9 @@ CREATE TABLE `compte` (
 --
 
 INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`, `lien_verif_mail`, `date_verif_mail`, `token_reset_password`, `expiration_reset_password`) VALUES
-(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2022-06-05 22:00:00', '', NULL, '', ''),
-(2, 'Mareel', 'Adrien', 'mareel.adri@yahoo.com', 632618822, '$2y$10$pieQUxNFR3bSoDW49phK8OAgxaz6.iwSxUHTyggcVWAW7mxZFVWry', 0, 0x2e6a7067, '', 0, '2022-06-07 22:00:00', '', NULL, '', ''),
-(32, 'Dessenne', 'Corentin', 'dessennec@gmail.com', 627503059, '$2y$10$C1E8NSHpgK2LGj5PTJVCYeNq8YixMpRmkzrDPa5KSrMHNQCmaHFAe', 0, NULL, NULL, 1, '2022-06-21 22:00:00', '4f4a9a6e085861fd65332c43a470767e', '2022-06-21 22:00:00', '', '');
+(32, 'Dessenne', 'Corentin', 'dessennec@gmail.com', 627503059, '$2y$10$C1E8NSHpgK2LGj5PTJVCYeNq8YixMpRmkzrDPa5KSrMHNQCmaHFAe', 1, 0x33322e6a7067, NULL, 1, '2022-06-21 22:00:00', '4f4a9a6e085861fd65332c43a470767e', '2022-06-21 22:00:00', '', ''),
+(33, 'Mareel', 'Adrien', 'cocodsn3@gmail.com', 612345678, '$2y$10$6iQz78Wx42E8HZQo0KfOzu8AlycZ923r2QNhRvDYy7Ls0C/s8DkBe', 0, NULL, NULL, 1, '2022-06-21 22:00:00', '8e6185740433cf0f8360f00b5d912797', '2022-06-21 22:00:00', '', ''),
+(34, 'Mareel', 'Adri2', 'mareel.adri@yahoo.com', 612345678, '$2y$10$pvVmXuI65BdzbjXsslf7meLzQZFELhdtwnCd.Q4OIwFCAjJq47eKW', 0, 0x33342e6a7067, NULL, 1, '2022-06-21 22:00:00', '87f699e611b99c979a19366522c75dc4', '2022-06-21 22:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -66,9 +66,16 @@ CREATE TABLE `edition` (
   `DateFin` date NOT NULL,
   `HeureDebut` time(4) NOT NULL,
   `HeureFin` time(4) NOT NULL,
-  `Lieu` varchar(4) NOT NULL,
-  `Description` varchar(20) NOT NULL
+  `Lieu` varchar(50) NOT NULL,
+  `Description` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `edition`
+--
+
+INSERT INTO `edition` (`AnnéeEdition`, `DateDebut`, `DateFin`, `HeureDebut`, `HeureFin`, `Lieu`, `Description`) VALUES
+(2022, '2022-09-17', '2022-09-18', '00:00:00.0000', '21:00:00.0000', 'Wervicq-Sud', ' ');
 
 -- --------------------------------------------------------
 
@@ -124,6 +131,15 @@ CREATE TABLE `trajet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Déchargement des données de la table `trajet`
+--
+
+INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `PlacesRestantes`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
+(9, 'Aller', 1, '', 'Lille', '41 Boulevard Vauban', 3.04837, 50.6339, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '02:30:00.0000', '02:30:00.0000', '2022-06-22', 1, 1, 0, 0, 2022, 32),
+(10, 'Retour', 1, '', 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, 'Lille', '41 Boulevard Vauban', 3.04837, 50.6339, '2022-09-18', '2022-09-18', '23:00:00.0000', '23:31:00.0000', '2022-06-22', 1, 1, 0, 0, 2022, 32),
+(11, 'Aller', 0, 'Je propose un trajet le 17 septembre', 'Lille', '41 Boulevard Vauban', 3.04837, 50.6339, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '18:00:00.0000', '18:29:00.0000', '2022-06-22', 3, 3, 5, 0, 2022, 34);
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -133,6 +149,12 @@ CREATE TABLE `trajet` (
 ALTER TABLE `compte`
   ADD PRIMARY KEY (`IdCompte`),
   ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- Index pour la table `edition`
+--
+ALTER TABLE `edition`
+  ADD PRIMARY KEY (`AnnéeEdition`);
 
 --
 -- Index pour la table `reservation`
@@ -154,7 +176,7 @@ ALTER TABLE `trajet`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
@@ -166,7 +188,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
