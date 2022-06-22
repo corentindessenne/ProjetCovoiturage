@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Confirmation de suppression de compte - LBR Covoiturage</title>
+    <title>Demande pour rejoindre ton trajet - LBR Covoiturage</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -108,7 +108,7 @@
                 <tr>
                     <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
                         <a href="https://lesbriquesrouges.fr/" target="_blank">
-                            <img alt="Logo Les Briques Rouges"
+                            <img alt="Logo"
                                  src="https://www.lesbriquesrouges.fr/_nuxt/img/lesbriquesrougesRedWhite.43247f2.png"
                                  width="200" height="200"
                                  style="display: block; width: 220px; max-width: 220px; min-width: 220px; font-family: 'Cereal', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;"
@@ -136,7 +136,7 @@
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top"
                         style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0 0; color: #111111; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 1px; line-height: 48px;">
-                        <h1 style="font-size: 48px; font-weight: 400; margin: 0;">Salut {{Prenom}} !</h1>
+                        <h1 style="font-size: 48px; font-weight: 400; margin: 0;">Salut {{Prenom}}!</h1>
                     </td>
                 </tr>
             </table>
@@ -160,22 +160,22 @@
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: justify;">
-                        <p style="margin: 0; text-align: justify;">Nous te confirmons que nous avons bien supprimé ton compte ainsi que
-                            l'ensemble de tes données sur la plateforme covoiturage LBR.</p>
+                        <p style="margin: 0;">Tu as reçu(e) une demande pour le trajet que tu as proposé sur notre plateforme. Consulte ton profil pour afficher les détails de cette demande.</p>
                     </td>
                 </tr>
                 <!-- COPY -->
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 0 30px 20px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p style="margin: 0; text-align: justify;">Même si nous sommes triste que tu nous quittes, on espère te revoir bientôt ! </p>
+                        <p style="margin: 0;">Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</p>
                     </td>
                 </tr>
                 <!-- COPY -->
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 0 30px 40px 30px; border-radius: 0 0 4px 4px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p style="margin: 0;">L'équipe des Briques Rouges</p>
+                        <p style="margin: 0;">A bientôt !<br>L'équipe des Briques Rouges</p>
                     </td>
                 </tr>
             </table>
@@ -197,12 +197,12 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <!-- HEADLINE -->
                 <tr>
-                    <td bgcolor="#3671B3" align="center"
+                    <td bgcolor="#FFF0D1" align="center"
                         style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <h2 style="font-size: 20px; font-weight: 400; color: #FFFEE6; margin: 0;">Tu souhaites nous
+                        <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Tu souhaites nous
                             contacter ?</h2>
                         <p style="margin: 0;"><a href="mailto:contact@lesbriquesrouges.fr" target="_blank"
-                                                 style="color: #FFFEE6;">C'est par ici !</a></p>
+                                                 style="color: #9B4503;">C'est par ici !</a></p>
                     </td>
                 </tr>
             </table>
@@ -242,8 +242,8 @@
                 <tr>
                     <td bgcolor="#FFFEE6" align="left"
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
-                        <p style="margin: 0;">Tu as reçu(e) ce mail, car tu viens de supprimer ton compte de la plateforme. Pour visualiser le mail correctement, <a
-                                    href="https://localhost/Plateforme%20Covoiturage/mails/suppression_compte.php"
+                        <p style="margin: 0;">Tu as reçu(e) ce mail, car tu viens de recevoir une demande de trajet sur notre plateforme. Pour visualiser le mail correctement, <a
+                                    href="https://localhost/Plateforme%20Covoiturage/mails/template_mail_demande_trajet.php"
                                     target="_blank"
                                     style="color: #111111; font-weight: 700;">affiche la version en ligne</a>.
                         </p>
