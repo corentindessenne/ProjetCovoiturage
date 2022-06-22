@@ -427,43 +427,74 @@ showDrive.onclick = function(){
 
   
   document.getElementById('retour').onchange = function() {
-    document.getElementById("departureSpan").innerHTML="Lieu de départ :";
-    document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";
-    document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
-    document.getElementById('departure').disabled = true;
-    document.getElementById('arrival').disabled = false;
-    document.getElementById('departure').value = "LBR Festival"; 
-    document.getElementById('arrival').value = "";
+    
+    if(<?php echo $verifRetour; ?>=="1"){
+      document.getElementById("retour").checked=false;
+      document.getElementById("aller").checked=true;
+      alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+    }
+    else{
+      document.getElementById("departureSpan").innerHTML="Lieu de départ :";
+      document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";
+      document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
+      document.getElementById('departure').disabled = true;
+      document.getElementById('arrival').disabled = false;
+      document.getElementById('departure').value = "LBR Festival"; 
+      document.getElementById('arrival').value = "";
+    }
   };
 
   document.getElementById('retour2').onchange = function() {
-    document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
-    document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
-    document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
-    document.getElementById('departure2').disabled = true;
-    document.getElementById('arrival2').disabled = false;
-    document.getElementById('departure2').value = "LBR Festival"; 
-    document.getElementById('arrival2').value = "";
+    if(<?php echo $verifRetour; ?>=="1"){
+      document.getElementById("retour2").checked=false;
+      document.getElementById("aller2").checked=true;
+      alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+    }
+    else{
+      document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
+      document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
+      document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
+      document.getElementById('departure2').disabled = true;
+      document.getElementById('arrival2').disabled = false;
+      document.getElementById('departure2').value = "LBR Festival"; 
+      document.getElementById('arrival2').value = "";
+    }   
   };
 
   document.getElementById('aller').onchange = function() {
-    document.getElementById("departureSpan").innerHTML="Ville de départ :";
-    document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
-    document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
-    document.getElementById('departure').disabled = false;
-    document.getElementById('arrival').disabled = true;               
-    document.getElementById('arrival').value = "LBR Festival"; 
-    document.getElementById('departure').value ="";
+    if(<?php echo $verifAller; ?>=="1"){
+      document.getElementById("retour").checked=true;
+      document.getElementById("aller").checked=false;
+      alert("Tu as déjà créer ou réserver un trajet pour ton aller vers notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+    }
+    else{
+      document.getElementById("departureSpan").innerHTML="Ville de départ :";
+      document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
+      document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
+      document.getElementById('departure').disabled = false;
+      document.getElementById('arrival').disabled = true;               
+      document.getElementById('arrival').value = "LBR Festival"; 
+      document.getElementById('departure').value ="";
+    }
   };
 
   document.getElementById('aller2').onchange = function() {
-    document.getElementById("departureSpan2").innerHTML="Ville de départ :";
-    document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
-    document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
-    document.getElementById('departure2').disabled = false;
-    document.getElementById('arrival2').disabled = true;
-    document.getElementById('arrival2').value = "LBR Festival"; 
-    document.getElementById('departure2').value ="";
+    
+    if(<?php echo $verifAller; ?>=="1"){
+      document.getElementById("retour2").checked=true;
+      document.getElementById("aller2").checked=false;
+      alert("Tu as déjà créer ou réserver un trajet pour ton aller vers notre festival annule ta réservation ou supprime ton trajet puis réessaye");
+    }
+    else{
+      document.getElementById("departureSpan2").innerHTML="Ville de départ :";
+      document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
+      document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
+      document.getElementById('departure2').disabled = false;
+      document.getElementById('arrival2').disabled = true;
+      document.getElementById('arrival2').value = "LBR Festival"; 
+      document.getElementById('departure2').value ="";
+    }
+    
   };
 
 
