@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 17 juin 2022 à 10:22
+-- Généré le : mer. 22 juin 2022 à 10:38
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -50,9 +50,9 @@ CREATE TABLE `compte` (
 --
 
 INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`, `lien_verif_mail`, `date_verif_mail`, `token_reset_password`, `expiration_reset_password`) VALUES
-(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2001-06-21 22:00:00', '', NULL, '', ''),
+(1, 'THUILLIER', 'Maxime', 'tuile0834@gmail.com', 612345678, 'ff', 0, NULL, 'test', 0, '2022-06-05 22:00:00', '', NULL, '', ''),
 (2, 'Mareel', 'Adrien', 'mareel.adri@yahoo.com', 632618822, '$2y$10$pieQUxNFR3bSoDW49phK8OAgxaz6.iwSxUHTyggcVWAW7mxZFVWry', 0, 0x2e6a7067, '', 0, '2022-06-07 22:00:00', '', NULL, '', ''),
-(20, 'Dessenne', 'Corentin', 'corentin.dessenne@student.junia.com', 627503059, '$2y$10$jeV2ZsT6ZtLhGFkBQzPFiuID0WdEuIGTxgsvK.RaSJXewx.ebwc26', 1, NULL, NULL, 1, '2022-06-15 22:00:00', '310fd08b053a4807c6dc6eae1c43de82', '2022-06-15 22:00:00', '', '');
+(32, 'Dessenne', 'Corentin', 'dessennec@gmail.com', 627503059, '$2y$10$C1E8NSHpgK2LGj5PTJVCYeNq8YixMpRmkzrDPa5KSrMHNQCmaHFAe', 0, NULL, NULL, 1, '2022-06-21 22:00:00', '4f4a9a6e085861fd65332c43a470767e', '2022-06-21 22:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -69,6 +69,27 @@ CREATE TABLE `edition` (
   `Lieu` varchar(4) NOT NULL,
   `Description` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `idReservation` int(11) NOT NULL,
+  `idTrajet` int(11) NOT NULL,
+  `nbPassagersReservation` int(10) NOT NULL,
+  `typeTrajet` varchar(15) NOT NULL,
+  `anneeEdition` int(10) NOT NULL,
+  `idCompteReservation` int(10) NOT NULL,
+  `nomPassager1` varchar(50) NOT NULL,
+  `nomPassager2` varchar(50) NOT NULL,
+  `nomPassager3` varchar(50) NOT NULL,
+  `nomPassager4` varchar(50) NOT NULL,
+  `nomPassager5` varchar(50) NOT NULL,
+  `nomPassager6` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -103,16 +124,6 @@ CREATE TABLE `trajet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `trajet`
---
-
-INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `PlacesRestantes`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
-(1, 'Aller', 0, '', 'Marcq-en-Baroeul', '15 Avenue Foch,Marcq-en-Baroeul', 3.10186, 50.6675, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '16:00:00.0000', '16:20:00.0000', '2022-06-07', 4, 4, 3, NULL, 2022, 1),
-(2, 'Aller', 0, '', 'Lille', '21 Rue de Linselles,', 3.05726, 50.6292, 'Wervicq-Sud', '21 Rue de Linselles,', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '16:47:00.0000', '11:32:46.0000', '2030-05-22', 5, 5, 11, 0, 2022, 4),
-(3, 'Aller', 0, '', 'Charleville-Mézières', '06 place de la gare', 4.7261, 49.7621, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '14:34:00.0000', '11:32:47.0000', '2002-06-22', 3, 3, 25, 0, 2022, 3),
-(4, 'Aller', 0, '', 'Paris', 'Place de l\'étoile', 2.35222, 48.8566, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-17', '2022-09-17', '15:11:00.0000', '14:17:14.0000', '2022-06-07', 5, 5, 5, 0, 2022, 2);
-
---
 -- Index pour les tables déchargées
 --
 
@@ -122,6 +133,12 @@ INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `Lie
 ALTER TABLE `compte`
   ADD PRIMARY KEY (`IdCompte`),
   ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- Index pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`idReservation`);
 
 --
 -- Index pour la table `trajet`
@@ -137,13 +154,19 @@ ALTER TABLE `trajet`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `IdCompte` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
