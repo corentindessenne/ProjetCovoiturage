@@ -24,10 +24,10 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
             $verifadmin = 0;
         }
 
-        $path = 'localhost/Plateforme covoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
+        $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
         $request = mysqli_query($conn, "INSERT INTO compte(Nom,Prenom, Email, telephone, motDePasse, isAdmin,DateCreation, lien_verif_mail) VALUES ('" . $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["email"] . "','" . $tel . "','" . $password . "','" . $verifadmin . "','" . date("Y.m.d") . "', '" . $token . "')");
-        $link = "<a href='localhost/Plateforme covoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;'>Confirme ton compte</a>";
-        $lienBrut = "<a href='localhost/Plateforme covoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='color: #FFA73B;'>".$path."</a>";
+        $link = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;'>Confirme ton compte</a>";
+        $lienBrut = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='color: #FFA73B;'>".$path."</a>";
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

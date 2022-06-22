@@ -294,7 +294,7 @@
 		?>
 
 		<div  name="modal" id="modal" class="modal">
-			<div id="<?php echo $idTrajet[$y];?>" class="modal-content" >
+			<div id="<?php echo $y+1;?>" class="modal-content" >
 				<span name="close-button" id="close-button"class="close-button">&times;</span>
 				<div class="data-all">
 					<span class="horaire">
@@ -603,14 +603,6 @@
 			});
 			}
 		}
-
-	</script>
-
-
-	<script type="text/javascript">
-
-
-
 
 	</script>
 

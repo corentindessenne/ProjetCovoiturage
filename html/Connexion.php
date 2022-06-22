@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "lucas";
+$password = "";
 $db = "lbrcovoiturage";
 
 ini_set('display_errors', 1);
