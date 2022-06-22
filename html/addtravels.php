@@ -598,7 +598,7 @@ showDrive.onclick = function(){
           query += " "+document.getElementById("departure").value;
         }
       }
-      getDataFromForm(query);
+      getDataFromForm(query,demande);
     }
 
 
@@ -607,7 +607,7 @@ showDrive.onclick = function(){
 
 
   
-    function getDataFromForm(query){
+    function getDataFromForm(query,demande){
     
         
         console.log(query);
@@ -651,7 +651,7 @@ showDrive.onclick = function(){
                 let Route=Direction.routes[0];
                 Duree=Math.round(Route.legs[0].duration.value/60);
                 console.log(queryCoord.lng);
-                
+                EditArrival(demande);
               }
             });
 
@@ -732,6 +732,7 @@ showDrive.onclick = function(){
             
             //document.getElementById("heureArrivee").value
             console.log(document.getElementById("dateArr").value);
+            console.log(document.getElementById("dateArr2").value);
       }
   </script>
  
