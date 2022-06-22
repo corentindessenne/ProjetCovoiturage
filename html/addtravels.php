@@ -116,7 +116,7 @@
     </label>
     <label for="date">
       Date de départ:
-      <input type="date" id="date" name="date" required="required">
+      <input type="date" id="date" name="date" required="required" min="2022-09-12">
     </label>
     <label for="time">
       <span> Choisir une heure de départ :</span>
@@ -179,7 +179,7 @@
     </label>
     <label for="date">
       Date de départ:
-      <input type="date" name="date" id="date2">
+      <input type="date" name="date" id="date2" min="2022-09-12">
     </label>
     <label for="time">
       <span> Choisir une heure de départ :</span>
@@ -425,27 +425,46 @@ showDrive.onclick = function(){
   let allerRadio2 = document.getElementById('aller2');
   let retourRadio2 = document.getElementById('retour2');
 
-  if(retourRadio.checked==true){
+  
+  document.getElementById('retour').onchange = function() {
     document.getElementById("departureSpan").innerHTML="Lieu de départ :";
     document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";
     document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
-  }
-  if(retourRadio2.checked==true){
+    document.getElementById('departure').disabled = true;
+    document.getElementById('arrival').disabled = false;
+    document.getElementById('departure').value = "LBR Festival"; 
+    document.getElementById('arrival').value = "";
+  };
+
+  document.getElementById('retour2').onchange = function() {
     document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
     document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
     document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
-  }
-  if(allerRadio2.checked==true){
-    document.getElementById("departureSpan2").innerHTML="Ville de départ :";
-    document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
-    document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
-  }
-  if(allerRadio.checked==true){
+    document.getElementById('departure2').disabled = true;
+    document.getElementById('arrival2').disabled = false;
+    document.getElementById('departure2').value = "LBR Festival"; 
+    document.getElementById('arrival2').value = "";
+  };
+
+  document.getElementById('aller').onchange = function() {
     document.getElementById("departureSpan").innerHTML="Ville de départ :";
     document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
     document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
-  }
+    document.getElementById('departure').disabled = false;
+    document.getElementById('arrival').disabled = true;               
+    document.getElementById('arrival').value = "LBR Festival"; 
+    document.getElementById('departure').value ="";
+  };
 
+  document.getElementById('aller2').onchange = function() {
+    document.getElementById("departureSpan2").innerHTML="Ville de départ :";
+    document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
+    document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
+    document.getElementById('departure2').disabled = false;
+    document.getElementById('arrival2').disabled = true;
+    document.getElementById('arrival2').value = "LBR Festival"; 
+    document.getElementById('departure2').value ="";
+  };
 
 
   if(<?php echo $verifAller; ?>=="0"){    //vérification que le radio n'as pas été supprimé
@@ -456,28 +475,12 @@ showDrive.onclick = function(){
       document.getElementById('departure').value ="";
     }
 
-    document.getElementById('aller').onclick = function() {
-      document.getElementById('departure').disabled = false;
-      document.getElementById('arrival').disabled = true;               
-      document.getElementById('arrival').value = "LBR Festival"; 
-      document.getElementById('departure').value ="";
-    };
-
-
     if (allerRadio2.checked === true){
       document.getElementById('departure2').disabled = false;
       document.getElementById('arrival2').disabled = true;
       document.getElementById('arrival2').value = "LBR Festival"; 
       document.getElementById('departure2').value ="";
     }
-
-    document.getElementById('aller2').onclick = function() {
-      document.getElementById('departure2').disabled = false;
-      document.getElementById('arrival2').disabled = true;
-      document.getElementById('arrival2').value = "LBR Festival"; 
-      document.getElementById('departure2').value ="";
-    };
-
   }
 
 
@@ -490,17 +493,6 @@ showDrive.onclick = function(){
       document.getElementById('arrival').value = "";
     }
 
-  document.getElementById('retour').onclick = function() {
-
-    document.getElementById('departure').disabled = true;
-    document.getElementById('arrival').disabled = false;
-    document.getElementById('departure').value = "LBR Festival"; 
-    document.getElementById('arrival').value = "";
-
-  };
-
-
-
 
   if (retourRadio2.checked === true){
       document.getElementById('departure2').disabled = true;
@@ -509,14 +501,6 @@ showDrive.onclick = function(){
       document.getElementById('arrival2').value = "";
     }
 
-    document.getElementById('retour2').onclick = function() {
-
-      document.getElementById('departure2').disabled = true;
-      document.getElementById('arrival2').disabled = false;
-      document.getElementById('departure2').value = "LBR Festival"; 
-      document.getElementById('arrival2').value = "";
-
-    };
   }
 
   
