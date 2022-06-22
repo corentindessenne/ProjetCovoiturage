@@ -15,6 +15,7 @@ body {
   align-items: center;
   position: relative;
   left : 10px;
+  margin-top: 5%;
 }
 
 
@@ -120,7 +121,9 @@ h1{
 
 
 textarea{
-    resize: none;
+  display: flex;
+  flex-direction: column;
+  resize: none;
 }
 
 .container{
@@ -143,7 +146,7 @@ button{
     border-radius: 40px;
     text-align: center;
     box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
-    position: relative;
+  
     overflow: hidden;
     cursor: pointer;
 }

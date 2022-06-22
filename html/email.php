@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Rich Text Editor</title>
+<title>Edition Mail LBR Covoiturage</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,12 @@
 </div>  
 <nav class="nav__cont">
   <ul class="nav">
+
+    <li class="nav__items" id="email0">
+      <img src="../images/icon/BackArrow.png">
+      <a id="email1" href="espaceAdmin.php">Retourner sur l'espace admin</a>
+    </li>
+
     <li class="nav__items" id="email1">
       <img src="../images/icon/nocar.png">
       <a id="email1">Supr. compte</a>
@@ -36,117 +42,198 @@
       
     <li class="nav__items" id="email3">
      <img src="../images/icon/car.png">
-     <a id="email3">Festivalier</a>
+     <a id="email3">Créateur Demande</a>
     </li>
       
 <li class="nav__items" id="email4">
       <img src="../images/icon/driver.png">
-      <a id="email4">Conducteur</a>
+      <a id="email4">Réserve trajet</a>
     </li>
 
     <li class="nav__items" id="email5">
       <img src="../images/icon/check.png">
-      <a id="email5">Confirmation</a>
+      <a id="email5">Confirmation Demande</a>
     </li>
+
+    <li class="nav__items" id="email5">
+      <img src="../images/icon/Apply.png">
+      <a id="email6">Confirmation création de compte</a>
+    </li>
+
+    <li class="nav__items" id="email5">
+      <img src="../images/icon/ResetPassword.png">
+      <a id="email7">réinitialistion de mdp</a>
+    </li>
+
+
+
+    <li class="nav__items" id="email5">
+      <img src="../images/icon/Check2.png">
+      <a id="email8">Confirmation conducteur</a>
+    </li>
+
+    
   </ul>
 </nav>
 
 <div class="main" id="main">
-  <form action="" method="POST" id="text1">
+  <form action="emailModif.php" method="post" id="text1">
     <div class="email" >
+      <input type="hidden" name="mail" value="DeleteAccount">
       <h1>Suppression de compte</h1>
-      <textarea  readonly rows="10" cols="70" wrap="soft" id="textzone" >
-        On te confirme la suppression de ton compte LBR.
-        Merci d'avoir participé à notre festival ! 
-        Tu as pris part à "??" trajets au cours de ton périple !
-        On espère te revoir bientôt.
-      </textarea>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Nous te confirmons que nous avons bien supprimé ton compte ainsi que
+                            l'ensemble de tes données sur la plateforme covoiturage LBR.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Même si nous sommes triste que tu nous quittes, on espère te revoir bientôt ! </textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >L'équipe des Briques Rouges</textarea>
+      <button type="submit" id="saveButton">Save</button>
     </div>
-   <button type="button" id="editButton">Edit</button>
-   <button type="button" id="saveButton">Save</button>
+   <!--<button type="button" id="editButton">Edit</button>-->
+   
   </form>
 
-  <form action="" method="POST" id="text2">
+  <form action="emailModif.php" method="post" id="text2">
     <div class="email" >
+      <input type="hidden" name="mail" value="DeleteTraject">
       <h1>Suppression de trajet</h1>
-      <textarea rows="10" cols="70" wrap="soft" >
-     
-
-        Je suis désolé de t'annoncer que le conducteur a annulé le trajet "??".
-        J'espère que tu trouveras une alternative pour venir au festival, on t'y attend avec impatience ! 
-        A bientôt !!
-
-      </textarea>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Je suis désolé de t'annoncer que le conducteur a annulé le trajet "??". </textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu trouveras une alternative pour venir au festival, on t'y attend avec impatience ! </textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !!</textarea>
+      <button type="submit" id="saveButton">Save</button>
     </div>
-    <button type="button" id="editButton">Edit</button>
-   <button type="button" id="saveButton">Save</button>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
   </form>
 
 
 
-  <form action="" method="POST"id="text3">
+  <form action="emailModif.php" method="post"id="text3">
     <div class="email" >
-      <h1>Requête de trajet</h1>
-      <textarea  rows="10" cols="70" wrap="soft">
-        
-
-        Salut à toi festivalier, 
-        On a remarqué que tu cherchais quelqu'un pour te conduire à "??" le "??" et cela tombe bien puisque quelqu'un semble volontaire pour t'aider !
-
-        " notes du conducteur"
-
-        En acceptant la demande, tu acceptes d'envoyer tes coordonnées ainsi que ton numéro de téléphone à ton conducteur.
-
-        Accepter / Refuser
-
+      <input type="hidden" name="mail" value="Request">
+      <h1>Demande</h1>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Salut à toi festivalier, 
+                                                                          On a remarqué que tu cherchais quelqu'un pour te conduire à "??" le "??" et cela tombe bien puisque quelqu'un semble volontaire pour t'aider 
       </textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >" notes du conducteur"</textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >En acceptant la demande, tu acceptes d'envoyer tes coordonnées ainsi que ton numéro de téléphone à ton conducteur.</textarea>
+      <button type="submit" id="saveButton">Save</button>
     </div>
-    <button type="button" id="editButton">Edit</button>
-   <button type="button" id="saveButton">Save</button>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
   </form>
 
 
-  <form action="" method="POST" id="text4">
+  <form action="emailModif.php" method="post" id="text4">
     <div class="email" >
-      <h1>Demande de trajet</h1>
-      <textarea contenteditable="false" rows="10" cols="70" wrap="soft" >
-        
-
-        Salut à toi conducteur, 
-        On a remarqué que tu cherchais des passagers pour t'accompagner de "??" à "??" le "??" et cela tombe bien puisque y semble y avoir des volontaire(s) !
-
-        "notes du festivalier"
-
-        En acceptant la demande, tu acceptes d'envoyer tes coordonnées ainsi que ton numéro de téléphone à ton passager.
-
-        Accepter / Refuser
-
-      </textarea>
+      <input type="hidden" name="mail" value="Reservation">
+      <h1>Demande Réserve</h1>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Tu as reçu(e) une demande pour le trajet que tu as proposé sur notre plateforme. Consulte ton profil pour afficher les détails de cette demande.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
+    <button type="submit" id="saveButton">Save</button>
     </div>
-    <button type="button" id="editButton">Edit</button>
-   <button type="button" id="saveButton">Save</button>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
   </form>
 
 
 
-  <form action="" method="POST" id="text5">
+  <form action="emailModif.php" method="post" id="text5">
     <div class="email" >
+      <input type="hidden" name="mail" value="ConfirmDemande">
       <h1>Confirmation de trajet</h1>
-      <textarea contenteditable="true" rows="10" cols="70" wrap="soft">
-        
-
-        Salut à toi, 
-        On a une bonne nouvelle a t'annoncer puisque qu'il semblerait que ta demande ait été acceptée.
-
-        Voici les coordonnées de ton nouveau partenaire de voyage ! 
-
-        J'espère que tu passeras un bon moment et fera un bon voyage !
-
-
-      </textarea>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" > Salut à toi, 
+                                                                            On a une bonne nouvelle a t'annoncer puisque qu'il semblerait que ta demande ait été acceptée.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici les coordonnées de ton nouveau partenaire de voyage ! </textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
+      <button type="submit" id="saveButton">Save</button>
     </div>
-    <button type="button" id="editButton">Edit</button>
-   <button type="button" id="saveButton">Save</button>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
+  </form>
+
+  <form action="emailModif.php" method="post" id="text6">
+    <div class="email" >
+      <input type="hidden" name="mail" value="ConfirmAccount">
+      <h1>Confirmation de création de compte</h1>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Bienvenue {{Prenom}}!</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Merci d'avoir rejoint la plateforme de covoiturage des Briques Rouges.
+                            D'abord, appuie sur le bouton ci-dessous pour confirmer ton adresse mail.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Si le bouton ne fonctionne pas, copie le lien
+                            ci-dessous dans ton navigateur préféré :</textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
+      <label for="p4">Paragraphe 4:</label>
+      <textarea name="p4"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
+      <button type="submit" id="saveButton">Save</button>
+    </div>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
+  </form>
+  <form action="emailModif.php" method="post" id="text7">
+    <div class="email" >
+      <input type="hidden" name="mail" value="ResetPassword">
+      <h1>Réinitialisation du mot de passe</h1>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Tu as oublié ton mot de passe ?</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Pas de panique : c'est super simple de réinitialiser ton mot de passe. Appuie sur le bouton ci-dessous et suis les instructions.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
+      <button type="submit" id="saveButton">Save</button>
+    </div>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
+  </form>
+  <form action="emailModif.php" method="post" id="text8">
+    <div class="email" >
+      <input type="hidden" name="mail" value="ConfirmDriver">
+      <h1>Confirmation de trajet</h1>
+      <label for="h1">Titre:</label>
+      <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
+      <label for="p1">Paragraphe 1:</label>
+      <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" > Salut à toi, 
+                                                                            On a une bonne nouvelle a t'annoncer puisque qu'il semblerait que ta demande ait été acceptée.</textarea>
+      <label for="p2">Paragraphe 2:</label>
+      <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici les coordonnées de ton nouveau partenaire de voyage ! </textarea>
+      <label for="p3">Paragraphe 3:</label>
+      <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
+      <button type="submit" id="saveButton">Save</button>
+    </div>
+    <!--<button type="button" id="editButton">Edit</button>-->
+   
   </form>
 
 </div>
@@ -174,12 +261,18 @@ function OnInput() {
  let emailBox3 = document.getElementById('text3');
  let emailBox4 = document.getElementById('text4');
  let emailBox5 = document.getElementById('text5');
+ let emailBox6 = document.getElementById('text6');
+ let emailBox7 = document.getElementById('text7');
+ let emailBox8 = document.getElementById('text8');
 
  let showBox1 = document.getElementById('email1');
  let showBox2 = document.getElementById('email2');
  let showBox3 = document.getElementById('email3');
  let showBox4 = document.getElementById('email4');
  let showBox5 = document.getElementById('email5');
+ let showBox6 = document.getElementById('email6');
+ let showBox7 = document.getElementById('email7');
+ let showBox8 = document.getElementById('email8');
  
 
 let div = document.getElementById('main');
@@ -221,6 +314,21 @@ showBox4.onclick = function(){
 showBox5.onclick = function(){
   cacher();
   emailBox5.style.display = "flex";
+}
+
+showBox6.onclick = function(){
+  cacher();
+  emailBox6.style.display = "flex";
+}
+
+showBox7.onclick = function(){
+  cacher();
+  emailBox7.style.display = "flex";
+}
+
+showBox8.onclick = function(){
+  cacher();
+  emailBox8.style.display = "flex";
 }
 
 
