@@ -136,7 +136,7 @@ if(isset($_SESSION["mail"])){
         if($isDemande==0){
     ?>
     <div class="infos formDiv" id="infos" >
-        <form action="ActionDemandeModif.php" method="post" class="infos-secondary">
+        <form action="modifTravelAction.php" method="post" class="infos-secondary">
             <input type="hidden" name="long" id="long2" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat2" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="0">
@@ -213,7 +213,7 @@ if(isset($_SESSION["mail"])){
     else{
         ?>
     <div class="infos formDiv" id="infos" >
-        <form action="ActionDemandeModif.php" class="infos-secondary" method="post">
+        <form action="modifTravelAction.php" class="infos-secondary" method="post">
             <input type="hidden" name="long" id="long" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="1">

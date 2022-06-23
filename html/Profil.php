@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <form method="post" action="ModifConducteur.php">
+                    <form method="post" action="modifTravel.php">
                         <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>"> 
                         <input type="submit" class=modifyTrajet value="Modifier">
                     </form>

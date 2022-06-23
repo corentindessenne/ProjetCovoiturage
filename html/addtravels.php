@@ -93,7 +93,7 @@
 
 
   <div class="big-form">
-   <form action="ActionDemandeAjout.php" method="post" id="traveler" class="form-example">
+   <form action="addTravelsAction.php" method="post" id="traveler" class="form-example">
     <div class="form-traveler">
 
       <input type="hidden" name="isDemande"  id="isDemande" value="1">
@@ -160,7 +160,7 @@
 
 
 
-  <form action="ActionDemandeAjout.php" method="post" class="form-example" id="driver">
+  <form action="addTravelsAction.php" method="post" class="form-example" id="driver">
     <div class="form-traveler">
 
      <input type="hidden" name="isDemande"  id="isDemande" value="0">

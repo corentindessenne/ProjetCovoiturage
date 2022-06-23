@@ -19,7 +19,12 @@ if ($result->num_rows >  0) {
     $id=$row["IdCompte"];
       
 }
-
+if (!isset($_POST["tel"])) {
+    $tel=0;
+  }
+  else{                                           //On ajuste la valeur du tel en fonction de si la checkbox a été cochée ou non
+    $tel = 1;
+  }
 
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);             //on remplace les ' par des '' dans la description pour éviter de créer des erreurs sql
 
