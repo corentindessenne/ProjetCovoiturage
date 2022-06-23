@@ -397,3 +397,44 @@ textarea{
   background-color: #ff0000;
   color: white;
 }
+
+.demandeRecue{
+  width: 300px;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px;
+}
+
+.demandeRecue img{
+  width: 50px;
+  height: 50px;
+  border-radius: 500px;
+  object-fit: cover;
+}
+
+.demandeRecue .infos-profil{
+  margin-left: 10px;
+  width: 150px;
+  white-space: nowrap;
+}
+
+.infos-profil span{
+  font-size: 18px;
+}
+
+.infos-profil p{
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.select{
+  width: 100%;
+}
+.select img{
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin: 5px;
+}
