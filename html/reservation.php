@@ -76,7 +76,7 @@
 		<input class="hidden" type="text" name="idTrajet" value="<?php echo $idTrajet;?>">
 		<input class="hidden" type="text" name="nbPassagers" value="<?php echo $_GET['nbPassagers'];?>">
 		<input class="hidden" type="text" name="typeTrajet" value="<?php echo $typeTrajet;?>">
-		<div class="logo"><img src="../images/LBR Ressources/logo.png"></div>
+		<div class="logo"><a href="home.php"><img src="../images/LBR Ressources/logo.png"></a></div>
 		<div class="title">
 			<span>Veuillez rentrer les prénoms des passagers</span>
 		</div>
