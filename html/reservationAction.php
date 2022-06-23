@@ -44,6 +44,7 @@
 
         if(mail($dest,$sujet,$corp, $headers)){
             echo "Votre demande pour rejoindre la voiture a bien été envoyée au conducteur";
+            header('location:home.php');
         }
         else{
             echo "Oups. Ta demande ne s'est pas envoyée. Réessaye à nouveau";

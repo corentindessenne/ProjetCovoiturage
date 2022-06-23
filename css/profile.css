@@ -81,6 +81,10 @@ body{
   box-shadow: 0px 14px 25px 10px rgba(0,0,0,0.3);
 }
 
+.trajets,.propositions{
+  flex-wrap: wrap;
+}
+
 .infos-main{
   display: flex;
   flex-direction: column;

@@ -6,8 +6,6 @@
 
 <body>
 
-<h1>Ca marche pas</h1>
-
 <?php
 include 'Connexion.php';            //connexion a la base de donnée
 
@@ -69,7 +67,7 @@ if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
       alert("Ta demande de trajet a bien ete modifie");         //Si la requete a fonctionné on redirige vers la page de profil
-      location="ProfilTmp.php";
+      //location="Profil.php";
   </script>
 <?php
 die();
