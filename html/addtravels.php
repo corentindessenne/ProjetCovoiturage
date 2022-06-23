@@ -585,9 +585,10 @@ showDrive.onclick = function(){
       let sens="";
         if(demande==0){
             sens=document.getElementById("retour2").checked;
+            
         }
         else{
-            document.getElementById("retour").checked;
+            sens=document.getElementById("retour").checked;
         }
       let quer="";
       if(demande==0){
@@ -614,6 +615,7 @@ showDrive.onclick = function(){
           query += " "+document.getElementById("departure").value;
         }
       }
+
       getDataFromForm(query,demande);
     }
 
@@ -702,7 +704,7 @@ showDrive.onclick = function(){
             var DepTab = heureDep.split(":");
             let FinalMin=0;
             let FinalHour=0;
-            if(parseInt(DureeTab[1])+parseInt(DepTab[1])>60){
+            if(parseInt(DureeTab[1])+parseInt(DepTab[1])>=60){
               FinalHour++;
               FinalMin=-60;
             }

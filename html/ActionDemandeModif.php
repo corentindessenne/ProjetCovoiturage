@@ -48,17 +48,19 @@ if($_POST["AllerRetour"]=="Retour"){
 }else{
   $lieu=$_POST["Ville"];
 }
+
 $temp=$NbPass;
 if(isset($_POST["NbPass"])){
   $NbPass=$_POST["NbPass"];
 }
 $placesRestantes+= $NbPass-$temp;
-
+$dateArr=strtotime(str_replace(" (heure d’été d’Europe centrale)","",$_POST["dateArr"]));
+echo $dateArr;
 if($_POST["AllerRetour"]=="Aller"){
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$lieu."',LongitudeDepart='".$_POST["long"]."',LatitudeDepart='".$_POST["lat"]."',LieuArrivee='".$defaultLieu."',LongitudeArrivee='".$defaultLong."',LatitudeArrivee='".$defaultLat."',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='".$defaultAdresse."' ,DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".$_POST["dateArr"]."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$lieu."',LongitudeDepart='".$_POST["long"]."',LatitudeDepart='".$_POST["lat"]."',LieuArrivee='".$defaultLieu."',LongitudeArrivee='".$defaultLong."',LatitudeArrivee='".$defaultLat."',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='".$defaultAdresse."' ,DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }         //requete sql différente en fonction de s'il s'agit d'un aller ou une retour
 else{
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$defaultLieu."',LongitudeDepart='".$defaultLong."',LatitudeDepart='".$defaultLat."',LieuArrivee='".$lieu."',LongitudeArrivee='".$_POST["long"]."',LatitudeArrivee='".$_POST["lat"]."',AdresseDepart='".$defaultAdresse."',AdresseArrivee='".$_POST["Adresse"]."', DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".$_POST["dateArr"]."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$defaultLieu."',LongitudeDepart='".$defaultLong."',LatitudeDepart='".$defaultLat."',LieuArrivee='".$lieu."',LongitudeArrivee='".$_POST["long"]."',LatitudeArrivee='".$_POST["lat"]."',AdresseDepart='".$defaultAdresse."',AdresseArrivee='".$_POST["Adresse"]."', DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 
 

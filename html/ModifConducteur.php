@@ -140,6 +140,8 @@ if(isset($_SESSION["mail"])){
             <input type="hidden" name="long" id="long2" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat2" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="0">
+            <input type="hidden" name="AllerRetour" value="<?php echo $TypeTrajet; ?>">
+            
             <div class="input-group">
                 <div class="form-item"><label for="departure2" id="departureSpan2" class="upper">Ville de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Ville" id="departure2" value="<?php echo $LieuDepart; ?>"></div>
                 <div class="form-item"><label for="adresse2" id="adresseSpan2" class="upper">Adresse de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Adresse" id="adresse2"  value="<?php echo $AdresseDepart; ?>"></div>
@@ -162,7 +164,7 @@ if(isset($_SESSION["mail"])){
                 <label id="arrivalHour2" class="arrivalHour"> Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
             </div>
             <input type="hidden" name="heureArrivee" id="heureArrivee2" value="<?php echo substr_replace($HeureArrivee ,"", -8); ?>">
-            <input type="hidden" name="dateArr" id="dateArr2" value="">
+            <input type="hidden" name="dateArr" id="dateArr2" value="<?php echo $DateArrivee; ?>">
             <br/>
             <div class="input-group PassPrix">
                 <div class="form-item">
@@ -215,6 +217,7 @@ if(isset($_SESSION["mail"])){
             <input type="hidden" name="long" id="long" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="1">
+            <input type="hidden" name="AllerRetour" value="<?php echo $TypeTrajet; ?>">
         
             <div class="input-group">
                 <div class="form-item"><label for="departure" id="departureSpan" class="upper">Ville de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Ville" id="departure" value="<?php echo $LieuDepart; ?>"></div>
@@ -239,7 +242,7 @@ if(isset($_SESSION["mail"])){
                     <label id="arrivalHour" class="arrivalHour">Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
                 </div>
                 <input type="hidden" name="heureArrivee" id="heureArrivee1" value="<?php echo substr_replace($HeureArrivee ,"", -8); ?>">
-                <input type="hidden" name="dateArr" id="dateArr" value="">
+                <input type="hidden" name="dateArr" id="dateArr" value="<?php echo $DateArrivee; ?>">
             <br/>
             <br>
             <div class="input-group">
@@ -462,11 +465,7 @@ let queryCoord = {lat : 0, lng : 0};
                 }
             
             
-            
-            
-           
-            
-            
+ 
             
             let request = {
                 origin: depart,
@@ -508,6 +507,7 @@ let queryCoord = {lat : 0, lng : 0};
             document.getElementById("heureDepart").innerHTML=document.getElementById("heureDepart1").value;
             changeLieu(1);
         }
+        
         document.getElementById("date").onchange= function(){
             document.getElementById("dateDepart").innerHTML=document.getElementById("date").value;
             changeLieu(1);
@@ -576,9 +576,7 @@ let queryCoord = {lat : 0, lng : 0};
               document.getElementById("arrivalHour2").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;
               document.getElementById("dateArr2").value=dateDep;
               document.getElementById("heureArrivee2").value=FinalHour+":"+FinalMin;
-            }
-            
-            
+            }          
             document.getElementById("heureArrivee").innerHTML=FinalHour+":"+FinalMin;
             
             
