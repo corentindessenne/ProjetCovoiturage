@@ -629,14 +629,14 @@ showDrive.onclick = function(){
             document.getElementById("long").value=queryCoord.lng;
             document.getElementById("lat2").value=queryCoord.lat;
             document.getElementById("long2").value=queryCoord.lng;
-            if(document.getElementById("retour").checked==true){
-              depart=  "<?php echo $Adresse.", ".$Lieu; ?>";
-              arrivee=queryCoord;
-              
+            if(document.getElementById("retour").checked==true || document.getElementById("retour2").checked==true){
+                depart=  "<?php echo $Adresse.", ".$Lieu; ?>";
+                arrivee=queryCoord;
+            
             }
             else{
-              arrivee= "<?php echo $Adresse.", ".$Lieu; ?>";;
-              depart=queryCoord;
+                arrivee= "<?php echo $Adresse.", ".$Lieu; ?>";;
+                depart=queryCoord;
             }
             
             
