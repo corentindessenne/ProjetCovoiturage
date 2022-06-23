@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Action Ajout</title>
+    <title>Edition du profil - LBR Covoiturage</title>
 </head>
 <body>
 
@@ -31,7 +31,7 @@
         ?><script>document.location.href='../html/profil.php';</script><?php
     }
     if(strlen($phone) != 10){
-        echo "<script type='text/javascript'>alert('Ton numéro de téléphone n'est pas valide');</script>";
+        echo "<script type='text/javascript'>alert('Ton numéro de téléphone n\'est pas valide');</script>";
         ?><script>document.location.href='../html/profil.php';</script><?php
     }
 
@@ -50,13 +50,47 @@
     if ($conn->query($sql) === TRUE) {
 
         if($verifyEmail == 1){
-            ?>
+            $token = md5($email);
 
-            <script type="text/javascript">
-              alert("Vérifie ta nouvelle adresse mail à l'aide du mail que l'on vient de t'envoyer");
-              location="logout.php";
-            </script>
-            <?php
+            $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
+
+            $link = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;'>Confirme ton compte</a>";
+            $lienBrut = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='color: #FFA73B;'>".$path."</a>";
+
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            $headers .= "From:Les Briques Rouges<cocodsn2@gmail.com>";
+
+            $dest = $email;
+            $sujet = "Confirme ta nouvelle adresse mail !";
+            $corp = file_get_contents("../mails/template_mail_confirmation_mail.php");
+
+            $variables = array(
+                "{{Prenom}}" => $prenom,
+                "{{Bouton}}" => $link,
+                "{{Lien}}" => $lienBrut
+            );
+
+            foreach ($variables as $key => $value) {
+                $corp = str_replace($key, $value, $corp);
+            }
+
+            if(mail($dest, $sujet, $corp, $headers)){
+                ?>
+                <script type="text/javascript">
+                alert("Vérifie ta nouvelle adresse mail à l'aide du mail que l'on vient de t'envoyer");
+                location="logout.php";
+                </script>
+                <?php
+            }
+            else{
+                ?>
+                <script type="text/javascript">
+                    alert("Oups. Il semble que le mail ne se soit pas envoyé. Réessaye à nouveau");
+                    location = "logout.php";
+                </script>
+                <?php
+            }
         }
         else{
             ?>
@@ -65,7 +99,6 @@
               location="Profil.php";
             </script>
             <?php
-
         }
     }
 
