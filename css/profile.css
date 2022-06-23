@@ -24,7 +24,8 @@
 
 body{
   font-family: Cereal;
-  background-color: #eaeff2;
+  background-image: url(../images/bg.png);
+  background-size: cover;
 }
 
 .hidden{
@@ -43,6 +44,9 @@ body{
 	border-bottom: 1px solid #eee;
 	box-sizing: padding-box;
 	height: 50px;
+  -webkit-box-shadow: 0px 0px 25px 10px rgba(0,0,0,0.3); 
+  box-shadow: 0px 0px 25px 10px rgba(0,0,0,0.3);
+  z-index: 10;
 }
 
 .menu-link{
@@ -67,12 +71,14 @@ body{
 	font-weight: bold;
 }
 
-.infos{
+.infos,.trajets,.propositions{
 	width: 900px;
 	margin: auto;
 	padding: 20px 20px;
   display: flex;
   background: white;
+  -webkit-box-shadow: 0px 14px 25px 10px rgba(0,0,0,0.3); 
+  box-shadow: 0px 14px 25px 10px rgba(0,0,0,0.3);
 }
 
 .infos-main{
@@ -125,7 +131,7 @@ textarea{
   width: 165px;
 }
 
-input[type=submit]{
+.modifyData{
   border : none;
   background: #3f82e4;
   color: white;
@@ -188,4 +194,206 @@ input[type=submit]{
 
 .inputUpper{
   border : black 1px solid;
+}
+
+.form-item{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+/* Item CSS */
+.item{
+  width: 40vw;
+  height: 200px;
+  border-radius: 20px;
+  background: white;
+  margin: 20px auto 40px auto;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+  transition: -webkit-box-shadow 1s;
+  position: relative;
+}
+
+.item:hover{
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4); 
+  box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+}
+
+.item .arrow-icon{
+  width: 30px;
+}
+
+.data-group{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+  top: -30px;
+}
+
+.item::before{
+  content: '';
+  display: block;
+  background-color: #3671B3;
+  width: 3px;
+  height: 32px;
+  position: relative;
+  top: 28px;
+  left: 77.5px;
+}
+
+.horaire{
+  font-weight: 300;
+  margin-right: 30px;
+}
+
+.horaire2{
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.place{
+  font-weight: 600;
+  font-size: 20px;
+  width: 50vw;
+}
+
+.place2{
+  font-weight: 600;
+  font-size: 20px;
+  width: 50vw;
+}
+
+.adresse{
+  font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.place::before{
+  content: '';
+  background-color: #3671B3;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  top: -2px;
+  left: -10px;
+}
+
+.date{
+  text-align: right;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.price{
+  color: black;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: right;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.account-info{
+  width: 93%;
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 20px;
+  margin-top: 10px;
+  position: absolute;
+  left: -20px;
+  bottom: 20px;
+}
+
+.profile-info{
+  width: 20vw;
+  margin-left: 3%;
+}
+
+.account-info img{
+  width: 60px;
+  border-radius: 50%;
+}
+
+.account-info .name{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.available{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.account-info .book{
+  background-color: #00e640;
+  text-decoration: none;
+  color: white;
+  text-align: right;
+  padding: 10px;
+  margin-left:10px ;
+  border-radius: 500px;
+  font-weight: 700;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.account-info .book2{
+  background-color: #D2042D;
+  text-decoration: none;
+  color: white;
+  text-align: right;
+  margin-left:10px ;
+  padding: 10px;
+  border-radius: 500px;
+  font-weight: 700;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.book:hover{
+  color: var(--navy);
+  background-color: white;
+}
+
+.book2:hover{
+  color: var(--navy);
+  background-color: white;
+}
+
+.book-container{
+  width: 100%;
+  text-align: right;
+}
+
+.book2-container{
+  width: 100%;
+  text-align: right;
+}
+
+.modifyTrajet{
+  height: 30px;
+  border-radius: 500px;
+  border: none;
+  padding: 10 0px;
+  background-color: #ffe505;
+  color: white;
+  margin-right: 5px;
+}
+
+.deleteTrajet{
+  height: 30px;
+  border-radius: 500px;
+  border: none;
+  padding: 10 0px;
+  background-color: #ff0000;
+  color: white;
 }

@@ -71,11 +71,11 @@
 		<form method="post" action="result.php">
 			<div class="form-item">
 				<img class="icon" src="../images/icon/free-location-pointer-icon-2961-thumb 1.png">
-				<input placeholder="Lieu" type="text" name="lieu">
+				<input placeholder="Lieu" type="text" name="lieu" required>
 			</div>
 			<hr>
 			<div class="form-item">
-				<input id="inputDate" type="date" min="2022-09-12" max="2022-10-03" name="date">
+				<input id="inputDate" type="date" min="2022-09-12" max="2022-10-03" name="date" required>
 			</div>
 			<hr>
 			<div class="form-item">

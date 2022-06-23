@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
 <ul class="menu" id="menu">
     <li class="menu-link active"><img class="icon" src="../images/icon/25694.png">Mes informations</li>
     <li class="menu-link"><img class="icon" src="../images/icon/car-front.png">Mes trajets</li>
-    <li class="menu-link"><img class="icon" src="../images/icon/1077114 1.png">Mes propositions</li>
+    <li class="menu-link"><img class="icon" src="../images/icon/1077114 1.png">Mes demandes reçues</li>
 </ul>
 
 <div class="infos" id="infos">
@@ -79,31 +79,31 @@ if ($result->num_rows > 0) {
     <form action="editProfilAction.php" method="post" class="infos-secondary" autocomplete="off">
         <input class="hidden" type="text" name="IdCompte" value="<?php echo $idCompte;?>">
         <div class="input-group">
-            <div class="item">
+            <div class="form-item">
                 <label class="upper">Nom</label>
                 <input class="inputUpper" type="text" value="<?php echo $nom;?>" >
             </div>
 
-            <div class="item">
+            <div class="form-item">
                 <label class="upper">Prénom</label>
                 <input class="inputUpper" type="text" value="<?php echo $prenom;?>" >
             </div>
         </div>
 
         <div class="input-group">
-            <div class="item">
+            <div class="form-item">
                 <label class="upper">E-mail</label>
                 <input class="inputUpper" type="text" value="<?php echo $mail;?>" >
             </div>
 
-            <div class="item">
+            <div class="form-item">
                 <label class="upper">Téléphone</label>
                 <input class="inputUpper" type="text" value="<?php echo $phone;?>" >
             </div>
         </div>
 
         <div class="input-group">
-            <div class="item">
+            <div class="form-item">
                 <label class="upper">Description</label>
                 <textarea name="Description" cols="30" rows="3"></textarea>
             </div>
@@ -112,14 +112,124 @@ if ($result->num_rows > 0) {
         <a class="mdpChange" href="EditPassword.php">Changer mon mot de passe</a>
 
         <div class="submitForm">
-            <input type="submit" value="Modifier" style="width: 20%; padding: 0px; float: right;">
+            <input class="modifyData" type="submit" value="Modifier" style="width: 20%; padding: 0px; float: right;">
         </div> 
     </form>
 </div>
 
-<div class="trajets" id="trajets">TRAJETS</div>
+<div class="trajets" id="trajets">
+    <?php
+            
+            $requete = "SELECT * FROM trajet WHERE IdCompte='".$idCompte."'";
+            $result = mysqli_query($conn,$requete);
+            $count = 0;
 
-<div class="propositions" id="propositions">PROPOSITIONS</div>
+            while ($row = mysqli_fetch_assoc($result)) {
+                $count++;
+
+                $hourString1 = substr($row['HeureDepart'],0,2);
+                $hourString2 = substr($row['HeureDepart'],3,2);
+                $hourStringDeparture = $hourString1."h".$hourString2;
+
+
+                $hourString3 = substr($row['HeureArrivee'],0,2);
+                $hourString4 = substr($row['HeureArrivee'],3,2);
+                $hourStringArrival = $hourString3."h".$hourString4;
+
+                ?>
+
+                    <div class="item">
+                        <div class="data-group">
+                            <span class="horaire">
+                                <?php echo $hourStringDeparture; ?>
+                            </span>
+                            <span class="place">
+                                <?php echo utf8_encode($row['LieuDepart']); ?>
+                            </span>
+
+                            <span class="date">
+                                <?php echo utf8_encode($row['DateDepart']); ?>
+                            </span>
+                        </div>
+
+                        <div class="data-group">
+                            <span class="horaire">
+                                <?php echo $hourStringArrival; ?>
+                            </span>
+                            <span class="place">
+                                <?php echo utf8_encode($row['LieuArrivee']); ?>
+                            </span>
+
+                            <span class="price">
+                                <?php echo $row['Prix']; ?>€
+                            </span>
+                        </div>
+
+                        <div class="account-info">
+                            <img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
+                            <div class="profile-info">
+                                <span class="name"><?php echo $prenom." ".$nom?></span>
+                                <div class="available">
+                                    <?php
+                                    $value = $row['PlacesRestantes'];
+                                    if($value == 1) echo $value." place restante";
+                                    else echo $value." places restantes";
+                                    ?>
+                                </div>
+                            </div>
+
+                            <form method="post" action="ModifConducteur.php">    
+                                <input type="submit" class=modifyTrajet value="Modifier">
+                            </form>
+
+                            <form method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">    
+                                <input type="submit" class="deleteTrajet" value="Supprimer">
+                            </form>
+
+
+                    </div>
+                <?php } ?>
+
+</div>
+
+<div class="propositions" id="propositions">
+    <?php   
+            $idTrajets = array(0,0);
+            $i = 0;
+
+            //check si a des trajets
+            $requete = "SELECT * FROM trajet WHERE IdCompte='$idCompte' ";
+            $result = mysqli_query($conn,$requete);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $idTrajets[$i] = 1;
+                $i++;
+            }
+
+            //check si a des reservations sur chacun des trajets
+            for ($i=0; $i < 2; $i++) { 
+                if($idTrajets[$i] == 1){
+                    $requete = "SELECT * FROM reservation WHERE IdTrajet='$idTrajets[$i]' AND isAccepted = 0";
+                    $result = mysqli_query($conn,$requete);
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+                        //infos profil du compte réservation
+                        $idCompteReservation = $row['idCompteReservation'];
+                        $requete2 = "SELECT * FROM compte WHERE idCompte = '$idCompteReservation' ";
+                        $result2 = mysqli_query($conn,$requete2);
+                        $row2 = mysqli_fetch_assoc($result2);
+                        ?>
+
+                        <div class="demandeRecue">
+                            <img src="<?php echo $row2['PhotoProfil'] ?>">
+                        </div>
+
+                        <?php
+                    }
+                }
+            }
+
+    ?>
+</div>
 
 <script type="text/javascript">
     //on-click

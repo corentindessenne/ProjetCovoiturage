@@ -22,14 +22,18 @@
 	$idTrajet = $_POST['idTrajet'];
 	$nbPassagers = $_POST['nbPassagers'];
 
-	$request = "INSERT INTO reservation(idTrajet, nbPassagersReservations, typeTrajet, anneeEdition, idCompteReservation, nomPassager1, nomPassager2, nomPassager3, nomPassager4, nomPassager5, nomPassager6) VALUES ('$idTrajet', '$nbPassagers', '$typeTrajet', '2022', '$idCompteReservation', '$tab[1]', '$tab[2]', '$tab[3]', '$tab[4]', '$tab[5]', '$tab[6]')";
+	$request = "INSERT INTO reservation(idTrajet, nbPassagersReservation, typeTrajet, anneeEdition, idCompteReservation, nomPassager1, nomPassager2, nomPassager3, nomPassager4, nomPassager5, nomPassager6) VALUES ('$idTrajet', '$nbPassagers', '$typeTrajet', '2022', '$idCompteReservation', '$tab[1]', '$tab[2]', '$tab[3]', '$tab[4]', '$tab[5]', '$tab[6]')";
 
 	if($conn->query($request)){
-        $query = mysqli_query($conn, "SELECT IdCompte FROM reservation WHERE IdTrajet = '$idTrajet'");
-        $row = mysqli_fetch_assoc($query);
-
-        $request = mysqli_query($conn, "SELECT Prenom, Email FROM compte WHERE IdCompte = '$row[IdCompte]'");
+        
+        $request = mysqli_query($conn, "SELECT IdCompte FROM trajet WHERE IdTrajet = '$idTrajet' ");
         $result = mysqli_fetch_assoc($request);
+        $idCompteConducteur = $row['IdCompte'];
+
+        $request = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur' ");
+        $result = mysqli_fetch_assoc($request);
+
+
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

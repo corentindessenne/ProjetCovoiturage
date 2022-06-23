@@ -103,7 +103,7 @@
 								<span class="name"><?php echo $row2["Prenom"] ?></span>
 								<div class="available">
 									<?php
-										$value = $row['NbPassagers'] - $row['PlacesRestantes'];
+										$value = $row['PlacesRestantes'];
 										if($value == 1) echo $value." place restante";
 										else if($row["isDemande"]==1){ echo "Recherche une voiture";}
 										else echo $value." place restante";
