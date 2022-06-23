@@ -34,8 +34,8 @@ if(mysqli_fetch_assoc($result)==TRUE){
   $NbPass=$row["NbPassagers"];
 }
 else{
-  echo "Error: " . $sql . "<br>" . $conn->error;              //Sinon on affiche l'erreur
-  die();
+  $_SESSION['alertErreurSurvenue'] = 1;            //Sinon on affiche l'erreur
+  ?> <script type="text/javascript">location="Profil.php"; </script><?php
 }
 $lieu="";
 $prix=0;
@@ -69,7 +69,7 @@ if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
       alert("Ta demande de trajet a bien ete modifie");         //Si la requete a fonctionné on redirige vers la page de profil
-      location="ProfilTmp.php";
+      location="Profil.php";
   </script>
 <?php
 die();

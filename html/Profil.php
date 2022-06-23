@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../css/nav.css">
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link href="../css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/alert.css">
     <!--Favicon-->
     <link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <!--Google Fonts-->
@@ -24,6 +25,92 @@
 
     include 'Connexion.php';
     include 'NavbarConn.php';
+
+    //***********************
+    //AFFICHAGE DES ALERT  
+    //***********************
+
+    if(isset($_SESSION['alertAcceptPassagerDepuisConducteur'])){
+        if($_SESSION['alertAcceptPassagerDepuisConducteur'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Tu as bien accepté la demande de ton passager.</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertAcceptPassagerDepuisConducteur'] = 0; 
+        }
+    }
+
+    if(isset($_SESSION['alertRefusePassagerDepuisConducteur'])){
+        if($_SESSION['alertRefusePassagerDepuisConducteur'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Tu as refusé la demande de ton passager.</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertRefusePassagerDepuisConducteur'] = 0;
+        }
+    }
+
+    if(isset($_SESSION['alertMailDejaUtilise'])){
+        if($_SESSION['alertMailDejaUtilise'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">L'email entré est déjà utilisé pour un autre compte</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertMailDejaUtilise'] = 0;
+        }
+    }
+
+    if(isset($_SESSION['alertMauvaisFormatTel'])){
+        if($_SESSION['alertMauvaisFormatTel'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Le format du numéro de téléphone entré est incorrect</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertMauvaisFormatTel'] = 0;
+        }
+    }
+
+    if(isset($_SESSION['alertModificationEnregistrees'])){
+        if($_SESSION['alertModificationEnregistrees'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Les modifications ont bien été enregistrées</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertModificationEnregistrees'] = 0;
+        }
+    }
+
+    if(isset($_SESSION['alertErreurSurvenue'])){
+        if($_SESSION['alertModificationEnregistrees'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Les modifications ont bien été enregistrées</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertModificationEnregistrees'] = 0;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
         header("Location:home.php");
 
@@ -391,5 +478,18 @@
     }
 });
 </script>
+
+
+
+<script type="text/javascript"> //JS Alert
+    let tab = document.getElementsByClassName('croix');
+    for(let i = 0; i < tab.length;i++){
+        tab[i].addEventListener('click', () =>{
+            tab[i].parentNode.style.display = 'none';
+        })
+    }
+</script>
+
+
 </body>
 </html>

@@ -27,11 +27,11 @@
     $result = mysqli_query($conn,$requete);
     $row = mysqli_fetch_assoc($result);
     if(mysqli_num_rows($result) > 0 && $previousEmail != $email){
-      echo "<script type='text/javascript'>alert('Ton adresse E-mail est déjà utilisée par un autre compte');</script>";
+        $_SESSION['alertMailDejaUtilise'] = 1;
         ?><script>document.location.href='../html/profil.php';</script><?php
     }
     if(strlen($phone) != 10){
-        echo "<script type='text/javascript'>alert('Ton numéro de téléphone n\'est pas valide');</script>";
+        $_SESSION['alertMauvaisFormatTel'] = 1;
         ?><script>document.location.href='../html/profil.php';</script><?php
     }
 
@@ -78,7 +78,7 @@
             if(mail($dest, $sujet, $corp, $headers)){
                 ?>
                 <script type="text/javascript">
-                alert("Vérifie ta nouvelle adresse mail à l'aide du mail que l'on vient de t'envoyer");
+                $_SESSION['alertVerificationEMail'] = 1;
                 location="logout.php";
                 </script>
                 <?php
@@ -93,9 +93,9 @@
             }
         }
         else{
+            $_SESSION['alertModificationEnregistrees'] = 1;
             ?>
             <script type="text/javascript">
-              alert("Les informations de ton compte ont bien été modifiées");
               location="Profil.php";
             </script>
             <?php

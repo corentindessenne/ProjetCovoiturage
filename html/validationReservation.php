@@ -6,7 +6,6 @@
 
 	$idReservation = $_GET['idReservation'];
 
-	echo $_GET['isAccepted']."<br>";
 	//si le conducteur accepte de prendre les passagers faisant la demande
 	if($_GET['isAccepted'] == 1){
 
@@ -43,3 +42,6 @@
 			echo "delete de la Reservation";
 		}
 	}
+
+	session_start();
+	$_SESSION['alertAcceptPassagerDepuisConducteur'] = 1;

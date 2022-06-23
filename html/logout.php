@@ -1,5 +1,6 @@
 <?php
 session_start();
-session_destroy();
+
+$_SESSION['logout'] = 1;
 header('Location: home.php');
 exit;
