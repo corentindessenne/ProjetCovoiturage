@@ -262,7 +262,7 @@
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">Tu as reçu(e) ce mail, car tu viens de créer un compte sur notre
                             plateforme. Pour visualiser le mail correctement, <a
-                                    href="https://localhost/Plateforme%20Covoiturage/mails/reset_mot_de_passe.php"
+                                    href="https://localhost/ProjetCovoiturage/mails/template_mail_reset_mot_de_passe.php"
                                     target="_blank"
                                     style="color: #111111; font-weight: 700;">affiche la version en ligne</a>.
                         </p>

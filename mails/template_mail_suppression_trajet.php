@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Demande pour rejoindre ton trajet - LBR Covoiturage</title>
+    <title>Ton conducteur a supprimé son trajet - LBR Covoiturage</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -160,7 +160,31 @@
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: justify;">
-                        <p style="margin: 0;">Tu as reçu(e) une demande pour le trajet que tu as proposé sur notre plateforme. Consulte ton profil pour afficher les détails de cette demande.</p>
+                        <p style="margin: 0;">Malheureusement, la personne qui devait {{typeTrajet}} a supprimé son trajet.</p>
+                    </td>
+                </tr>
+                <!-- COPY -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding: 0 30px 20px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                        <p style="margin: 0;">Néanmoins, il y a plein d'autres trajets disponibles sur la plateforme ! Appuie sur le bouton ci-dessous pour tous les afficher</p>
+                    </td>
+                </tr>
+                <!-- BULLETPROOF BUTTON -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" style="border-radius: 3px;" bgcolor="#000000">
+                                                <a href="https://localhost/Plateforme%20Covoiturage/html/TousLesTrajets.php" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Réserver un autre trajet</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <!-- COPY -->
@@ -243,7 +267,7 @@
                     <td bgcolor="#FFFEE6" align="left"
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">Pour visualiser le mail correctement, <a
-                                    href="https://localhost/ProjetCovoiturage/mails/template_mail_demande_trajet.php"
+                                    href="https://localhost/ProjetCovoiturage/mails/template_mail_suppression_trajet.php"
                                     target="_blank"
                                     style="color: #111111; font-weight: 700;">affiche la version en ligne</a>.
                         </p>

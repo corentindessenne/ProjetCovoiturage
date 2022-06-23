@@ -98,7 +98,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <!-- LOGO -->
     <tr>
-        <td bgcolor="#FFA73B" align="center">
+        <td bgcolor="#3671B3" align="center">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
@@ -109,7 +109,7 @@
                     <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
                         <a href="https://lesbriquesrouges.fr/" target="_blank">
                             <img alt="Logo"
-                                 src="https://www.lesbriquesrouges.fr/_nuxt/img/lesbriquesrouges.f55472d.png"
+                                 src="https://www.lesbriquesrouges.fr/_nuxt/img/lesbriquesrougesRedWhite.43247f2.png"
                                  width="200" height="200"
                                  style="display: block; width: 220px; max-width: 220px; min-width: 220px; font-family: 'Cereal', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;"
                                  border="0">
@@ -126,7 +126,7 @@
     </tr>
     <!-- HERO -->
     <tr>
-        <td bgcolor="#FFA73B" align="center" style="padding: 0 10px 0 10px;">
+        <td bgcolor="#3671B3" align="center" style="padding: 0 10px 0 10px;">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
@@ -149,7 +149,7 @@
     </tr>
     <!-- COPY BLOCK -->
     <tr>
-        <td bgcolor="#f4f4f4" align="center" style="padding: 0 10px 0 10px;">
+        <td bgcolor="#FFFEE6" align="center" style="padding: 0 10px 0 10px;">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
@@ -222,7 +222,7 @@
     </tr>
     <!-- SUPPORT CALLOUT -->
     <tr>
-        <td bgcolor="#f4f4f4" align="center" style="padding: 30px 10px 0 10px;">
+        <td bgcolor="#FFFEE6" align="center" style="padding: 30px 10px 0 10px;">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
@@ -249,7 +249,7 @@
     </tr>
     <!-- FOOTER -->
     <tr>
-        <td bgcolor="#f4f4f4" align="center" style="padding: 0 10px 0 10px;">
+        <td bgcolor="#FFFEE6" align="center" style="padding: 0 10px 0 10px;">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
@@ -258,7 +258,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <!-- NAVIGATION -->
                 <tr>
-                    <td bgcolor="#f4f4f4" align="left"
+                    <td bgcolor="#FFFEE6" align="left"
                         style="padding: 30px 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">
                             <a href="https://www.lesbriquesrouges.fr/reglement.pdf" target="_blank"
@@ -274,11 +274,11 @@
                 </tr>
                 <!-- PERMISSION REMINDER -->
                 <tr>
-                    <td bgcolor="#f4f4f4" align="left"
+                    <td bgcolor="#FFFEE6" align="left"
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">Tu as reçu(e) ce mail, car tu viens de créer un compte sur notre
                             plateforme. Pour visualiser le mail correctement, <a
-                                    href="https://localhost/Plateforme%20Covoiturage/mails/confirmation_mail.php"
+                                    href="https://localhost/ProjetCovoiturage/mails/template_mail_confirmation_mail.php"
                                     target="_blank"
                                     style="color: #111111; font-weight: 700;">affiche la version en ligne</a>.
                         </p>
@@ -286,7 +286,7 @@
                 </tr>
                 <!-- ADDRESS -->
                 <tr>
-                    <td bgcolor="#f4f4f4" align="left"
+                    <td bgcolor="#FFFEE6" align="left"
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">© 2022 Les Briques Rouges Festival | 13 rue de Toul, 59800 Lille</p>
                     </td>

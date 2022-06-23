@@ -243,7 +243,7 @@
                     <td bgcolor="#FFFEE6" align="left"
                         style="padding: 0 30px 30px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                         <p style="margin: 0;">Tu as reçu(e) ce mail, car tu viens de supprimer ton compte de la plateforme. Pour visualiser le mail correctement, <a
-                                    href="https://localhost/Plateforme%20Covoiturage/mails/suppression_compte.php"
+                                    href="https://localhost/ProjetCovoiturage/mails/template_mail_suppression_compte.php"
                                     target="_blank"
                                     style="color: #111111; font-weight: 700;">affiche la version en ligne</a>.
                         </p>
