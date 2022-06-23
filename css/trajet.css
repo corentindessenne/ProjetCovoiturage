@@ -53,3 +53,20 @@ label{
 .deleteform{
     all: unset;
 }
+
+.account-info .book2{
+    background-color: #6082B6;
+    text-decoration: none;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    border-radius: 500px;
+    font-weight: 700;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
+.book2:hover{
+    color: var(--navy);
+    background-color: white;
+}
+

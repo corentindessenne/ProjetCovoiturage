@@ -23,6 +23,8 @@ form{
 	color: white;
 	transition: all 1s;
 	border-radius: 500px;
+	text-align: center;
+    margin-top: 30px;
 }
 
 .button:hover{
@@ -31,4 +33,48 @@ form{
 
 .hidden{
 	display: none;
+}
+
+
+/* CSS pour nbPass (intermédiaire)*/
+
+.form-item{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.bloc2{
+	margin: 5px 0;
+	text-align: center;
+    margin-top: 25px;
+}
+
+.button{
+	height: 35px;
+	width: 80px;
+	background-color: #1a73e8;
+	color: white;
+	transition: all 1s;
+	border-radius: 500px;
+
+}
+
+.button:hover{
+	background-color: #1254CC;
+}
+
+.big-bloc{
+	background: white;
+	display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    border: 1px solid #dadce0;
+    border-radius: 40px;
+    padding: 20px 40px;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.1); 
+    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.1);
 }

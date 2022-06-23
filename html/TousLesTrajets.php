@@ -110,10 +110,18 @@
 									?>
 								</div>
 							</div>
-							
+								
 							
 								<div class="book-container">
-									<a class="book" href="#" class="button">Réserver</a>
+										<?php
+										if($row["isDemande"] == 0){ ?> 
+											<?php $linkint = "nbPass.php?idTrajet=".$row['IdTrajet'];?>
+										<a class="book" href="<?php echo $linkint ?>" class="button">Réserver</a>
+										<?php										
+										} 
+										else if($row["isDemande"]==1){ ?> <a class="book2" href="#" class="button">Demander</a> <?php
+										 } 
+										?>
 								</div>
 							
 
@@ -137,10 +145,11 @@
 			}
 				?>
 			</div>
+
 			<script>
 
 				function SortDiv(sort){
-					
+			
 					let Toustrajet=document.getElementById("trajets");
 					let Display=Toustrajet;
 					let price=[];
