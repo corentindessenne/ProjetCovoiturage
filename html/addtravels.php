@@ -32,7 +32,6 @@
     header("Location:home.php");
     
   }
-
   $requete="SELECT IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'";
   $result = $conn->query($requete);
   $verifAller=0;        //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour aller vers le lieu du festival
@@ -40,6 +39,17 @@
   if($result->num_rows >  0){
     $row = $result->fetch_assoc();
     $idCompte=$row["IdCompte"];   //get Idcompte depuis la base de donnée pour vérifier les trajets de l'utilisateur
+    $requete="SELECT * FROM reservation";
+    $result = $conn->query($requete);
+    while ($row = mysqli_fetch_assoc($result)){
+      
+      if($row["typeTrajet"]=="Aller" && $row["idCompteReservation"]==$idCompte){    
+        $verifAller=1;                                 //vérification des trajets de l'utilisateur
+      }
+      else if($row["typeTrajet"]=="Retour" && $row["idCompteReservation"]==$idCompte){
+        $verifRetour=1;
+      }
+    }
     $requete="SELECT TypeTrajet FROM trajet WHERE IdCompte='".$idCompte."'  AND AnneeEdition='2022'";  //2022 a changer en fonction de l'édition quna don aura fait ça
     $result = $conn->query($requete);
     while ($row = mysqli_fetch_assoc($result)){
