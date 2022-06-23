@@ -33,8 +33,6 @@
         $request = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur' ");
         $result = mysqli_fetch_assoc($request);
 
-
-
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= "From:Les Briques Rouges<cocodsn2@gmail.com>";

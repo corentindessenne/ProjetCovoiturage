@@ -22,9 +22,7 @@
     font-style: normal;
 }
 
-
-
-*{
+body{
     margin: 0;
     background-image: url("../images/bg9.png");
     background-size: 100%;
