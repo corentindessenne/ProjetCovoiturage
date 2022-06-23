@@ -2,6 +2,10 @@
 
 include 'Connexion.php';
 
+//***************************
+// CAS CONDUCTEUR : l'utilisateur a créé un trajet que des utilsateurs ont réservé et supprime son compte
+//***************************
+
 $mail = $_SESSION['mail'];
 $sql = "SELECT * FROM compte WHERE Email='$mail' ";
 $result = mysqli_query($conn, $sql);
@@ -24,6 +28,11 @@ while ($row2 = mysqli_fetch_assoc($result2)) {
     }
 }
 
+
+//***************************
+// CAS PASSAGER : l'utilisateur a reservé un trajet et supprime son compte
+//***************************
+
 //check si la personne avait réservé un trajet 
 $sql4 = "SELECT * FROM reservation WHERE idCompteReservation = '$idCompte' ";
 $result4 = mysqli_query($conn, $sql4);
@@ -36,12 +45,19 @@ while ($row4 = mysqli_fetch_assoc($result4)) {
     $sql5 = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajet' ";
     $result5 = mysqli_query($conn, $sql5);
     $row5 = mysqli_fetch_assoc($result5);
-    $placesRestantes = $row['PlacesRestantes'] + $row4['nbPassagersReservation'];
+    $placesRestantes = $row5['PlacesRestantes'] + $row4['nbPassagersReservation'];
 
     $sql6 = "UPDATE trajet SET PlacesRestantes = '$placesRestantes' WHERE IdTrajet = '$idTrajet' ";
 
     if ($conn->query($sql6) === TRUE) {
         echo "Actualisation des places restantes du trajet";
+    }
+
+    //delete de toutes les réservations
+    $idReservation = $row4['idReservation'];
+    $sql7 = "DELETE FROM reservation WHERE idReservation = '$idReservation' ";
+    if($conn->query($sql7) === TRUE){
+        echo "suppression des réservations du compte";
     }
 }
 ?>
