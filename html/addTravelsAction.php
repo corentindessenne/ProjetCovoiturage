@@ -49,8 +49,8 @@ if ($conn->query($request) === TRUE) {
 <?php
 die();
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;      //si la requete est un échec on affcihe l'erreur ou on redirige vers addtravels
-    //header("Location: addtravels.php");
+    echo "Error: " . $sql . "<br>" . $conn->error;      //si la requete est un échec on affiche l'erreur ou/et on redirige vers addtravels
+    header("Location: addtravels.php");
   }
 ?>
 </body>
