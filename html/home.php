@@ -7,6 +7,7 @@
 	<!--CSS files-->
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/alert.css">
 	<!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
 	<!--Google Fonts-->
@@ -23,6 +24,32 @@
 <script>
 	AOS.init();
 </script>
+
+<?php 
+    //***********************
+    //AFFICHAGE DES ALERT  
+    //***********************
+
+    if(isset($_SESSION['alertVerificationEmail'])){
+        if($_SESSION['alertVerificationEmail'] == 1){
+            ?>
+                <div class="alert" style="background-color: #70a1ff;">
+                    <div class="alert-text">Clique sur le lien qui t'as été envoyé par mail .</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertVerificationEmail'] = 0; 
+        }
+    }
+
+
+    if(isset($_SESSION['logout'])){
+        	if($_SESSION['logout'] == 1){
+        		$_SESSION['logout'] = 0;
+        		session_destroy();
+		}
+    }
+?>	
 
 	<img class="rocket" src="../images/icon/rocket.png">
 
@@ -246,5 +273,15 @@
 			</div>
 
 		</div>
+
+<script type="text/javascript"> //JS Alert
+    let tab = document.getElementsByClassName('croix');
+    for(let i = 0; i < tab.length;i++){
+        tab[i].addEventListener('click', () =>{
+            tab[i].parentNode.style.display = 'none';
+        })
+    }
+</script>
+
 	</body>
 	</html>
