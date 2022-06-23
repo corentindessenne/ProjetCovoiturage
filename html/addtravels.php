@@ -572,7 +572,13 @@ showDrive.onclick = function(){
     
 
     function changeLieu(demande){
-      let sens=document.getElementById("retour").checked;
+      let sens="";
+        if(demande==0){
+            sens=document.getElementById("retour2").checked;
+        }
+        else{
+            document.getElementById("retour").checked;
+        }
       let quer="";
       if(demande==0){
         query=document.getElementById("adresse2").value;
