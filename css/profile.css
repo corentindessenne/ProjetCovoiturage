@@ -438,3 +438,14 @@ textarea{
   float: right;
   margin: 5px;
 }
+
+.deleteAccount{
+  background-color: red;
+  color: white;
+  border-radius: 500px;
+  padding: 0 10px;
+  width: 150px;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}

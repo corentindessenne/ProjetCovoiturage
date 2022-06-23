@@ -43,6 +43,7 @@ body{
 }
 
 .main{
+    background: white;
     display: flex;
     flex-direction: column;
     width: 800px;

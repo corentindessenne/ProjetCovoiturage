@@ -47,8 +47,12 @@
         $idCompte = $row["IdCompte"];
         $phone = "0" . $row["telephone"];
         $description = $row["Description"];
-    $pp = $row["PhotoProfil"];              //pp=Photo de Profil
-    $hashedpassword = $row["motDePasse"];
+        $pp = $row["PhotoProfil"];              //pp=Photo de Profil
+        $hashedpassword = $row["motDePasse"];
+
+        if ($pp == NULL){
+            $pp = "defaultpp.jpg";
+        }
 
 }
 ?>
@@ -115,10 +119,11 @@
                 </div>
             </div>
 
-            <a class="mdpChange" href="EditPassword.php">Changer mon mot de passe</a>
+            <a class="mdpChange" href="EditPassword.php" style="margin-bottom:10px;">Changer mon mot de passe</a>
 
             <div class="submitForm">
                 <input class="modifyData" type="submit" value="Modifier" style="width: 20%; padding: 0px; float: right;">
+                <p class="deleteAccount" href="deletionAction.php" onclick="if(confirm('Voulez-vous vraiment supprimer votre compte? Cette action est irréversible')){window.location.href = 'deletionAction.php';}">Supprimer mon compte</p>
             </div> 
         </form>
     </div>
@@ -193,76 +198,86 @@
 
 
                 </div>
-            <?php } ?>
-        </div>
-
-
-        <?php 
+            <?php
+            } 
 
         //trajets passagers qui ont été validés
         $requete = "SELECT * FROM reservation WHERE idCompteReservation='$idCompte' AND isAccepted=1";
         $result = mysqli_query($conn,$requete);
-        $count = 0;
-        while ($row = mysqli_fetch_assoc($result)) {
-            $count++;
 
-            $hourString1 = substr($row['HeureDepart'],0,2);
-            $hourString2 = substr($row['HeureDepart'],3,2);
-            $hourStringDeparture = $hourString1."h".$hourString2;
+        while($row = mysqli_fetch_assoc($result)){
+
+            $idTrajet = $row['idTrajet'];
+            $requete = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajet' ";
+            $result = mysqli_query($conn,$requete);
+
+            $count = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $count++;
+
+                $hourString1 = substr($row['HeureDepart'],0,2);
+                $hourString2 = substr($row['HeureDepart'],3,2);
+                $hourStringDeparture = $hourString1."h".$hourString2;
 
 
-            $hourString3 = substr($row['HeureArrivee'],0,2);
-            $hourString4 = substr($row['HeureArrivee'],3,2);
-            $hourStringArrival = $hourString3."h".$hourString4;
+                $hourString3 = substr($row['HeureArrivee'],0,2);
+                $hourString4 = substr($row['HeureArrivee'],3,2);
+                $hourStringArrival = $hourString3."h".$hourString4;
 
-            ?>
+                $idCompteTrajet = $row['IdCompte'];
+                $requete2 = "SELECT * FROM compte WHERE IdCompte = '$idCompteTrajet'";
+                $result2 = mysqli_query($conn,$requete2);
+                $row2 = mysqli_fetch_assoc($result2);
 
-            <div class="item">
-                <div class="data-group">
-                    <span class="horaire">
-                        <?php echo $hourStringDeparture; ?>
-                    </span>
-                    <span class="place">
-                        <?php echo utf8_encode($row['LieuDepart']); ?>
-                    </span>
+                ?>
 
-                    <span class="date">
-                        <?php echo utf8_encode($row['DateDepart']); ?>
-                    </span>
-                </div>
+                <div class="item">
+                    <div class="data-group">
+                        <span class="horaire">
+                            <?php echo $hourStringDeparture; ?>
+                        </span>
+                        <span class="place">
+                            <?php echo utf8_encode($row['LieuDepart']); ?>
+                        </span>
 
-                <div class="data-group">
-                    <span class="horaire">
-                        <?php echo $hourStringArrival; ?>
-                    </span>
-                    <span class="place">
-                        <?php echo utf8_encode($row['LieuArrivee']); ?>
-                    </span>
+                        <span class="date">
+                            <?php echo utf8_encode($row['DateDepart']); ?>
+                        </span>
+                    </div>
 
-                    <span class="price">
-                        <?php echo $row['Prix']; ?>€
-                    </span>
-                </div>
+                    <div class="data-group">
+                        <span class="horaire">
+                            <?php echo $hourStringArrival; ?>
+                        </span>
+                        <span class="place">
+                            <?php echo utf8_encode($row['LieuArrivee']); ?>
+                        </span>
 
-                <div class="account-info">
-                    <img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
-                    <div class="profile-info">
-                        <span class="name"><?php echo $prenom." ".$nom?></span>
-                        <div class="available">
-                            <?php
-                            $value = $row['PlacesRestantes'];
-                            if($value == 1) echo $value." place restante";
-                            else echo $value." places restantes";
-                            ?>
+                        <span class="price">
+                            <?php echo $row['Prix']; ?>€
+                        </span>
+                    </div>
+
+                    <div class="account-info">
+                        <img class="profile-picture" src="../images/PhotoProfil/<?php echo $row2['PhotoProfil']; ?>">
+                        <div class="profile-info">
+                            <span class="name"><?php echo $row2['Nom']." ".$row2['Prenom']; ?></span>
+                            <div class="available">
+                                <?php
+                                $value = $row['PlacesRestantes'];
+                                if($value == 1) echo $value." place restante";
+                                else echo $value." places restantes";
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <?php 
-            }
+            }}
         ?>
         </div>
+    </div>
 
         <div class="propositions" id="propositions">
             <?php   
@@ -293,7 +308,11 @@
                         ?>
 
                         <div class="demandeRecue">
-                            <img class="profile-picture" src="../images/PhotoProfil/<?php echo $row2['PhotoProfil'] ?>">
+                            <img class="profile-picture" src="../images/PhotoProfil/<?php if ($row2['PhotoProfil'] != NULL) {
+                                echo $row2['PhotoProfil'];
+                                } else {
+                                echo "defaultpp.jpg";
+                            } ?>">
                             <div class="infos-profil">
                                 <span><?php echo $row2['Prenom'].' '.$row2['Nom']; ?></span>
                                 <p>
