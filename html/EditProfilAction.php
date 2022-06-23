@@ -5,92 +5,69 @@
 </head>
 <body>
 
-<?php
-include 'Connexion.php';
-$id=$_POST["IdCompte"];
-$sql = "SELECT motDePasse, Email FROM compte WHERE IdCompte=$id.";
-$result = $conn->query($sql);
-    if ($result->num_rows >  0) {
-      // output data of each row
-      $row = $result->fetch_assoc();
-      $prevMail=$row["Email"];
-      $hashedpassword=$row["motDePasse"];
+    <?php
+    include 'Connexion.php';
+
+    $idCompte = $_POST['IdCompte'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $description = $_POST['description'];
+    $description= str_replace("'","''",$description);
+
+    //Recup ancien e mail
+    $requete = "SELECT * FROM compte WHERE IdCompte = '$idCompte'";
+    $result = mysqli_query($conn,$requete);
+    $row = mysqli_fetch_assoc($result);
+    $previousEmail = $row['Email'];
+
+    //check si l'e mail est déjà utilisé
+    $requete = "SELECT * FROM compte WHERE Email = '$email' ";
+    $result = mysqli_query($conn,$requete);
+    $row = mysqli_fetch_assoc($result);
+    if(mysqli_num_rows($result) > 0 && $previousEmail != $email){
+      echo "<script type='text/javascript'>alert('Ton adresse E-mail est déjà utilisée par un autre compte');</script>";
+        ?><script>document.location.href='../html/profil.php';</script><?php
     }
-    else{?>
-        <script type="text/javascript">
-            alert("Une erreur est survenue réessaie plus tard");
-            location="EditProfil.php";
-        </script>
-          <?php
-      die();
-      
+    if(strlen($phone) != 10){
+        echo "<script type='text/javascript'>alert('Ton numéro de téléphone n'est pas valide');</script>";
+        ?><script>document.location.href='../html/profil.php';</script><?php
     }
-    
-if(password_verify($_POST["password_1"],$hashedpassword) ||(isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
-    $description=$_POST["Description"];
-    $description= str_replace("'","''",$_POST["Description"]);
-    $nom=$_POST["nom"];
-    $prenom=$_POST["prenom"];
-    $mail=$_POST["email"];
-    $phone=$_POST["phone"];
-    
-    $sql = "SELECT Email FROM compte" ;
-    $result = $conn->query($sql);
-    if ($result->num_rows >  0) {
-      // output data of each row
-      while ($row = mysqli_fetch_assoc($result)){
-          if($row["Email"]==$mail && $mail!=$prevMail){
+
+    //cas où l'email change (revalidation e mail)
+    $requete = "SELECT * FROM compte WHERE IdCompte = '$idCompte' ";
+    $result = mysqli_query($conn,$requete);
+    $row = mysqli_fetch_assoc($result);
+
+    $verifyEmail = 0;
+    if($email != $row['Email']){
+        $verifyEmail = 1;
+    }
+
+    $sql = "UPDATE compte SET Nom ='$nom', Prenom='$prenom',telephone= '$phone',Email = '$email' ,Description='$description' WHERE IdCompte='$idCompte' ";
+
+    if ($conn->query($sql) === TRUE) {
+
+        if($verifyEmail == 1){
+            ?>
+
+            <script type="text/javascript">
+              alert("Vérifie ta nouvelle adresse mail à l'aide du mail que l'on vient de t'envoyer");
+              location="logout.php";
+            </script>
+            <?php
+        }
+        else{
             ?>
             <script type="text/javascript">
-                alert("Cette adresse mail est déjà utilisée");
-                location="EditProfil.php";
+              alert("Les informations de ton compte ont bien été modifiées");
+              location="Profil.php";
             </script>
-              <?php
-          die();
-          }
-      }
-    }
-    else{?>
-        <script type="text/javascript">
-            alert("Une erreur est survenue réessaie plus tard");
-            location="EditProfil.php";
-        </script>
-          <?php
-      die();
-    }
+            <?php
 
-if($mail==$_SESSION["mail"]){
-  $request="UPDATE compte SET Nom='".$nom."', Prenom='".$prenom."',telephone= '".$phone."', Description='".$_POST["Description"]."' WHERE IdCompte=".$id."";
-}
-else{
-  $request="UPDATE compte SET Nom='".$nom."', Prenom='".$prenom."',Email='".$mail."',telephone= '".$phone."', Description='".$_POST["Description"]."' WHERE IdCompte=".$id."";
-}
-    
-    if ($conn->query($request) === TRUE) {
-        $_SESSION["mail"]=$mail;
-        $_SESSION["Pseudo"]=$prenom;
-      ?>
-      <script type="text/javascript">
-          alert("Les informations de ton compte ont bien été modifiées");
-          location="Profil.php";
-      </script>
-    <?php
-    die();
-      } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-}
-else{
-    ?>
-      <script type="text/javascript">
-          alert("Mot de passe Incorrect");
-          location="EditProfil.php";
-      </script>
-        <?php
-    die();
-    
-}
-
+        }
+    }
 
 ?>
 </body>

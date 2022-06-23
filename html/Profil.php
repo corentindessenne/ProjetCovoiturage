@@ -21,6 +21,7 @@
 </head>
 <body>
 <?php
+
 include 'Connexion.php';
 include 'NavbarConn.php';
 if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
@@ -48,6 +49,7 @@ if ($result->num_rows > 0) {
     $description = $row["Description"];
     $pp = $row["PhotoProfil"];              //pp=Photo de Profil
     $hashedpassword = $row["motDePasse"];
+
 }
 ?>
 
@@ -81,31 +83,35 @@ if ($result->num_rows > 0) {
         <div class="input-group">
             <div class="form-item">
                 <label class="upper">Nom</label>
-                <input class="inputUpper" type="text" value="<?php echo $nom;?>" >
+                <input class="inputUpper" name="nom" type="text" value="<?php echo $nom;?>" >
             </div>
 
             <div class="form-item">
                 <label class="upper">Prénom</label>
-                <input class="inputUpper" type="text" value="<?php echo $prenom;?>" >
+                <input class="inputUpper" name="prenom" type="text" value="<?php echo $prenom;?>" >
             </div>
         </div>
 
         <div class="input-group">
             <div class="form-item">
                 <label class="upper">E-mail</label>
-                <input class="inputUpper" type="text" value="<?php echo $mail;?>" >
+                <input class="inputUpper" name="email" type="text" value="<?php echo $mail;?>" >
             </div>
 
             <div class="form-item">
                 <label class="upper">Téléphone</label>
-                <input class="inputUpper" type="text" value="<?php echo $phone;?>" >
+                <input class="inputUpper" name="phone"type="text" value="<?php echo $phone;?>" >
             </div>
         </div>
 
         <div class="input-group">
             <div class="form-item">
                 <label class="upper">Description</label>
-                <textarea name="Description" cols="30" rows="3"></textarea>
+                <textarea name="description" cols="30" rows="3"></textarea>
+                <script type="text/javascript">
+                    let text = document.getElementsByTagName('textarea');
+                    text[0].innerHTML = '<?php echo $description ?>';
+                </script>
             </div>
         </div>
 
