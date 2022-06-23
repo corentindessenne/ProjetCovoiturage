@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_lt.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_lt.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_md.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_md.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_xbd.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_xbd.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body{
+  font-family: Cereal;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+h1{
+  text-align: center;
+  font-family:Cereal;
+}
+
+.hidden{
+  display: none;
+}
+
+.item{
+  width: 40vw;
+  height: 150px;
+  border-radius: 20px;
+  background: white;
+  margin: 20px auto 40px auto;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4); 
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+  transition: -webkit-box-shadow 1s;
+  position: relative;
+}
+
+.item:hover{
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4); 
+  box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+}
+
+.item .arrow-icon{
+  width: 30px;
+}
+
+.data-group{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+  top: -30px;
+}
+
+.item::before{
+  content: '';
+  display: block;
+  background-color: #3671B3;
+  width: 3px;
+  height: 32px;
+  position: relative;
+  top: 28px;
+  left: 77.5px;
+}
+
+.horaire{
+  font-weight: 300;
+  margin-right: 30px;
+}
+
+.horaire2{
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.place{
+  font-weight: 600;
+  font-size: 20px;
+  width: 50vw;
+}
+
+.place2{
+  font-weight: 600;
+  font-size: 20px;
+  width: 50vw;
+}
+
+.adresse{
+  font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.place::before{
+  content: '';
+  background-color: #3671B3;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  top: -2px;
+  left: -10px;
+}
+
+.date{
+  text-align: right;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.price{
+  color: black;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: right;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.account-info{
+  width: 93%;
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 20px;
+  margin-top: 10px;
+  position: absolute;
+  left: -20px;
+  bottom: 20px;
+}
+
+.profile-info{
+  width: 20vw;
+  margin-left: 3%;
+}
+
+.account-info img{
+  width: 60px;
+  border-radius: 50%;
+}
+
+.account-info .name{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.available{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+
+.main-bloc{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.tradecarimg{
+  position: absolute;
+  top: 40vh;
+  left: 45vw;
+  width: 10%;
+}
+
+
+.suball{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+.main-bloc .book{
+  background-color: #00e640;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 500px;
+  font-weight: 700;
+  height: 8vh;
+  width: 20vw;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.main-bloc .book2{
+  background-color: #D2042D;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 500px;
+  font-weight: 700;
+  height: 8vh;
+  width: 20vw;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.book:hover{
+  color: var(--navy);
+  background-color: white;
+}
+
+.book2:hover{
+  color: var(--navy);
+  background-color: white;
+}
+
+.book-container{
+  width: 100%;
+  text-align: center;
+}
+

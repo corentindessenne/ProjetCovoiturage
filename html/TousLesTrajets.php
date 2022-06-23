@@ -106,7 +106,7 @@
 										$value = $row['PlacesRestantes'];
 										if($value == 1) echo $value." place restante";
 										else if($row["isDemande"]==1){ echo "Recherche une voiture";}
-										else echo $value." place restante";
+										else echo $value." places restantes";
 									?>
 								</div>
 							</div>
@@ -114,12 +114,13 @@
 							
 								<div class="book-container">
 										<?php
+											$linkPropos = "proposition.php?typeTrajet=".$row['TypeTrajet']."&idTrajet=".$row['IdTrajet'];
 										if($row["isDemande"] == 0){ ?> 
 											<?php $linkint = "nbPass.php?idTrajet=".$row['IdTrajet'];?>
 										<a class="book" href="<?php echo $linkint ?>" class="button">Réserver</a>
 										<?php										
 										} 
-										else if($row["isDemande"]==1){ ?> <a class="book2" href="#" class="button">Demander</a> <?php
+										else if($row["isDemande"]==1){ ?> <a class="book2" href="<?php echo $linkPropos ?>" class="button">Demander</a> <?php
 										 } 
 										?>
 								</div>

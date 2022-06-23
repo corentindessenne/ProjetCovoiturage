@@ -301,9 +301,9 @@
 						<?php echo $hourStringDeparture; ?>
 					</span>
 					<div class="profile-info">
-							<span class="place2">
-								<?php echo $lieuDepart[$y]; ?>
-							</span>
+						<span class="place2">
+							<?php echo $lieuDepart[$y]; ?>
+						</span>
 						<div class="available">
 							<span class="adresse">
 								<?php echo $adresseDep[$y];?>
@@ -317,8 +317,8 @@
 					</span>
 					<div class="profile-info">
 						<span class="place2">
-								<?php echo $lieuArrivee[$y]; ?>
-							</span>
+							<?php echo $lieuArrivee[$y]; ?>
+						</span>
 						<div class="available">
 							<span class="adresse">
 								<?php echo $adresseArr[$y];?>
