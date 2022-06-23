@@ -178,7 +178,7 @@
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="border-radius: 3px;" bgcolor="#000000">
-                                                <a href="https://localhost/Plateforme%20Covoiturage/html/TousLesTrajets.php" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Réserver un autre trajet</a>
+                                                <a href="https://localhost/ProjetCovoiturage/html/TousLesTrajets.php" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Réserver un autre trajet</a>
                                             </td>
                                         </tr>
                                     </table>
