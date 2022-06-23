@@ -43,7 +43,7 @@
         $corp = str_replace("{{Prenom}}", $result['Prenom'], $corp);
 
         if(mail($dest,$sujet,$corp, $headers)){
-            echo "Votre demande pour rejoindre la voiture a bien été envoyée au créateur du trajet";
+            echo "Votre demande pour rejoindre la voiture a bien été envoyée au conducteur";
         }
         else{
             echo "Oups. Ta demande ne s'est pas envoyée. Réessaye à nouveau";

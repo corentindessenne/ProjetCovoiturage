@@ -12,7 +12,7 @@ if(isset($_POST["password-reset"]) && $_POST["email"]){
         $expDate = date("Y-m-d H:i:s", $expFormat);
 
         $update = mysqli_query($conn, "UPDATE compte SET token_reset_password = '$token', expiration_reset_password = '$expDate' WHERE Email = '$email'");
-        $link = "<a href='localhost/Plateforme covoiturage/html/reset_password.php?key=".$email."&token=".$token."' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid; display: inline-block;'>Réinitialise ton mot de passe</a>";
+        $link = "<a href='localhost/ProjetCovoiturage/html/reset_password.php?key=".$email."&token=".$token."' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid; display: inline-block;'>Réinitialise ton mot de passe</a>";
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
