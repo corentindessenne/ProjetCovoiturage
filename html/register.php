@@ -99,7 +99,6 @@
 		<!-- Illustration -->
 		<div class="img-container">
 			<img src="../images/illustration-covoiturage.jpg" alt="Illustration voiture">
-			<p class="title-text">Déjà 400 inscrits</p>
 			<p class="subtitle">Rejoins Nous !</p>
 		</div>
 	</div>

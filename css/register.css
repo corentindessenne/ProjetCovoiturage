@@ -210,3 +210,20 @@ label{
     position: relative;
     top: -5px;
 }
+
+
+
+.btn{
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background: #DC143C;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
