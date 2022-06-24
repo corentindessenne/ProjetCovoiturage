@@ -323,12 +323,9 @@
 }
 
 .PageCompte{
-	overflow-y: auto;
-	scrollbar-width: thin;
-	margin-bottom: 30px;
-}
-::-webkit-scrollbar{
-	width: 1px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+    height: 100vh;
 }
 
 

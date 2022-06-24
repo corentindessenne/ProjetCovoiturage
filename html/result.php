@@ -7,6 +7,7 @@
 	<!--CSS files-->
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/result.css">
+	<link rel="stylesheet" type="text/css" href="../css/alert.css">
 	<!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
 	<!--JQuery-->
@@ -170,8 +171,9 @@
 
 
 	<div id="no-result">
-		<p>Aucun résultat trouvé pour cette date</p>
-		<p>Vous pouvez toutefois créer une demande de trajet <a href="addtravels.php">ici</a></p>
+		<div class="alert2" style="background-color: #2ed573;">
+				<div class="alert-text" style="font-weight: bold; text-align:center;">Aucun trajets ne correspond à tes critères. Tu peux te créer un trajet ou faire une autre recherche <a href="addtravels.php" style="text-decoration:none;">ici</a>!</div>
+		</div>
 	</div>
 
 	<div class="wrapper" id="wrapper">
@@ -395,7 +397,6 @@
 			let trajetsHTML;
 			let distanceTrajets;
 			let coordonneesTrajets;
-
 			if(document.getElementById('trajets').children.length != 0){
 				initMap();
 				document.getElementById('no-result').style.display = "none";
