@@ -48,6 +48,18 @@
         }
     }
 
+    if(isset($_SESSION['alertPropositionBienEnvoyee'])){
+        if($_SESSION['alertPropositionBienEnvoyee'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">La proposition de trajet a bien été envoyée à l'utilisateur.</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>	
+                </div>
+            <?php
+            $_SESSION['alertPropositionBienEnvoyee'] = 0; 
+        }
+    }
+
     if(isset($_SESSION['alertDeuxTrajetsDejaFaits'])){
         if($_SESSION['alertDeuxTrajetsDejaFaits'] == 1){
             ?>

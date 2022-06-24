@@ -26,13 +26,14 @@
 
 	if($conn->query($request)){
 
-        $query = mysqli_query($conn, "SELECT * FROM trajet WHERE IdTrajet = '$idDemande'");
-        $result3 = mysqli_fetch_assoc($query);
+        $query3 = mysqli_query($conn, "SELECT * FROM trajet WHERE IdTrajet = '$idDemande'");
+        $result3 = mysqli_fetch_assoc($query3);
         $idDemandeur = $result3['IdCompte'];
 
         $query3 = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idDemandeur'");
-        $result3 = mysqli_fetch_assoc($query);
-        $mailDemandeur = $result['Email'];
+        $result3 = mysqli_fetch_assoc($query3);
+        $mailDemandeur = $result3['Email'];
+        echo "Le mail est ".$mailDemandeur;
         
        /* $request = mysqli_query($conn, "SELECT IdCompte FROM trajet WHERE IdTrajet = '$idTrajet' ");
         $result = mysqli_fetch_assoc($request);
@@ -46,10 +47,11 @@
         $dest = $mailDemandeur;
         $sujet = "Tu as reçu(e) une proposition pour ton trajet !";
         $corp = file_get_contents("../mails/template_mail_demande_trajet.php");
-        $corp = str_replace("{{Prenom}}", $result['Prenom'], $corp);
+        $corp = str_replace("{{Prenom}}", $result3['Prenom'], $corp);
 
         if(mail($dest,$sujet,$corp, $headers)){
             echo "Votre demande pour rejoindre la voiture a bien été envoyée au conducteur";
+            $_SESSION['alertPropositionBienEnvoyee'] = 1;
             header('location:home.php');
         }
         else{
