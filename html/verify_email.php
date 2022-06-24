@@ -25,18 +25,23 @@ if ($_GET['key'] && $_GET['token']) {
         $row = mysqli_fetch_array($query);
         if ($row['date_verif_mail'] == NULL) {
             if (mysqli_query($conn, "UPDATE compte SET date_verif_mail = '$d', isVerif = 1 WHERE Email = '$email'")) {
-                echo "<script type='text/javascript'>alert('GG à toi. Ton adresse mail est vérifiée. Tu peux désormais réserver un trajet, ou en proposer un à d\'autres festivaliers !'); document.location.href='../html/home.php';</script>";
+                $_SESSION['alertInscriptionReussie'] = 1;
+                header("Location:home.php");
             } else {
                 echo "La requête a échoué";
             }
         } else {
-            echo "<script type='text/javascript'>alert('Oups, tu as déjà vérifié ton adresse mail.'); document.location.href='../html/home.php';</script>";
+                $_SESSION['alertMailDejaVerifie'] = 1;
+                header("Location:home.php");
+
         }
     } else {
-        echo "<script type='text/javascript'>alert('Petit souci, l\'adresse renseignée nous est inconnue'); document.location.href='../html/home.php';</script>";
+        $_SESSION['alertMailExistePas'] = 1;
+        header("Location:home.php");
     }
 } else {
-    echo "<script type='text/javascript'>alert('Pas sur que tu sois au bon endroit'); //document.location.href='../html/home.php';</script>";
+   $_SESSION['alertPasLeBonChemin'] = 1;
+   header("Location:home.php");
 }
 ?>
 
