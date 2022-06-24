@@ -616,6 +616,7 @@
                         </div>
 
                         <div class="select">
+                                <?php $link = "validationProposition.php?idProposition=".$row['idProposition']."&isAccepted=";?>
                                 <a href="<?php echo $link."1"?>"><img src="../images/icon/845646.png"></a>
                                 <a href="<?php echo $link."0"?>"><img src="../images/icon/463612.png"></a>
                         </div>
