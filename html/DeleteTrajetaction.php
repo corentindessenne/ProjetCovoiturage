@@ -42,5 +42,5 @@
 
     //envoi e mail suppresion du trajet au compte ayant créé le trajet
 
-    header('location:header')
+    header('location:profil.php');
  ?>

@@ -53,6 +53,12 @@ while ($row2 = mysqli_fetch_assoc($result2)) { //Tant qu'il y a des trajets
     if($conn->query($sql3)){
         echo "suppression des reservations des usagers";
     }
+
+    //delete de tous les trajets du conducteur
+    $sql3 = "DELETE FROM trajet WHERE IdCompte = '$idCompte' ";
+    if($conn->query($sql3)){
+        echo "suppression des trajets du conducteur";
+    }
 }
 
 //***************************
@@ -86,3 +92,17 @@ while ($row4 = mysqli_fetch_assoc($result4)) {
         echo "suppression des réservations du compte";
     }
 }
+
+//toutes les propositions de user
+$sql5 = "DELETE FROM proposition WHERE idCompteConducteur='$idCompte'";
+if($conn->query($sql5)){
+
+}
+
+$sql5 = "DELETE FROM compte WHERE IdCompte='$idCompte'";
+if($conn->query($sql5)){
+
+}
+
+header('location:logout.php');
+

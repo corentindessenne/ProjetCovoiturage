@@ -126,6 +126,18 @@
         }
     }
 
+    if(isset($_SESSION['alertTrajetRejoint'])){
+        if($_SESSION['alertTrajetRejoint'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Tu as bien rejoint le trajet proposé</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertTrajetRejoint'] = 0;
+        }
+    }
+
     if(isset($_SESSION['alertDemandeCreee'])){
         if($_SESSION['alertDemandeCreee'] == 1){
             ?>
@@ -148,6 +160,18 @@
                 </div>
             <?php
             $_SESSION['PasDeTrajet'] = 0; 
+        }
+    }
+
+    if(isset($_SESSION['alertTrajetSupprimé'])){
+        if($_SESSION['alertTrajetSupprimé'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Ton trajet a bien été supprimé. Les passagers ont été avertis de la suppression du trajet</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertTrajetSupprimé'] = 0; 
         }
     }
 
