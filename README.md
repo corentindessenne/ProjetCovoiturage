@@ -38,3 +38,4 @@ Importer le fichier [lbrcovoiturage.sql](https://github.com/Corentin-Dessenne/Pr
    > 
    > Voici la procédure à suivre pour en créer un : [Support Google](https://support.google.com/accounts/answer/185833?hl=fr&authuser=1#zippy=)
    > ! La 2FA doit être activée
+4. Suivez les conseils donnés dans Conseils d'utilisation de l'application pour avoir une vue d'ensemble des fonctionnalités de l'appli

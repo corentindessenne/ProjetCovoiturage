@@ -26,7 +26,6 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
     <script src='https://code.jquery.com/jquery-3.4.1.min.js' type='text/javascript'></script>
-
 </head>
 
 <body>
