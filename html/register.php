@@ -36,7 +36,7 @@
 		<form method="post" action="registerAction.php">
 		<?php if(isset($_POST["VerifAdmin"])){
 		?>
-		<input type="hidden" name="VerifAdmin" value="<?php echo $_POST["VerifAdmin"]; ?>">
+		<input type="hidden" name="VerifAdmin" value="<?php echo $_POST["VerifAdmin"]; ?>">	<!--Variable set si le compte créé sera un compte administrateur-->
 		<?php } ?>
 			<div class="input-group">
 				<div class="item">
@@ -109,7 +109,7 @@
 <script type="text/javascript">
 
 	let item = document.getElementsByClassName('item');
-
+		//Style JS
 	for(let i = 0 ; i < item.length	; i++){
 		item[i].addEventListener('focusin', () => {
 			if(i !== 3 && i !== 6){
@@ -130,6 +130,7 @@
 
 </script>
 
+<!--Verif Mot de passe-->
 <script>
     let check = function () {
         if (document.getElementById('password_1').value ===
@@ -146,7 +147,7 @@
 
 </script>
 
-
+<!--Téléphone JS-->
 <script type="text/javascript">
 	const phoneInputField = document.querySelector("#phone");
 	const phoneInput = window.intlTelInput(phoneInputField, {

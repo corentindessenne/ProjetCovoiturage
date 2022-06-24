@@ -27,14 +27,12 @@
 	
 
     <form>
-
+	<!--Radio pour trier les trajets-->
     <div class="AllerRetour">
             <input type="radio" required="required" name="AllerRetour" value="Aller" id="Aller" onclick="SortDiv('Aller');" ><label for="Aller" class="AllerRetour">Aller</label>
             <input type="radio" required="required" name="AllerRetour" value="Retour" id="Retour" onclick="SortDiv('Retour');"><label for="Retour" class="AllerRetour">Retour</label>
             <input type="radio" required="required" name="AllerRetour" value="Demande" id="Demande" onclick="SortDiv('Demande');"><label for="Demande" class="AllerRetour	">Demande</label>
             <input type="radio" required="required" name="AllerRetour" value="Proposition" id="Proposition" onclick="SortDiv('Proposition');"><label for="Proposition" class="AllerRetour">Proposition</label>
-            <!--<input type="radio" required="required" name="Tri" value="DepartImm" id="DepartImm" onclick="SortDiv('DepartImm');"><label for="DepartImm" class="Tri">Départ Immédiat</label>
-            <input type="radio" required="required" name="Tri" value="Departlate" id="Departlate" onclick="SortDiv('DepartLate');"><label for="Departlate" class="Tri">Départ tardif</label>-->
 			<input type="radio" required="required" name="Tri" value="Sale" id="Sale" onclick="SortDiv('Sale');"><label for="Sale" class="Tri">le moins cher</label>
 			<input type="radio" required="required" name="Tri" value="Cher" id="Cher" onclick="SortDiv('Cher');"><label for="Cher" class="Tri">le plus cher</label>
         </div>
@@ -43,11 +41,12 @@
     <div id="trajets" class="wrapper">
 		
 			<?php
+
 			$count=0;
 			$requete = "SELECT * FROM trajet";
 			$result = mysqli_query($conn,$requete);
 			
-			
+			//Affichage des trajets
 			while ($row = mysqli_fetch_assoc($result)) {
 
 				$hourString1 = substr($row['HeureDepart'],0,2);
@@ -154,7 +153,7 @@
 					let Toustrajet=document.getElementById("trajets");
 					let Display=Toustrajet;
 					let price=[];
-
+					//tri en fonction des radios cochés
 					for(let i=0; i<Toustrajet.children.length;i++){
 						switch (sort){
 							case 'Aller':
@@ -225,7 +224,7 @@
 						
 						
 					}
-
+					//On réorganise le fichier en fonction du tri
 					for(let i=0; i<Toustrajet.children.length;i++){
 						for(let j=0; j<Toustrajet.children.length;j++){
 									let price2=parseInt(Display.children[j].getElementsByClassName("price")[0].textContent.replace('€', ''));

@@ -114,50 +114,32 @@
         }
     }
 
-    if(isset($_SESSION['alertTrajetCree'])){
-        if($_SESSION['alertTrajetCree'] == 1){
-            ?>
-                <div class="alert" style="background-color:#2ed573;">
-                    <div class="alert-text">Ton trajet a bien été créé</div>
-                    <div class="croix"><img src="../images/icon/3426000.png"></div>
-                </div>
-            <?php
-            $_SESSION['alertTrajetCree'] = 0;
-        }
-    }
-
-    if(isset($_SESSION['alertDemandeCreee'])){
-        if($_SESSION['alertDemandeCreee'] == 1){
-            ?>
-                <div class="alert" style="background-color:#2ed573;">
-                    <div class="alert-text">Ta demande de trajet a bien été créée</div>
-                    <div class="croix"><img src="../images/icon/3426000.png"></div>
-                </div>
-            <?php
-            $_SESSION['alertDemandeCreee'] = 0;
-        }
-    }
 
 
 
 
 
+
+
+
+    //redirect vers la page d'accueil si l'utilisateur n'est pas connecté
     if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
         header("Location:home.php");
 
     }
+    //Si l'utilisateur est un admin on récupère les informmations du compte a partir de l'id récupéré plus tot
     if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
         $ismyaccount = 0;
         $idCompte = $_POST["CompteId"];
         $sql = "SELECT * FROM compte WHERE IdCompte='" . $idCompte . "'";
     } else {
+        //sinon on récupère les informations a partirde la session du mail de l'utilisateur
         $ismyaccount = 1;
         $mail = $_SESSION["mail"];
         $sql = "SELECT * FROM compte WHERE Email='" . $mail . "'";
     }
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-    // output data of each row
         $row = $result->fetch_assoc();
         $nom = $row["Nom"];
         $mail = $row["Email"];
@@ -175,6 +157,7 @@
 }
 ?>
 
+<!--Menu de sélection des informations affichées-->
 <ul class="menu" id="menu">
     <li class="menu-link active"><img class="icon" src="../images/icon/25694.png">Mes informations</li>
     <li class="menu-link"><img class="icon" src="../images/icon/car-front.png">Mes trajets</li>
@@ -199,7 +182,7 @@
             <span><?php echo $prenom." ".$nom; ?></span>
 
         </div>
-
+        <!--Formulaire d'affichage et modification des informations du compte-->
         <form action="editProfilAction.php" method="post" class="infos-secondary" autocomplete="off">
             <input class="hidden" type="text" name="IdCompte" value="<?php echo $idCompte;?>">
             <div class="input-group">
@@ -249,6 +232,7 @@
     <div class="trajets" id="trajets">
         <?php
             //trajets conducteur
+        //requete pour récupérer les trajets créer par le compte
         $requete = "SELECT * FROM trajet WHERE IdCompte='".$idCompte."'";
         $result = mysqli_query($conn,$requete);
         $count = 0;
@@ -500,7 +484,8 @@
 
 
 <script>
-  var $limitNum = 255;
+    //Fontion limite taille description
+  var $limitNum = 255;      //variable contenant la taille limite de la description
   $('textarea[name="Description"]').keydown(function() {
     var $this = $(this);
 
