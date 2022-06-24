@@ -160,8 +160,8 @@ if(isset($_SESSION["mail"])){
                     </select>
                 </div>
             </div>
-            <div class="form-item">
-                <label id="arrivalHour2" class="arrivalHour"> Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
+            <div class="form-item" style="margin-bottom: 20px;">
+                <label id="arrivalHour2" class="arrivalHour" style="width: 850px;text-align: center;"> Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
             </div>
             <input type="hidden" name="heureArrivee" id="heureArrivee2" value="<?php echo substr_replace($HeureArrivee ,"", -8); ?>">
             <input type="hidden" name="dateArr" id="dateArr2" value="<?php echo $DateArrivee; ?>">
@@ -184,7 +184,7 @@ if(isset($_SESSION["mail"])){
             <div class="input-group">
                 <div class="form-item">
                     <label for="Description2" class="upper">Description (facultatif): </label>
-                    <textarea name="Description" id="Description2" placeholder="Écris içi la description de ton trajet" rows="4" cols="40"><?php echo $Description; ?></textarea>
+                    <textarea name="Description" id="Description2" placeholder="Description" rows="4" cols="40"><?php echo $Description; ?></textarea>
                 </div>
             </div>
             <br/>
@@ -248,7 +248,7 @@ if(isset($_SESSION["mail"])){
             <div class="input-group">
                 <div class="form-item">
                     <label for="Description" class="upper">Description</label>
-                    <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="4" cols="40" ><?php echo $Description ?></textarea>
+                    <textarea name="Description" id="Description" placeholder="Description" rows="4" cols="40" ><?php echo $Description ?></textarea>
                 </div>
             </div>
             <br/>
