@@ -231,9 +231,9 @@
 
     <div class="trajets" id="trajets">
         <?php
-            //trajets conducteur
-        //requete pour récupérer les trajets créer par le compte
-        $requete = "SELECT * FROM trajet WHERE IdCompte='".$idCompte."'";
+
+        //trajets conducteur
+        $requete = "SELECT * FROM trajet WHERE IdCompte='$idCompte' AND isDemande = 0";
         $result = mysqli_query($conn,$requete);
         $count = 0;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -295,7 +295,8 @@
                         <input type="submit" class=modifyTrajet value="Modifier">
                     </form>
 
-                    <form method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">    
+                    <form method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">
+                        <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>">
                         <input type="submit" class="deleteTrajet" value="Supprimer">
                     </form>
 
@@ -304,6 +305,81 @@
             </div>
             <?php
             } 
+
+
+        //demandes en attente de conducteur qui propose
+        $requete = "SELECT * FROM trajet WHERE IdCompte='$idCompte' AND isDemande = 1";
+        $result = mysqli_query($conn,$requete);
+        $count = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $count++;
+
+            $hourString1 = substr($row['HeureDepart'],0,2);
+            $hourString2 = substr($row['HeureDepart'],3,2);
+            $hourStringDeparture = $hourString1."h".$hourString2;
+
+
+            $hourString3 = substr($row['HeureArrivee'],0,2);
+            $hourString4 = substr($row['HeureArrivee'],3,2);
+            $hourStringArrival = $hourString3."h".$hourString4;
+
+            ?>
+
+            <div class="item">
+                <div class="data-group">
+                    <span class="horaire">
+                        <?php echo $hourStringDeparture; ?>
+                    </span>
+                    <span class="place">
+                        <?php echo utf8_encode($row['LieuDepart']); ?>
+                    </span>
+
+                    <span class="date">
+                        <?php echo utf8_encode($row['DateDepart']); ?>
+                    </span>
+                </div>
+
+                <div class="data-group">
+                    <span class="horaire">
+                        <?php echo $hourStringArrival; ?>
+                    </span>
+                    <span class="place">
+                        <?php echo utf8_encode($row['LieuArrivee']); ?>
+                    </span>
+
+                    <span class="price" style="font-size: 14px;">
+                        En attente de conducteur...
+                    </span>
+                </div>
+
+                <div class="account-info">
+                    <img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
+                    <div class="profile-info">
+                        <span class="name"><?php echo $prenom." ".$nom?></span>
+                        <div class="available">
+                            <?php
+                            $value = $row['PlacesRestantes'];
+                            if($value == 1) echo $value." place restante";
+                            else echo $value." places restantes";
+                            ?>
+                        </div>
+                    </div>
+
+                    <form method="post" action="modifTravel.php">
+                        <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>"> 
+                        <input type="submit" class=modifyTrajet value="Modifier">
+                    </form>
+
+                    <form method="post" action="DeleteTrajetaction.php" onsubmit="return confirm('Veux-tu vraiment supprimer ce trajet ?');">
+                        <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>">
+                        <input type="submit" class="deleteTrajet" value="Supprimer">
+                    </form>
+
+
+                </div>
+            </div>
+            <?php
+        }
 
         //trajets passagers qui ont été validés
         $requete = "SELECT * FROM reservation WHERE idCompteReservation='$idCompte' AND isAccepted=1";
