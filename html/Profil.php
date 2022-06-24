@@ -310,11 +310,11 @@
                         <?php echo $hourStringDeparture; ?>
                     </span>
                     <span class="place">
-                        <?php echo utf8_encode($row['LieuDepart']); ?>
+                        <?php echo ($row['LieuDepart']); ?>
                     </span>
 
                     <span class="date">
-                        <?php echo utf8_encode($row['DateDepart']); ?>
+                        <?php echo ($row['DateDepart']); ?>
                     </span>
                 </div>
 
@@ -323,7 +323,7 @@
                         <?php echo $hourStringArrival; ?>
                     </span>
                     <span class="place">
-                        <?php echo utf8_encode($row['LieuArrivee']); ?>
+                        <?php echo ($row['LieuArrivee']); ?>
                     </span>
 
                     <span class="price">
@@ -394,11 +394,11 @@
                         <?php echo $hourStringDeparture; ?>
                     </span>
                     <span class="place">
-                        <?php echo utf8_encode($row['LieuDepart']); ?>
+                        <?php echo ($row['LieuDepart']); ?>
                     </span>
 
                     <span class="date">
-                        <?php echo utf8_encode($row['DateDepart']); ?>
+                        <?php echo ($row['DateDepart']); ?>
                     </span>
                 </div>
 
@@ -407,7 +407,7 @@
                         <?php echo $hourStringArrival; ?>
                     </span>
                     <span class="place">
-                        <?php echo utf8_encode($row['LieuArrivee']); ?>
+                        <?php echo ($row['LieuArrivee']); ?>
                     </span>
 
                     <span class="price" style="font-size: 14px;">
@@ -485,11 +485,11 @@
                             <?php echo $hourStringDeparture; ?>
                         </span>
                         <span class="place">
-                            <?php echo utf8_encode($row['LieuDepart']); ?>
+                            <?php echo ($row['LieuDepart']); ?>
                         </span>
 
                         <span class="date">
-                            <?php echo utf8_encode($row['DateDepart']); ?>
+                            <?php echo ($row['DateDepart']); ?>
                         </span>
                     </div>
 
@@ -498,7 +498,7 @@
                             <?php echo $hourStringArrival; ?>
                         </span>
                         <span class="place">
-                            <?php echo utf8_encode($row['LieuArrivee']); ?>
+                            <?php echo ($row['LieuArrivee']); ?>
                         </span>
 
                         <span class="price">
@@ -659,11 +659,11 @@
                             <?php echo $hourStringDeparture; ?>
                         </span>
                         <span class="place">
-                            <?php echo utf8_encode($row3['LieuDepart']); ?>
+                            <?php echo ($row3['LieuDepart']); ?>
                         </span>
 
                         <span class="date">
-                            <?php echo utf8_encode($row3['DateDepart']); ?>
+                            <?php echo ($row3['DateDepart']); ?>
                         </span>
                     </div>
 
@@ -672,7 +672,7 @@
                             <?php echo $hourStringArrival; ?>
                         </span>
                         <span class="place">
-                            <?php echo utf8_encode($row3['LieuArrivee']); ?>
+                            <?php echo ($row3['LieuArrivee']); ?>
                         </span>
 
                         <span class="price">

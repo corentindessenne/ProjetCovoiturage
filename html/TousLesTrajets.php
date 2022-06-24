@@ -67,11 +67,11 @@
 								<?php echo $hourStringDeparture; ?>
 							</span>
 							<span class="place">
-								<?php echo utf8_encode($row['LieuDepart']); ?>
+								<?php echo ($row['LieuDepart']); ?>
 							</span>
 
 							<span class="date">
-								<?php echo utf8_encode($row['DateDepart']); ?>
+								<?php echo ($row['DateDepart']); ?>
 							</span>
 						</div>
 
@@ -80,7 +80,7 @@
 								<?php echo $hourStringArrival; ?>
 							</span>
 							<span class="place">
-								<?php echo utf8_encode($row['LieuArrivee']); ?>
+								<?php echo ($row['LieuArrivee']); ?>
 							</span>
 
 							<span class="price">

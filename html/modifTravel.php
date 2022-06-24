@@ -83,11 +83,11 @@ if(isset($_SESSION["mail"])){
 								<?php echo $hourStringDeparture; ?>
 							</span>
 							<span class="place" id="lieuDepart">
-								<?php echo utf8_encode($LieuDepart); ?>
+								<?php echo ($LieuDepart); ?>
 							</span>
 
 							<span class="date" id="dateDepart">
-								<?php echo utf8_encode($DateDepart); ?>
+								<?php echo ($DateDepart); ?>
 							</span>
 						</div>
 
@@ -96,7 +96,7 @@ if(isset($_SESSION["mail"])){
 								<?php echo $hourStringArrival; ?>
 							</span>
 							<span class="place" id="lieuArrivee">
-								<?php echo utf8_encode($LieuArrivee); ?>
+								<?php echo ($LieuArrivee); ?>
 							</span>
                             <!--Affichage du prix-->
 							<span class="price" id="prix">

@@ -337,11 +337,11 @@ data-aos-duration="600"   data-aos-delay="500">
 								<?php echo $hourStringDeparture; ?>
 							</span>
 							<span class="place">
-								<?php echo utf8_encode($row['LieuDepart']); ?>
+								<?php echo ($row['LieuDepart']); ?>
 							</span>
 
 							<span class="date">
-								<?php echo utf8_encode($row['DateDepart']); ?>
+								<?php echo ($row['DateDepart']); ?>
 							</span>
 						</div>
 
@@ -350,7 +350,7 @@ data-aos-duration="600"   data-aos-delay="500">
 								<?php echo $hourStringArrival; ?>
 							</span>
 							<span class="place">
-								<?php echo utf8_encode($row['LieuArrivee']); ?>
+								<?php echo ($row['LieuArrivee']); ?>
 							</span>
 							<!--Affichage du prix-->
 							<span class="price">
