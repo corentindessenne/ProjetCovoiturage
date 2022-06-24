@@ -43,13 +43,22 @@
         	die();
         }
 
+        //update places Restantes dans le trajet
+        $placesRestantes = $row1['PlacesRestantes'] - 1;
+       	$sql = "UPDATE trajet SET PlacesRestantes = '$placesRestantes' WHERE IdTrajet = '$idTrajet'";
+       	if($conn->query($sql)){
+       		
+       	}
         $typeTrajet = $row['typeTrajet'];
 
         //ajout d'une réservation dans la DB
 		$requete = "INSERT INTO reservation(idTrajet, nbPassagersReservation, typeTrajet, anneeEdition, idCompteReservation, nomPassager1, isAccepted) VALUES ('$idTrajet', '1', '$typeTrajet', '2022', '$idCompte', '$prenom','1')";
 
 		if($conn->query($requete)){
-			//suppresion de la demande de trajet car le trajet a été rejoint
+			//suppression d'une place dans le trajet 
+
+
+			//suppression de la demande de trajet car le trajet a été rejoint
 			$requete = "DELETE FROM trajet WHERE idTrajet = '$idDemande' ";
 			if($conn->query($requete)){
 				echo "Delete du trajet ".$idDemande."<br>";

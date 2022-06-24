@@ -1,3 +1,32 @@
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_lt.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_lt.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_md.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_md.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_xbd.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_xbd.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+*{
+	font-family: 'Cereal' !important;
+}
+
+
 :root{
 	--black: #161920;
 	--navy : #3671B3;
@@ -9,6 +38,7 @@
 }
 
 .body{
+	font-family: 'Cereal';
 	background: var(--black);
 }
 
