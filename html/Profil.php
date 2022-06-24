@@ -341,7 +341,16 @@
                             if($value == 1) echo $value." place restante";
                             else echo $value." places restantes";
                             ?>
-                        </div>
+                        </div><!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+                                <div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
+		
+									?>
+                                    </span>
+								</div>
+                        
                     </div>
 
                     <form method="post" action="modifTravel.php">
@@ -413,6 +422,15 @@
                         <div class="available">
                             Recherche une voiture
                         </div>
+                        <!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+                        <div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+		
+									?>
+                                    </span>
+								</div>
                     </div>
 
                     <form method="post" action="modifTravel.php">
@@ -499,6 +517,15 @@
                                 else echo $value." places restantes";
                                 ?>
                             </div>
+                            <!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+                            <div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										echo "numéro de téléphone: 0".$row2["telephone"];
+		
+									?>
+                                    </span>
+								</div>
                         </div>
                     </div>
                 </div>
