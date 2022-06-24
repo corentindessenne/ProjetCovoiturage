@@ -22,14 +22,10 @@ else{                                           //On ajuste la valeur du tel en 
 
 $IdTrajet=$_POST["IdTrajet"];                   //On met l'id du trajet dans une variable
 $isDemande=$_POST["isDemande"];
-$requete="SELECT DEFAULT(LongitudeDepart), DEFAULT(LatitudeDepart),DEFAULT(LieuDepart), DEFAULT(AdresseDepart), PlacesRestantes,NbPassagers FROM trajet";
+$requete="SELECT PlacesRestantes,NbPassagers FROM trajet";
 $result = mysqli_query($conn,$requete);
 if(mysqli_fetch_assoc($result)==TRUE){
   $row = mysqli_fetch_assoc($result);
-  $defaultLong=$row["DEFAULT(LongitudeDepart)"];
-  $defaultLat=$row["DEFAULT(LatitudeDepart)"];
-  $defaultLieu=$row["DEFAULT(LieuDepart)"];
-  $defaultAdresse=$row["DEFAULT(AdresseDepart)"];
   $placesRestantes=$row["PlacesRestantes"];
   $NbPass=$row["NbPassagers"];
 }
@@ -37,6 +33,10 @@ else{
   $_SESSION['alertErreurSurvenue'] = 1;            //Sinon on affiche l'erreur
   ?> <script type="text/javascript">location="Profil.php"; </script><?php
 }
+$defaultLong="3.1134";
+$defaultLat="50.7364";
+$defaultLieu="Wervicq-Sud";
+$defaultAdresse="21 Rue de Linselles	";
 $lieu="";
 $prix=0;
 if(isset($_POST["Prix"])){

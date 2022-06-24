@@ -549,7 +549,7 @@ showDrive.onclick = function(){
 </script>
 
 <?php
-   $requete="SELECT DEFAULT( LieuDepart ), DEFAULT (AdresseDepart) 
+/*   $requete="SELECT DEFAULT( LieuDepart ), DEFAULT (AdresseDepart) 
    FROM (SELECT 1) AS dummy
      LEFT JOIN trajet 
        ON True
@@ -559,11 +559,11 @@ showDrive.onclick = function(){
    $Adresse="";
    if($result->num_rows >  0){
     $row = $result->fetch_assoc();                                                        //On récupère l'emplacement du festival
-    $Lieu=$row["DEFAULT( LieuDepart )"];
-    $Adresse=$row["DEFAULT (AdresseDepart)"];
+    
 
-  }
-     
+  }*/
+  $Lieu="Wervicq-Sud";
+  $Adresse="21 Rue de Linselles	";  
 ?>
 
   <script>
