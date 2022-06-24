@@ -1,7 +1,6 @@
 <?php
 
-
-echo $_POST["mail"];
+//On récupère le mail a modifier et l'emplacement de ce dernier dans les fichiers en fonction du formulaire remplit
 if($_POST["mail"]=="DeleteAccount"){
     $file='../mails/template_mail_suppression_compte.php';
     $newfile="<!DOCTYPE html>
@@ -1160,12 +1159,12 @@ else if($_POST["mail"]=="ConfirmDriver"){
 
 }
 else{
-    echo "erreur";
+    echo "erreur";          //Si on ne récupère aucune information alors une erreur c'est produite
     die();
 }
 
-file_put_contents($file,$newfile);
-echo file_get_contents($file); // Yogesh
+file_put_contents($file,$newfile);              //On remplace l'email avec les nouveaux textes
+echo file_get_contents($file);                  //On affiche le nouvel email
 
 
 

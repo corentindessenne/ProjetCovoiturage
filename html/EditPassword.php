@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LBR Covoiturage</title>
+  <!--CSS files and Library-->
   <link rel="stylesheet" type="text/css" href="../css/modifPass.css">
   <link rel="stylesheet" type="text/css" href="../css/nav.css">
   <link
@@ -20,11 +21,11 @@
 </head>
 <body>
   <?php 
-  include 'Connexion.php';
+  include 'Connexion.php';                                    //on se connecte a la base de donnée et on active les sessions
 
-  include 'NavbarConn.php';
+  include 'NavbarConn.php';                                   //on ajoute la navbar
   if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
-    header("Location:home.php");
+    header("Location:home.php");                               //si l'utilisateur n'est pas connecté on le redirige vers la page d'accueil
 
   }
   ?>
@@ -34,11 +35,11 @@
       <h1>Modification de ton mot de passe</h1>
       <div class="container">
                  <form action="EditPasswordAction.php" method="post">
-                  <input type="hidden" name="email" value="<?php echo $email ?>">
+                  <input type="hidden" name="email" value="<?php echo $email ?>">       <!--On récupère le mail et un token pour le fichier action-->
                   <input type="hidden" name="token" value="<?php echo $token ?>">
                   <div class="input-group">
                     <div class="item">
-                        <?php if((!isset($_SESSION["role"]) || $_SESSION["role"] != 1) ){ ?> <label>Mot de passe actuel</label>
+                        <?php if((!isset($_SESSION["role"]) || $_SESSION["role"] != 1) ){ ?> <label>Mot de passe actuel</label>       <!--Si l'utilisateur est un administrateur il n'as pas beosoin de rentrer le mot de passe afin de pouvoir changer le mot de passe d'autre compte-->
                         <input type="password" required="required" placeholder="" name="password" id="password" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 charactères dont 1 minuscule 1 majuscule et 1 caractère spécial">
                       <?php } ?>
                     </div>
@@ -46,7 +47,7 @@
                       <label>Mot de passe</label>
                       <input type="password" required="required" name="newPassword" id="password_1" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ton mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule et 1 caractère spécial" onkeyup='check();'>
                     </div> 
-                    <div class="item">
+                    <div class="item">                <!--Nouveau mot de passe a taper 2 fois pour vérifier que l'utilisateur n'as pas fait de faute de frappe-->
                       <label>Confirmation</label>
                       <input type="password" required placeholder="" id="password_2" name="confirmPassword" onkeyup='check();'>
                     </div> 
@@ -55,7 +56,7 @@
                   </br>
               <span id='message2'></span>
                   <?php if(isset($_GET["id"]) && $_SESSION["role"]==1){  ?>
-                      <input type="hidden" name="IdCompte" value="<?php echo $_GET["id"]; ?>">
+                      <input type="hidden" name="IdCompte" value="<?php echo $_GET["id"]; ?>">      <!--On récupère l'id du compte cible pour ne pas avoir de problème si l'utilisateur est un administrateur qui modifie le mot de passe d'un autre-->
                     <?php } ?>
 
                     <button type="submit" class="btn" name="reg_user" id="submit">Modifier mon mot de passe</button>
@@ -73,23 +74,23 @@
       document.getElementById('password_2').value) {
       document.getElementById('message').style.color = 'green';
     document.getElementById('message').innerHTML = 'Les mots de passe sont identiques';
-    document.getElementById('submit').disabled = false;
+    document.getElementById('submit').disabled = false;                                  //Si le nouveau mot de passe est le meme que celui de confirmation on autorise l'envoi du formulaire
   } else {
     document.getElementById('message').style.color = 'red';
     document.getElementById('message').innerHTML = 'Le mot de passe de confirmation doit etre le même que celui au-dessus';
-    document.getElementById('submit').disabled = true;
+    document.getElementById('submit').disabled = true;                                    //Sinon on bloque l'envoie jusqu'à ce que les mot de passe soient identiques
   }
 
   if(document.getElementById('password_1').value ==
     document.getElementById('password').value){
     document.getElementById('message2').style.color = 'red';
   document.getElementById('message2').innerHTML = 'Ton nouveau mot de passe ne doit pas etre identique au précédent';
-  document.getElementById('submit').disabled = true;
+  document.getElementById('submit').disabled = true;                              //Si le nouveau mot de passe est le meme que le précédent on bloque l'envoi du formulaire
 
 }
 else{
   document.getElementById('message2').innerHTML = '';
-  document.getElementById('submit').disabled = false;
+  document.getElementById('submit').disabled = false;                             //On l'autorise sinon
 }
 
 }
@@ -107,7 +108,7 @@ else{
             }
         });
 
-        item[i].addEventListener('focusout', () =>{
+        item[i].addEventListener('focusout', () =>{                                             //Style des input en js
             if(i !== 3 && i !== 6){
                 if(item[i].children[1].value === ""){
                     item[i].children[0].classList.remove("upper");

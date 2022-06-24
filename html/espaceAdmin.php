@@ -33,20 +33,20 @@
 	
 
 	<?php 
-		include 'Connexion.php';
+		include 'Connexion.php';			//On ajoute la navbar et on se connecte a la base de donnée
 		include 'NavbarConn.php';
 		
 
 		if(isset($_POST["annee"])){
-			if($_POST["annee"]<2021){$anneeEd=2021;}
-			else{$anneeEd=$_POST["annee"];}
+			if($_POST["annee"]<2021){$anneeEd=2021;}	
+			else{$anneeEd=$_POST["annee"];}						//On bloque l'année a 2021 au plus bas car le festival n'existait pas encore avant
 			
 		}
 		else{
-			$anneeEd=date("Y");
+			$anneeEd=date("Y");									//Si il n'y a pas eu de changement on prend par défaut l'année actuelle
 		}
 		
-		if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){
+		if((isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1){		//on vérifie que l'utilisateur est un administrateur
 	?>
 	
 		<div class="title">
@@ -62,7 +62,7 @@
 
 			$nbTrajets=0;
 			$nbDemandes=0;
-			$nbVoituresRemplies=0;
+			$nbVoituresRemplies=0;		//On récupère des statistiques sur cette édition du festival
 			$nbPassagers=0;
 			$nbCompte=0;
 
@@ -71,7 +71,7 @@
 
 				if($row["isDemande"]==1){$nbDemandes++;}
 				if($row["PlacesRestantes"]==0){$nbVoituresRemplies++;}
-				$nbPassagers+= $row["NbPassagers"]-$row["PlacesRestantes"];
+				$nbPassagers+= $row["NbPassagers"]-$row["PlacesRestantes"];		//On calcule les statistiques
 			}
 			
 			$requete = "SELECT IdCompte FROM compte WHERE YEAR(DateCreation)='".$anneeEd."'";
@@ -93,6 +93,7 @@
 
 
 	<div class="wrapper">
+		<!--On affiche les statistiques-->
 		<div class="left-high" data-aos="fade-down" id="test">
 			<div class="text">
 			<section>
@@ -137,6 +138,7 @@
 		
 
 	</div>
+	<!--Bouton pour créer un compte administrasteur-->
 			<div class="CreateCompte">
 				
 				<form method="post" action="register.php">
@@ -144,7 +146,7 @@
 					<input type="submit" value="Créer un compte admin">
 				</form>
 			</div>
-	
+	<!--Style JS-->
 	<script>
 		if(window.innerWidth < 1000) {
 			document.getElementsByClassName("aos").forEach(element => {
@@ -164,6 +166,7 @@
 	
 	?>
 	</div>
+	<!--Liste des comptes afin de pouvoir les modifier-->
 		<div class="right aos" data-aos="fade-left" data-aos-delay="750">
 			
 			<h1 id="listTitle">Liste des comptes</h1>
@@ -183,6 +186,7 @@
 
 
 <div class="left-bottom-1 aos" data-aos="fade-up" data-aos-delay="250">
+	<!--Bouton pour férer les éditions-->
 			<div class="text">
 				<h1>Gestion des éditions</h1>
 				<h2>Accès aux différentes éditions gestion de ces dernières</h2>

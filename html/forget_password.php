@@ -16,7 +16,7 @@ include("Connexion.php");
     <title>Mot de passe oublié - LBR Covoiturage</title>
 </head>
 <body>
-<?php include('NavbarConn.php') ?>
+<?php include('NavbarConn.php') ?>          <!--On ajoute la navbar-->
 
 <div class="bloc">
     <div class="main">
@@ -26,16 +26,18 @@ include("Connexion.php");
                 <div class="input-group">
                     <div class="item long">
                         <label>Email </label>
-                        <input type="email" required="required" name="email">
+                        <input type="email" required="required" name="email">           <!--formulaire contenant l'email redirigeant vers un action qui va envoyer un email -->
                     </div>
                 </div>
                 <button type="submit" name="password-reset">Envoyer</button>
-                <p> <a href="login.php"> Finalement, je m'en souviens! </a></p>
+                <p> <a href="login.php"> Finalement, je m'en souviens! </a></p>         <!--Si l'utilisateur se souvient de son mot de passe il peut retourner vers la page de connexion sans passer par la navbar-->
             </form>
         </div>
     </div>
 </div>
 
+
+<!--Style JS-->
 <script type="text/javascript">
 
     let item = document.getElementsByClassName('item');
@@ -46,7 +48,7 @@ include("Connexion.php");
                 item[i].children[0].classList.add("upper");
                 item[i].children[1].classList.add("upperInput");
             }
-        });
+        });            
 
         item[i].addEventListener('focusout', () =>{
             if(i !== 3 && i !== 6){

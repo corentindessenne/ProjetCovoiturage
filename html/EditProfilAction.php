@@ -6,7 +6,7 @@
 <body>
 
     <?php
-    include 'Connexion.php';
+    include 'Connexion.php';                    //connexion a la base de donnée
 
     $idCompte = $_POST['IdCompte'];
     $nom = $_POST['nom'];
@@ -14,10 +14,10 @@
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $description = $_POST['description'];
-    $description= str_replace("'","''",$description);
+    $description= str_replace("'","''",$description);               //on stocke les changement de l'utilisateur dans des variables
 
     //Recup ancien e mail
-    $requete = "SELECT * FROM compte WHERE IdCompte = '$idCompte'";
+    $requete = "SELECT * FROM compte WHERE IdCompte = '$idCompte'";            
     $result = mysqli_query($conn,$requete);
     $row = mysqli_fetch_assoc($result);
     $previousEmail = $row['Email'];
@@ -50,7 +50,7 @@
     if ($conn->query($sql) === TRUE) {
 
         if($verifyEmail == 1){
-            $token = md5($email);
+            $token = md5($email);               //mail
 
             $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
 
@@ -78,7 +78,7 @@
             if(mail($dest, $sujet, $corp, $headers)){
                 ?>
                 <script type="text/javascript">
-                $_SESSION['alertVerificationEMail'] = 1;
+                $_SESSION['alertVerificationEMail'] = 1;                                               //Si le mail c'est envoyé on notifie l'utilisateur avant de le déconnecter
                 location="logout.php";
                 </script>
                 <?php
@@ -86,7 +86,7 @@
             else{
                 ?>
                 <script type="text/javascript">
-                    alert("Oups. Il semble que le mail ne se soit pas envoyé. Réessaye à nouveau");
+                    alert("Oups. Il semble que le mail ne se soit pas envoyé. Réessaye à nouveau");     //Si le mail ne s'est pas envoyé on déconnecte l'utilisateur
                     location = "logout.php";
                 </script>
                 <?php
@@ -95,7 +95,7 @@
         else{
             $_SESSION['alertModificationEnregistrees'] = 1;
             ?>
-            <script type="text/javascript">
+            <script type="text/javascript">                           //sinon on redirige vers la page de profil et on notifie l'utilisateur
               location="Profil.php";
             </script>
             <?php

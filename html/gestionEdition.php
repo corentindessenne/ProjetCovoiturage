@@ -20,18 +20,19 @@
 </head>
 <body>
     <?php
-        include 'Connexion.php';
+        include 'Connexion.php';            //Connexion a la base de donnée et affichage de la navbar
         include 'NavbarConn.php';
       
-        if((isset($_SESSION["role"]) && $_SESSION["role"] == 1)){
+        if((isset($_SESSION["role"]) && $_SESSION["role"] == 1)){       //On vérifier que l'utilisateur est un administrateur
     ?>
     <h1>Gestion des éditions LBR Covoiturages</h1>
 
     <div class="DeleteButtondiv" id="DeleteButton">
         <button class="CreateButton" onclick="document.getElementById('CreateEd').style.display='block'">Créer une édition</button>
-    </div>
+    </div>                                                      <!--Bouton pour afficher le modal de création d'édition-->
 
     <div id="CreateEd" class="modal">
+        <!--Modal contenant le formulaire de création d'un édition-->
        <span onclick="document.getElementById('CreateEd').style.display= 'none'" class="close" title="Close modal">&times;</span>
         <form class="modal-content" action="CreerEditionAction.php" method="post">
             <div class="container">
@@ -71,6 +72,7 @@
     
         <?php
             $requete = "SELECT * FROM edition ORDER BY AnnéeEdition";
+            //On récupère toutes les éditions et on les affiche
 			$result = mysqli_query($conn,$requete);
             while($row = mysqli_fetch_assoc($result)){
                 ?>
@@ -88,18 +90,12 @@
                     
                     <p><?php echo $row["Lieu"]; ?></p>
                     <p><?php echo $row["Description"]; ?></p>
-                    <div class="DeleteButtondiv" id="DeleteButton">
+                    <div class="DeleteButtondiv" id="DeleteButton"> <!--Bouton pour modifer l'édition-->
                         <button class="ModifButton" onclick="document.getElementById('ModifEd').style.display='block'">Modifier</button>
                     </div>
-
-                    <!--<div class="book-container">
-						<form class="Acrhiveform" method="post" action="ArchiveEditionAction.php" onsubmit="return confirm('Veux-tu vraiment archiver cette édition ?');">	
-							<input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"];?>">
-							<input type="submit" class="delbutton" value="Archiver l'édition">
-						</form>
-					</div>-->
                     <br/>
                     <div class="book-container">
+                        <!--Bouton pour supprimer l'édition-->
 						<form class="deleteform" method="post" action="DeleteEditionAction.php" onsubmit="return confirm('Veux-tu vraiment supprimer cette édition ?');">	
 							<input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"];?>">
 							<input type="submit" class="delbutton" value="Supprimer l'édition">
@@ -110,6 +106,7 @@
                 
                 
                 <div id="ModifEd" class="modal">
+                    <!--Modal contenant le formulaire de modification d'un édition-->
                         <span onclick="document.getElementById('ModifEd').style.display= 'none'" class="close" title="Close modal">&times;</span>
                         <form class="modal-content" action="ModifierEditionAction.php" method="post">
                             <div class="container">
@@ -151,7 +148,7 @@
             header("Location: home.php");
         }
     ?>
-
+<!--Formulaire pour modifier l'emplacement du festival-->
 <form method="post" action="EditLocationAction.php">
     <label for="Ville">Ville:</label>
     <input type="text" name="Ville" id="Ville">
@@ -167,6 +164,7 @@
 
 
 <script>
+    //Finction de calcul des coordonnées de l'emplacement du festival
     let queryCoord = {lat : 0, lng : 0};
     document.getElementById("Adresse").onchange = function(){ changeLieu();}  
     document.getElementById("Ville").onchange = function(){ changeLieu();}
@@ -202,7 +200,8 @@
 
 
 <script>
-  var $limitNum = 150;
+    //fonction limitant la taille max de la description d'une édition
+  var $limitNum = 150;  //modifier cette variable pour modifier le nombre maximum de caractère de la description d'une édition
 $('textarea[name="Description"]').keydown(function() {
     var $this = $(this);
 

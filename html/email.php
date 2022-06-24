@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--CSS Files-->
         <link rel="stylesheet" type="text/css" href="../css/email.css">
         <!--Favicon-->
         <link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
@@ -34,7 +35,7 @@
               <img src="../images/icon/nocar.png">
               <a id="email1">Supr. compte</a>
           </li>
-
+                                                                            <!--Navbar latérale avec choix de l'email à modifier-->
           <li class="nav__items" id="email2">
               <img src="../images/icon/email.png">
               <a id="email2">Supr. trajet</a>
@@ -76,6 +77,7 @@
     </ul>
 </nav>
 
+<!--Formulaires contenant les paragraphe et le titre du mail a changer-->
 <div class="main" id="main">
     <form action="emailModif.php" method="post" id="text1">
       <div class="email" >
@@ -92,7 +94,7 @@
         <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >L'équipe des Briques Rouges</textarea>
         <button type="submit" id="saveButton">Save</button>
     </div>
-    <!--<button type="button" id="editButton">Edit</button>-->
+    
 
 </form>
 
@@ -110,7 +112,7 @@
     <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !!</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 
@@ -132,7 +134,7 @@
   <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >En acceptant la demande, tu acceptes d'envoyer tes coordonnées ainsi que ton numéro de téléphone à ton conducteur.</textarea>
   <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 
@@ -152,7 +154,7 @@
     <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 
@@ -173,7 +175,7 @@
     <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 
@@ -196,7 +198,7 @@
     <textarea name="p4"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 <form action="emailModif.php" method="post" id="text7">
@@ -214,7 +216,7 @@
     <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !<br>L'équipe des Briques Rouges</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 <form action="emailModif.php" method="post" id="text8">
@@ -232,7 +234,7 @@
     <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
-<!--<button type="button" id="editButton">Edit</button>-->
+
 
 </form>
 
@@ -241,7 +243,7 @@
 <p id="save">Save Text</p>
 
 
-
+<!--Style JS-->
 <script type="text/javascript">
     const tx = document.getElementsByTagName("textarea");
     for (let i = 0; i < tx.length; i++) {
@@ -281,7 +283,7 @@
     div.children[i].style.display = "none";
 }
 
-
+//Fonction pour cacher tous les formulaires
 function cacher(){
 
     for (var i = 0; i < div.children.length; i++) {
@@ -289,7 +291,7 @@ function cacher(){
   }
 }
 emailBox1.style.display = "flex";
-
+//On cache tous les formulaires puis on affiche celui demandé
 showBox1.onclick = function(){
     cacher();
     emailBox1.style.display = "flex";
@@ -335,19 +337,6 @@ showBox8.onclick = function(){
 
 </script>
 
-<script type="text/javascript">
-  let paragraph = document.getElementById("textzone");
-  let edit_button = document.getElementById("editButton");
-
-  edit_button.addEventListener("click", function() {
-
-    paragraph.removeAttribute('readonly');
-    paragraph.style.backgroundColor = "#dddbdb";
-    emailBox1.style.display ="flex";
-} );
-
-
-</script>
 
 
 </body>
