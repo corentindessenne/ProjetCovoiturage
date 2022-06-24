@@ -180,15 +180,6 @@ h1{
   justify-content: space-around;
 }
 
-
-.tradecarimg{
-  position: absolute;
-  top: 40vh;
-  left: 45vw;
-  width: 10%;
-}
-
-
 .suball{
   display: flex;
   justify-content: space-around;
@@ -197,10 +188,10 @@ h1{
 
 
 
-.main-bloc .book{
+.main-bloc .accept{
   background-color: #00e640;
   text-decoration: none;
-  color: white;
+  color: black;
   text-align: center;
   padding: 10px;
   margin-left: 10px;
@@ -209,34 +200,41 @@ h1{
   height: 8vh;
   width: 20vw;
   -webkit-transition: all 0.5s ease-in-out;
+    border: solid 2px black;
 }
 
-.main-bloc .book2{
+.main-bloc .decline{
   background-color: #D2042D;
   text-decoration: none;
-  color: white;
   text-align: center;
   padding: 10px;
   margin-left: 10px;
   border-radius: 500px;
   font-weight: 700;
-  height: 8vh;
   width: 20vw;
   -webkit-transition: all 0.5s ease-in-out;
+  border: solid 2px black;
 }
 
-.book:hover{
+.accept:hover{
   color: var(--navy);
   background-color: white;
 }
 
-.book2:hover{
+.decline:hover{
   color: var(--navy);
   background-color: white;
 }
 
-.book-container{
-  width: 100%;
-  text-align: center;
+
+form{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 
+
+a{
+  text-decoration: none;
+  color: black;
+}
