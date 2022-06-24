@@ -70,9 +70,20 @@
 
 			<div>
 				<div>
-					<span class="location"><?php echo $_POST['lieu'];?></span>
+					<?php
+						if($_POST['allerRetour'] == "aller"){
+							$depart = $_POST['lieu'];
+							$arrivee = "LBR Festival";
+						}
+						else{
+							$depart = "LBR Festival";
+							$arrivee = $_POST['lieu'];
+						}
+
+					?>
+					<span class="location"><?php echo $depart; ?></span>
 					<img src="../images/icon/right-arrow 2.png">
-					<span class="location">LBR Festival</span>
+					<span class="location"><?php echo $arrivee; ?></span>
 				</div>
 				<!--Affichage des informations de recherche-->
 				<div>
@@ -260,7 +271,7 @@
 					<div class="account-info">
 						<img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
 						<div class="profile-info">
-							<span class="name"><?php echo $row2['Prenom'];echo $row2['Nom']?></span>
+							<span class="name"><?php echo $row2['Prenom'];echo " ".$row2['Nom']?></span>
 							<div class="available">
 								<?php
 								$value = $row['PlacesRestantes'];
