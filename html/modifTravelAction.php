@@ -22,7 +22,7 @@ else{                                           //On ajuste la valeur du tel en 
 
 $IdTrajet=$_POST["IdTrajet"];                   //On met l'id du trajet dans une variable
 $isDemande=$_POST["isDemande"];
-$defaultLong="3.1134";
+$defaultLong="3.1134";                        //coordonnées par défaut du festival
 $defaultLat="50.7364";
 $defaultLieu="Wervicq-Sud";
 $defaultAdresse="21 Rue de Linselles	";
@@ -39,7 +39,7 @@ if($_POST["AllerRetour"]=="Retour"){
 }
 
 
-$dateArr=strtotime(str_replace(" (heure d’été d’Europe centrale)","",$_POST["dateArr"]));
+$dateArr=strtotime(str_replace(" (heure d’été d’Europe centrale)","",$_POST["dateArr"])); //on convertit en timestamp la string récupérée
 
 if($_POST["AllerRetour"]=="Aller"){
   $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$lieu."',LongitudeDepart='".$_POST["long"]."',LatitudeDepart='".$_POST["lat"]."',LieuArrivee='".$defaultLieu."',LongitudeArrivee='".$defaultLong."',LatitudeArrivee='".$defaultLat."',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='".$defaultAdresse."' ,DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',DisplayTel='".$tel."' WHERE IdTrajet=".$IdTrajet."";

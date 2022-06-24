@@ -247,6 +247,7 @@ if(isset($_SESSION["mail"])){
                     
                 </div>
             </div>
+            <!--Affichage heure d'arrivée + stockage heure d'arrivée date de départ-->
                 <div class="form-item">
                     <label id="arrivalHour" class="arrivalHour">Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
                 </div>
@@ -285,7 +286,8 @@ if(isset($_SESSION["mail"])){
 ?>
 
 <script>
-  var $limitNum = 150;
+    //fonction pour limiter le nombre de caractère dans la description
+  var $limitNum = 150;  //Changer cette variable pour modifier la taille limite de la description
 $('textarea[name="Description"]').keydown(function() {
     var $this = $(this);
 
@@ -299,7 +301,7 @@ $('textarea[name="Description"]').keydown(function() {
 <script>
     
     if(<?php echo $isDemande; ?>=="1"){
-       
+       //Affichage ou non du numéro de téléphone dans la carte du trajet en haut de la page
 
         document.getElementById("tel").onchange= function(){
             if(document.getElementById("tel").checked === true){
@@ -314,7 +316,7 @@ $('textarea[name="Description"]').keydown(function() {
     }
     else{
        
-
+        //modification de la carte de trajet en fonction des inputs
         document.getElementById("Prix").onchange= function() {
             document.getElementById("prix").innerHTML=document.getElementById("Prix").value+"€";
         }
@@ -328,6 +330,7 @@ $('textarea[name="Description"]').keydown(function() {
             }
         }
     }
+    //Modification du formulare en fonction de si le trajet est un aller ou un retour
     if("<?php echo $isDemande; ?>"=="1"){
         if("<?php echo $TypeTrajet; ?>"=="Retour") {
             document.getElementById("departureSpan").innerHTML="Lieu de départ :";
@@ -377,7 +380,7 @@ $('textarea[name="Description"]').keydown(function() {
 let queryCoord = {lat : 0, lng : 0};
     let Duree=0;
     
-  
+    //activation des fonctions de recherche de coordonnées et calcul de lheure d'arrivée au changement d'un input en lien avec l'heure ou l'emplacement
         if(<?php echo $isDemande; ?>==0){
             document.getElementById("arrival2").onchange = function(){ 
                 document.getElementById("lieuArrivee").innerHTML=document.getElementById("arrival2").value;
@@ -403,7 +406,7 @@ let queryCoord = {lat : 0, lng : 0};
         }
        
      
-
+//fonction pour récupérer dans une string l'adresse et la ville entrée
     function changeLieu(demande){
         let sens="<?php echo $TypeTrajet;?>";
         let quer="";
@@ -439,7 +442,7 @@ let queryCoord = {lat : 0, lng : 0};
 
 
 
-  
+    //fonction pour réupérer les coordonnées
     function getDataFromForm(query,demande){
     
         
@@ -485,7 +488,7 @@ let queryCoord = {lat : 0, lng : 0};
                 avoidTolls: false,
             };
             
-              
+              //calcul de la durée du trajet
             directionsService.route(request, function(result, status) {
               if (status == 'OK') {
                 directionsRenderer.setDirections(result);
@@ -525,13 +528,13 @@ let queryCoord = {lat : 0, lng : 0};
     
     
 
-
+    //calcul de la date et l'heure d'arrivée
     function EditArrival(isDemande){
       let DureeHeure=0;
       let temp=Duree;
       while (Duree>60){
               DureeHeure++;
-              Duree-=60;
+              Duree-=60;            //conversion au format heure:minute de la durée du trajet
             }
             let FinalDuree=DureeHeure+":"+Duree;
             let HeureDepart="";
@@ -539,20 +542,20 @@ let queryCoord = {lat : 0, lng : 0};
             if(isDemande==0){
                 heureDep=document.getElementById("heureDepart2").value;
               
-            }
+            }                                               //on récupère l'heure de départ donnée par l'utilisateur
             else{
                 heureDep=document.getElementById("heureDepart1").value;
             }
             console.log(heureDep);
-            let DureeTab = FinalDuree.split(":");
+            let DureeTab = FinalDuree.split(":");                                    //on sépare les heures et les minutes dans un tableau
             var DepTab = heureDep.split(":");
             let FinalMin=0;
             let FinalHour=0;
             if(parseInt(DureeTab[1])+parseInt(DepTab[1])>60){
-              FinalHour++;
+              FinalHour++;                                                           //si le nombre total de minute dépasse les 60 on les convertit en heure
               FinalMin=-60;
             }
-            FinalHour+=parseInt(DureeTab[0])+parseInt(DepTab[0]);
+            FinalHour+=parseInt(DureeTab[0])+parseInt(DepTab[0]);                     // on transforme les données en int pour faire le calcul
             FinalMin+=parseInt(DureeTab[1])+parseInt(DepTab[1]);
             let dateDep="";
             if(isDemande==1){
@@ -565,38 +568,30 @@ let queryCoord = {lat : 0, lng : 0};
             
             if(FinalMin<10){
               FinalMin="0"+FinalMin;
-            }
+            }                                                                    //on gère l'affichage de l'heure en rajoutant un 0 pour les nombres a 1 chiffre
             if(FinalHour<10){
               FinalHour="0"+FinalHour;
             }
             else if(FinalHour>23){
               while(FinalHour>23){
-                FinalHour-=24;
+                FinalHour-=24;                                                      //On augmente la date d'arrivée si le trajet dépasse minuit
                 dateDep.setUTCDate(dateDep.getUTCDate() + 1);
               }
             }
             
             if(isDemande==1){
-              document.getElementById("arrivalHour").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;
-              document.getElementById("dateArr").value=dateDep;
-              document.getElementById("heureArrivee1").value=FinalHour+":"+FinalMin;
+              document.getElementById("arrivalHour").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;      //on affiche l'heure d'arrivée
+              document.getElementById("dateArr").value=dateDep;                                                         //on place les informations dans les inputs
+              document.getElementById("heureArrivee1").value=FinalHour+":"+FinalMin;    
             }
             else{
               document.getElementById("arrivalHour2").innerHTML="Heure d'arrivée estimée: "+FinalHour+":"+FinalMin;
-              document.getElementById("dateArr2").value=dateDep;
-              document.getElementById("heureArrivee2").value=FinalHour+":"+FinalMin;
+              document.getElementById("dateArr2").value=dateDep;                                                        //on affiche l'heure d'arrivée
+              document.getElementById("heureArrivee2").value=FinalHour+":"+FinalMin;                                    //on place les informations dans les inputs
             }          
-            document.getElementById("heureArrivee").innerHTML=FinalHour+":"+FinalMin;
+            document.getElementById("heureArrivee").innerHTML=FinalHour+":"+FinalMin;          //On change l'heure affichée sur la carte
             
-            
-            Duree=temp;
-            console.log(document.getElementById("heureArrivee2"));
-            if(isDemande==1){
-                console.log(document.getElementById("dateArr").value);
-            }
-            else{
-                console.log(document.getElementById("dateArr2").value);
-            }
+            Duree=temp;                                                                     //On redonne a la variable durée la durée précédemment calculée
             
       }
 

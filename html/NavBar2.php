@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
 
-
+//burger pour rendre la navbar plus responsive
 const navSlide = () =>{
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
@@ -49,7 +49,7 @@ const navLinks = document.querySelectorAll('.nav-links li')
 burger.addEventListener('click', () =>{
     nav.classList.toggle('nav-active')
 
-
+        //animation du burger
     navLinks.forEach((link,index) =>{
     if (link.style.animation) {
         link.style.animation = '';

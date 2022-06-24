@@ -1,13 +1,12 @@
 <?php
-// Include the database configuration file
+//Connexion a la base de donnée
 include 'Connexion.php';
 $statusMsg = '';
 
 $mail=$_SESSION["mail"];
-$sql = "SELECT IdCompte FROM compte WHERE Email='".$mail."'" ;
+$sql = "SELECT IdCompte FROM compte WHERE Email='".$mail."'" ;//On récupère l'id du compte concerné
 $result = $conn->query($sql);
 if ($result->num_rows >  0) {
-    // output data of each row
     $row = $result->fetch_assoc();
       $id=$row["IdCompte"];
       
@@ -16,17 +15,17 @@ if ($result->num_rows >  0) {
 // File upload path
 $targetDir = "../images/PhotoProfil/";
 $fileName = basename($_FILES["file"]["name"]);
-$ext = pathinfo($fileName, PATHINFO_EXTENSION);    //get the extension of the file
+$ext = pathinfo($fileName, PATHINFO_EXTENSION);    //on récupère le type du fichier
 $fileName=$id.".".$ext;
-$targetFilePath = $targetDir.$id.".".$ext;  //rename the file with the account id so it deletes itself when updated in the database
+$targetFilePath = $targetDir.$id.".".$ext;  //On renomme le fichier en fonction de l'Id pour éviter d'écraser la photo de profil d'un autre compte
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 if(!empty($_FILES["file"]["name"])){
-    // Allow certain file formats
+    // On accepte que les fichier de type jpg jpeg ou png
     $allowTypes = array('jpg','png','jpeg');
     if(in_array($fileType, $allowTypes)){
-        // Upload file to server
+        //On ajoute le fichier dans le seveur
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-            // Insert image file name into database
+            // On insère le fichier dans la base de donnée
             $request="UPDATE compte SET  PhotoProfil='".$id.".".$ext."' WHERE Email='".$_SESSION["mail"]."' ";
             if ($conn->query($request) === TRUE) {
                 header("Location: Profil.php");
@@ -36,6 +35,9 @@ if(!empty($_FILES["file"]["name"])){
                 }
               
         }else{
+            //************************* 
+            //   MESSAGE D'ERREUR
+            //************************* 
             ?>
                 <script type="text/javascript">
                     alert("Une erreur s'est produite lors de l'envoie de ton image");

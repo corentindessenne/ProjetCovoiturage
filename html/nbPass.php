@@ -15,6 +15,7 @@
 
 
 	<div class="big-bloc">
+		<!--Formulaire pour indiquer le nombre de passagers-->
 		<div class="logo"><a href="home.php"><img src="../images/LBR Ressources/logo.png"></a></div>
 		<div class="title">
 			<span>Veuillez indiquer le nombre de passagers :</span>
@@ -32,14 +33,14 @@
 	<script type="text/javascript">
 		
 		let idTrajet = <?php echo $_GET['idTrajet']; ?>
-
+		//redirect du formulaire
 		document.getElementById('submit').addEventListener("click", ()=>{
 			document.location.href = "../html/reservation.php?idTrajet=" + idTrajet + "&nbPassagers=" + document.getElementById('nbPlaces').value;
 		});
 
 	</script>
 
-
+		<!--Style JS-->
 		<script type="text/javascript">
 	
 			let item = document.getElementsByClassName('bloc');
