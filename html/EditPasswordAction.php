@@ -26,9 +26,9 @@ if ($result->num_rows >  0) {
 <?php
 die();
   }
-$newpassword=$_POST["password_1"];
+$newpassword=$_POST["newPassword"];
   if(password_verify($_POST["password"],$hashedpassword)|| $_SESSION["role"]==1){       //on vérifie que l'utilisateur est un administrateur ou que le mot de passe rentré est le bon
-    $newpassword=password_hash($_POST["password_1"],PASSWORD_DEFAULT);                   //On crypte le nouveau mot de passe
+    $newpassword=password_hash($_POST["newPassword"],PASSWORD_DEFAULT);                   //On crypte le nouveau mot de passe
     $request="UPDATE compte SET motDePasse='".$newpassword."' WHERE IdCompte='".$idCompte."'";    //on remplace le précédent mot de passe par le nouveau mot de passe crypté
     if($conn->query($request) === TRUE){
 
