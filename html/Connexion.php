@@ -15,4 +15,9 @@ if (!$conn) {
     die();
 }
 
-session_start();                                                  //on lance les sessions
+
+if(session_status() == 2){}
+else{
+    session_start(); 
+}
+                                               //on lance les sessions

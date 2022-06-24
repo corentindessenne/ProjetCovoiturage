@@ -20,8 +20,9 @@
 	$nomPrenom = $nom."".$prenom;
 	$typeTrajet = $_POST['typeTrajet2'];
 	$idTrajet = $_POST['idTrajet2'];
+	$idDemande = $_POST['idDemande'];
 
-	$request = "INSERT INTO proposition(idTrajet, typeTrajet, anneeEdition, idCompteConducteur, nomConducteur) VALUES ('$idTrajet', '$typeTrajet', '2022', '$idCompteConducteur', '$nomPrenom')";
+	$request = "INSERT INTO proposition(idDemande,idTrajet, typeTrajet, anneeEdition, idCompteConducteur, nomConducteur) VALUES ('$idDemande','$idTrajet', '$typeTrajet', '2022', '$idCompteConducteur', '$nomPrenom')";
 
 	if($conn->query($request)){
         

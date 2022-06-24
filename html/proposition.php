@@ -148,9 +148,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="tradecar">
-				<img class="tradecarimg" src="../images/icon/trade-car.png">
-			</div>
+
+
 			<div class="right-subbloc">
 				<h1> Vos trajets </h1>
 				<div class="trajets" id="trajets">
@@ -171,7 +170,12 @@
 						$hourStringArrival = $hourString3."h".$hourString4;
 
 						$idTrajetCon = $row['IdTrajet'];
-						$typeTrajetCon = $row['TypeTrajet']
+						$typeTrajetCon = $row['TypeTrajet'];
+
+
+						$requete2 = "SELECT * FROM compte WHERE IdCompte='$idCompte'";
+						$result2 = mysqli_query($conn,$requete2);
+						$row2 = mysqli_fetch_assoc($result2);
 
 						?>
 
@@ -232,6 +236,7 @@
 
 			</div>
 			<form action="propositionAction.php" method="post">
+				<input class="hidden" type="text" name="idDemande" value="<?php echo $_GET['idTrajet']; ?>">
 				<input class="hidden" type="text" name="idTrajet2" value="<?php echo $idTrajetCon;?>">
 				<input class="hidden" type="text" name="typeTrajet2" value="<?php echo $typeTrajetCon;?>">
 				<input type="submit"  value="Bien sûr">

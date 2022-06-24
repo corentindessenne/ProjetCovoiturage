@@ -145,7 +145,6 @@ h1{
   align-items: center;
   margin-left: 40px;
   margin-right: 20px;
-  margin-top: 10px;
   position: absolute;
   left: -20px;
   bottom: 20px;
@@ -158,7 +157,9 @@ h1{
 
 .account-info img{
   width: 60px;
+  height: 60px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .account-info .name{

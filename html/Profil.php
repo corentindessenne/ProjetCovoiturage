@@ -114,12 +114,29 @@
         }
     }
 
+    if(isset($_SESSION['alertTrajetCree'])){
+        if($_SESSION['alertTrajetCree'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Ton trajet a bien été créé</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertTrajetCree'] = 0;
+        }
+    }
 
-
-
-
-
-
+    if(isset($_SESSION['alertDemandeCreee'])){
+        if($_SESSION['alertDemandeCreee'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Ta demande de trajet a bien été créée</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertDemandeCreee'] = 0;
+        }
+    }
 
 
     //redirect vers la page d'accueil si l'utilisateur n'est pas connecté
@@ -357,11 +374,7 @@
                     <div class="profile-info">
                         <span class="name"><?php echo $prenom." ".$nom?></span>
                         <div class="available">
-                            <?php
-                            $value = $row['PlacesRestantes'];
-                            if($value == 1) echo $value." place restante";
-                            else echo $value." places restantes";
-                            ?>
+                            Recherche une voiture
                         </div>
                     </div>
 
@@ -517,6 +530,102 @@
                         <?php
                     }
                 }
+            }
+
+            //check si a des propositions de trajet suite aux demandes postées
+            $requete1 = "SELECT * FROM trajet WHERE IdCompte='$idCompte' AND isDemande = 1";
+            $result1 = mysqli_query($conn,$requete1);
+            while( $row1 = mysqli_fetch_assoc($result1)){
+
+                $idDemande = $row1['IdTrajet'];
+
+                $requete = "SELECT * FROM proposition WHERE idDemande = '$idDemande' ";
+                $result = mysqli_query($conn,$requete);
+                $count = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+
+
+                    $idTrajetConducteur = $row['idTrajet'];
+                    $requete3 = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajetConducteur' ";
+                    $result3 = mysqli_query($conn,$requete3);
+                    $row3 = mysqli_fetch_assoc($result3);
+
+                    $count++;
+
+                    $hourString1 = substr($row3['HeureDepart'],0,2);
+                    $hourString2 = substr($row3['HeureDepart'],3,2);
+                    $hourStringDeparture = $hourString1."h".$hourString2;
+
+
+                    $hourString3 = substr($row3['HeureArrivee'],0,2);
+                    $hourString4 = substr($row3['HeureArrivee'],3,2);
+                    $hourStringArrival = $hourString3."h".$hourString4;
+
+                    $idCompteConducteur = $row['idCompteConducteur'];
+                    $requete2 = "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur'";
+                    $result2 = mysqli_query($conn,$requete2);
+                    $row2 = mysqli_fetch_assoc($result2);
+
+                    $prenom = $row2['Prenom'];
+                    $nom = $row2['Nom'];
+
+                    $pp = $row2['PhotoProfil'];
+                    if ($pp != NULL) {
+                        
+                    } 
+                    else {
+                        $pp = "defaultpp.jpg";
+                    } 
+
+                ?>
+
+                <div class="item">
+                    <div class="data-group">
+                        <span class="horaire">
+                            <?php echo $hourStringDeparture; ?>
+                        </span>
+                        <span class="place">
+                            <?php echo utf8_encode($row3['LieuDepart']); ?>
+                        </span>
+
+                        <span class="date">
+                            <?php echo utf8_encode($row3['DateDepart']); ?>
+                        </span>
+                    </div>
+
+                    <div class="data-group">
+                        <span class="horaire">
+                            <?php echo $hourStringArrival; ?>
+                        </span>
+                        <span class="place">
+                            <?php echo utf8_encode($row3['LieuArrivee']); ?>
+                        </span>
+
+                        <span class="price">
+                            <?php echo $row3['Prix']; ?> €
+                        </span>
+                    </div>
+
+                    <div class="account-info">
+                        <img class="profile-picture" src="../images/PhotoProfil/<?php echo $pp?>">
+                        <div class="profile-info">
+                            <span class="name"><?php echo $prenom." ".$nom?></span>
+                            <div class="available">
+                                Te propose de rejoindre
+                            </div>
+                        </div>
+
+                        <div class="select">
+                                <a href="<?php echo $link."1"?>"><img src="../images/icon/845646.png"></a>
+                                <a href="<?php echo $link."0"?>"><img src="../images/icon/463612.png"></a>
+                        </div>
+
+                    </div>
+                </div>
+                <?php
+
+                }
+
             }
 
             ?>
