@@ -66,6 +66,18 @@
         }
     }
 
+    if(isset($_SESSION['alertPlusAssezDePlaceDansLeTrajet'])){
+        if($_SESSION['alertPlusAssezDePlaceDansLeTrajet'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Le trajet ne possède pas assez de places dans la voiture pour accepter la réservation</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertPlusAssezDePlaceDansLeTrajet'] = 0;
+        }
+    }
+
     if(isset($_SESSION['alertMauvaisFormatTel'])){
         if($_SESSION['alertMauvaisFormatTel'] == 1){
             ?>
@@ -352,6 +364,8 @@
 								</div>
                         
                     </div>
+ 
+                    <a href="infosTrajet.php?IdTrajet=<?php echo $row['IdTrajet']; ?>"><img style="height: 20px;width: 20px;margin-right: 5px;margin-top: 5px;" src="../images/icon/info.png"></a>
 
                     <form method="post" action="modifTravel.php">
                         <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>"> 
@@ -527,8 +541,13 @@
                                     </span>
 								</div>
                         </div>
+
+                        <a href="infosTrajet.php?IdTrajet=<?php echo $row['IdTrajet']; ?>"><img style="height: 20px;width: 20px;margin-right: 5px;margin-top: 5px;" src="../images/icon/info.png"></a>
+                        
                     </div>
                 </div>
+
+
 
             <?php 
             }}

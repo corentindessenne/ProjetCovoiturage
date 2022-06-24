@@ -7,6 +7,8 @@ include("Connexion.php");
 <head>
     <!--CSS files-->
     <link rel="stylesheet" type="text/css" href="../css/forget.css">
+    <link rel="stylesheet" type="text/css" href="../css/nav.css">
+
     <!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
     <meta charset="UTF-8">
