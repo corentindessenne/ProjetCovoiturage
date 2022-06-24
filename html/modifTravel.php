@@ -2,39 +2,40 @@
 <html>
 <head>
     <title>Modification d'un trajet conducteur</title>
+    <!--CSS Files-->
     <link href ="../css/profile.css" rel="stylesheet" >
     <link href="../css/EditTrajet.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/nav.css">
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!--Favicon-->
+    <!--Favicon-->
 	<link rel="icon" href="../images/LBR Ressources/intiniales.png" type="images/png"/> 
-  <!--Google Fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--Library-->
-  <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <!--Google Maps API-->
-  <script async
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg">
-  </script>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Library-->
+    <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--Google Maps API-->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzOGPYwZqOFb6hCGtZo68-nQ4sxwum7Hg">
+    </script>
 </head>
 
 <body>
 <?php 
-include 'Connexion.php';
-include 'NavbarConn.php';
+include 'Connexion.php';        //Connexion a la base de donnée
+include 'NavbarConn.php';       //Affichage navbar
 if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
-    header("Location:home.php");
+    header("Location:home.php");        //On redirige l'utilisateur s'il n'est pas connecté
     
   }
 
 if(isset($_SESSION["mail"])){
     $idTrajet=$_POST["IdTrajet"];
-    $requete = "SELECT * FROM trajet WHERE IdTrajet='".$idTrajet."'";
+    $requete = "SELECT * FROM trajet WHERE IdTrajet='".$idTrajet."'";       //On récupère les informations nécessaires depuis la base de données a partir de l'id du trajet récupéré
 			$result = mysqli_query($conn,$requete);
             $row = mysqli_fetch_assoc($result);
             $isDemande= $row["isDemande"];
@@ -59,11 +60,12 @@ if(isset($_SESSION["mail"])){
             $placesRestantes=$row['PlacesRestantes'];
     ?>
 
+<!--Affichage du trajet sous la forme de carte pour donner a l'utilisateur une idée de l'apparence de sa demande une fois modifiée-->
 <div id="Historique" >
     <div class="ListeTrajets">
     <div id="down" class="wrapper">
 			<?php
-
+                //Affichage des horaires
 				$hourString1 = substr($HeureDepart,0,2);
 				$hourString2 = substr($HeureDepart,3,2);
 				$hourStringDeparture = $hourString1."h".$hourString2;
@@ -74,7 +76,7 @@ if(isset($_SESSION["mail"])){
 				$hourStringArrival = $hourString3."h".$hourString4;
 
 				?>
-
+                    <!--Affichage de la date et du lieu de départ ainsi que la destination-->
 					<div class="item">
 						<div class="data-group">
 							<span class="horaire" id="heureDepart">
@@ -96,12 +98,12 @@ if(isset($_SESSION["mail"])){
 							<span class="place" id="lieuArrivee">
 								<?php echo utf8_encode($LieuArrivee); ?>
 							</span>
-
+                            <!--Affichage du prix-->
 							<span class="price" id="prix">
 								<?php echo $row['Prix']; ?>€
 							</span>
 						</div>
-
+                        <!--On récupère les informations du créateur du trajet-->
 						<div class="account-info">
 						<?php $sql = "SELECT * FROM compte WHERE IdCompte='".$idCompte."'";
                                 
@@ -117,6 +119,7 @@ if(isset($_SESSION["mail"])){
 										else echo $placesRestantes." places restantes"
 									?>
 								</div>
+                                <!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
                                 <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
@@ -136,17 +139,21 @@ if(isset($_SESSION["mail"])){
         if($isDemande==0){
     ?>
     <div class="infos formDiv" id="infos" >
+        <!--Formulaire pour la modification d'un trajet-->
         <form action="modifTravelAction.php" method="post" class="infos-secondary">
+            <!--On stocke less coordonnées s'il s'agit d'un aller ou d'un retour et s'il s'agit ou non d'une demande ici-->
             <input type="hidden" name="long" id="long2" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat2" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="0">
             <input type="hidden" name="AllerRetour" value="<?php echo $TypeTrajet; ?>">
             
+            <!--Groupe contenant les informations en lien avec des emplacement-->
             <div class="input-group">
                 <div class="form-item"><label for="departure2" id="departureSpan2" class="upper">Ville de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Ville" id="departure2" value="<?php echo $LieuDepart; ?>"></div>
                 <div class="form-item"><label for="adresse2" id="adresseSpan2" class="upper">Adresse de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Adresse" id="adresse2"  value="<?php echo $AdresseDepart; ?>"></div>
                 <div class="form-item"><label for="arrival2" id="arrivalSpan2" class="upper">Vers</label>   <input type="text" required="required" class="inputUpper" name="arrival" id="arrival2"  value="<?php echo $LieuArrivee; ?>"></div>
             </div>
+            <!--Groupe contenant la date et l'heure de départ-->
             <div class="input-group">
                 <div class="form-item datediv">
                     <label for="date2" class="upper">Date de départ:</label>
@@ -160,12 +167,13 @@ if(isset($_SESSION["mail"])){
                     </select>
                 </div>
             </div>
-            <div class="form-item" style="margin-bottom: 20px;">
-                <label id="arrivalHour2" class="arrivalHour" style="width: 850px;text-align: center;"> Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
+            <div class="form-item">
+                <label id="arrivalHour2" class="arrivalHour"> Heure d'arrivée estimée: <?php echo substr_replace($HeureArrivee ,"", -8); ?></label>
             </div>
             <input type="hidden" name="heureArrivee" id="heureArrivee2" value="<?php echo substr_replace($HeureArrivee ,"", -8); ?>">
             <input type="hidden" name="dateArr" id="dateArr2" value="<?php echo $DateArrivee; ?>">
             <br/>
+            <!--Groupe contenant le prix-->
             <div class="input-group PassPrix">
                 <div class="form-item">
                     <label for="Prix" class="upper">Prix par passager: </label>
@@ -174,17 +182,12 @@ if(isset($_SESSION["mail"])){
                         <i class="PrixSelect">€</i>
                     </div>
                 </div>
-                <br>
-                <div class="form-item">
-                    <label for="NbPass" class="upper">Nombre maximum de passager</label>
-                    <input type="number" name="NbPass" id="NbPass" required="required" class="NbPass inputUpper" step="1" min="0" max="15" value="<?php echo $NbPass; ?>">
-                </div>
             </div>
             <br/>
             <div class="input-group">
                 <div class="form-item">
                     <label for="Description2" class="upper">Description (facultatif): </label>
-                    <textarea name="Description" id="Description2" placeholder="Description" rows="4" cols="40"><?php echo $Description; ?></textarea>
+                    <textarea name="Description" id="Description2" placeholder="Écris içi la description de ton trajet" rows="4" cols="40"><?php echo $Description; ?></textarea>
                 </div>
             </div>
             <br/>
@@ -192,8 +195,10 @@ if(isset($_SESSION["mail"])){
                 <div class="Checkboxtel">
                     <input type="checkbox" id="tel2" value='1' name="tel" <?php if($tel==1){ ?>checked="true"<?php }?>> 
                     <label for="tel2">Coche pour rendre ton numéro de téléphone visible sur ton annonce</label>
+                    <!--Checkbox pour afficher ou non le numéro de téléphone du créateur de la demande-->
                 </div>
             </div>
+            <!--On stocke ici l'Id du trajet-->
             <input type="hidden" name="IdTrajet" value="<?php echo $idTrajet; ?>"></input>
             
             <br/>
@@ -212,18 +217,22 @@ if(isset($_SESSION["mail"])){
 
     else{
         ?>
+    <!--Formulaire de modification d'une demande de trajet-->
     <div class="infos formDiv" id="infos" >
         <form action="modifTravelAction.php" class="infos-secondary" method="post">
+            <!--Stockage des coordonnées-->
             <input type="hidden" name="long" id="long" value="<?php if($TypeTrajet=="Aller"){echo $lngdep;}else{echo $lngarr;}?>">
             <input type="hidden" name="lat" id="lat" value="<?php if($TypeTrajet=="Aller"){echo $latdep;}else{echo $latarr;}?>">
             <input type="hidden" name="isDemande" value="1">
             <input type="hidden" name="AllerRetour" value="<?php echo $TypeTrajet; ?>">
         
+            <!--Groupe contenant les informations en lien avec des emplacement-->
             <div class="input-group">
                 <div class="form-item"><label for="departure" id="departureSpan" class="upper">Ville de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Ville" id="departure" value="<?php echo $LieuDepart; ?>"></div>
                 <div class="form-item"><label for="adresse" id="adresseSpan" class="upper">Adresse de départ/arrivée:</label>   <input type="text" class="inputUpper" required="required" name="Adresse" id="adresse"  value="<?php if($TypeTrajet=="Aller"){echo $AdresseDepart;} else{echo $AdresseArrivee;} ?>"></div>
                 <div class="form-item"><label for="arrival" id="arrivalSpan" class="upper">Vers:</label>   <input type="text" class="inputUpper" required="required" name="arrival" id="arrival"  value="<?php echo $LieuArrivee; ?>"></div>
             </div>
+            <!--Groupe contenant la date et l'heure de départ-->
             <div class="input-group">
                 <div class="form-item datediv">
                     <label for="date" class="upper datelabel">Date de départ:</label>
@@ -248,7 +257,7 @@ if(isset($_SESSION["mail"])){
             <div class="input-group">
                 <div class="form-item">
                     <label for="Description" class="upper">Description</label>
-                    <textarea name="Description" id="Description" placeholder="Description" rows="4" cols="40" ><?php echo $Description ?></textarea>
+                    <textarea name="Description" id="Description" placeholder="Écris içi la description de ton trajet" rows="4" cols="40" ><?php echo $Description ?></textarea>
                 </div>
             </div>
             <br/>
