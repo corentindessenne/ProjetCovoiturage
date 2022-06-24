@@ -105,11 +105,12 @@
     <label for="h1">Titre:</label>
     <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
     <label for="p1">Paragraphe 1:</label>
-    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Je suis désolé de t'annoncer que le conducteur a annulé le trajet "??". </textarea>
+    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Malheureusement, la personne qui devait {{typeTrajet}} festival a supprimé son trajet.</textarea>
     <label for="p2">Paragraphe 2:</label>
-    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu trouveras une alternative pour venir au festival, on t'y attend avec impatience ! </textarea>
+    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Néanmoins, il y a plein d'autres trajets disponibles sur la plateforme ! Appuie sur le bouton ci-dessous pour tous les afficher</textarea>
     <label for="p3">Paragraphe 3:</label>
-    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >A bientôt !!</textarea>
+    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
 
@@ -125,13 +126,10 @@
     <label for="h1">Titre:</label>
     <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
     <label for="p1">Paragraphe 1:</label>
-    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Salut à toi festivalier, 
-      On a remarqué que tu cherchais quelqu'un pour te conduire à "??" le "??" et cela tombe bien puisque quelqu'un semble volontaire pour t'aider 
-  </textarea>
+    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Suite à ta demande, un conducteur s'est proposé pour {{typeTrajet}}  festival. Consulte ton profil pour afficher les détails de cette demande. </textarea>
   <label for="p2">Paragraphe 2:</label>
-  <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >" notes du conducteur"</textarea>
-  <label for="p3">Paragraphe 3:</label>
-  <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >En acceptant la demande, tu acceptes d'envoyer tes coordonnées ainsi que ton numéro de téléphone à ton conducteur.</textarea>
+  <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
   <button type="submit" id="saveButton">Save</button>
 </div>
 
@@ -167,12 +165,12 @@
     <label for="h1">Titre:</label>
     <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
     <label for="p1">Paragraphe 1:</label>
-    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" > Salut à toi, 
-    On a une bonne nouvelle a t'annoncer puisque qu'il semblerait que ta demande ait été acceptée.</textarea>
+    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Bonne nouvelle : ta demande vient d'être acceptée !</textarea>
     <label for="p2">Paragraphe 2:</label>
-    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici les coordonnées de ton nouveau partenaire de voyage ! </textarea>
+    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici donc les coordonnées de ton conducteur :</textarea>
     <label for="p3">Paragraphe 3:</label>
-    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
+    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
 
@@ -226,12 +224,12 @@
     <label for="h1">Titre:</label>
     <textarea name="h1"   rows="2" cols="50" wrap="soft" id="textzone" >Salut {{Prenom}} !</textarea>
     <label for="p1">Paragraphe 1:</label>
-    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" > Salut à toi, 
-    On a une bonne nouvelle a t'annoncer puisque qu'il semblerait que ta demande ait été acceptée.</textarea>
+    <textarea name="p1"   rows="4" cols="25" wrap="soft" id="textzone" >Tu as accepté un nouveau passager dans ta voiture !</textarea>
     <label for="p2">Paragraphe 2:</label>
-    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici les coordonnées de ton nouveau partenaire de voyage ! </textarea>
+    <textarea name="p2"   rows="4" cols="25" wrap="soft" id="textzone" >Voici ses coordonnées:</textarea>
     <label for="p3">Paragraphe 3:</label>
-    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >J'espère que tu passeras un bon moment et fera un bon voyage !</textarea>
+    <textarea name="p3"   rows="4" cols="25" wrap="soft" id="textzone" >Si tu as des questions, n'hésite pas à nous contacter - on est là pour ça
+                            !</textarea>
     <button type="submit" id="saveButton">Save</button>
 </div>
 
