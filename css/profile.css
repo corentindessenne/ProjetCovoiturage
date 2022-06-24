@@ -247,15 +247,17 @@ textarea{
   height: 32px;
   position: relative;
   top: 28px;
-  left: 77.5px;
+  left: 83.5px;
 }
 
 .horaire{
+  min-width: 50px;
   font-weight: 300;
   margin-right: 30px;
 }
 
 .horaire2{
+  min-width: 50px;
   font-weight: 600;
   margin-right: 20px;
 }

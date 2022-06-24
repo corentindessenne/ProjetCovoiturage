@@ -1,3 +1,14 @@
+:root{
+	--black: #161920;
+	--navy : #3671B3;
+	--blue : #BDE4FC;
+	--white : #FFFEE6;
+	--orange : #FF890A;
+	--red : #EA001C;
+	--darkred : #AF001E;
+}
+
+
 body{
 	margin: 0;
 	font-family: 'Roboto';
@@ -372,17 +383,18 @@ h1{
 }
 
 .item::before{
-	content: '';
-	display: block;
-	background-color: var(--navy);
-	width: 3px;
-	height: 30px;
-	position: relative;
-	top: 26px;
-	left: 77.5px;
+  	content: '';
+  	display: block;
+  	background-color: #3671B3;
+  	width: 3px;
+  	height: 32px;
+  	position: relative;
+  	top: 28px;
+ 	left: 83.5px;
 }
 
 .horaire{
+	min-width: 50px;
 	font-weight: 300;
 	margin-right: 30px;
 }
