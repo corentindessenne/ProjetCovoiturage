@@ -340,7 +340,12 @@
 				<div class="textbox">
 					<img class="textimg" src="../images/icon/text.png">
 					<span class="description">
-						<?php echo $descriptionBox[$y]; ?>
+						<?php if ($descriptionBox[$y] == "") {
+							echo "Pas de description";
+						}
+						else{ 
+							echo $descriptionBox[$y]; 
+						}?>
 					</span>
 				</div>
 				<div class="comp-intel">	

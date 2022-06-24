@@ -18,7 +18,7 @@
 
         $sql = "UPDATE reservation SET isAccepted = 1 WHERE idReservation = '$idReservation'";
         if ($conn->query($sql) === TRUE) {
-        	echo "Changement de isAccepted";
+        	
         }
 
         $requete2 = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajet' ";
@@ -28,7 +28,8 @@
 
         $sql = "UPDATE trajet SET PlacesRestantes = '$placesRestantes' WHERE IdTrajet = '$idTrajet' ";
         if ($conn->query($sql) === TRUE) {
-        	echo "Changement de IdTrajet";
+        $_SESSION['alertAcceptPassagerDepuisConducteur'] = 1;
+        header("location:profil.php");
         }
 	}
 
@@ -39,9 +40,7 @@
 		//supprimer la demande de reservation 
 		$requete = "DELETE FROM reservation WHERE idReservation = '$idReservation'";
 		if($conn->query($requete)){
-			echo "delete de la Reservation";
+		$_SESSION['alertRefusePassagerDepuisConducteur'] = 1;
+		header("location:profil.php");
 		}
 	}
-
-	session_start();
-	$_SESSION['alertAcceptPassagerDepuisConducteur'] = 1;
