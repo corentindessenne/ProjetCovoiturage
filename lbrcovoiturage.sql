@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 24 juin 2022 à 13:50
+-- Généré le : ven. 24 juin 2022 à 16:54
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -52,9 +52,7 @@ CREATE TABLE `compte` (
 INSERT INTO `compte` (`IdCompte`, `Nom`, `Prenom`, `Email`, `telephone`, `motDePasse`, `isAdmin`, `PhotoProfil`, `Description`, `isVerif`, `DateCreation`, `lien_verif_mail`, `date_verif_mail`, `token_reset_password`, `expiration_reset_password`) VALUES
 (40, 'Mareel', 'Adrien', 'mareel.adri@yahoo.com', 632618822, '$2y$10$agA.fswt33h9HTxJWa.kj.A627OP0y.1M1awm3/olXfyiTVLgvsZe', 0, 0x34302e6a7067, 'yes', 1, '2022-06-21 22:00:00', '87f699e611b99c979a19366522c75dc4', '2022-06-21 22:00:00', '', ''),
 (41, 'Mareel', 'Adri', 'mareel.adri1@gmail.com', 632618822, '$2y$10$SlF73NrPRipXo6Ht7cd70ejoDkg5mpnq0O1sgXLBU7XYRq1/HhyEi', 0, 0x34312e6a7067, NULL, 1, '2022-06-22 22:00:00', 'b9cf2faf6561d1870f0069da73d7a685', '2022-06-22 22:00:00', '', ''),
-(42, 'Mar', 'Adr', 'adrien.mareel@student.junia.com', 632618822, '$2y$10$CD.cXTTv35UOE9VNR0BouegXOZDyjJ1JiTAj3sDGx1r0eI7TBCV8y', 0, NULL, NULL, 1, '2022-06-22 22:00:00', '7b268df33abbe2844472ed8e02c7d24c', '2022-06-22 22:00:00', '', ''),
-(43, 'zhou', 'lucas', 'lucz1640@gmail.com', 712131415, '$2y$10$Invpmttf4td3SIYPuLpAZO6kb2qV8mDrFh9x3lOcW1N1aXN4e5zh6', 0, NULL, NULL, 1, '2022-06-23 22:00:00', '3eaf2674ce972b81a673dd6f23699343', '2022-06-23 22:00:00', '', ''),
-(44, 'Zou', 'Luka', 'zhou.lucas1@gmail.com', 812131415, '$2y$10$SozT0qJHbYosjjleKCDu9OINYl9C7/dzEnFW13jD8/oIaFhYHLgOq', 0, NULL, NULL, 1, '2022-06-23 22:00:00', 'ee32c59c70e8377a76d20925dea5d491', '2022-06-23 22:00:00', '', '');
+(42, 'Mar', 'Adr', 'adrien.mareel@student.junia.com', 632618822, '$2y$10$CD.cXTTv35UOE9VNR0BouegXOZDyjJ1JiTAj3sDGx1r0eI7TBCV8y', 0, 0x34322e6a7067, NULL, 1, '2022-06-22 22:00:00', '7b268df33abbe2844472ed8e02c7d24c', '2022-06-22 22:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -80,13 +78,21 @@ CREATE TABLE `edition` (
 
 CREATE TABLE `proposition` (
   `idProposition` int(11) NOT NULL,
+  `idDemande` int(10) NOT NULL,
   `idTrajet` int(11) NOT NULL,
   `typeTrajet` varchar(15) NOT NULL,
   `anneeEdition` int(10) NOT NULL,
   `idCompteConducteur` int(11) NOT NULL,
   `nomConducteur` varchar(50) NOT NULL,
-  `isAccepted` tinyint(1) DEFAULT 0
+  `isAccepted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `proposition`
+--
+
+INSERT INTO `proposition` (`idProposition`, `idDemande`, `idTrajet`, `typeTrajet`, `anneeEdition`, `idCompteConducteur`, `nomConducteur`, `isAccepted`) VALUES
+(25, 23, 17, 'Aller', 2022, 40, 'MareelAdrien', 0);
 
 -- --------------------------------------------------------
 
@@ -147,8 +153,8 @@ CREATE TABLE `trajet` (
 --
 
 INSERT INTO `trajet` (`IdTrajet`, `TypeTrajet`, `isDemande`, `Description`, `LieuDepart`, `AdresseDepart`, `LongitudeDepart`, `LatitudeDepart`, `LieuArrivee`, `AdresseArrivee`, `LongitudeArrivee`, `LatitudeArrivee`, `DateDepart`, `DateArrivee`, `HeureDepart`, `HeureArrivee`, `DateAjout`, `NbPassagers`, `PlacesRestantes`, `Prix`, `DisplayTel`, `AnneeEdition`, `IdCompte`) VALUES
-(12, 'Retour', 1, 'C\'est luka, je veux rentrer', 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, 'Amiens', '33 rue de Beauvais', 2.293, 49.8925, '2022-09-21', '2022-09-21', '13:00:00.0000', '14:51:00.0000', '2022-06-24', 1, 1, 0, 0, 2022, 44),
-(15, 'Retour', 0, 'C\'est lulu, viens à bord de mon bolide', 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, 'Amiens', '24 rue de LaFayette', 2.2163, 49.8998, '2022-09-21', '2022-09-21', '19:00:00.0000', '20:55:00.0000', '2022-06-24', 4, 4, 5, 0, 2022, 43);
+(17, 'Aller', 0, '', 'Lille', 'Rue solférino', 3.05952, 50.6328, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-24', '2022-09-24', '15:20:00.0000', '15:51:00.0000', '2022-06-24', 2, 1, 4, 1, 2022, 40),
+(23, 'Aller', 1, '', 'Lille', 'Rue nationale', 3.05952, 50.6328, 'Wervicq-Sud', '21 Rue de Linselles', 3.1134, 50.7364, '2022-09-24', '2022-09-24', '13:00:00.0000', '13:31:00.0000', '2022-06-24', 1, 1, 0, 1, 2022, 42);
 
 --
 -- Index pour les tables déchargées
@@ -193,19 +199,19 @@ ALTER TABLE `compte`
 -- AUTO_INCREMENT pour la table `proposition`
 --
 ALTER TABLE `proposition`
-  MODIFY `idProposition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idProposition` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IdTrajet` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
