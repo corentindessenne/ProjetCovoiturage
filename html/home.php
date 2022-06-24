@@ -286,7 +286,7 @@ data-aos-duration="600"   data-aos-delay="500">
 </div>
 </div>
 <!--********************************************-->
-<!--	Liste des 5 derniers covoiturages		-->
+<!--	Liste des 5 derniers covoiturages		   -->
 <!--********************************************-->
 <div class="list" id="list">
 	<div class="header">
@@ -298,7 +298,7 @@ data-aos-duration="600"   data-aos-delay="500">
 	<div id="down" class="wrapper">
 		<?php
 
-		$requete = "SELECT * FROM trajet ORDER BY DateAjout DESC";
+		$requete = "SELECT * FROM trajet WHERE isDemande = 0 ORDER BY DateAjout DESC";
 		$result = mysqli_query($conn,$requete);
 		$count = 0;
 			//on récupère les informations des dernier trajets
@@ -374,7 +374,7 @@ data-aos-duration="600"   data-aos-delay="500">
                                 <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+										if($row["DisplayTel"]==1) echo implode(" ", str_split("0".$row2["telephone"], 2));
 		
 									?>
                                     </span>

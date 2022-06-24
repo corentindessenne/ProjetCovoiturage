@@ -66,6 +66,18 @@
         }
     }
 
+    if(isset($_SESSION['alertPlusAssezDePlaceDansLeTrajet'])){
+        if($_SESSION['alertPlusAssezDePlaceDansLeTrajet'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Le trajet ne possède pas assez de places dans la voiture pour accepter la réservation</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertPlusAssezDePlaceDansLeTrajet'] = 0;
+        }
+    }
+
     if(isset($_SESSION['alertMauvaisFormatTel'])){
         if($_SESSION['alertMauvaisFormatTel'] == 1){
             ?>
@@ -345,13 +357,15 @@
                                 <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
+										if($row["DisplayTel"]==1) echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
 								</div>
                         
                     </div>
+ 
+                    <a href="infosTrajet.php?IdTrajet=<?php echo $row['IdTrajet']; ?>"><img style="height: 20px;width: 20px;margin-right: 5px;margin-top: 5px;" src="../images/icon/info.png"></a>
 
                     <form method="post" action="modifTravel.php">
                         <input class="hidden" type="text" name="IdTrajet" value="<?php echo $row['IdTrajet']; ?>"> 
@@ -426,7 +440,7 @@
                         <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
+										if($row["DisplayTel"]==1) echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
@@ -521,14 +535,19 @@
                             <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										echo "numéro de téléphone: ".$phone;
+										echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
 								</div>
                         </div>
+
+                        <a href="infosTrajet.php?IdTrajet=<?php echo $row['IdTrajet']; ?>"><img style="height: 20px;width: 20px;margin-right: 5px;margin-top: 5px;" src="../images/icon/info.png"></a>
+                        
                     </div>
                 </div>
+
+
 
             <?php 
             }}
