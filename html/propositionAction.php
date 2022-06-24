@@ -25,17 +25,25 @@
 	$request = "INSERT INTO proposition(idDemande,idTrajet, typeTrajet, anneeEdition, idCompteConducteur, nomConducteur) VALUES ('$idDemande','$idTrajet', '$typeTrajet', '2022', '$idCompteConducteur', '$nomPrenom')";
 
 	if($conn->query($request)){
+
+        $query = mysqli_query($conn, "SELECT * FROM trajet WHERE IdTrajet = '$idDemande'");
+        $result3 = mysqli_fetch_assoc($query);
+        $idDemandeur = $result3['IdCompte'];
+
+        $query3 = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idDemandeur'");
+        $result3 = mysqli_fetch_assoc($query);
+        $mailDemandeur = $result['Email'];
         
-        $request = mysqli_query($conn, "SELECT IdCompte FROM trajet WHERE IdTrajet = '$idTrajet' ");
+       /* $request = mysqli_query($conn, "SELECT IdCompte FROM trajet WHERE IdTrajet = '$idTrajet' ");
         $result = mysqli_fetch_assoc($request);
         $idCompteConducteur = $result['IdCompte'];
 
         $request = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur' ");
-        $result = mysqli_fetch_assoc($request);
+        $result = mysqli_fetch_assoc($request);*/
 
         include('../mails/header_mails.php');
 
-        $dest = $result['Email'];
+        $dest = $mailDemandeur;
         $sujet = "Tu as reçu(e) une proposition pour ton trajet !";
         $corp = file_get_contents("../mails/template_mail_demande_trajet.php");
         $corp = str_replace("{{Prenom}}", $result['Prenom'], $corp);
