@@ -129,6 +129,15 @@
 										else echo $value." places restantes";
 										?>
 									</div>
+									<!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+									<div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+		
+									?>
+                                    </span>
+								</div>
 								</div>
 							</div>
 						<?php } ?>
@@ -208,6 +217,15 @@
 											else echo $value." places restantes";
 											?>
 										</div>
+										<!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+										<div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+		
+									?>
+                                    </span>
+								</div>
 									</div>
 
 								</div>

@@ -370,6 +370,15 @@ data-aos-duration="600"   data-aos-delay="500">
 										//Affichage du nombre de place restantes
 										?>
 								</div>
+								<!--On affiche le numéro de téléphone si l'utilisateur le souhaite-->
+                                <div class="available" id="placesRestantes">
+                                    <span id="DisplayTel">
+									<?php
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+		
+									?>
+                                    </span>
+								</div>
 							</div>
 							<?php $linkint = "nbPass.php?idTrajet=".$row['IdTrajet'];?>
 							<div class="book-container"><a class="book" href="<?php echo $linkint ?>" class="button">Réserver</a></div>
