@@ -67,23 +67,8 @@
     }*/
   }
 
-  //alert
-  if(isset($_SESSION['alertErreurSurvenue'])){
-        if($_SESSION['alertErreurSurvenue'] == 1){
-            ?>
-                <div class="alert" style="background-color: #EA2027;">
-                    <div class="alert-text">Une erreur est survenue, rééssaie plus tard</div>
-                    <div class="croix"><img src="../images/icon/3426000.png"></div>
-                </div>
-            <?php
-            $_SESSION['alertErreurSurvenue'] = 0;
-        }
-  }
-
 
   ?>
-
-
 
 
   <img class="ovni" id="ovni" src="../images/icon/ovni.png">      <!--affichage de l'ovni-->
@@ -94,7 +79,7 @@
       <svg>
         <rect id="travdriv"x="0" y="0" fill="none" width="100%" height="100%"/>
       </svg>
-      PASSAGER
+      TRAVELER
     </a>
                                                                                             <!--Boutons pour choisir si l'on veut faire une demande de trajet ou un trajet-->
 
@@ -102,7 +87,7 @@
       <svg>
         <rect id="travdriv2" x="0" y="0" fill="none" width="100%" height="100%"/>
       </svg>
-      CONDUCTEUR
+      DRIVER
     </a> 
   </div>
 
@@ -131,7 +116,7 @@
       </label>
     </div>
     <label for="departure">
-      <span id="departureSpan"> Ville de départ :</span><input type="text" name="departure" required="true" id="departure" />    
+      <span id="departureSpan"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure" />    
     </label>
     <label for="adresse">
       <span id="adresseSpan"> Adresse :</span><input type="text" name="adresse" required="true" id="adresse" />
@@ -159,12 +144,12 @@
     <label class="cbx" for="cbx"><span>
       <svg width="12px" height="9px" viewbox="0 0 12 9">              <!--En cochant cette checkbox l'utilisateur renseigne son numéro-->
         <polyline points="1 5 4 8 11 1"></polyline>
-      </svg></span><span>Renseigner son numéro de téléphone </span>
+      </svg></span><span>Renseignez son numéro de téléphone </span>
     </label>
     <label>
 
       <label>        
-        <textarea name="Description" id="Description" placeholder="Description" rows="8" cols="65" style="resize:none;"></textarea>
+        <textarea name="Description" id="Description" placeholder="Écris ici la description de ton trajet" rows="8" cols="65"></textarea>
       </label>
       <br>
       <div class="subbutt">
@@ -194,7 +179,7 @@
       </label>
     </div>
     <label for="departure">
-      <span id="departureSpan2"> Ville de départ :</span><input type="text" name="departure" required="true" id="departure2" />
+      <span id="departureSpan2"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure2" />
     </label>
     <label for="adresse">
       <span id="adresseSpan2"> Adresse :</span><input type="text" name="adresse" required="required" id="adresse2"  />
@@ -234,10 +219,10 @@
   <label class="cbx2" for="cbx2"><span>
     <svg width="12px" height="9px" viewbox="0 0 12 9">                  <!--En cochant cette checkbox l'utilisateur renseigne son numéro-->
       <polyline points="1 5 4 8 11 1"></polyline>
-    </svg></span><span>Renseigner son numéro de téléphone </span>
+    </svg></span><span>Renseignez son numéro de téléphone </span>
   </label>
   <label>        
-    <textarea name="Description" id="Description" placeholder="Description" rows="8" cols="65" style="resize:none;"></textarea>
+    <textarea name="Description" id="Description" placeholder="Écris ici la description de ton trajet" rows="8" cols="65"></textarea>
   </label>
   <br>
 
@@ -459,7 +444,7 @@ showDrive.onclick = function(){
       alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
     }
     else{
-      document.getElementById("departureSpan").innerHTML="Ville de départ :";
+      document.getElementById("departureSpan").innerHTML="Lieu de départ :";
       document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";     //On vérifie si l'utilisateur a déjà un retour,
       document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";       //si ce n'est pas le cas on change la valeur de certaines lignes du formulaire
       document.getElementById('departure').disabled = true;
@@ -476,7 +461,7 @@ showDrive.onclick = function(){
       alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
     }
     else{
-      document.getElementById("departureSpan2").innerHTML="Ville de départ :";
+      document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
       document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
       document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
       document.getElementById('departure2').disabled = true;                  //meme chose pour le 2e formulaire
@@ -495,7 +480,7 @@ showDrive.onclick = function(){
     else{
       document.getElementById("departureSpan").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
-      document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
+      document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
       document.getElementById('departure').disabled = false;                      //meme chose pour l'aller
       document.getElementById('arrival').disabled = true;               
       document.getElementById('arrival').value = "LBR Festival"; 
@@ -513,7 +498,7 @@ showDrive.onclick = function(){
     else{
       document.getElementById("departureSpan2").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
-      document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
+      document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
       document.getElementById('departure2').disabled = false;                       //meme chose pour l'aller du 2e formulaire
       document.getElementById('arrival2').disabled = true;
       document.getElementById('arrival2').value = "LBR Festival"; 

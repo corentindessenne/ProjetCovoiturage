@@ -30,10 +30,10 @@
     //AFFICHAGE DES ALERT  
     //***********************
 	
-	include 'Connexion.php';
+	include 'Connexion.php';	//on se connecte a la base de donnée et active les sessions
 
 	if(session_status() != PHP_SESSION_ACTIVE){
-		session_start();
+		session_start();		//Si les session ne sont pas activées ont les réactive ici
 	}
 	
     	if(isset($_SESSION['alertVerificationEmail'])){
@@ -41,7 +41,7 @@
             ?>
                 <div class="alert" style="background-color: #70a1ff;">
                     <div class="alert-text">Clique sur le lien qui t'as été envoyé par mail .</div>
-                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>	
                 </div>
             <?php
             $_SESSION['alertVerificationEmail'] = 0; 
@@ -63,12 +63,14 @@
     if(isset($_SESSION['logout'])){
         	if($_SESSION['logout'] == 1){
         		$_SESSION['logout'] = 0;
-     		session_destroy();
+     		session_destroy();		//déconnexion de l'utilisateur avec une alerte
      		header('location:home.php');
 		}
     }
 ?>	
-
+	<!--********************-->
+	<!--	STYLE HOME		-->
+	<!--********************-->
 	<img class="rocket" src="../images/icon/rocket.png">
 
 
@@ -88,7 +90,7 @@
 	</a>
 
 	<?php 
-		include 'NavbarConn.php';
+		include 'NavbarConn.php';	//ajout de la navbar
 	?>
 
 	<img class="svgForm" src="../images/Vector 1.svg">
@@ -98,7 +100,7 @@
 		<img class="wave" src="../images/LBR Ressources/logo.png">
 		<span class="">PLATEFORME DE COVOITURAGE</span>
 		<p>Les Briques Rouges, c’est un évènement où de nombreux festivaliers se déplacent en voiture pour faire la fête ! Trouve toi aussi ton moyen de transport écologique et économique pour venir jusqu’à nous !</p>
-
+		<!--Barre de recherche-->
 		<div class="radio">
 			<span>Je cherche :</span>
 			<div>
@@ -148,10 +150,11 @@
 		</script>
 
 		<div class="scrolldown">
+			<!--Bouton pour scroll la page jusqu'as l'affichage des derniers covoiturages-->
 			<button class="scroll" onclick="myFunction()">VOIR LES DERNIERS COVOITURAGES</button>
 		</div>
 	</div>
-
+<!--Affichage d edifférentes raison pour lesquels on pourrait vouloir pratiquer le covoiturage-->
 	<div data-aos="zoom-in-up"  data-aos-easing="linear"
      data-aos-duration="1000"   data-aos-delay="300">
 		<h1>POURQUOI PRATIQUER LE COVOITURAGE?</h1>
@@ -197,7 +200,9 @@
 		</div>
 	</div>
 </div>
-
+<!--********************************************-->
+<!--	Liste des 5 derniers covoiturages		-->
+<!--********************************************-->
 	<div class="list" id="list">
 		<div class="header">
 			<img src="../images/car.png">
@@ -211,10 +216,10 @@
 			$requete = "SELECT * FROM trajet ORDER BY DateAjout DESC";
 			$result = mysqli_query($conn,$requete);
 			$count = 0;
-
+			//on récupère les informations des dernier trajets
 			while ($row = mysqli_fetch_assoc($result)) {
 				$count++;
-
+				//affichage des horaires
 				$hourString1 = substr($row['HeureDepart'],0,2);
 				$hourString2 = substr($row['HeureDepart'],3,2);
 				$hourStringDeparture = $hourString1."h".$hourString2;
@@ -226,7 +231,7 @@
 
 				$idCompte = $row['IdCompte'];
 				
-
+				//on récupère les informations du créateur du trajet
 				$requete2 = "SELECT * FROM compte WHERE IdCompte=$idCompte";
 				$result2 = mysqli_query($conn,$requete2);
 				$row2 = mysqli_fetch_assoc($result2);
@@ -234,7 +239,7 @@
 
 				$pp = $row2['PhotoProfil'];
 				if($pp == ""){
-					$pp = "defaultpp.jpg";
+					$pp = "defaultpp.jpg";		//Si l'utilisateur ne possède pas de photo de profil on affiche la photo de profil par défaut
 				}
 
 				if($count < 5){
@@ -242,6 +247,7 @@
 
 					<div class="item">
 						<div class="data-group">
+							<!--Affichage des lieux et dates de départ-->
 							<span class="horaire">
 								<?php echo $hourStringDeparture; ?>
 							</span>
@@ -261,7 +267,7 @@
 							<span class="place">
 								<?php echo utf8_encode($row['LieuArrivee']); ?>
 							</span>
-
+						<!--Affichage du prix-->
 							<span class="price">
 								<?php echo $row['Prix']; ?>€
 							</span>
@@ -276,6 +282,7 @@
 										$value = $row['PlacesRestantes'];
 										if($value == 1 || $value == 0) echo $value." place restante";
 										else echo $value." places restantes"
+										//Affichage du nombre de place restantes
 									?>
 								</div>
 							</div>

@@ -2,7 +2,7 @@
     include 'Connexion.php';
     
     $request="UPDATE edition SET AnnéeEdition='".$_POST["Annee"]."',DateDebut='".$_POST["DateDebut"]."',HeureDebut='".$_POST["HeureDebut"]."',DateFin='".$_POST["DateFin"]."',HeureFin='".$_POST["HeureFin"]."',Lieu='".$_POST["Lieu"]."',Description='".$_POST["Description"]."' WHERE AnnéeEdition='".$_POST["IdEdition"]."'";
-
+    //requete pour modifier l'édition en fonction des informations fournies
     
     if ($conn->query($request) === TRUE){
         ?>
@@ -11,7 +11,7 @@
             location="gestionEdition.php";
         </script>
       <?php
-      die();
+      die();          //notification du succès ou de l'échec de la requête
     } else {
         ?>
         <script type="text/javascript">

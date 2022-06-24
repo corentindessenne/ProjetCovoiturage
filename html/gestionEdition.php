@@ -55,7 +55,7 @@
                 <input type="text" require="required" name="Lieu" id="Lieu" placeholder="Emplacement du festival pour cette édition">
                 <br/>
                 <label for="Description">Description de l'édition</label>
-                <textarea name="Description"require="required"  id="Description" placeholder="Écris la description de l'édition içi" rows="8" cols="65"></textarea>
+                <textarea name="Description"require="required"  id="Description" placeholder="Écris la description de l'édition ici" rows="8" cols="65"></textarea>
 
 				
 					
@@ -130,7 +130,7 @@
                                 <input type="text" require="required" name="Lieu" id="Lieu" placeholder="Emplacement du festival pour cette édition"  value="<?php echo $row["Lieu"]; ?>">
                                 <br/>
                                 <label for="Description">Description de l'édition</label>
-                                <textarea name="Description"require="required"  id="Description" placeholder="Écris la description de l'édition içi" rows="8" cols="65"> <?php echo $row["Description"]; ?></textarea>
+                                <textarea name="Description"require="required"  id="Description" placeholder="Écris la description de l'édition ici" rows="8" cols="65"> <?php echo $row["Description"]; ?></textarea>
                                 <input type="hidden" name="IdEdition" value="<?php echo $row["AnnéeEdition"]; ?>">
 
                                 <button type="submit" class="btn" name="create_ed" id="submit"><strong class="strongbutton">Modifier cette édition</strong></button>
