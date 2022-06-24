@@ -42,7 +42,7 @@
         $corp = str_replace("{{Prenom}}", $result['Prenom'], $corp);
 
         if(mail($dest,$sujet,$corp, $headers)){
-            echo "Votre demande pour rejoindre la voiture a bien été envoyée au conducteur";
+            $_SESSION['alertReservationBienEffectuee'] = 1;
             header('location:home.php');
         }
         else{

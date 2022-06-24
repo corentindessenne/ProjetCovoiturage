@@ -71,6 +71,18 @@
             $_SESSION['alertDeuxTrajetsDejaFaits'] = 0; 
         }
     }
+    
+    if(isset($_SESSION['alertReservationBienEffectuee'])){
+        if($_SESSION['alertReservationBienEffectuee'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Ta demande de réservation a bien été effectuée, un e-mail a été envoyé au conducteur pour le prévenir. </div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertReservationBienEffectuee'] = 0; 
+        }
+    }
 
     if(isset($_SESSION['logout'])){
         	if($_SESSION['logout'] == 1){

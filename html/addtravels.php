@@ -79,7 +79,7 @@
       <svg>
         <rect id="travdriv"x="0" y="0" fill="none" width="100%" height="100%"/>
       </svg>
-      TRAVELER
+      PASSAGER
     </a>
                                                                                             <!--Boutons pour choisir si l'on veut faire une demande de trajet ou un trajet-->
 
@@ -87,7 +87,7 @@
       <svg>
         <rect id="travdriv2" x="0" y="0" fill="none" width="100%" height="100%"/>
       </svg>
-      DRIVER
+      CONDUCTEUR
     </a> 
   </div>
 
@@ -116,7 +116,7 @@
       </label>
     </div>
     <label for="departure">
-      <span id="departureSpan"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure" />    
+      <span id="departureSpan"> Ville de départ :</span><input type="text" name="departure" required="true" id="departure" />    
     </label>
     <label for="adresse">
       <span id="adresseSpan"> Adresse :</span><input type="text" name="adresse" required="true" id="adresse" />
@@ -179,7 +179,7 @@
       </label>
     </div>
     <label for="departure">
-      <span id="departureSpan2"> Lieu de départ :</span><input type="text" name="departure" required="true" id="departure2" />
+      <span id="departureSpan2"> Ville de départ :</span><input type="text" name="departure" required="true" id="departure2" />
     </label>
     <label for="adresse">
       <span id="adresseSpan2"> Adresse :</span><input type="text" name="adresse" required="required" id="adresse2"  />
@@ -444,7 +444,7 @@ showDrive.onclick = function(){
       alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
     }
     else{
-      document.getElementById("departureSpan").innerHTML="Lieu de départ :";
+      document.getElementById("departureSpan").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan").innerHTML="Adresse d'arrivée :";     //On vérifie si l'utilisateur a déjà un retour,
       document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";       //si ce n'est pas le cas on change la valeur de certaines lignes du formulaire
       document.getElementById('departure').disabled = true;
@@ -461,7 +461,7 @@ showDrive.onclick = function(){
       alert("Tu as déjà créer ou réserver un trajet pour ton retour depuis notre festival annule ta réservation ou supprime ton trajet puis réessaye");
     }
     else{
-      document.getElementById("departureSpan2").innerHTML="Lieu de départ :";
+      document.getElementById("departureSpan2").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan2").innerHTML="Adresse d'arrivée :";
       document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
       document.getElementById('departure2').disabled = true;                  //meme chose pour le 2e formulaire
@@ -480,7 +480,7 @@ showDrive.onclick = function(){
     else{
       document.getElementById("departureSpan").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan").innerHTML="Adresse de départ :";
-      document.getElementById("arrivalSpan").innerHTML="Lieu d'arrivée :";
+      document.getElementById("arrivalSpan").innerHTML="Ville d'arrivée :";
       document.getElementById('departure').disabled = false;                      //meme chose pour l'aller
       document.getElementById('arrival').disabled = true;               
       document.getElementById('arrival').value = "LBR Festival"; 
@@ -498,7 +498,7 @@ showDrive.onclick = function(){
     else{
       document.getElementById("departureSpan2").innerHTML="Ville de départ :";
       document.getElementById("adresseSpan2").innerHTML="Adresse de départ :";
-      document.getElementById("arrivalSpan2").innerHTML="Lieu d'arrivée :";
+      document.getElementById("arrivalSpan2").innerHTML="Ville d'arrivée :";
       document.getElementById('departure2').disabled = false;                       //meme chose pour l'aller du 2e formulaire
       document.getElementById('arrival2').disabled = true;
       document.getElementById('arrival2').value = "LBR Festival"; 
