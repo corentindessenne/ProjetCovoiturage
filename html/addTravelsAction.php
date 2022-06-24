@@ -6,7 +6,6 @@
 
 <body>
 
-<h1>Ton trajet a bien ete mit en ligne</h1>
 <?php
 include 'Connexion.php';            //On se connecte a notre base de donné
 
@@ -39,17 +38,21 @@ else{
     $request="INSERT INTO trajet(TypeTrajet,isDemande,LieuArrivee,AdresseArrivee,LongitudeArrivee,LatitudeArrivee, DateDepart, HeureDepart,DateArrivee,HeureArrivee, DateAjout,NbPassagers, PlacesRestantes, Prix, Description, DisplayTel,  AnneeEdition, IdCompte) VALUES ('".$_POST["aller-retour"]."',".$_POST["isDemande"].",'".$_POST["arrival"]."','".$_POST["adresse"]."','".$_POST["long"]."','".$_POST["lat"]."','".$_POST["date"]."','".$_POST["time"]."','".date("Y.m.d",$dateArr)."','".$_POST["heureArrivee"]."','".date("Y.m.d")."','".$_POST["NbPassagers"]."','".$_POST["NbPassagers"]."','".$_POST["Prix"]."','".$_POST["Description"]."','".$tel."' ,'2022','".$id."')";
 }
 if ($conn->query($request) === TRUE) {
-    header("Location: home.php");               //si la requete c'est effectuée avec succès on redirige vers la page d'acceuil
-  ?>
-  
-  <!--<script type="text/javascript">
-      alert("Ta demande de trajet a bien ete enregistre");
-      location="home.php";
-  </script>-->
-<?php
-die();
+    
+
+    if($_POST['isDemande'] == 1){
+        $_SESSION['alertDemandeCreee'] = 1;
+    }
+    else{
+        $_SESSION['alertTrajetCree'] = 1;
+    }
+
+    header("Location: profil.php");               //si la requete s'est effectuée avec succès on redirige vers le profil
+
+
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;      //si la requete est un échec on affiche l'erreur ou/et on redirige vers addtravels
+    //si la requete est un échec on affiche l'erreur ou/et on redirige vers addtravels
+    $_SESSION['alertErreurSurvenue'] = 1;
     header("Location: addtravels.php");
   }
 ?>

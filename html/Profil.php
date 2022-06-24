@@ -114,10 +114,29 @@
         }
     }
 
+    if(isset($_SESSION['alertTrajetCree'])){
+        if($_SESSION['alertTrajetCree'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Ton trajet a bien été créé</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertTrajetCree'] = 0;
+        }
+    }
 
-
-
-
+    if(isset($_SESSION['alertDemandeCreee'])){
+        if($_SESSION['alertDemandeCreee'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Ta demande de trajet a bien été créée</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertDemandeCreee'] = 0;
+        }
+    }
 
 
 
