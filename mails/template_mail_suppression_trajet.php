@@ -160,7 +160,7 @@
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: justify;">
-                        <p style="margin: 0;">Malheureusement, la personne qui devait {{typeTrajet}} a supprimé son trajet.</p>
+                        <p style="margin: 0;">Malheureusement, la personne qui devait {{typeTrajet}} festival a supprimé son trajet.</p>
                     </td>
                 </tr>
                 <!-- COPY -->
