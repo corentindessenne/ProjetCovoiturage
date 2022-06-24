@@ -426,7 +426,7 @@
                         <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: 0".$row2["telephone"];
+										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
 		
 									?>
                                     </span>
@@ -521,7 +521,7 @@
                             <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										echo "numéro de téléphone: 0".$row2["telephone"];
+										echo "numéro de téléphone: ".$phone;
 		
 									?>
                                     </span>
