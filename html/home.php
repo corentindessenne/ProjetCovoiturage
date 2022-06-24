@@ -29,8 +29,14 @@
     //***********************
     //AFFICHAGE DES ALERT  
     //***********************
+	
+	include 'Connexion.php';
 
-    if(isset($_SESSION['alertVerificationEmail'])){
+	if(session_status() != PHP_SESSION_ACTIVE){
+		session_start();
+	}
+	
+    	if(isset($_SESSION['alertVerificationEmail'])){
         if($_SESSION['alertVerificationEmail'] == 1){
             ?>
                 <div class="alert" style="background-color: #70a1ff;">
@@ -42,11 +48,23 @@
         }
     }
 
+    if(isset($_SESSION['alertDeuxTrajetsDejaFaits'])){
+        if($_SESSION['alertDeuxTrajetsDejaFaits'] == 1){
+            ?>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Tu as déjà soit créé, soit réservé un trajet aller et retour, supprime un de tes trajets pour en créer un autre</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertDeuxTrajetsDejaFaits'] = 0; 
+        }
+    }
 
     if(isset($_SESSION['logout'])){
         	if($_SESSION['logout'] == 1){
         		$_SESSION['logout'] = 0;
-        		session_destroy();
+     		session_destroy();
+     		header('location:home.php');
 		}
     }
 ?>	
@@ -69,8 +87,7 @@
 		<img class="fb-planet" src="../images/icon/fb-planet.png">
 	</a>
 
-	<?php 	
-		include 'Connexion.php';
+	<?php 
 		include 'NavbarConn.php';
 	?>
 

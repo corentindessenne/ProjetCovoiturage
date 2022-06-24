@@ -91,14 +91,26 @@
     }
 
     if(isset($_SESSION['alertErreurSurvenue'])){
-        if($_SESSION['alertModificationEnregistrees'] == 1){
+        if($_SESSION['alertErreurSurvenue'] == 1){
             ?>
-                <div class="alert" style="background-color: #2ed573;">
-                    <div class="alert-text">Les modifications ont bien été enregistrées</div>
+                <div class="alert" style="background-color: #EA2027;">
+                    <div class="alert-text">Une erreur est survenue, rééssaie plus tard</div>
                     <div class="croix"><img src="../images/icon/3426000.png"></div>
                 </div>
             <?php
-            $_SESSION['alertModificationEnregistrees'] = 0;
+            $_SESSION['alertErreurSurvenue'] = 0;
+        }
+    }
+
+    if(isset($_SESSION['alertTrajetModifie'])){
+        if($_SESSION['alertTrajetModifie'] == 1){
+            ?>
+                <div class="alert" style="background-color:#2ed573;">
+                    <div class="alert-text">Les informations du trajet ont bien été enregistrées</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['alertTrajetModifie'] = 0;
         }
     }
 

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Action Ajout</title>
+  <title>Action Ajout</title>
 </head>
 
 <body>
 
-<h1>Ca marche pas</h1>
+  <h1>Ca marche pas</h1>
 
-<?php
+  <?php
 include 'Connexion.php';            //connexion a la base de donnée
 
 $_POST["Description"]= str_replace("'","''",$_POST["Description"]);       //on remplace les ' par des '' dans la description pour éviter de créer des erreurs sql
@@ -57,10 +57,10 @@ $placesRestantes+= $NbPass-$temp;
 $dateArr=strtotime(str_replace(" (heure d’été d’Europe centrale)","",$_POST["dateArr"]));
 echo $dateArr;
 if($_POST["AllerRetour"]=="Aller"){
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$lieu."',LongitudeDepart='".$_POST["long"]."',LatitudeDepart='".$_POST["lat"]."',LieuArrivee='".$defaultLieu."',LongitudeArrivee='".$defaultLong."',LatitudeArrivee='".$defaultLat."',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='".$defaultAdresse."' ,DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+  $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$lieu."',LongitudeDepart='".$_POST["long"]."',LatitudeDepart='".$_POST["lat"]."',LieuArrivee='".$defaultLieu."',LongitudeArrivee='".$defaultLong."',LatitudeArrivee='".$defaultLat."',AdresseDepart='".$_POST["Adresse"]."',AdresseArrivee='".$defaultAdresse."' ,DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }         //requete sql différente en fonction de s'il s'agit d'un aller ou une retour
 else{
-    $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$defaultLieu."',LongitudeDepart='".$defaultLong."',LatitudeDepart='".$defaultLat."',LieuArrivee='".$lieu."',LongitudeArrivee='".$_POST["long"]."',LatitudeArrivee='".$_POST["lat"]."',AdresseDepart='".$defaultAdresse."',AdresseArrivee='".$_POST["Adresse"]."', DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
+  $request="UPDATE trajet SET TypeTrajet='".$_POST["AllerRetour"]."', isDemande= '".$isDemande."', LieuDepart='".$defaultLieu."',LongitudeDepart='".$defaultLong."',LatitudeDepart='".$defaultLat."',LieuArrivee='".$lieu."',LongitudeArrivee='".$_POST["long"]."',LatitudeArrivee='".$_POST["lat"]."',AdresseDepart='".$defaultAdresse."',AdresseArrivee='".$_POST["Adresse"]."', DateDepart= '".$_POST["Date-de-Depart"]."',DateArrivee='".date("Y.m.d",$dateArr)."',HeureDepart='".$_POST["time"]."',HeureArrivee='".$_POST["heureArrivee"]."', Description='".$_POST["Description"]."',Prix='".$prix."',NbPassagers='".$NbPass."',PlacesRestantes='".$placesRestantes."',DisplayTel='".$_POST["tel"]."' WHERE IdTrajet=".$IdTrajet."";
 }
 
 
@@ -68,14 +68,14 @@ else{
 if ($conn->query($request) === TRUE) {
   ?>
   <script type="text/javascript">
-      alert("Ta demande de trajet a bien ete modifie");         //Si la requete a fonctionné on redirige vers la page de profil
+      $_SESSION['alertTrajetModifie'] = 1;      //Si la requete a fonctionné on redirige vers la page de profil
       location="Profil.php";
-  </script>
-<?php
-die();
+    </script>
+    <?php
+    die();
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;              //Sinon on affiche l'erreur
-  }
-?>
-</body>
-</html>
+     $_SESSION['alertErreurSurvenue'] = 1;              //Sinon on affiche l'erreur
+   }
+   ?>
+ </body>
+ </html>

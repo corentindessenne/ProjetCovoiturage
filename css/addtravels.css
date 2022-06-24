@@ -1,5 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_lt.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_lt.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_md.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_md.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('../fonts/Cereal/airbnbcereal_w_xbd.woff2') format('woff2'),
+         url('../fonts/Cereal/airbnbcereal_w_xbd.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+*{
+	font-family: 'Cereal' !important;
+}
+
+
 body {
 	margin: 0;
 	background-image: url("../images/bg9.png");
@@ -7,7 +37,6 @@ body {
 	background-attachment: fixed;
 	backdrop-filter: blur 200px;
 	box-sizing: inherit;
-
 }
 
 
