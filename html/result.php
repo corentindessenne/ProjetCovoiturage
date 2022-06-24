@@ -35,7 +35,7 @@
 
 		function getDataFromURL(){
 			return new Promise((resolve) =>{
-
+				//On récupère les coordonnées a partir de l'url
 				$.getJSON('http://api.positionstack.com/v1/forward?access_key=3afeb3b8f8e21edd8aa31037edcdc1b6&query=' + query, function(data) {
 
 					queryCoord.lat = data.data[0].latitude;
@@ -74,7 +74,7 @@
 					<img src="../images/icon/right-arrow 2.png">
 					<span class="location">LBR Festival</span>
 				</div>
-
+				<!--Affichage des informations de recherche-->
 				<div>
 					<span class="secondary">
 						<?php
@@ -229,7 +229,7 @@
 				}
 
 				?>
-
+				<!--Affichage des trajets triés-->
 				<div class="item">
 					<div class="data-group">
 						<span class="horaire">
@@ -288,7 +288,7 @@
 
 	<?php
 	/* exemple 1 */
-
+	//Informations trajet
 	for ($y = 0; $y <$count ; $y++) {
 
 		?>

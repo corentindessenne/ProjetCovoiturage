@@ -16,14 +16,14 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
     if ($row < 1) {
         $token = md5($_POST["email"]);
         $password = $_POST["password_1"];
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = password_hash($password, PASSWORD_DEFAULT);     //on cripte le mot de passe
         $tel = $_POST['phone'];
         if (isset($_POST["VerifAdmin"]) && $_POST["VerifAdmin"] == 1) {
             $verifadmin = 1;
         } else {
             $verifadmin = 0;
         }
-
+        //mail
         $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
         $request = mysqli_query($conn, "INSERT INTO compte(Nom,Prenom, Email, telephone, motDePasse, isAdmin,DateCreation, lien_verif_mail) VALUES ('" . $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["email"] . "','" . $tel . "','" . $password . "','" . $verifadmin . "','" . date("Y.m.d") . "', '" . $token . "')");
         $link = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;'>Confirme ton compte</a>";
@@ -54,7 +54,7 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
     <?php
     }
     else{
-    echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";
+    echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";              //L'utilisateur est notifié selon le succès ou l'échec des requetes et de l'envoi du mail
     ?>
         <script>document.location.href = '../html/home.php';</script>
     <?php

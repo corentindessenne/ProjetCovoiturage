@@ -4,7 +4,7 @@ if (isset($_POST['newPassword']) && $_POST['token'] && $_POST['email']) {
 
     $email = $_POST['email'];
     $token = $_POST['token'];
-    $password = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);     //On cripte le mot de passe
 
     $query = mysqli_query($conn, "SELECT * FROM compte WHERE token_reset_password = '$token' AND Email = '$email'");
     $row = mysqli_num_rows($query);
@@ -15,7 +15,7 @@ if (isset($_POST['newPassword']) && $_POST['token'] && $_POST['email']) {
             ?>
             <script>document.location.href = '../html/home.php';</script>
             <?php
-        } else {
+        } else {                    //Notification a l'utilisateur du succès ou de l'échec de la requete
             echo "<script type='text/javascript'>alert('Oups. La requête ne s\'est pas exécutée. Réessaye plus tard');</script>";
         }
     } else {

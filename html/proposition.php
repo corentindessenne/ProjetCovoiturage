@@ -17,8 +17,8 @@
 	include 'Connexion.php';
 	if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
 		header("Location:home.php");
-
 	}
+	
 	if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
 		$ismyaccount = 0;
 		$idCompte = $_POST["CompteId"];
@@ -38,8 +38,33 @@
 		$idCompte = $row["IdCompte"];
 		$phone = "0" . $row["telephone"];
 		$description = $row["Description"];
-    $pp = $row["PhotoProfil"];              //pp=Photo de Profil
-    $hashedpassword = $row["motDePasse"];
+	}
+
+    include 'Connexion.php';
+    if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
+        header("Location:home.php");			//redirect vers la page d'accueil si l'utilisateur n'est pas connecté
+
+    }
+    if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
+        $ismyaccount = 0;
+        $idCompte = $_POST["CompteId"];
+        $sql = "SELECT * FROM compte WHERE IdCompte='" . $idCompte . "'";
+    } else {
+        $ismyaccount = 1;									//On récupère les informations en fonction de l'id ou du mail en fonction de si l'utilisateur est un admin ou non
+        $mail = $_SESSION["mail"];
+        $sql = "SELECT * FROM compte WHERE Email='" . $mail . "'";
+    }
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nom = $row["Nom"];
+        $mail = $row["Email"];
+        $prenom = $row["Prenom"];
+        $idCompte = $row["IdCompte"];
+        $phone = "0" . $row["telephone"];
+        $description = $row["Description"];
+	    $pp = $row["PhotoProfil"];              //pp=Photo de Profil
+	    $hashedpassword = $row["motDePasse"];
 
 }
 ?>
@@ -58,8 +83,9 @@
 				$result = mysqli_query($conn,$requete);
 				$count = 0;
 
-				while ($row = mysqli_fetch_assoc($result)) {
-					$count++;
+					//affichage de la demande de trajet
+		        while ($row = mysqli_fetch_assoc($result)) {
+		            $count++;
 
 					$hourString1 = substr($row['HeureDepart'],0,2);
 					$hourString2 = substr($row['HeureDepart'],3,2);
@@ -75,8 +101,6 @@
 					$requete2 = "SELECT * FROM compte WHERE IdCompte='$idCompte2'";
 					$result2 = mysqli_query($conn,$requete2);
 					$row2 = mysqli_fetch_assoc($result2);
-
-
 
 					?>
 

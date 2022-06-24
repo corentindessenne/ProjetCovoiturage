@@ -18,6 +18,7 @@
         if($_SESSION["role"]==1){
             $requete = "SELECT * FROM compte";
             $result = mysqli_query($conn,$requete); 
+            //on récupère les informations des comptes
             while ($row = mysqli_fetch_assoc($result)){
                 $pp=$row["PhotoProfil"];
                 $prenom=$row["Prenom"];
@@ -27,6 +28,7 @@
                 ?>
                 <br/>
                 <div class="compte">
+                    <!--On affiche les comptes-->
                     <img class="ppImgAutre" src="..\images\PhotoProfil\<?php if($pp!=NULL){echo $pp;}else{echo "defaultpp.jpg";} ?>">
                     <div class="InfosCompte"> 
                         <p><?php echo $prenom." ".$nom; ?>
@@ -44,6 +46,7 @@
         }
         else{
             ?>
+            <!--Redirect si l'utilisateur n'est pas un administrateur-->
                 <script type="text/javascript">
                     alert("Tu n'est pas admin");
                     location="home.php";

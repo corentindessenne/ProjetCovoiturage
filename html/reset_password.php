@@ -20,11 +20,11 @@ if ($_GET['key'] && $_GET['token']) {
             $token = $_GET['token'];
 
             $query = mysqli_query($conn, "SELECT * FROM compte WHERE token_reset_password = '$token' AND Email = '$email'");
-            $currentDate = date("Y-m-d H:i:s");
+            $currentDate = date("Y-m-d H:i:s");             
 
             if (mysqli_num_rows($query) > 0) {
                 $row = mysqli_fetch_array($query);
-                if ($row['expiration_reset_password'] >= $currentDate) {
+                if ($row['expiration_reset_password'] >= $currentDate) {        //on vérifie que le token est valide
                     ?>
                     <div class="bloc">
                         <div class="main">
@@ -63,7 +63,7 @@ if ($_GET['key'] && $_GET['token']) {
     }
     else{
         echo "<script type='text/javascript'>alert('Oups, il semble que ton lien soit expiré');</script>";
-        ?>
+        ?>                          <!--si le token a expiré-->
         <script>document.location.href = '../html/home.php';</script>
         <?php
     }
@@ -72,7 +72,7 @@ if ($_GET['key'] && $_GET['token']) {
 
 
 
-
+<!--Verif mot de passe identiques-->
 <script>
     let check = function () {
         if (document.getElementById('password_1').value === document.getElementById('password_2').value) {
@@ -87,7 +87,7 @@ if ($_GET['key'] && $_GET['token']) {
     }
 
 </script>
-
+<!--Style JS-->
 <script type="text/javascript">
 
     let item = document.getElementsByClassName('item');
