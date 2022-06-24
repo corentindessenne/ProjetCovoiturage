@@ -14,32 +14,6 @@
 
 	<?php
 
-	include 'Connexion.php';
-	if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
-		header("Location:home.php");
-	}
-	
-	if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
-		$ismyaccount = 0;
-		$idCompte = $_POST["CompteId"];
-		$sql = "SELECT * FROM compte WHERE IdCompte='" . $idCompte . "'";
-	} else {
-		$ismyaccount = 1;
-		$mail = $_SESSION["mail"];
-		$sql = "SELECT * FROM compte WHERE Email='" . $mail . "'";
-	}
-	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
-    // output data of each row
-		$row = $result->fetch_assoc();
-		$nom = $row["Nom"];
-		$mail = $row["Email"];
-		$prenom = $row["Prenom"];
-		$idCompte = $row["IdCompte"];
-		$phone = "0" . $row["telephone"];
-		$description = $row["Description"];
-	}
-
     include 'Connexion.php';
     if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
         header("Location:home.php");			//redirect vers la page d'accueil si l'utilisateur n'est pas connecté
@@ -67,6 +41,18 @@
 	    $hashedpassword = $row["motDePasse"];
 
 }
+
+
+		$requete = "SELECT * FROM trajet WHERE isDemande= 0 AND IdCompte='".$idCompte."'";
+		$result = mysqli_query($conn,$requete);
+		$row = mysqli_fetch_assoc($result);
+		if($result->num_rows == 0){
+				if($conn->query($requete)){
+				$_SESSION['PasDeTrajet'] = 1;
+				header("Location:Profil.php");
+		}
+		}
+
 ?>
 
 <div class="main-bloc">

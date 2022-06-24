@@ -139,6 +139,19 @@
     }
 
 
+    if(isset($_SESSION['PasDeTrajet'])){
+        if($_SESSION['PasDeTrajet'] == 1){
+            ?>
+                <div class="alert" style="background-color: #2ed573;">
+                    <div class="alert-text">Fais un trajet d'abord.</div>
+                    <div class="croix"><img src="../images/icon/3426000.png"></div>
+                </div>
+            <?php
+            $_SESSION['PasDeTrajet'] = 0; 
+        }
+    }
+
+
     //redirect vers la page d'accueil si l'utilisateur n'est pas connecté
     if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
         header("Location:home.php");

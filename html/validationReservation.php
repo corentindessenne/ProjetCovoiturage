@@ -29,7 +29,7 @@
         $sql = "UPDATE trajet SET PlacesRestantes = '$placesRestantes' WHERE IdTrajet = '$idTrajet' ";
         if ($conn->query($sql) === TRUE) {
         $_SESSION['alertAcceptPassagerDepuisConducteur'] = 1;
-        header("location:profil.php");
+        header("location:Profil.php");
         }
 	}
 
@@ -41,6 +41,6 @@
 		$requete = "DELETE FROM reservation WHERE idReservation = '$idReservation'";
 		if($conn->query($requete)){
 		$_SESSION['alertRefusePassagerDepuisConducteur'] = 1;
-		header("location:profil.php");
+		header("location:Profil.php");
 		}
 	}
