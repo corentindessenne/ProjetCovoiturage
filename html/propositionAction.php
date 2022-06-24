@@ -33,13 +33,11 @@
         $request = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur' ");
         $result = mysqli_fetch_assoc($request);
 
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From:Les Briques Rouges<cocodsn2@gmail.com>";
+        include('../mails/header_mails.php');
 
         $dest = $result['Email'];
-        $sujet = "Tu as reçu(e) une demande pour ton trajet !";
-        $corp = file_get_contents("../mails/template_mail_proposition_trajet.php");
+        $sujet = "Tu as reçu(e) une proposition pour ton trajet !";
+        $corp = file_get_contents("../mails/template_mail_demande_trajet.php");
         $corp = str_replace("{{Prenom}}", $result['Prenom'], $corp);
 
         if(mail($dest,$sujet,$corp, $headers)){
