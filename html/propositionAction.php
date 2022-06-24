@@ -33,7 +33,6 @@
         $query3 = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idDemandeur'");
         $result3 = mysqli_fetch_assoc($query3);
         $mailDemandeur = $result3['Email'];
-        echo "Le mail est ".$mailDemandeur;
 
         include('../mails/header_mails.php');
 

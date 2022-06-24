@@ -26,7 +26,7 @@ if(isset($_POST["password-reset"]) && $_POST["email"]){
         if(mail($dest, $sujet, $corp, $headers)){
             echo "<script type='text/javascript'>alert('On t\'a envoyé un mail contenant un lien qui te permet de réinitialiser ton mot de passe.');</script>";
             ?>
-            <script>document.location.href='../html/home.php';</script>                 <!--On précise a l'utilisateur que le mail s'est envoyé en cas de succès-->
+            <script>document.location.href='../html/home.php';</script>                 <!--On précise à l'utilisateur que le mail s'est envoyé en cas de succès-->
         <?php
         }
         else{

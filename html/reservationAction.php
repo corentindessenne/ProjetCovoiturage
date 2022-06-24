@@ -29,7 +29,8 @@
         $request = mysqli_query($conn, "SELECT IdCompte FROM trajet WHERE IdTrajet = '$idTrajet' ");
         $result = mysqli_fetch_assoc($request);
         $idCompteConducteur = $result['IdCompte'];
-		//requete pour récupérer les informations nécessaires
+
+		//requête pour récupérer les informations nécessaires
         $request = mysqli_query($conn, "SELECT * FROM compte WHERE IdCompte = '$idCompteConducteur' ");
         $result = mysqli_fetch_assoc($request);
 

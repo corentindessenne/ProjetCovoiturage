@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <title>Action Ajout</title>
 </head>
@@ -27,6 +27,7 @@ $defaultLieu = "Wervicq-Sud";
 $defaultAdresse = "21 Rue de Linselles	";
 $lieu = "";
 $prix = 0;
+
 if (isset($_POST["Prix"])) {
     $prix = $_POST["Prix"];
 }

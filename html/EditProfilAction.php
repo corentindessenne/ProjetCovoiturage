@@ -50,7 +50,7 @@
     if ($conn->query($sql) === TRUE) {
 
         if($verifyEmail == 1){
-            $token = md5($email);               //mail
+            $token = md5($email); //mail
 
             $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
 
@@ -74,12 +74,8 @@
             }
 
             if(mail($dest, $sujet, $corp, $headers)){
-                ?>
-                <script type="text/javascript">
                 $_SESSION['alertVerificationEMail'] = 1;                                               //Si le mail c'est envoyé on notifie l'utilisateur avant de le déconnecter
-                location="logout.php";
-                </script>
-                <?php
+                header("location=logout.php");
             }
             else{
                 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Merci d'avoir rejoint la plateforme - LBR Covoiturage</title>
+    <title>Merci d'avoir rejoint la plateforme ! - LBR Covoiturage</title>
 </head>
 <body>
 
