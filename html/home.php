@@ -298,8 +298,8 @@
 									?>
 								</div>
 							</div>
-							
-							<div class="book-container"><a class="book" href="#" class="button">Réserver</a></div>
+							<?php $linkint = "nbPass.php?idTrajet=".$row['IdTrajet'];?>
+							<div class="book-container"><a class="book" href="<?php echo $linkint ?>" class="button">Réserver</a></div>
 						</div>
 					</div>
 

@@ -138,7 +138,8 @@
 									<div class="available">
 										<?php
 										$value = $row['PlacesRestantes'];
-										if($value == 1) echo $value." place restante";
+										if($row["isDemande"]==1){ echo "Recherche une voiture";}
+										else if($value == 1){ echo $value." place restante";}
 										else echo $value." places restantes";
 										?>
 									</div>
@@ -151,7 +152,7 @@
 
 
 			<div class="right-subbloc">
-				<h1> Vos trajets </h1>
+				<h1> Ton trajet </h1>
 				<div class="trajets" id="trajets">
 					<?php
 					$requete = "SELECT * FROM trajet WHERE isDemande=0 AND TypeTrajet='$typeTrajet' AND IdCompte='".$idCompte."'";
@@ -239,8 +240,10 @@
 				<input class="hidden" type="text" name="idDemande" value="<?php echo $_GET['idTrajet']; ?>">
 				<input class="hidden" type="text" name="idTrajet2" value="<?php echo $idTrajetCon;?>">
 				<input class="hidden" type="text" name="typeTrajet2" value="<?php echo $typeTrajetCon;?>">
-				<input type="submit"  value="Bien sûr">
+				<input type="submit"  value="Bien sûr" class="accept">
+				<a href="TousLesTrajets.php" class="decline" >En fait, non</a>
 			</form>
+			
 		</div>
 	</body>
 	</html>
