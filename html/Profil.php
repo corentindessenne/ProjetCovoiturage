@@ -345,7 +345,7 @@
                                 <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
+										if($row["DisplayTel"]==1) echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
@@ -426,7 +426,7 @@
                         <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										if($row["DisplayTel"]==1)echo "numéro de téléphone: ".$phone;
+										if($row["DisplayTel"]==1) echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
@@ -521,7 +521,7 @@
                             <div class="available" id="placesRestantes">
                                     <span id="DisplayTel">
 									<?php
-										echo "numéro de téléphone: ".$phone;
+										echo implode(" ", str_split($phone, 2));
 		
 									?>
                                     </span>
