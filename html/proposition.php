@@ -15,10 +15,9 @@
 	<?php
 
     include 'Connexion.php';
-    if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
-        header("Location:home.php");			//redirect vers la page d'accueil si l'utilisateur n'est pas connecté
-
-    }
+    if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+        header("location:Login.php");
+}
     if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
         $ismyaccount = 0;
         $idCompte = $_POST["CompteId"];

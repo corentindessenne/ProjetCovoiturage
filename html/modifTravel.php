@@ -28,10 +28,9 @@
 <?php 
 include 'Connexion.php';        //Connexion a la base de donnée
 include 'NavbarConn.php';       //Affichage navbar
-if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
-    header("Location:home.php");        //On redirige l'utilisateur s'il n'est pas connecté
-    
-  }
+if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+    header("location:Login.php");
+}
 
 if(isset($_SESSION["mail"])){
     $idTrajet=$_POST["IdTrajet"];

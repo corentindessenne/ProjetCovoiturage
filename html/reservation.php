@@ -15,7 +15,10 @@
 	<?php
 
 		include 'Connexion.php';
-
+		if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+			header("location:Login.php");
+	}
+	
 		$idTrajet = $_GET['idTrajet'];
 		$requete = "SELECT * FROM trajet WHERE IdTrajet = '$idTrajet' ";
 		$result = mysqli_query($conn,$requete);

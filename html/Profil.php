@@ -189,10 +189,9 @@
 
 
     //redirect vers la page d'accueil si l'utilisateur n'est pas connecté
-    if (!isset($_SESSION['login']) && $_SESSION['login'] != '') {
-        header("Location:home.php");
-
-    }
+    if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+        header("location:Login.php");
+}
     //Si l'utilisateur est un admin on récupère les informmations du compte a partir de l'id récupéré plus tot
     if (isset($_POST["CompteId"]) && (isset($_SESSION['login']) && $_SESSION['login'] != '') && $_SESSION["role"] == 1) {
         $ismyaccount = 0;

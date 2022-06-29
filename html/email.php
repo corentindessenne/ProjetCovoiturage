@@ -18,7 +18,11 @@
         <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
     </head>
     <body>
-
+<?php
+if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+    header("location:Login.php");
+}
+?>
 
         <div class="logo">
           <a href=""><img src="../images/LBR Ressources/logo.png"></a>

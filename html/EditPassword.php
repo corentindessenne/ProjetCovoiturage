@@ -24,10 +24,9 @@
   include 'Connexion.php';                                    //on se connecte a la base de donnée et on active les sessions
 
   include 'NavbarConn.php';                                   //on ajoute la navbar
-  if(!isset($_SESSION['login']) && $_SESSION['login'] != ''){
-    header("Location:home.php");                               //si l'utilisateur n'est pas connecté on le redirige vers la page d'accueil
-
-  }
+  if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+    header("location:Login.php");
+}
   ?>
 
   <div class="bloc">

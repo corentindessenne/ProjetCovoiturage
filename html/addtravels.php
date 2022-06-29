@@ -28,10 +28,9 @@
   <?php
   include 'Connexion.php';                  //connexion a la base de donnée
   include 'NavbarConn.php';                 //affichage de la navbar
-  if(!isset($_SESSION['login'])){
-    header("Location:home.php");            //redirect vers la page d'acceuil si l'utilisateur n'est pas connecté
-    
-  }
+  if(!isset($_SESSION["login"]) || $_SESSION["login"] == 0){
+    header("location:Login.php");
+}
   $requete="SELECT IdCompte FROM compte WHERE Email='".$_SESSION["mail"]."'";       //on récupère l'id du compte de l'utilisateur depuis la base de donnée
   $result = $conn->query($requete);
   $verifAller=0;        //var pour vérifier si l'utilisateur a déjà créer ou fait une demande de trajet pour aller vers le lieu du festival
