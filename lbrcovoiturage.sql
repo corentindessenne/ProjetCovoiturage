@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 24 juin 2022 à 23:45
+-- Généré le : mer. 29 juin 2022 à 23:48
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -66,8 +66,8 @@ CREATE TABLE `edition` (
   `DateFin` date NOT NULL,
   `HeureDebut` time(4) NOT NULL,
   `HeureFin` time(4) NOT NULL,
-  `Lieu` varchar(4) NOT NULL,
-  `Description` varchar(20) NOT NULL
+  `Lieu` varchar(100) NOT NULL,
+  `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

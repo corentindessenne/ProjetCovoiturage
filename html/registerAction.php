@@ -24,10 +24,10 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
             $verifadmin = 0;
         }
         //mail
-        $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key='. $_POST['email'].'&token='.$token;
+        $path = 'localhost/ProjetCovoiturage/html/verify_email.php?key=' . $_POST['email'] . '&token=' . $token;
         $request = mysqli_query($conn, "INSERT INTO compte(Nom,Prenom, Email, telephone, motDePasse, isAdmin,DateCreation, lien_verif_mail) VALUES ('" . $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["email"] . "','" . $tel . "','" . $password . "','" . $verifadmin . "','" . date("Y.m.d") . "', '" . $token . "')");
         $link = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;'>Confirme ton compte</a>";
-        $lienBrut = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='color: #FFA73B;'>".$path."</a>";
+        $lienBrut = "<a href='localhost/ProjetCovoiturage/html/verify_email.php?key=" . $_POST['email'] . "&token=" . $token . "' target='_blank' style='color: #FFA73B;'>" . $path . "</a>";
 
         include('../mails/header_mails.php');
 
@@ -45,16 +45,13 @@ if (isset($_POST["reg_user"]) && $_POST["email"]) {
             $corp = str_replace($key, $value, $corp);
         }
 
-    if (mail($dest, $sujet, $corp, $headers)) {
-        $_SESSION['alertMailEnvoye'] = 1;
-        header("Location:home.php");
+        if (mail($dest, $sujet, $corp, $headers)) {
+            $_SESSION['alertMailEnvoye'] = 1;
+            header("Location:home.php");
+        }
+    else {
+        echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";              //L'utilisateur est notifié selon le succès ou l'échec des requetes et de l'envoi du mail
         ?>
-        <script>document.location.href = '../html/home.php';</script>
-    <?php
-    }
-    else{
-    echo "<script type='text/javascript'>alert('Le mail ne s\'est pas envoyé');</script>";              //L'utilisateur est notifié selon le succès ou l'échec des requetes et de l'envoi du mail
-    ?>
         <script>document.location.href = '../html/home.php';</script>
     <?php
     }
