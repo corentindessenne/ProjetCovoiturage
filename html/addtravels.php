@@ -144,7 +144,7 @@
     <label class="cbx" for="cbx"><span>
       <svg width="12px" height="9px" viewbox="0 0 12 9">              <!--En cochant cette checkbox l'utilisateur renseigne son numéro-->
         <polyline points="1 5 4 8 11 1"></polyline>
-      </svg></span><span>Renseignez son numéro de téléphone </span>
+      </svg></span><span>Renseigner son numéro de téléphone </span>
     </label>
     <label>
 
@@ -210,7 +210,7 @@
   </label>
   <label>
     <div class="PrixSelect">
-      <span> Prix par passagers : </span>
+      <span> Prix par passager : </span>
       <input type="number" required="required" class="Prix" name="Prix" id ="Prix" step="1" min="0">
       <i>€</i>
     </div>
@@ -219,7 +219,7 @@
   <label class="cbx2" for="cbx2"><span>
     <svg width="12px" height="9px" viewbox="0 0 12 9">                  <!--En cochant cette checkbox l'utilisateur renseigne son numéro-->
       <polyline points="1 5 4 8 11 1"></polyline>
-    </svg></span><span>Renseignez son numéro de téléphone </span>
+    </svg></span><span>Renseigner son numéro de téléphone </span>
   </label>
   <label>        
     <textarea name="Description" id="Description" placeholder="Écris ici la description de ton trajet" rows="8" cols="65"></textarea>

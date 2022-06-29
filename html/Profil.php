@@ -581,7 +581,6 @@
                         $result2 = mysqli_query($conn,$requete2);
                         $row2 = mysqli_fetch_assoc($result2);
 
-
                         $requete3 = "SELECT * FROM trajet WHERE idTrajet = '$idTrajets[$i]' ";
                         $result3 = mysqli_query($conn,$requete3);
                         $row3 = mysqli_fetch_assoc($result3);
@@ -603,9 +602,9 @@
                                 
                                 <?php 
                                     echo "<div style=\"font-size:16px;font-weight:normal;\">Nb de Passagers : ".$row['nbPassagersReservation']."</div><p>";
-                                    for ($i=1; $i < 7 ; $i++) { 
-                                        if(isset($row['nomPassager'.$i])){
-                                           echo " ".$row['nomPassager'.$i]." ";
+                                    for ($a=1; $a < 6 ; $a++) { 
+                                        if(isset($row['nomPassager'.$a])){
+                                           echo " ".$row['nomPassager'.$a]." ";
                                         }
                                     }
                                 ?>
