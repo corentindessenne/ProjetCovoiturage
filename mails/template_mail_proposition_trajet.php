@@ -160,7 +160,7 @@
                 <tr>
                     <td bgcolor="#ffffff" align="left"
                         style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Cereal', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: justify;">
-                        <p style="margin: 0;">Suite à ta demande, un conducteur s'est proposé pour {{typeTrajet}}  festival. Consulte ton profil pour afficher les détails de cette demande.</p>
+                        <p style="margin: 0;">Suite à ta demande, un conducteur s'est proposé pour {{typeTrajet}} festival. Consulte ton profil pour afficher les détails de cette demande.</p>
                     </td>
                 </tr>
                 <!-- COPY -->

@@ -38,8 +38,19 @@
 
         $dest = $mailDemandeur;
         $sujet = "Tu as reçu(e) une proposition pour ton trajet !";
-        $corp = file_get_contents("../mails/template_mail_demande_trajet.php");
-        $corp = str_replace("{{Prenom}}", $result3['Prenom'], $corp);
+        $corp = file_get_contents("../mails/template_mail_proposition_trajet.php");
+
+        if ($typetrajet === 'Aller') $typeTrajet = "t'emmener au";
+        else $typeTrajet = "te ramener du";
+
+        $variables = array(
+            "{{Prenom}}" => $result3['Prenom'],
+            "{{typeTrajet}}" => $typeTrajet
+        );
+
+        foreach ($variables as $key => $value){
+            $corp = str_replace($key, $value, $corp);
+        }
 
         if(mail($dest,$sujet,$corp, $headers)){
             echo "Votre demande pour rejoindre la voiture a bien été envoyée au conducteur";
